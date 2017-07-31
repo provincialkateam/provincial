@@ -1,0 +1,1 @@
+﻿gt 'npc_editor','get_npc_list'
