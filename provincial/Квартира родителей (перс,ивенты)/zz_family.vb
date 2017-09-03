@@ -43,7 +43,7 @@ if $args[0] = 'father_sheduler':
 		if hour < 7 or hour >= 21: $father['location'] = 'bedrPar2'
 		if hour = 7: $father['location'] = 'kuhrPar'
 		if week < 6:
-			if hour >= 8 and hour <= 16: $father['location'] = '_work'
+			if hour >= 7 and hour <= 15: $father['location'] = '_work'
 			if hour >= 18 and hour <= 20:
 				if week = 1:
 					$father['location'] = ''
@@ -52,7 +52,7 @@ if $args[0] = 'father_sheduler':
 				end
 			end
 		else
-			if hour >= 8 and hour <= 16: $father['location'] = 'sitrPar'
+			if hour >= 7 and hour <= 15: $father['location'] = 'sitrPar'
 			if hour >= 18 and hour <= 20:
 				if week = 6: $father['location'] = iif(father['horny'] >= 70, 'sitrPar', 'gargazel')
 				if week = 7: $father['location'] = 'sitrPar'
@@ -96,7 +96,7 @@ if $args[0] = 'sister_sheduler':
 	else
 		$sister['location'] = 'Gadhouse'
 	end
-	if $sister['location'] = $curloc:  gs 'zz_family', 'sister_act'
+	if $sister['location'] = $curloc: gs 'zz_family', 'sister_act'
 end
 if $args[0] = 'brother_sheduler':
 	gs 'zz_family','check_trip'
@@ -207,18 +207,53 @@ if $args[0] = 'brother_act':
 	end
 end
 if $args[0] = 'sister_act':
-	if $sister['location'] = 'bedrPar':
-		if hour >= 22:
-			if week = 5:
-				gs 'zz_render','','','Ваша пьяная сестра Аня спит на кровати.'
+	if $npc['38,wedding'] < 3:
+		if $sister['location'] = 'bedrPar':
+			if hour >= 22:
+				if week = 5:
+					gs 'zz_render','','','Ваша пьяная сестра Аня спит на кровати.'
+				else
+					gs 'zz_render','','','Ваша сестра <a href="exec:gt ''sister''">Аня</a> сидит на кровати и читает книгу.'
+				end
+			end
+			if (hour < 7 and week < 6) or (hour < 10 and week >= 6): gs 'zz_render','','','Ваша сестра <a href="exec:GT ''sistersleep''">Аня</a> спит на кровати.'
+			if (hour = 10 or hour = 11) and week >= 6: gs 'zz_render','','','Ваша сестра <a href="exec:GT ''sister''">Аня</a> собирается на прогулку.'
+		end
+		if $sister['location'] = 'gdk': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> сидит в компании друзей и пьет пиво.'
+		if $sister['location'] = 'cafe_parco': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> сидит в компании друзей и пьет пиво.'
+		if $sister['location'] = 'glake': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> загорает в компании друзей.'
+	else
+		if $sister['location'] = 'room':
+			if hour >= 0 and hour <= 7:
+				gs 'zz_render','','','Аня с Михаилом спят на диване'
+			end
+			if week <= 5:
+				if hour >= 18 and hour < 0:
+					gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> с <a href="exec: gt ''misha''">Мишей</a> сидят на диване'
+				end
 			else
-				gs 'zz_render','','','Ваша сестра <a href="exec:gt ''sister''">Аня</a> сидит на кровати и читает книгу.'
+				if (hour >= 9 and hour <= 15) or (hour >= 20 and hour < 0):
+					gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> с <a href="exec: gt ''misha''">Мишей</a> сидят на диване'
+				end
 			end
 		end
-		if (hour < 7 and week < 6) or (hour < 10 and week >= 6): gs 'zz_render','','','Ваша сестра <a href="exec:GT ''sistersleep''">Аня</a> спит на кровати.'
-		if (hour = 10 or hour = 11) and week >= 6: gs 'zz_render','','','Ваша сестра <a href="exec:GT ''sister''">Аня</a> собирается на прогулку.'
+		if $sister['location'] = 'kitchen':
+			if hour = 8 and minut > 30:
+				gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> завтракает на кухне'
+			end
+			if (week <= 5 and hour >= 16 and hour <= 18) or (week > 5 and hour = 19):
+				gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> готовит еду'
+			end
+		end
+		if $sister['location'] = 'bathroom':
+			if hour = 8 and minut <= 30:
+				gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> и <a href="exec: gt ''misha''">Мишей</a> вместе принимают душ'
+			end
+		end
+		if $sister['location'] = 'cafe_parco':
+			if week > 5 and hour > 15 and hour <= 18:
+				gs 'zz_render','','','<a href="exec: gt ''sister''">Аня</a> и <a href="exec: gt ''misha''">Мишей</a> вместе сидят в кафе'
+			end
+		end
 	end
-	if $sister['location'] = 'gdk': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> сидит в компании друзей и пьет пиво.'
-	if $sister['location'] = 'cafe_parco': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> сидит в компании друзей и пьет пиво.'
-	if $sister['location'] = 'glake': 'Ваша сестра <a href="exec: gt ''sister''">Аня</a> загорает в компании друзей.'
 end

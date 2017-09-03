@@ -1,4 +1,4 @@
-﻿if $npc['9,qwKotovLove'] >= 5 and GorSlut > 0:
+﻿if $npc['9,qwKotovLove'] >= 5 and func('zz_reputation','get') > 0:
 	gs 'npc_editor','get_npc_profile',9
 	gs 'zz_render','','',func('kotovEv_strings', 'local_str1')
 	act 'Устроить скандал':
@@ -11,7 +11,7 @@
 	if dom >= 20:
 		act 'Убеждать, что все это сплетни':
 			*clr & cla
-			GorSlut = 0
+			gs 'zz_reputation','set',0
 			gs 'zz_render', '', '', func('kotovEv_strings', 'local_str3')
 			act 'Отойти': gt $loc, $metka
 		end

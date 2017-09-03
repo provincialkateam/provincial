@@ -123,7 +123,7 @@ if snyqw = 0:
 	end
 elseif snyqw = 1:
 	gs 'zz_render', '', '', func('sny_strings', 'local_str16')
-	if GorSlut >= 3:
+	if func('zz_reputation','get') >= 3:
 		gs 'zz_render', '', '', func('sny_strings', 'local_str17')
 		act 'Молчать':
 			*clr & cla
@@ -131,7 +131,7 @@ elseif snyqw = 1:
 			gs'stat'
 			gs 'zz_render', '', '', func('sny_strings', 'local_str18')
 			if $npc['23,qwMain'] = 55:
-				GorSlut -= 1
+				gs 'zz_reputation','set',func('zz_reputation','get')-1
 				gs 'zz_render', '', '', func('sny_strings', 'local_str19')
 				act 'Уйти':gt'gschool'
 			else
@@ -139,7 +139,7 @@ elseif snyqw = 1:
 				act 'Идти в сортир':snyqw = 2 & minut += 15 & gt $curloc
 			end
 		end
-	elseif GorSlut <= 2:
+	elseif func('zz_reputation','get') <= 2:
 		gs 'zz_render', '', '', func('sny_strings', 'local_str21')
 		act 'Подойти':
 			*clr & cla
@@ -186,7 +186,7 @@ elseif snyqw = 2:
 		if i ! 9 and $npc['<<i>>,sex'] = 0: $npc['<<i>>,sex'] = 1 & guy += 1
 		i += 1
 		if i < 11: jump 'loop_bj_ny'
-		if GorSlut < 5: GorSlut = 5
+		if func('zz_reputation','get') < 4: gs 'zz_reputation','set',4
 		gs 'zz_render', '', 'images/qwest/alter/ev2/snybj.jpg', func('sny_strings', 'local_str28')
 		act 'Обслуживать одноклассников':
 			*clr & cla

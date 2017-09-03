@@ -116,13 +116,13 @@ if $ARGS[0] = 'b_vika_present_sex2':
 	$zz_str += 'Вас жестко трахают во все дыры. Парни часто меняются местами и со временем их члены преобретают вкус ваших собственных соков.'
 	if picrand => 1 and picrand <= 2:
 		gs 'zz_render', '', '', func('univer_din_strings', 'local_str15')
-		*pl $zz_str
+		gs 'zz_render','','', $zz_str
 	elseif picrand => 3 and picrand <= 4:
 		gs 'zz_render', '', '', func('univer_din_strings', 'local_str16')
-		*pl $zz_str
+		gs 'zz_render','','', $zz_str
 	elseif picrand = 5:
 		gs 'zz_render', '', '', func('univer_din_strings', 'local_str17')
-		*pl $zz_str
+		gs 'zz_render','','', $zz_str
 	elseif picrand => 6 and picrand <= 8:
 		gs 'zz_render', '', '', func('univer_din_strings', 'local_str18')
 	end

@@ -32,7 +32,7 @@ if $args[0] = 'train_station':
 	if _from = 2: $_str = 'платформе Гадюкино'
 	if _from = 1: $_str = 'платформе Дачная'
 	if _from = 0: $_str = 'станции Северный Вокзал'
-	gs 'zz_render','','common/transport/railroad/0','Электричка остановилась на ' + $_str
+	gs 'zz_render','','common/transport/railroad/'+func('zz_weather','is_day'),'Электричка остановилась на ' + $_str
 end
 if $args[0] = 'train_tickets':
 	if $loc = 'vokzal': _from = 0
@@ -93,14 +93,15 @@ if $args[0] = 'train_out':
 end
 ! расписание электричек по станции
 if $args[0] = 'shedule':
-	$result[0] = iif(_from!0,'В город','') + ',' + iif(_from!4,'В Павлово','')
+	killvar '$zz_funcs_result'
+	$zz_funcs_result[0] = iif(_from!0,'В город','') + ',' + iif(_from!4,'В Павлово','')
 	i = 1
 	:loop_shedule
-	$result[i] = iif(_from=0,'','<<i*4+2>>:'+iif(_from=4,'00',(4-_from)*15)) + ',' + iif(_from=4,'','<<i*4+2>>:'+iif(_from=0,'00',_from*15))
+	$zz_funcs_result[i] = iif(_from=0,'','<<i*4+2>>:'+iif(_from=4,'00',(4-_from)*15)) + ',' + iif(_from=4,'','<<i*4+2>>:'+iif(_from=0,'00',_from*15))
 	i += 1
 	if i <= 5: jump 'loop_shedule'
 	!gs 'zz_funcs','make_table',$result,400
-	gs 'zz_funcs','make_table',$result,0,1
+	gs 'zz_funcs','make_table',$zz_funcs_result,0,1
 end
 ! расчет времени до следующей электрички
 if $args[0] = 'time_to_train':

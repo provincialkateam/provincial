@@ -39,7 +39,7 @@ if $args[0] = 'tamara':
 	if $curloc = 'bank': act 'Ехать домой': minut += 30 & gt 'mey_home', 0
 	if $curloc = 'mey_home' and $npc['45,qwTamara'] >= 3 and $npc['45,qwTamara'] < 50:
 		if week >= 6 or school['vacation'] > 0: act 'Попросить отвезти в город': minut += 30 & gt 'down'
-		if GorSlut >= 3 and $npc['45,reputation_qw'] = 0: act 'Рассказать о падении': gt 'mey_tamara_events', 'reputation'
+		if func('zz_reputation','get') >= 3 and $npc['45,reputation_qw'] = 0: act 'Рассказать о падении': gt 'mey_tamara_events', 'reputation'
 	end
 	act 'Отойти': gt $curloc, iif($curloc = 'mey_home',mey_loc_id,$metka)
 end
@@ -469,7 +469,7 @@ if $args[0] = 'reputation':
 		act 'Уйти':
 			$npc['45,reputation_qw'] = 1
 			minut += rand(20,40)
-			GorSlut -= 2
+			gs 'zz_reputation','set',0
 			horny = 0
 			spanked += 40
 			gt 'mey_home', 3

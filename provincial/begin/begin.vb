@@ -18,23 +18,16 @@
 	!$_str += '<td>'+func('begin','box','enrollee','Абитуриент','18 лет<br>Школьный аттестат<br>Старт с города<br>')+'</td>'
 	$_str += '</tr>'
 	$_str += '</table>'
-	*pl '<center><br><br><font size=8 color=maroon>Выберите персонажа:</font><br><br>'+$_str+'</center>'
+	*pl '<center><br><font size=8 color=maroon>Выберите персонажа:</font><br>'+$_str+'</center>'
 	killvar '$_str'
 	exit
 end
 if $args[0] = 'box':
-	$_img = 'images/common/mobile/'
-	$result = '<table border=0 width=200 cellpadding=0 cellspacing=0>'
-	! header
-	$result += '<tr><td width=10><img src="'+$_img+'/tl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'/tr.png"></td></tr>'
-	! image
-	$result += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee"><img width=180 src="images/common/start/'+$args[1]+'.jpg"></td><td width=10 bgcolor="#eeeeee"></td></tr>'
-	! text
-	$result += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee" align=center><font size=6><a href="exec:gt''begin'',''description'',''<<$args[1]>>''">'+$args[2]+'</a></font><br>'+$args[3]+'</td><td width=10 bgcolor="#eeeeee"></td></tr>'
-	! footer
-	$result += '<tr><td width=10><img src="'+$_img+'/bl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'/br.png"></td></tr>'
-	$result += '</table>'
-	killvar '$_img'
+	$result = '<div class="box">'
+	$result += '<img src="images/common/start/'+$args[1]+'.jpg">'
+	$result += '<a href="exec:gt''begin'',''description'',''<<$args[1]>>''">'+$args[2]+'</a>'
+	$result += '<div>'+$args[3]+'</div>'
+	$result += '</div>'
 end
 if $args[0] = 'description':
 	$_str = $args[1]
@@ -52,12 +45,12 @@ if $args[0] = 'description':
 	else
 		gs 'zz_render','Абитуриент',$_img,'Вы недавно закончили школу, отгуляли выпускной, и пришло время начинать свою взрослую жизнь в большом городе. Родители собрали для вас стартовый капитал в 20 тыс. рублей и отправили поступать в ВУЗ.'
 	end
-	gs 'zz_render','','','<center><font size=8><a href="exec:gt''begin'',''main''">Назад</a>   <a href="exec:gt''begin'',''start_date'',''<<$_str>>''">Начать</a></font></center>'
+	gs 'zz_render','','','<center><font size=8><a href="exec:gt''begin'',''main''">Назад</a>&nbsp;&nbsp;&nbsp;<a href="exec:gt''begin'',''start_date'',''<<$_str>>''">Начать</a></font></center>'
 	killvar '$_str'
 	killvar '$_img'
 end
 if $args[0] = 'start_date':
-	$_hero_type =  $args[1]
+	$_hero_type = $args[1]
 	if $_hero_type = 'enrollee': gt 'begin','hero',$_hero_type
 	$_str = '<table border=0 width=630 cellpadding=0 cellspacing=0>'
 	$_str += '<tr>'
@@ -72,18 +65,10 @@ if $args[0] = 'start_date':
 	exit
 end
 if $args[0] = 'box2':
-	$_img = 'images/common/mobile/'
-	$result = '<table border=0 width=200 cellpadding=0 cellspacing=0>'
-	! header
-	$result += '<tr><td width=10><img src="'+$_img+'/tl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'/tr.png"></td></tr>'
-	! image
-	$result += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee"><img width=180 src="images/common/start/'+$args[1]+'.jpg"></td><td width=10 bgcolor="#eeeeee"></td></tr>'
-	! text
-	$result += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee" align=center><font size=6><a href="exec:gt''begin'',''hero'',''<<$args[1]>>''">'+$args[2]+'</a></font><br>'+$args[3]+'</td><td width=10 bgcolor="#eeeeee"></td></tr>'
-	! footer
-	$result += '<tr><td width=10><img src="'+$_img+'/bl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'/br.png"></td></tr>'
-	$result += '</table>'
-	killvar '$_img'
+	$result = '<div class="box">'
+	$result += '<img src="images/common/start/'+$args[1]+'.jpg">'
+	$result += '<a style="font-size:1.6em" href="exec:gt''begin'',''hero'',''<<$args[1]>>''">'+$args[2]+'</a><br>'+$args[3]
+	$result += '</div>'
 end
 if $args[0] = 'hero':
 	$_start = $args[1]
@@ -172,6 +157,7 @@ if $args[0] = 'hero':
 	gs 'zz_body'
 	body['weight'] = body['base_weight'] + rand(1,5)
 	if $_hero_type = 'nerd':
+		achiev['start'] = 0
 		body['weight'] = body['base_weight'] + rand(25,30)
 		glaraz = 0
 		stren = 1
@@ -187,6 +173,7 @@ if $args[0] = 'hero':
 		skin = 0
 		leghair = 10
 	elseif $_hero_type = 'schoolgirl':
+		achiev['start'] = 1
 		body['weight'] = body['base_weight'] - rand(1,5)
 		stren = 1
 		vital = 5
@@ -205,6 +192,7 @@ if $args[0] = 'hero':
 		skin = 1
 		leghair = 3
 	elseif $_hero_type = 'dancer':
+		achiev['start'] = 2
 		intel = 30
 		agil = 60
 		stren = 20
@@ -220,6 +208,7 @@ if $args[0] = 'hero':
 		dom = rand(-10,10)
 		leghair = -5
 	elseif $_hero_type = 'sportgirl':
+		achiev['start'] = 3
 		stren = 50
 		vital = 50
 		speed = 25
@@ -236,6 +225,7 @@ if $args[0] = 'hero':
 		leghair = 0
 		body['weight'] = body['base_weight'] + rand(3,7)
 	elseif $_hero_type = 'playgirl':
+		achiev['start'] = 4
 		agil = 20
 		vital = 20
 		dom = rand(30,60)
@@ -246,6 +236,7 @@ if $args[0] = 'hero':
 		colorful_lenses = 30
 		leghair = -5
 	else
+		achiev['start'] = 5
 		skin = 1
 		tan = 30
 		money = 20000
@@ -286,6 +277,7 @@ if $args[0] = 'hero':
 	i += 1
 	if i <= 25: jump 'mark_grup'
 	! ---
+	gs 'zz_achievements','check_ach_array'
 	! init stats
 	gs 'stat'
 	! ---
@@ -317,20 +309,14 @@ if $args[0] = 'hero':
 	gs 'zz_clothing', 'dispose'
 	! ---
 	! render settings
-	gs 'zz_render_settings','default'
+	gs 'zz_settings','default'
 	! load dynamics
 	gs 'din2'
-	gs 'din_bag'
 	gs 'dinSex'
 	!
 	SHOWSTAT 1
 	SHOWOBJS 1
 	SHOWACTS 1
-	! set menu
-	addobj '<img src="images/common/icons/pers.png">'
-	addobj '<img src="images/common/icons/look.png">'
-	addobj '<img src="images/common/icons/proch.png">'
-	addobj '<img src="images/common/icons/purse.png">'
 	! start game
 	!if $_hero_type = 'enrollee':
 	!	killvar '$_hero_type'

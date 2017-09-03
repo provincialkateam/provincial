@@ -298,7 +298,7 @@ if $args[0] = 'init':
 	$npc['26,surname'] = 'Царёв'
 	$npc['26,nickname'] = 'Онотоле'
 	$npc['26,relation'] = 40
-	$npc['26,group'] = 5
+	$npc['26,group'] = 6
 	$npc['26,dick'] = 15
 	$npc['26,sex'] = 0
 	$npc['26,silavag'] = 1
@@ -541,7 +541,17 @@ if $args[0] = 'init':
 	$npc['47,dick'] = 0
 	$npc['47,sex'] = 0
 	$npc['47,know'] = 0
-	npc_arrsize = 48
+	!--
+	$npc['48,name'] = 'Миша'
+	$npc['48,surname'] = ''
+	$npc['48,nickname'] = ''
+	$npc['48,relation'] = 40
+	$npc['48,group'] = 9
+	$npc['48,dick'] = 18
+	$npc['48,sex'] = 0
+	$npc['48,silavag'] = 2
+	$npc['48,know'] = 0
+	npc_arrsize = 49
 	! потенциальные бойфренды - в списки не добавляем, номера 200-399, автогенерация
 	! 200 - 299 - павловские
 	! 300 - 399 - городские
@@ -713,8 +723,8 @@ if $args[0] = 'get_npc_group':
 	end
 	$_npc_group[0] = 'одиночек'
 	$_npc_group[1] = 'ботаников'
-	$_npc_group[2] = 'спортиков'
-	$_npc_group[3] = 'крутых'
+	$_npc_group[2] = 'спортсменов'
+	$_npc_group[3] = 'мажоров'
 	$_npc_group[4] = 'гопников'
 	! не выводим строчку, но они есть в массиве
 	!$_npc_group[5] = 'семья'
@@ -725,23 +735,44 @@ if $args[0] = 'get_npc_group':
 	$result = $npc['<<args[1]>>,name'] + ' относится к группе ' + $_npc_group[_npc_group] + '.'
 	killvar '$_npc_group'
 end
+! получаем среднее значение отношений с определенной группой - нужно для ачивок
+! args[1] - проверяемая группа
+if $args[0] = 'get_avg_relation':
+	_avg_rel = 0
+	_avg_rel_count = 0
+	_avg_rel_group = args[1]
+	_avg_rel_i = 1
+	:loop_avg_rel
+	if _avg_rel_i < npc_arrsize:
+		if $npc['<<_avg_rel_i>>,group'] = _avg_rel_group:
+			_avg_rel += $npc['<<_avg_rel_i>>,relation']
+			_avg_rel_count += 1
+		end
+		_avg_rel_i += 1
+		jump 'loop_avg_rel'
+	end
+	if _avg_rel_count > 0:
+		result = _avg_rel / _avg_rel_count
+	else
+		result = 0
+	end
+	killvar '_avg_rel'
+	killvar '_avg_rel_count'
+	killvar '_avg_rel_group'
+	killvar '_avg_rel_i'
+	exit
+end
 ! выводим карточку NPC
 if $args[0] = 'get_npc_profile':
 	_npc_id = args[1]
-	$_npc_img = 'images/common/mobile'
-	!msg $_img
-	$_npc_info = '<center><table border=0 width=270 cellpadding=0 cellspacing=0>'
-	! header
-	$_npc_info += '<tr><td width=10><img src="'+$_npc_img+'/tl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_npc_img+'/tr.png"></td></tr>'
+	$_npc_info = '<center><div class="npc_info">'
 	! name
-	$_npc_info += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee" align=center><b>'+ iif($npc['<<_npc_id>>,nickname'] = '',$npc['<<_npc_id>>,name']+ ' ' + $npc['<<_npc_id>>,surname'],$npc['<<_npc_id>>,nickname']) +'</b></td><td width=10 bgcolor="#eeeeee"></td></tr>'
+	$_npc_info += '<div><h2>'+iif($npc['<<_npc_id>>,nickname'] = '',$npc['<<_npc_id>>,name']+ ' ' + $npc['<<_npc_id>>,surname'],$npc['<<_npc_id>>,nickname'])+'</h2></div>'
 	! image
-	$_npc_info += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee"><img width=250 src="images/common/npc/<<_npc_id>>.jpg"></td><td width=10 bgcolor="#eeeeee"></td></tr>'
+	$_npc_info += '<div><img src="images/common/npc/<<_npc_id>>.jpg"></div>'
 	! icons
-	$_npc_info += '<tr><td width=10 bgcolor="#eeeeee"></td><td bgcolor="#eeeeee" align=center><img align=center src="images/common/icons/relations/'+iif($npc['<<_npc_id>>,relation']>=100,4,$npc['<<_npc_id>>,relation']/20)+'.png"> '+ iif($npc['<<_npc_id>>,group']<5,'<img align=center src="images/common/icons/npc_groups/'+$npc['<<_npc_id>>,group']+'.png">','') +' <a href="exec:gs''npc_editor'',''get_npc_small_profile'',<<_npc_id>>"><img align=center src="images/common/icons/info.png"></a></td><td width=10 bgcolor="#eeeeee"></td></tr>'
-	! footer
-	$_npc_info += '<tr><td width=10><img src="'+$_npc_img+'/bl.png"></td><td bgcolor="#eeeeee"></td><td width=10><img src="'+$_npc_img+'/br.png"></td></tr>'
-	$_npc_info += '</table></center>'
+	$_npc_info += '<div><img src="images/common/icons/relations/'+iif($npc['<<_npc_id>>,relation']>=100,4,$npc['<<_npc_id>>,relation']/20)+'.png"> '+ iif($npc['<<_npc_id>>,group']<5,'<img src="images/common/icons/npc_groups/'+$npc['<<_npc_id>>,group']+'.png">','') +' <a href="exec:gs''npc_editor'',''get_npc_small_profile'',<<_npc_id>>"><img src="images/common/icons/info.png"></a></div>'
+	$_npc_info += '</div></center>'
 	gs 'zz_render','','',$_npc_info
 	killvar '$_npc_info'
 	killvar '$_npc_img'
@@ -778,15 +809,17 @@ if $args[0] = 'make_npc_group':
 end
 ! повышение/понижение отношений + уведомление
 ! ремейк функции @wannabee
-! gs 'npc_editor','change_rep','ЧтоДелаем', НомерНПС, НаСколькоИзменяем, ПределРоста
+! gs 'npc_editor','change_rep','ЧтоДелаем', НомерНПС, НаСколькоИзменяем, ПределРоста, СкрытьСообщения
 ! ЧтоДелаем: повышаем, понижаем или ничего не делаем, но выводим сообщение
 ! НаСколькоИзменяем - если надо изменить отношения не по формуле, а на определенное число
 ! ПределРоста - максимальное значение, до которого стоит повышать/понижать отношения
+! СкрытьСообщения - 0/1, по умолчанию сообщение не скрывается (0)
 if $args[0] = 'change_rep':
 	$_npc_change = $args[1]
 	_npc_id = args[2]
 	_npc_change_value = args[3]
 	_npc_change_limit = args[4]
+	_npc_change_hide = args[5]
 	! нулевого НПС нет - выходим
 	if _npc_id <= 0: exit
 	if $npc['<<_npc_id>>,know'] = 0: $npc['<<_npc_id>>,know'] = 1
@@ -795,7 +828,7 @@ if $args[0] = 'change_rep':
 		! повышение
 		! если указано значение - изменяем на него, если нет - расчитываем по формуле
 		if _npc_change_value <= 0:
-			_npc_change_value = iif(vnesh<40,1,(vnesh-30)/10) +  iif(intel<50,1,intel/25) - iif(nerdism>0,iif(nerdism<20,1,2),0)
+			_npc_change_value = iif(vnesh<40,1,(vnesh-30)/10) + iif(intel<50,1,intel/25) - iif(nerdism>0,iif(nerdism<20,1,2),0)
 		end
 		! проверяем лимит
 		if _npc_change_limit > 0:
@@ -812,7 +845,7 @@ if $args[0] = 'change_rep':
 		! проверяем границы диапазона отношений 0-100
 		if $npc['<<_npc_id>>,relation'] > 100: $npc['<<_npc_id>>,relation'] = 100
 		! выводим сообщение
-		gs 'npc_editor','message',iif($npc['<<_npc_id>>,relation']=100,'max','up')
+		if _npc_change_hide = 0: gs 'npc_editor','message',iif($npc['<<_npc_id>>,relation']=100,'max','up')
 	elseif $_npc_change = '-' or $_npc_change = 'down':
 		! понижение
 		if _npc_change_value <= 0: _npc_change_value = $npc['<<_npc_id>>,relation'] / 10
@@ -820,10 +853,10 @@ if $args[0] = 'change_rep':
 		! проверяем границы диапазона отношений 0-100
 		if $npc['<<_npc_id>>,relation'] <= 0: $npc['<<_npc_id>>,relation'] = 0
 		! выводим сообщение
-		gs 'npc_editor','message','down'
+		if _npc_change_hide = 0: gs 'npc_editor','message','down'
 	else
 		! выводим сообщение о неизменности отношений
-		gs 'npc_editor','message','neutral'
+		if _npc_change_hide = 0: gs 'npc_editor','message','neutral'
 	end
 	! ---
 	killvar '$_npc_change'
@@ -836,7 +869,7 @@ if $args[0] = 'message':
 	if $args[1] = 'down': $rep_str = 'ухудшились'
 	if $args[1] = 'max': $rep_str = 'максимальны'
 	if $args[1] = 'neutral': $rep_str = 'не изменились'
-	nl '<table border=0 width=250 align=center cellspacing=0 cellpadding=0><tr><td width=17><img src="images/common/icons/left.png"></td><td bgcolor="#eeeeee" align=center><img src="images/common/icons/'+$args[1]+'.png"></td><td bgcolor="#eeeeee"></td><td bgcolor="#eeeeee"><font face=calibri><i>Отношения '+$rep_str+'</i></font></td><td width=17><img src="images/common/icons/right.png"></td></tr></table>'
+	gs 'zz_funcs','message','images/common/icons/'+$args[1]+'.png','Отношения '+$rep_str
 	killvar '$rep_str'
 end
 ! функция по номеру NPC подставляет имя и размеры
@@ -855,29 +888,43 @@ end
 ! выводим список всех отношений с НПС
 if $args[0] = 'relation_list':
 	i = 1
+	$_relation_list = '<center><table width=400 cellpadding=0 cellspacing=1 border=0>'
 	:loop_relation_list
-	pl func('zz_funcs','scale',val($npc['<<i>>,relation']),100) + ' ' + $npc['<<i>>,name'] + ' ' + $npc['<<i>>,surname']
+	if $npc['<<i>>,know'] = 1:
+		$_relation_list += '<tr class="relation_list_container">'
+			$_relation_list += iif($settings['cheats']=0,'','<td class="relation_list_cheat" rowspan=2><a href="exec:gs''npc_editor'',''change_rep'',''-'',<<i>>,5,0,1 & gt''menu_description'',''tabs'',3"><img src="images/common/icons/down.png"></a></td>')
+			$_relation_list += '<td class="relation_list_photo" rowspan=2><img src="images/common/npc/<<i>>.jpg"></td>'
+			$_relation_list += '<td class="relation_list_item">' + $npc['<<i>>,name'] + ' ' + $npc['<<i>>,surname'] + '</td>'
+			$_relation_list += iif($settings['cheats']=0,'','<td class="relation_list_cheat" rowspan=2><a href="exec:gs''npc_editor'',''change_rep'',''+'',<<i>>,5,0,1 & gt''menu_description'',''tabs'',3"><img src="images/common/icons/up.png"></a></td>')
+		$_relation_list += '</tr>'
+		$_relation_list += '<tr>'
+			$_relation_list += '<td class="relation_list_scale">' + func('zz_funcs','scale',val($npc['<<i>>,relation']),100,0) + '</td>'
+		$_relation_list += '</tr>'
+		$_relation_list += '<tr><td colspan=4 class="relation_list_separator"></td></tr>'
+	end
 	i += 1
 	if i < npc_arrsize: jump 'loop_relation_list'
+	$_relation_list += '</table></center>'
+	gs 'zz_render','','',$_relation_list
+	killvar '$_relation_list'
 end
 ! ---
 ! вывод инфо по НПС
 ! общая таблица - все НПС
 if $args[0] = 'get_npc_list':
 	*clr
-	$_npc_list = '<center><table border=0 cellpadding=0 cellspacing=10 width=800 align=center valign=top>'
+	$_npc_list = '<center><table border=0 cellpadding=0 cellspacing=10 align=center valign=top>'
 	i = 1
 	:loop_npc_list
 		j = 0
 		$_npc_list += '<tr>'
 		! в строчку выводим по 5 колонок
 		:loop_cols
-			$_npc_list += '<td width=150>' + iif(i < npc_arrsize,func('npc_editor','npc_box',i),'') + '</td>'
+			$_npc_list += '<td width=150>' + iif(i < npc_arrsize,func('npc_editor','get_npc_item_profile',i),'') + '</td>'
 			i += 1
 			j += 1
 			if j < 5: jump 'loop_cols'
 		$_npc_list += '</tr>'
-		!$_npc_list += '<tr><td colspan=9>&nbsp;</td></tr>'
 	if i < npc_arrsize: jump 'loop_npc_list'
 	$_npc_list += '</table></center>'
 	gs 'zz_render','','',$_npc_list
@@ -903,17 +950,32 @@ if $args[0] = 'npc_box':
 	killvar '$_npc_img'
 	killvar '_npc_id'
 end
+!---
+! функция для формирования таблички профиля в списке нпс
+if $args[0] = 'get_npc_item_profile':
+	clr
+	_npc_id = args[1]
+	$result = '<div class="profile_item_box">'
+		$result += '<div class="profile_item_photo"><img src="images/common/npc/'+iif($npc['<<_npc_id>>,know']>0,_npc_id,0)+'.jpg"></div>'
+		$result += '<div class=""><img src="images/common/icons/relations/'+iif($npc['<<_npc_id>>,relation']>=100,4,$npc['<<_npc_id>>,relation']/20)+'.png"> '+ iif($npc['<<_npc_id>>,group']<5,'<img src="images/common/icons/npc_groups/'+$npc['<<_npc_id>>,group']+'.png">','') +'</div>'
+		$result += '<div>'+iif($npc['<<_npc_id>>,know']>0,$npc['<<_npc_id>>,name'] + ' ' + $npc['<<_npc_id>>,surname'],'&nbsp;')+'</div>'
+	$result += '</div>'
+	killvar '_npc_id'
+end
+!---
 if $args[0] = 'get_npc_small_profile':
 	clr
 	_npc_id = args[1]
 	if $npc['<<_npc_id>>,know'] = 0: exit
-	$_npc_profile = '<tr><td align=center>' + func('zz_funcs','make_image_box','images/common/npc/'+_npc_id+'.jpg',240) + '</td></tr>'
-	$_npc_profile += '<tr><td bgcolor=#efefef align=center><b>' + $npc['<<_npc_id>>,name'] + ' ' + $npc['<<_npc_id>>,surname'] + '</b></td></tr>'
-	$_npc_profile += '<tr><td bgcolor=#efefef valign=middle><img height=16 src="images/common/icons/relations/'+iif($npc['<<_npc_id>>,relation']>=100,4,$npc['<<_npc_id>>,relation']/20)+'.png"> ' + func('zz_funcs','relations',$npc['<<_npc_id>>,relation']) + '</td></tr>'
-	$_npc_profile += '<tr><td bgcolor=#efefef valign=middle>' + iif($npc['<<_npc_id>>,group']<5,'<img height=16 src="images/common/icons/npc_groups/'+$npc['<<_npc_id>>,group']+'.png"> ','') + func('npc_editor','get_npc_group',_npc_id) + '</td></tr>'
-	$_npc_profile += '<tr><td>' + func('npc_editor','get_npc_text',_npc_id) + '</td></tr>'
-	$_npc_profile = '<center><table cellpadding=0 cellspacing=3>' + $_npc_profile + '</center>'
-	pl $_npc_profile
+	$_npc_profile = '<div class="small_npc_profile">'
+		$_npc_profile += '<div class="profile_photo"><img src="images/common/npc/'+_npc_id+'.jpg"></div>'
+		$_npc_profile += '<div class="profile_description">'
+			$_npc_profile += '<div class="profile_name gradient">' + $npc['<<_npc_id>>,name'] + ' ' + $npc['<<_npc_id>>,surname'] + '</div>'
+			$_npc_profile += '<div class="profile_icons gradient"><img src="images/common/icons/relations/'+iif($npc['<<_npc_id>>,relation']>=100,4,$npc['<<_npc_id>>,relation']/20)+'.png"> ' + func('zz_funcs','relations',$npc['<<_npc_id>>,relation']) + '</div>'
+			$_npc_profile += '<div class="profile_icons gradient">' + iif($npc['<<_npc_id>>,group']<5,'<img height=16 src="images/common/icons/npc_groups/'+$npc['<<_npc_id>>,group']+'.png"> ','') + func('npc_editor','get_npc_group',_npc_id) + '</div>'
+			$_npc_profile += '<div class="profile_text">' + func('npc_editor','get_npc_text',_npc_id) + '</div>'
+	$_npc_profile += '</div></div>'
+	p $_npc_profile
 	killvar '$_npc_profile'
 	killvar '_npc_id'
 end

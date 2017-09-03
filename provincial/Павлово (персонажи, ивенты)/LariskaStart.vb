@@ -240,13 +240,11 @@ if $ARGS[0] = 'end':
 											minut += 5
 											gs 'stat'
 											gs 'zz_render', '', 'images/qwest/alter/Lariska/Start/start_11.jpg', func('LariskaStart_strings', 'local_str35')
-											if GorSlut < 4:GorSlut = 4
+											if func('zz_reputation','get') < 3: gs 'zz_reputation','set',3
 											act 'Очнуться':
 												*clr & cla
 												minut += 5
 												$npc['18,qwZverevaSlut'] = 0
-												body_write += 1
-												face_write += 1
 												horny = 0
 												orgasm += 1
 												agape = 2

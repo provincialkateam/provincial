@@ -27,9 +27,9 @@ act 'Играть':
 		end
 	elseif $telsob = 'Катя':
 		gs 'npc_editor','change_rep','+', 33
-		if $npc['33,relation']  >= 20:
+		if $npc['33,relation'] >= 20:
 			dynamic $casino_svid
-		elseif $npc['33,relation']  < 20:
+		elseif $npc['33,relation'] < 20:
 			gt 'kazinosvid','3'
 		end
 	end

@@ -25,12 +25,11 @@
 			if vnesh > 60: '"- Да, хорошая чикса, но про скидку забудь, олень, считай это платой за наши издержки" - рассмеялся бандит.'
 		end
 		if vnesh >= 40: '"- А жёнушка у тебя хороша. Сейчас мы её опробуем, и, наверно, заберем с собой: пусть должок твой отработает. Ну а как отработает - вернем, если, конечно, захочет возвращаться!" - презрительно бросил, ухмыльнувшись, бандит.'
-		if money+stolmoney+karta >= 100000:
+		if money+karta >= 100000:
 			act 'Предложить деньги':
 				cla
-				if money >= 100000 and husbdolg = 1:money -= 100000 & husbdolg = 2
-				if money+stolmoney >= 100000 and husbdolg = 1:money = money+stolmoney-100000 & husbdolg = 2 & stolmoney = 0
-				if money+stolmoney+karta >= 100000 and husbdolg = 1:money = money+stolmoney+karta-100000 & husbdolg = 2 & stolmoney = 0 & karta = 0
+				if money >= 100000 and husbdolg = 1: money -= 100000 & husbdolg = 2
+				if money+karta >= 100000 and husbdolg = 1: money = money+karta-100000 & husbdolg = 2 & karta = 0
 				gs 'zz_render', '', '', func('husbSex_strings', 'local_str5')
 				act 'Открыть рот':gt'husbSex','dolg'
 			end
@@ -250,7 +249,7 @@ if $ARGS[0] = 'anal':
 		lubonus = 2
 		gs 'zz_render', '', '', func('husbSex_strings', 'local_str31')
 	elseif lubri > 0:
-		lubri -=  1
+		lubri -= 1
 		lubonus = 10
 		gs 'zz_render', '', '', func('husbSex_strings', 'local_str32')
 	end

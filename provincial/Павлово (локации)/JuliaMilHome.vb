@@ -41,13 +41,8 @@ elseif school['homework'] = 0:
 				wine = 0
 				gs 'npc_editor','change_rep','+', 12
 				horny += 10
-				if alkowine = 0:
-					gs 'zz_funcs', 'alko', 4
-					gs 'zz_render', '', 'images/common/npc/12.jpg', func('JuliaMilHome_strings', 'local_str7')
-				else
-					gs 'zz_funcs', 'alko', 2
-					gs 'zz_render', '', 'images/common/npc/12.jpg', func('JuliaMilHome_strings', 'local_str8')
-				end
+				gs 'zz_funcs', 'alko', 4
+				gs 'zz_render', '', 'images/common/npc/12.jpg', func('JuliaMilHome_strings', 'local_str7')
 				gs 'stat'
 				act 'Передохнуть':gt $curloc
 				if horny >= 50:

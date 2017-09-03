@@ -2,11 +2,9 @@
 $loc = $CURLOC
 popolaini = 0
 boycherdaksex = 0
-bonusZ = 0
 frost = 0
 minut += 1
 housrA = 1
-elektro += 1
 if my_house = 1:
 	dirt_apartment_rent += iif(husband = 0,1,2)
 else

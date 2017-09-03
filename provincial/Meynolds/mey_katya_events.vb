@@ -146,13 +146,13 @@ if $args[0] = 'sleep_together':
 			! 5 - трогает второй раз - если полезть дальше - получаем по рукам, -10 отношения
 			! 7 - третий раз - Катька не спит, разоблачение
 			!---
-			gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/sleep_touch0.gif',func('mey_katya_strings',15)
+			gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/sleep_touch0.webm',func('mey_katya_strings',15)
 			act 'Продолжить':
 				*clr & cla
 				horny += rand(10,20)
 				minut += rand(2,5)
 				gs 'stat'
-				gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/sleep_touch1.gif',func('mey_katya_strings',iif($npc['14,qwKatya'] >= 5,17,16))
+				gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/sleep_touch1.webm',func('mey_katya_strings',iif($npc['14,qwKatya'] >= 5,17,16))
 				act 'Оставить эту затею':
 					cla
 					gs 'zz_render','','',func('mey_katya_strings',18)
@@ -161,7 +161,7 @@ if $args[0] = 'sleep_together':
 				if $npc['14,qwKatya'] >= 5:
 					act 'Ласкать дальше':
 						*clr & cla
-						gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/'+iif($npc['14,qwKatya'] = 5,'sleep_touch2.gif','lesb2.jpg'),func('mey_katya_strings',19)
+						gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/'+iif($npc['14,qwKatya'] = 5,'sleep_touch2.webm','lesb2.webm'),func('mey_katya_strings',19)
 						if $npc['14,qwKatya'] = 5:
 							gs 'zz_render','','',func('mey_katya_strings',20)
 							gs 'npc_editor','change_rep','down',14,10
@@ -174,10 +174,10 @@ if $args[0] = 'sleep_together':
 							gs 'zz_render','','',func('mey_katya_strings',21) + func('mey_katya_strings',22)
 							act 'Продолжить':
 								*clr & cla
-								gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/lesb4',func('mey_katya_strings',23)
+								gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/lesb4.webm',func('mey_katya_strings',23)
 								act '...':
 									*clr & cla
-									gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/lesb6',func('mey_katya_strings',24)
+									gs 'zz_render','','pavlovo/meynolds/katya/drunk_qw/lesb6.webm',func('mey_katya_strings',24)
 									$npc['14,sex'] = 1
 									$npc['14,qwKatya'] = 10
 									act 'Спать': gt 'bed','sleep'
@@ -336,7 +336,7 @@ if $args[0] = 'bath_sex':
 	_stage = args[1]
 	minut += rand(2,5)
 	gs 'stat'
-	gs 'zz_render','','pavlovo/meynolds/katya/bath_sex/<<_stage>>'+iif(_stage=1 or _stage=3 or _stage=7,'.gif','.jpg'),func('mey_katya_strings',43+_stage)
+	gs 'zz_render','','pavlovo/meynolds/katya/bath_sex/<<_stage>>.webm',func('mey_katya_strings',43+_stage)
 	if _stage = 0:
 		act 'Согласиться':
 			*clr & cla
@@ -364,23 +364,23 @@ end
 if $args[0] = 'room_sex':
 	*clr & cla
 	$npc['14,qwKatya_day'] = day
-	gs 'zz_render','','pavlovo/meynolds/katya/room_sex/0',func('mey_katya_strings',52)
+	gs 'zz_render','','pavlovo/meynolds/katya/room_sex/0.webm',func('mey_katya_strings',52)
 	act '...':
 		*clr & cla
 		minut += rand(2,5)
 		horny += rand(10,20)
 		gs 'stat'
-		gs 'zz_render','','pavlovo/meynolds/katya/room_sex/1',func('mey_katya_strings',53)
+		gs 'zz_render','','pavlovo/meynolds/katya/room_sex/1.webm',func('mey_katya_strings',53)
 		act '...':
 			*clr & cla
 			minut += rand(2,5)
 			horny += rand(10,20)
 			gs 'stat'
-			gs 'zz_render','','pavlovo/meynolds/katya/room_sex/2',func('mey_katya_strings',54)
+			gs 'zz_render','','pavlovo/meynolds/katya/room_sex/2.webm',func('mey_katya_strings',54)
 			if $npc['14,qwKatya'] >= 43:
 				act 'Лизать':
 					*clr & cla
-					gs 'zz_render','','pavlovo/meynolds/katya/room_sex/3.gif',func('mey_katya_strings',55)
+					gs 'zz_render','','pavlovo/meynolds/katya/room_sex/3.webm',func('mey_katya_strings',55)
 					act 'Еще':
 						*clr & cla
 						! Катя теряет девственность
@@ -389,13 +389,13 @@ if $args[0] = 'room_sex':
 						else
 							if $npc['14,qwKatya'] < 50: $npc['14,qwKatya'] += 1
 						end
-						gs 'zz_render','','pavlovo/meynolds/katya/room_sex/7',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,59,65))
+						gs 'zz_render','','pavlovo/meynolds/katya/room_sex/7.webm',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,59,65))
 						act 'Заняться Катей':
 							*clr & cla
-							gs 'zz_render','','pavlovo/meynolds/katya/room_sex/8',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,60,66))
+							gs 'zz_render','','pavlovo/meynolds/katya/room_sex/8.webm',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,60,66))
 							act 'Давай':
 								*clr & cla
-								gs 'zz_render','','pavlovo/meynolds/katya/room_sex/9',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,61,67))
+								gs 'zz_render','','pavlovo/meynolds/katya/room_sex/9.webm',func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,61,67))
 								act '...':
 									*clr & cla
 									gs 'zz_render','','pavlovo/meynolds/katya/room_sex/10',func('mey_katya_strings',62)
@@ -406,7 +406,7 @@ if $args[0] = 'room_sex':
 										minut += rand(10,15)
 										manna += rand(10,20)
 										gs 'stat'
-										gs 'zz_render','','pavlovo/meynolds/katya/room_sex/5',func('mey_katya_strings',63)+func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,64,68))
+										gs 'zz_render','','pavlovo/meynolds/katya/room_sex/5.webm',func('mey_katya_strings',63)+func('mey_katya_strings',iif($npc['14,qwKatya'] = 45,64,68))
 										if $npc['14,qwKatya'] = 50:
 											act 'Поговорить о сексе с парнем': gt 'mey_katya_events','talk_about_boy'
 										else
@@ -421,7 +421,7 @@ if $args[0] = 'room_sex':
 			end
 			act 'Попросить полизать':
 				*clr & cla
-				gs 'zz_render','','pavlovo/meynolds/katya/room_sex/4.gif',func('mey_katya_strings',56)
+				gs 'zz_render','','pavlovo/meynolds/katya/room_sex/4.webm',func('mey_katya_strings',56)
 				act 'Кончить':
 					*clr & cla
 					horny = 0
@@ -434,10 +434,10 @@ if $args[0] = 'room_sex':
 						if $npc['14,qwKatya'] < 43: $npc['14,qwKatya'] += 1
 					end
 					gs 'stat'
-					gs 'zz_render','','pavlovo/meynolds/katya/room_sex/5',func('mey_katya_strings',57)
+					gs 'zz_render','','pavlovo/meynolds/katya/room_sex/5.webm',func('mey_katya_strings',57)
 					act 'Поменяться местами':
 						*clr & cla
-						gs 'zz_render','','pavlovo/meynolds/katya/room_sex/6',func('mey_katya_strings',58)
+						gs 'zz_render','','pavlovo/meynolds/katya/room_sex/6.webm',func('mey_katya_strings',58)
 						if $npc['14,qwKatya'] = 50:
 							act 'Поговорить о сексе с парнем': gt 'mey_katya_events','talk_about_boy'
 						else
@@ -495,7 +495,7 @@ end
 if $args[0] = 'hotel_observing':
 	*clr & cla
 	_stage = args[1]
-	gs 'zz_render','','pavlovo/meynolds/katya/hotel_sex/<<_stage>>',func('mey_katya_strings',76+_stage)
+	gs 'zz_render','','pavlovo/meynolds/katya/hotel_sex/<<_stage>>.webm',func('mey_katya_strings',76+_stage)
 	act iif(_stage < 9,'...','Уйти'):
 		if _stage < 9:
 			gt 'mey_katya_events','hotel_observing',_stage+1
@@ -549,7 +549,7 @@ if $args[0] = 'park_sex':
 	minut += rand(3,5)
 	if _stage > 0 and _stage < 6: horny += rand(3,5)
 	gs 'stat'
-	gs 'zz_render','','pavlovo/meynolds/katya/park_sex/<<_stage>>',func('mey_katya_strings',92+_stage)
+	gs 'zz_render','','pavlovo/meynolds/katya/park_sex/<<_stage>>.webm',func('mey_katya_strings',92+_stage)
 	act iif(_stage < 7,'...','Уйти'):
 		if _stage < 7:
 			gt 'mey_katya_events','park_sex',_stage+1
@@ -575,7 +575,7 @@ if $args[0] = 'random_hotel_sex':
 		act 'Проследить':
 			minut += rand(40,60)
 			gs 'stat'
-			gs 'zz_render','','pavlovo/meynolds/katya/hotel_sex/10',func('mey_katya_strings',101)
+			gs 'zz_render','','pavlovo/meynolds/katya/hotel_sex/10.webm',func('mey_katya_strings',101)
 			act 'Уйти': minut += rand(10,15) & gt 'gorodok'
 		end
 	else
@@ -628,7 +628,7 @@ if $args[0] = 'park_trio':
 	minut += rand(5,10)
 	if _stage = 2: horny = 0
 	gs 'stat'
-	gs 'zz_render','','pavlovo/meynolds/katya/park_trio/<<_stage>>.gif',func('mey_katya_strings',109+_stage)
+	gs 'zz_render','','pavlovo/meynolds/katya/park_trio/<<_stage>>.webm',func('mey_katya_strings',109+_stage)
 	act '...':
 		if _stage < 3:
 			gt 'mey_katya_events','park_trio',_stage+1
@@ -659,7 +659,7 @@ if $args[0] = 'hotel_trio':
 	minut += rand(5,10)
 	if _stage = 2: horny = 0
 	gs 'stat'
-	gs 'zz_render','','pavlovo/meynolds/katya/hotel_trio/<<_stage>>.gif',func('mey_katya_strings',115+_stage)
+	gs 'zz_render','','pavlovo/meynolds/katya/hotel_trio/<<_stage>>.webm',func('mey_katya_strings',115+_stage)
 	act '...':
 		if _stage < 3:
 			gt 'mey_katya_events','hotel_trio',_stage+1

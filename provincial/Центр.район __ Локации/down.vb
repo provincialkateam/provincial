@@ -18,7 +18,6 @@ if shantpopala > 0:
 	gs 'zz_funcs', 'cum', 'face'
 	cumfrot += 1
 	gs 'zz_funcs', 'cum', 'anus'
-	fingal += 1
 	guy += 2
 	rape += 1
 	sex += 1
@@ -47,7 +46,8 @@ gs 'zz_render', '', '', 'Крупный <a href="exec:GT ''sexshop'',''start''">
 if hour >= 6 and hour <= 23: gs 'zz_render', '', '', 'Закусочная <a href="exec:GT ''burger'',''start''">"Быстроешка"</a>'
 if bordel > 0 and hour >= 20 or bordel > 0 and hour <= 3: gs 'zz_render', '', '', 'Во дворах вход в <a href="exec:GT ''bordel''">Бордель</a>'
 if pornstudio >= 1 and hour > 5: gs 'zz_render', '', '', '<a href="exec:GT ''pornstudio'',''start''">Киностудия</a>, в которой снимают фильмы для взрослых'
-if hour >= 7:gs 'zz_render', '', '','Престижный <a href="exec:gt ''university'',''start''">Университет</a> является альма матер практически всех образованных людей города.'
+gs 'zz_render', '', '', 'Практически всю южную часть района занимает <a href="exec:gt''uni_campus''">студенческий городок</a> гуманитароного университета.'
+!if hour >= 7:gs 'zz_render', '', '','Престижный <a href="exec:gt ''university'',''start''">Университет</a> является альма матер практически всех образованных людей города.'
 !if hour >= 6 and hour <= 23:'Университетское <a href="exec:GT ''dorm'',''start''">общежитие</a>, малость обшарпанное несмотря на высокий статус университета'
 if week < 6 and hour >= 9 and hour <= 18: gs 'zz_render', '', '', '<a href="exec:GT ''bank''">Центральный Городской Банк</a>'
 if week < 6 and hour >= 8 and hour <= 17: gs 'zz_render', '', '', 'Крупнейшая <a href="exec:GT ''office'',''start''">Проектная организация</a> в городе'

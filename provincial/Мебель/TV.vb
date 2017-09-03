@@ -1,6 +1,5 @@
 ﻿if $ARGS[0] = 'start':
 	*clr & cla
-	elektro += 5
 	gs'stat'
 	'<center><img src="images/pics/telek.jpg"></center>'
 	'Вы включили телевизор и поудобней устроились на диване.'
@@ -19,7 +18,6 @@ if $ARGS[0] = 'nokable':
 	*clr & cla
 	minut += 60
 	manna += 10
-	elektro += 3
 	gs'stat'
 	'<center><img src="images/pics/telek2.jpg"></center>'
 	'Вы смотрите центральный канал лежа на диване. Смотреть почти нечего, сплошная реклама и дрянные программы.'
@@ -30,7 +28,6 @@ if $ARGS[0] = 'kable':
 	*clr & cla
 	minut += 60
 	manna += 20
-	elektro += 3
 	gs'stat'
 	'<center><img src="images/pics/telek.jpg"></center>'
 	'Вы смотрите кабельное телевидение.'

@@ -114,7 +114,7 @@ if $args[0] = 'meet_teacher':
 	if $npc['26,relation'] >= 80 and vnesh >= 60:
 		act 'Соблазнять':
 			*clr & cla
-			if $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 1
+			if $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 2
 			gs 'npc_editor','get_npc_profile',26
 			gs 'zz_render','','',func('tsarev_str',17)
 			if $npc['26,qwMain'] = 20 and shameless['flag'] >= 2:
@@ -270,7 +270,7 @@ if $args[0] = 'show_legs':
 	act 'Раздвинуть ноги':
 		cla
 		gs 'npc_editor','change_rep','up',26,1
-		if vnesh >= 60 and $npc['26,relation'] >= 60 and $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 1
+		if vnesh >= 60 and $npc['26,relation'] >= 60 and $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 2
 		gs 'zz_render','','',func('tsarev_str',iif(dom >= 30,46,47))
 		act 'Ждать конца урока': minut += 1 & gt 'zz_school'
 	end
@@ -308,7 +308,7 @@ if $args[0] = 'phone':
 				act 'Сделать фото под юбкой':
 					cla
 					gs 'zz_render','','',func('tsarev_str',53)
-					if vnesh >= 60 and $npc['26,relation'] >= 60 and $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 1
+					if vnesh >= 60 and $npc['26,relation'] >= 60 and $npc['26,qwMain'] < 20: $npc['26,qwMain'] += 2
 					act 'Ждать конца урока': minut += 1 & gt 'zz_school'
 				end
 			end
@@ -383,7 +383,7 @@ if $args[0] = 'lesson':
 			gt 'tsarev_events','lesson',_stage+1
 		else
 			minut += 5
-			if $npc['26,qwMain'] < 24: $npc['26,qwMain'] += 1
+			if $npc['26,qwMain'] < 24: $npc['26,qwMain'] += 2
 			killvar '_stage'
 			gt 'zz_school'
 		end

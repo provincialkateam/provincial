@@ -29,7 +29,7 @@
 	end
 	if ($npc['23,qwMain'] > 0 and $npc['23,qwMain'] < 50) or (gsAboDance + gsAboBeg + ivan_trainer_qw + gsAboVolley > 0):
 		act 'Переодеться в раздевалке': gt 'loker','start'
-		if hapri = 0 and cheatHapri_mod = 1: act 'Посмотреться в зеркало':gt 'mirror','start'
+		if hapri = 0 and $settings['hapri_mod'] = 1: act 'Посмотреться в зеркало':gt 'mirror','start'
 		if sweat >= 0:
 			act 'Помыться в душе':
 				*clr & cla
@@ -145,15 +145,9 @@
 				act 'Секция бега':
 					*clr & cla
 					gsAboBeg -= 1
-					minut += 120
-					speed += RAND(1,3)
-					running_day = day
-					body['day_weight'] -= 1
-					gs 'zz_funcs', 'sport', 3
-					beg += RAND(5,10)
-					gs 'stat'
+					gs 'zz_common','crossing',1
 					gs 'zz_render', '', 'images/pic/parkbeg.jpg', func('gdksport_strings', 'local_str61')
-					act 'Уйти':gt'gdksport'
+					act 'Уйти': gt 'gdksport'
 				end
 			end
 			if gsAboVolley > 0 and volleysostav = 0 and volley_day ! day:

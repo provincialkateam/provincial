@@ -192,8 +192,8 @@ if $args[0] = 'boy_bj':
 		bja += 1
 		dick = dickBoyFrend[numnpc]
 		if gnpcSex[numnpc] = 0:gnpcSex[numnpc] = 1 & guy += 1
-		if GorSlut < 2 and RAND(0,100):
-			GorSlut = 2
+		if func('zz_reputation','get') < 2 and RAND(0,100):
+			gs 'zz_reputation','set',2
 			GboyBalabol[numnpc] = 1
 		end
 		dom -= 1
@@ -249,8 +249,8 @@ if $args[0] = 'boyhome_anal':
 		dick = dickBoyFrend[numnpc]
 		silavag = silavagBoyFrend[numnpc]
 		if gnpcSex[numnpc] = 0: gnpcSex[numnpc] = 1 & guy += 1
-		if GorSlut = 0 and RAND(0,100) = 100:
-			GorSlut = 1
+		if func('zz_reputation','get') = 0 and RAND(0,100) = 100:
+			gs 'zz_reputation','set',1
 			GboyBalabol[numnpc] = 1
 		end
 		gs 'stat'
@@ -274,8 +274,8 @@ if $args[0] = 'boyhome_vaginal':
 		$boy = $nameBoyfrend[numnpc]
 		dick = dickBoyFrend[numnpc]
 		silavag = silavagBoyFrend[numnpc]
-		if GorSlut = 0 and RAND(0,100) = 100:
-			GorSlut = 1
+		if func('zz_reputation','get') = 0 and RAND(0,100) = 100:
+			gs 'zz_reputation','set',1
 			GboyBalabol[numnpc] = 1
 		end
 		gs 'stat'
@@ -329,7 +329,7 @@ if $args[0] = 'disco_act':
 		if discofirsttime = 0 and RAND(0,100):
 			if RAND(0,1) = 0:
 				gs 'zz_render', '', '', func('Gnpc2_strings', 'boy_talk4')
-				if GorSlut < 3:
+				if func('zz_reputation','get') < 3:
 					gs 'zz_render', '', '', func('Gnpc2_strings', 'boy_talk5')
 					act 'Вырываться':
 						*clr & cla
@@ -366,7 +366,6 @@ if $args[0] = 'disco_act':
 										act 'Ударить гопника кулаком в лицо':
 											*clr & cla
 											if speed >= 50:
-												zub += 1
 												gs 'zz_render', '', '', func('Gnpc2_strings', 'boy_talk15')
 												act 'Идти домой': gt 'gorodok'
 											else
@@ -418,7 +417,7 @@ if $args[0] = 'disco_act':
 					minut += 3
 					gs 'stat'
 					gs 'zz_render', '', '', func('Gnpc2_strings', 'boy_talk26')
-					if GorSlut >= 3:
+					if func('zz_reputation','get') >= 3:
 						gs 'zz_render', '', '', func('Gnpc2_strings', 'boy_talk27')
 						gs 'Gnpc2', 'disco_fuckoff'
 						act 'Просить его не рассказывать':

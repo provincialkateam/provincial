@@ -123,4 +123,4 @@ if hour < 6:
 	gs 'zz_render', '', '','Вы посмотрели на часы и сказали, что вам пора домой.'
 	act 'Попрощаться и идти домой': gt 'gorodok'
 end
-act '<B>Отойти</B>': gt 'igorHome', 'igorkom'
+act '<B>Отойти</B>': gt 'igorHome'

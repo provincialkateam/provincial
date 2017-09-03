@@ -40,27 +40,41 @@ $npc['37,worry_check'] = iif(hour >= 1 and hour < 5 and school['certificate'] = 
 gs 'stat'
 gs 'time'
 !---
-gs 'zz_render', 'Павлово', func('zz_funcs','mk_image','pavlovo/street/str'), 'Провинциальный тихий городишко, неотличимый от тысяч ему подобных. В одной из “хрущёвок” в центре живёт ваша семья. Из окон виднеется большое и красивое <a href="exec: gt ''Glake'',''start''">озеро</a>, на пляжи которого приезжают отдыхать даже из Города, до которого рукой подать - всего сорок минут на электричке с '+func('zz_funcs','mk_link',0,24,'железнодорожного вокзала','vokzalG')
-gs 'zz_render', '', '', 'В старенькой пятиэтажке, в <a href="exec:minut += 2 & GT ''pod_ezd'',''etaj_1''">подъезде №1</a> находится ' + iif(ParHomeBlock = 0,'<a href="exec:minut += 5 & GT ''korrPar''">квартира</a>','квартира') + ' ваших родителей.'
-if hour = 7 or hour = 8: gs 'zz_render','','','На скамейке у входа в подъезд вечно почти круглогодично восседает группа <a href="exec:GT ''short_random'',''babushki''">бабулек</a>: сколько вы себя помните - они здесь всегда сидят, обсуждая увиденное в "тиливизере" и всех мимо проходящих.'
-gs 'zz_render','','','Недалеко от вашего дома находится местная '+func('zz_funcs','mk_link',7,18,'школа','gschool')+' и '+func('zz_funcs','mk_link',0,24,'дом культуры','gdk')+'. Севернее расположился старый '+func('zz_funcs','mk_link',0,24,'парк','zz_park')+'. С ним соседствует '+func('zz_funcs','mk_link',8,16,'районная больница им. Мечникова','gpoli')+', помимо которой не так далеко есть также '+func('zz_funcs','mk_link',8,18,'аптека','apteka','start')+'.
-Крупнейший магазин в городе - это '+ func('zz_funcs','mk_link',8,20,'супермаркет','shop')+', конкуренцию ему составляет небольшой, но шумный '+func('zz_funcs','mk_link',8,16,'рынок','grinok')+'.
-Любимым местом всех модниц городка является '+func('zz_funcs','mk_link',10,18,'парикмахерская "Локон"','barbershop')
-gs 'zz_render','','','Потратить деньги можно в '+func('zz_funcs','mk_link',10,20,'зале игровых автоматов','gamehall')+', работающем на виду у всех под вывеской "Лотерея", а вот из промышленности только - '+func('zz_funcs','mk_link',8,20,'швейная фабрика Имени Парижской коммуны','Gshveyfab')+'.
-На отшибе от жилых зданий раскинулся гаражный кооператив, где среди прочих находится <a href="exec:minut += 15 & GT ''gargazel''">гараж</a> вашего отчима с его любимой Газелькой.'
-gs 'zz_render','','','Также в городке есть профессиональный лицей с общежитием, но в связи с капитальным ремонтом его территория огорожена высоким забором и у ворот сидит в будочке вечно сонный охранник.'
-if $npc['15,qwVika'] >= 27 or ($npc['14,qwKatya'] >= 10 and $npc['14,homeward'] = 1) or $npc['0,meynold_key'] = 1: gs 'zz_render','','','Большой частный дом, в котором живут <a href="exec: gt''mey_home'',-1">близняшки Мейнольд</a>'
-if func('zz_common','check_inhome') = 1:
-	if DimaBeHomeOnce = 1 and DimaRudeBlock = 0: gs 'zz_render','','','Частный дом, в котором живёт <a href="exec:minut += 15 & GT ''dimaGoHome2''">Дима Носов</a>'
-	if $npc['23,qwMain'] = 55: gs 'zz_render','','','Роскошный особняк, в котором живёт <a href="exec:minut += 15 & gt ''albina_ev''">Альбина Барловская</a>'
-	if LariskaHomeIn > 0: gs 'zz_render','','','Квартира <a href="exec:minut += 15 & GT ''LariskaHome''">Лариски Груздевой</a>'
-	if $npc['4,qwIgorLove'] > 0: gs 'zz_render','','','Квартира в котророй живёт <a href="exec:minut += 15 & gt ''igorhome'', ''kor''">Игорь Круглов</a>'
+gs 'zz_render', 'Павлово', func('zz_funcs','mk_image','pavlovo/street/str')
+if _taxi_time >= 0: gs 'taxi','check'
+gs 'zz_render', '', '', '<a href="exec:minut += 2 & GT ''pod_ezd'',''etaj_1''">Подъезд №1</a> в старенькой пятиэтажке - вашем доме.'
+gs 'zz_render', '', '', iif(ParHomeBlock = 0,'<a href="exec:minut += 5 & GT ''korrPar''">Ваша квартира</a>','квартира') + ' - квартира ваших родителей.'
+if hour = 7 or hour = 8:
+	gs 'zz_render','','','<a href="exec:GT ''short_random'',''babushki''">Бабушки</a> сидящие у подъезда. Сколько вы себя помните - они здесь всегда сидят, обсуждая увиденное в "тиливизере" и всех мимо проходящих.'
 end
-if ($npc['26,qwMain'] = 30 or $npc['26,qwMain'] = 31) or ($npc['26,qwMain'] = 53 or $npc['26,qwMain'] = 55) or ($npc['26,qwMain'] >= 100 and $npc['26,qwMain'] <= 102): gs 'zz_render','','','В частном секторе на окраине Павлово расположился '+func('zz_funcs','mk_link',10,20,'дом Анатолия Евгеньевича','tsarev_events','tsarev_home')
+gs 'zz_render','','',func('zz_funcs','mk_link',7,18,'Школа','gschool')+ ' в которой вы учитесь.'
+gs 'zz_render','','',func('zz_funcs','mk_link',0,24,'Дом культуры','gdk')+' где есть различные кружки и по вечерам собирается дискотека.'
+gs 'zz_render','','',func('zz_funcs','mk_link',0,24,'Парк','zz_park') + ' в котором всегда удобно погулять и можно найти новых знакомых.'
+gs 'zz_render','','',func('zz_funcs','mk_link',8,17,'Больница им. Мечникова','gpoli') + ' которая обслуживает прилегающий район города.'
+gs 'zz_render','','',func('zz_funcs','mk_link',8,18,'Аптека','apteka')+ ' для всех, кто хочет здоровья.'
+gs 'zz_render','','',func('zz_funcs','mk_link',8,20,'Пятёрочка','shop')+ ' в которой можно приобрести и продукты и различную технику для дома.'
+gs 'zz_render','','',func('zz_funcs','mk_link',8,16,'Рынок','grinok')+ ' на котором можно найти вещи подешевле, и где можно найти работу на время.'
+gs 'zz_render','','',func('zz_funcs','mk_link',10,18,'Парикмахерская "Локон"','barbershop')+ ' где всегда могут подстричь и подравнять волосы.'
+gs 'zz_render','','',func('zz_funcs','mk_link',10,20,'Зал игровых автоматов','gamehall')+ ' для любителей быстрой наживы.'
+gs 'zz_render','','',func('zz_funcs','mk_link',8,20,'Швейная фабрика Имени Парижской коммуны','Gshveyfab')+ ' где можно попробовать устроиться на работу.'
+gs 'zz_render','','',func('zz_funcs','mk_link',0,24,'Железнодорожный вокзал','vokzalG')+ ' с поездами во все направления.'
+gs 'zz_render','','','<a href="exec:minut += 15 & GT ''gargazel''">Гараж</a>'+ ' вашего отчима, в которой стоит его Газель.'
+gs 'zz_render','','','<a href="exec: gt ''Glake'',''start''">Озеро</a>'+' на котором можно позагорать в летнее время, и покататсья на коньках зимой.'
+!gs 'zz_render','','','Также в городке есть профессиональный лицей с общежитием, но в связи с капитальным ремонтом его территория огорожена высоким забором и у ворот сидит в будочке вечно сонный охранник.'
+if $npc['15,qwVika'] >= 27 or ($npc['14,qwKatya'] >= 10 and $npc['14,homeward'] = 1) or $npc['0,meynold_key'] = 1:
+	gs 'zz_render','','','<a href="exec: gt''mey_home'',-1">дом Мейнольдов</a> - большой частный дом, в котором живут близняшки Мейнольды.'
+end
+if func('zz_common','check_inhome') = 1:
+	if DimaBeHomeOnce = 1 and DimaRudeBlock = 0: gs 'zz_render','','','<a href="exec:minut += 15 & GT ''dimaGoHome2''">дом Димы Носова</a> - частный дом, в котором живёт ваш одноклассник.'
+	if $npc['23,qwMain'] = 55: gs 'zz_render','','','<a href="exec:minut += 15 & gt ''albina_ev''">дом Альбины Барловской</a> - роскошный особняк.'
+	if LariskaHomeIn > 0: gs 'zz_render','','','<a href="exec:minut += 15 & GT ''LariskaHome''">квартира Лариски Груздевой</a>'
+	if $npc['4,qwIgorLove'] > 0: gs 'zz_render','','','<a href="exec:minut += 15 & gt ''igorhome''">квартира Игоря Круглова</a>'
+	if $npc['38,wedding'] = 1 or $npc['38,incest_event14'] = 1 : gs 'zz_render','','','<a href="exec:minut += 10 & gt ''misha_home'',''corridor''">квартира Михаила</a> - находится в соседнем доме.'
+end
+if ($npc['26,qwMain'] = 30 or $npc['26,qwMain'] = 31) or ($npc['26,qwMain'] = 53 or $npc['26,qwMain'] = 55) or ($npc['26,qwMain'] >= 100 and $npc['26,qwMain'] <= 102): gs 'zz_render','','',func('zz_funcs','mk_link',10,20,'дом Анатолия Царёва','tsarev_events','tsarev_home') + '- вашего школьного преподавателя, находится в частном секторе.'
 gs 'zz_funcs', 'waiting'
 gs 'pavlovo_events', 'meet_misha'
 gs 'car','check'
-if _taxi_time >= 0: gs 'taxi','check'
 ! ------
 if $npc['23,qwMain'] >= 10 and $npc['23,qwMain'] < 50: gs 'zz_render','','','На домах расклеены большие плакаты: "Борис Барловский - НАШ кандидат!"'
 ! ------
@@ -73,12 +87,10 @@ if rexCar = 1 and rexCarDay = daystart:
 end
 gs 'zz_dyns', 'street_cum'
 if RAND(1,5) >= 4:
-	if GorSlut = 3: gs 'zz_render','','','Вы ловите на себя взгляды людей, некоторые пытаются узнать в вас кого-то, а может, и узнают. Изредка вы слышите смешки людей. Похоже, кто-то узнал о ваших похождениях.'
-	if GorSlut = 4: gs 'zz_render','','','Люди смотрят на вас с ухмылкой, кто-то делает пошлые жесты в вашу сторону, некоторые намекают на ваши похождения.'
-	if GorSlut = 5: gs 'zz_render','','','Все окружающие узнают в вас шлюху. Некоторые, проходя мимо, шлёпают вас по попе. Бабушки на лавочках обзывают вас блядью.'
-	if GorSlut = 6: gs 'zz_render','','','В городке знают, что вы проститутка. Некоторые предлагают деньги за ваши услуги. Бабушки на лавочках обзывают вас проституткой.'
+	if func('zz_reputation','get') = 3: gs 'zz_render','','','Вы ловите на себя взгляды людей, некоторые пытаются узнать в вас кого-то, а может, и узнают. Изредка вы слышите смешки людей. Похоже, кто-то узнал о ваших похождениях.'
+	if func('zz_reputation','get') = 4: gs 'zz_render','','','Все окружающие узнают в вас шлюху. Некоторые, проходя мимо, шлёпают вас по попе. Бабушки на лавочках обзывают вас блядью.'
 end
-if GorSlut > 5 and RAND(1,20) = 10:
+if func('zz_reputation','get') = 4 and RAND(1,20) = 10:
 	cla
 	gs 'zz_render','','','К вам подходит парень и предлагает отойти в кусты перепихнуться за пятихатку.'
 	act 'Согласиться': gt 'gevent','5'

@@ -9,13 +9,34 @@ if $args[0] = 'meet_misha':
 		act 'Далее': gt $loc, $metka
 	end
 end
+! по субботам возле ДК проводятся (внезапно) субботники
+! нужен как вариант для очистки репутации ГГ
+if $args[0] = 'black_sabbath':
+	if week = 6 and hour = 9:
+		gs 'zz_render','','','Возле дома культуры, под лозунги о пользе совместного труда, проходит субботник.'
+		act 'Присоединиться к субботнику':
+			*clr & cla
+			gs 'zz_render','','','На протяжении следующих двух часов вы горбатили спину, помогая двинутым ленинцам ' + iif(temper < 0,'чистить снег','подметать дорожки') + ' возле Дома культуры. Но зато заработали пару баллов в карму.'
+			act 'Закончить':
+				minut += 120
+				sweat += 1
+				energy -= 1
+				water -= 1
+				son -= 1
+				gs 'zz_reputation','decrease',-rand(5,10)
+				gt 'gdk'
+			end
+		end
+	end
+	exit
+end
 !мини ивенты на в подъезде
 if $args[0] = 'front_door_events':
 	i = rand(0,100)
 	!разные ивенты с подглядыванием
 	$text[0] = '<font color = red>Вы слышите какие-то звуки, доносящиеся между этажами: <a href="exec: gt ''pavlovo_events'', ''front_door''">пойти посмотреть</a></font>'
 	$text[1] = 'На лестничной клетке никого нет'
-	if  args[1] = 1:
+	if args[1] = 1:
 		!этаж 1
 		if i <= 3:
 			gs 'zz_render','','', $text[0]
@@ -63,9 +84,9 @@ end
 if $args[0] = 'smoke_misha':
 	*clr & cla
 	gs 'zz_render', '', 'pavlovo/misha/misha.jpg', 'На лестничной клетке курит дядя Миша.**Он ваш сосед, живет с вами на одном этаже. Мама всегда запрещала вам с ним общаться, мол он какой-то бывший местный криминальный авторитет, но он всегда был с вам вежлив и доброжелателен.'
-	if (GorSlut >= 3 or $npc['42,qwDyadyaMisha'] >= 1) and dmishaday ! day:
+	if (func('zz_reputation','get') >= 3 or $npc['42,qwDyadyaMisha'] >= 1) and dmishaday ! day:
 		i = rand(1,3)
-		if i = 1 and GorSlut >= 3:
+		if i = 1 and func('zz_reputation','get') >= 3:
 			gs 'zz_render', '', '', 'Увидев вас, он предложил:**\\\-<<$name>>, может ублажишь старика, отсосешь по быстрому? А я тебе 100 рублей дам!///'
 			act 'Сосать':
 				*clr & cla
@@ -134,8 +155,8 @@ if $args[0] = 'smoke_boys':
 	minut +=5
 	gs 'stat'
 	gs 'zz_render', '', 'pavlovo/home/events/smoke_boys'+iif(month > 3 and month < 11,'','_winter')+'.jpg', 'На площадке вы столкнулись с компанией курящих пацанов.'
-	if GorSlut >= 3 and GorSlut < 6:
-		gs 'zz_render', '', '', 'Проходя мимо вы услышали  их перешептывания:**\\\- Это же <<$name[2]>>, местная соска! Давай ее накормим, а если получиться, то и выебем!///**Вдруг один из них подошел к вам и, вынул из штанов член, сказал:**\\\- Это тебе, ты же знаешь что надо с этим делать, соска?///'
+	if func('zz_reputation','get') = 3:
+		gs 'zz_render', '', '', 'Проходя мимо вы услышали их перешептывания:**\\\- Это же <<$name[2]>>, местная соска! Давай ее накормим, а если получиться, то и выебем!///**Вдруг один из них подошел к вам и, вынул из штанов член, сказал:**\\\- Это тебе, ты же знаешь что надо с этим делать, соска?///'
 		if dom > 0:
 			act 'Послать':
 				*clr & cla
@@ -147,7 +168,7 @@ if $args[0] = 'smoke_boys':
 			end
 		end
 		act 'Смириться': gt 'pavlovo_events', 'pod_sex_ev', rand(1,3)
-	elseif GorSlut >=6:
+	elseif func('zz_reputation','get') = 4:
 		gs 'zz_render', '', '', 'Вы услышали перешептывания пацанов:**\\\- Смотри это же <<$gop_name_gg>>, дворовая <<$gg_whore_text>>! Давай узнаем ценник, говорят не много берёт, а ебать можно куда захочешь и как захочешь!///**Один из пацанов подошел к вам, вынул из кармана все деньги что у него были, включая мелочь, пересчитал и протягивая их вам спросил:**\\\- За <<money_rand>> рублей обслужишь двоих?///'
 		act 'Обслужить':
 			money += money_rand
@@ -167,7 +188,7 @@ if $args[0] = 'pod_sex_ev':
 		dick = rand(12,20)
 		$boy = 'пацан'
 		silavag = 0
-		if gorslut >= 6 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] += 1
+		if func('zz_reputation','get') = 4 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] += 1
 		gs 'stat'
 		gs 'zz_render', '', 'images/pavlovo/home/sex_event1/'+rand(1,3)+'.jpg', 'Один из пацанов стоял и курил, а другой, который понаглее, подошел к вам и начал мацать вас за попку.**\\\- А теперь покажи '+iif(rand(0,1) = 0,'дойки','сиськи')+', -/// сказал он, набаловавшись.'
 		act 'Далее':
@@ -190,7 +211,7 @@ if $args[0] = 'pod_sex_ev':
 					gs 'zz_dynamic_sex', 'vaginal', 'dick'
 					if vagina >= dick*2: gs 'zz_render', '', '', '\\\- Да у этой шмары не пизда, а пещера какая-то, нихуя не чувствую! - пыхтя произносит парень.///'
 				else
-					dynamic  $analsex
+					dynamic $analsex
 					if anus >= dick*2: gs 'zz_render', '', '', '\\\- Да у этой шмары не жопа, а дупло какое-то, нихуя не чувствую! - пыхтя произносит парень.///'
 				end
 				act 'Далее':
@@ -212,7 +233,7 @@ if $args[0] = 'pod_sex_ev':
 							gs 'zz_dynamic_sex', 'sex_start'
 							gs 'zz_dynamic_sex', 'vaginal', 'dick'
 						else
-							dynamic  $analsex
+							dynamic $analsex
 						end
 						if shameless['flag'] < 3: gs 'zz_render', '', '', 'Хлопки яиц о вашу промежность раздаются на весь этаж и вы уже думаете как бы быстрее всё это закончить, чтобы никто из соседей, или случайных прохожих, не заметил весь этот разврат.'
 						act 'Далее':
@@ -244,7 +265,7 @@ if $args[0] = 'pod_sex_ev':
 		dick = rand(12,20)
 		$boy = 'пацан'
 		silavag = 0
-		if gorslut >= 6 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] +=1
+		if func('zz_reputation','get') = 4 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] +=1
 		gs 'stat'
 		gs 'zz_render', '', 'images/pavlovo/home/sex_event2/1.jpg', 'Один из пацанов стоял и курил, а другой, который понаглее, сказал властным голосом, чтобы вы раздевались.'
 		act 'Далее':
@@ -294,12 +315,12 @@ if $args[0] = 'pod_sex_ev':
 								horny +=5
 								i = rand(11,12)
 								gs 'stat'
-								gs 'zz_render', '', 'images/pavlovo/home/sex_event2/<<i>>.jpg', 'Но всё таки ваша просьба исполнилась. Второй пацан, занял место первого  и облокотил вас на перила.'
+								gs 'zz_render', '', 'images/pavlovo/home/sex_event2/<<i>>.jpg', 'Но всё таки ваша просьба исполнилась. Второй пацан, занял место первого и облокотил вас на перила.'
 								if i = 11:
 									gs 'zz_dynamic_sex', 'sex_start'
 									gs 'zz_dynamic_sex', 'vaginal', 'dick'
 								else
-									dynamic  $analsex
+									dynamic $analsex
 								end
 								dynamic $accview_ggsex
 								act 'Далее':
@@ -323,7 +344,7 @@ if $args[0] = 'pod_sex_ev':
 		dick = rand(12,20)
 		$boy = 'пацан'
 		silavag = 0
-		if gorslut >= 6 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] +=1
+		if func('zz_reputation','get') = 4 and $npc['0,qwPodezdWhore'] < 3: $npc['0,qwPodezdWhore'] +=1
 		gs 'stat'
 		gs 'zz_render', '', 'images/pavlovo/home/sex_event3/1.jpg', '\\\- Что смотришь <<$gop_gg_name2>>? -/// сказал один из пацанов. \\\- Показывай сиськи!///'
 		act 'Далее':
@@ -351,7 +372,7 @@ if $args[0] = 'pod_sex_ev':
 						gs 'zz_dynamic_sex', 'vaginal', 'dick'
 						if vagina >= dick*2: gs 'zz_render', '', '', '\\\- Да у тебя пизда разъёбана - хоть на танке заезжай! - пыхтя произносит парень.///'
 					else
-						dynamic  $analsex
+						dynamic $analsex
 						if anus >= dick*2: gs 'zz_render', '', '', '\\\- Да у тебя не очко, а дупло какое-то - потеряться можно! - пыхтя произносит парень.///'
 					end
 					act 'Далее':
@@ -367,7 +388,7 @@ if $args[0] = 'pod_sex_ev':
 							gs 'zz_dynamic_sex', 'sex_start'
 							gs 'zz_dynamic_sex', 'vaginal', 'dick'
 						else
-							dynamic  $analsex
+							dynamic $analsex
 						end
 						gs 'zz_render', '', '', iif(shameless['flag'] < 3 and agape < 3 and vgape < 3,'Вы активно подмахиваете ему, что бы поскорее свалить, пока никто не заметил ваше падение.**','')+'Его друг стоит в стороне, наблюдает и дрочит.'
 						dynamic $accview_ggsex
@@ -432,7 +453,7 @@ if $args[0] = 'milova':
 									*clr & cla
 									minut += 2
 									horny += 5
-									gs 'zz_render', '', 'pavlovo/home/milova_event/6.jpg', '\\\- Подожди <<$name[2]>>, -/// прерывает вас Юля. \\\-  Смотри, что у меня с собой есть...///** Она роется в сумочке идостает из резиновый член:**\\\- Держи, это то что мне сейчас нужно больше всего!///'
+									gs 'zz_render', '', 'pavlovo/home/milova_event/6.jpg', '\\\- Подожди <<$name[2]>>, -/// прерывает вас Юля. \\\- Смотри, что у меня с собой есть...///** Она роется в сумочке идостает из резиновый член:**\\\- Держи, это то что мне сейчас нужно больше всего!///'
 									act 'Далее':
 										*clr & cla
 										minut += 5
@@ -494,21 +515,21 @@ if $args[0] = 'smoke_shulga':
 	end
 	act 'Пройти мимо': gt'pod_ezd', 'etaj_3'
 	smoke_bj = RAND(0,100)
-	if rand(0,100) <= 50 and (GorSlut >= 3 or $npc['11,relation'] >= 100): gt 'pavlovo_events', 'bj_smoke_shulga'
+	if rand(0,100) <= 50 and (func('zz_reputation','get') >= 3 or $npc['11,relation'] >= 100): gt 'pavlovo_events', 'bj_smoke_shulga'
 end
 !Ивент с отсосом Шульге
 if $args[0] = 'bj_smoke_shulga':
 	*clr & cla
 	gs 'npc_editor','get_npc_profile',11
-	gs 'zz_render', '', '', 'На лестничной клетке курит Вася Шульгин. Увидев вас он оживился:**\\\- Иди сюда <<$gop_name_gg>>, дело есть!///**Когда вы к нему подошли, он сказал:**\\\- <<$gop_name_gg>> пососи мне по быстрому...///**\\- А если кто увидит?, -// замялись вы.**\\\- Да не ломайся ты, кто тут увидит?, -/// начал настаивать Васян.'+iif(GorSlut >= 3,'\\\ - Давай бери в рот, ты же знаешь, как сделать всё по быстрому!///','')
-	if horny < 90 and  alko < 6 and GorSlut < 3:
+	gs 'zz_render', '', '', 'На лестничной клетке курит Вася Шульгин. Увидев вас он оживился:**\\\- Иди сюда <<$gop_name_gg>>, дело есть!///**Когда вы к нему подошли, он сказал:**\\\- <<$gop_name_gg>> пососи мне по быстрому...///**\\- А если кто увидит?, -// замялись вы.**\\\- Да не ломайся ты, кто тут увидит?, -/// начал настаивать Васян.'+iif(func('zz_reputation','get') >= 3,'\\\ - Давай бери в рот, ты же знаешь, как сделать всё по быстрому!///','')
+	if horny < 90 and alko < 6 and func('zz_reputation','get') < 3:
 		act 'Отказать':
 			*clr & cla
 			dom += 1
 			gs 'npc_editor','change_rep','-',11
 			gs 'stat'
 			gs 'npc_editor','get_npc_profile',11
-			gs 'zz_render', '', '', '\\- Нет, Вася, тут я сосать отказываюсь!, -//  говорите вы и уходите.'
+			gs 'zz_render', '', '', '\\- Нет, Вася, тут я сосать отказываюсь!, -// говорите вы и уходите.'
 			act 'Уйти': gt'pod_ezd', 'etaj_3'
 		end
 	end
@@ -879,14 +900,6 @@ if $args[0] = 'paint':
 	end
 	act 'Оставить эту затею': gt'pod_ezd','etaj_2'
 end
-!подъезд объявление
-if $ARGS[0] = 'pod_objava':
-	*clr & cla
-	minut +=1
-	gs 'stat'
-	gs 'zz_render', '', 'pavlovo/home/events/ad'+rand(1,2)+'.jpg'
-	act 'Далее': gt'pod_ezd','etaj_1'
-end
 ! Носов поджидает ГГ
 if $ARGS[0] = 'nosov_meet':
 	*clr & cla
@@ -906,7 +919,7 @@ if $ARGS[0] = 'nosov_meet':
 		*clr & cla
 		minut += 5
 		DimaRudeBlock = 1
-		if GorSlut < 2:GorSlut = 2
+		if func('zz_reputation','get') < 2: gs 'zz_reputation','set',2
 		dom += 5
 		gs 'npc_editor','get_npc_profile',1
 		gs'stat'

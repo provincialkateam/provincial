@@ -1,8 +1,7 @@
 ﻿$KPimgpath = 'pavlovo/family/brother/KolkaPrince/KolkaPrince_'
 if $ARGS[0] = 'main_1':
 	if $curloc = 'kuhrPar':
-!		if $npc['39,qwKolkaPrince'] = 0 and intel >= 80 and school['progress'] >= 80 and gorslut = 0 and (month >= 9 and month <= 5) and hour = 7:
-		if $npc['39,qwKolkaPrince'] = 0 and gorslut = 0 and (month >= 9 or month <= 5) and hour = 7: gt 'KolkaPrince', 'KolkaPrince_0'
+		if $npc['39,qwKolkaPrince'] = 0 and func('zz_reputation','get') = 0 and (month >= 9 or month <= 5) and hour = 7: gt 'KolkaPrince', 'KolkaPrince_0'
 	end
 	if $curloc = 'zz_brother' and $brother['location'] = 'sitrPar' and $npc['39,qwKolkaPrince'] = 1:
 		act 'Поговорить о поведении': gt 'KolkaPrince', 'KolkaPrince_1'
@@ -43,8 +42,8 @@ if $ARGS[0] = 'KolkaStats':
 !act 'TEST_WANN: Увеличить интеллект Коли на 10': BrotherStats['Intel'] += 10
 !act 'TEST_WANN: Увеличить бокс на 1': BrotherStats['Box'] += 1
 	gs 'zz_render', '', '', '<br><br>По настоянию матери вы постоянно оцениваете прогресс Коли:<br>'
-	if BrotherStats['Sila'] <  50:
-		$SilaTemp =  func('KolkaStats_strings', 'local_str1')
+	if BrotherStats['Sila'] < 50:
+		$SilaTemp = func('KolkaStats_strings', 'local_str1')
 		elseif BrotherStats['Sila'] >= 50 and BrotherStats['Sila'] < 75:
 		$SilaTemp = func('KolkaStats_strings', 'local_str2')
 		elseif BrotherStats['Sila'] >= 75 and BrotherStats['Sila'] < 90:
@@ -81,18 +80,18 @@ if $ARGS[0] = 'KolkaStats':
 		$BoxTemp = func('KolkaStats_strings', 'local_str16')
 	end
 	'<table border="1" width="100%">
-	   <tr>
+		<tr>
 		<td><b>Физическое развитие:</b></td>
 		<td><<$SilaTemp>></td>
-	   </tr>
-	   <tr>
+		</tr>
+		<tr>
 		<td><b>Интеллект:</b></td>
 		<td><<$IntelTemp>></td>
-	  </tr>
-	   <tr>
+	 </tr>
+		<tr>
 		<td><b>Разряд в боксе:</b></td>
 		<td><<$BoxTemp>></td>
-	  </tr>
+	 </tr>
 	</table>'
 	killvar '$SilaTemp'
 	killvar '$IntelTemp'
@@ -110,7 +109,7 @@ end
 if $ARGS[0] = 'KolkaPrince_1':
 	*clr & cla
 	gs 'zz_render', 'Колька','images/qwest/alter/brother.jpg', func('KolkaPrince_strings', 'local_str5')
-	if gorslut ! 0 or $npc['39,qwPornoFootball'] => 10:
+	if func('zz_reputation','get') ! 0 or $npc['39,qwPornoFootball'] => 10:
 		gs 'zz_render', '','', func('KolkaPrince_strings', 'local_str6')
 		$npc['39,qwKolkaPrince'] = -1
 		gs 'npc_editor','change_rep','-'
@@ -242,12 +241,12 @@ if $ARGS[0] = 'KolkaPrince_4':
 				if horny < 80:
 					gs 'npc_editor','change_rep','+', 39
 					brother['PrinceLearn'] += 1
-					gs 'zz_render', '','<<$KPimgpath>>001.gif', func('KolkaPrince_strings', 'local_str37')
+					gs 'zz_render', '','<<$KPimgpath>>001.webm', func('KolkaPrince_strings', 'local_str37')
 				else
 					*clr & cla
 					brother['PrinceLearn'] -= 1
 					brother['PrinceLearnDay'] = day
-					gs 'zz_render', '','<<$KPimgpath>>002.gif', func('KolkaPrince_strings', 'local_str38')
+					gs 'zz_render', '','<<$KPimgpath>>002.webm', func('KolkaPrince_strings', 'local_str38')
 					if hour > 17:
 						act '<b>Отойти</b>': gt $loc, $metka
 					elseif hour = 17:
@@ -255,10 +254,10 @@ if $ARGS[0] = 'KolkaPrince_4':
 						act 'Продолжить':
 							minut += 5
 							*clr & cla
-							gs 'zz_render', '','<<$KPimgpath>>006.gif', func('KolkaPrince_strings', 'local_str41')
+							gs 'zz_render', '','<<$KPimgpath>>006.webm', func('KolkaPrince_strings', 'local_str41')
 							act 'Последовать за ним':
 								*clr & cla
-								gs 'zz_render', '','<<$KPimgpath>>007.gif', func('KolkaPrince_strings', 'local_str42')
+								gs 'zz_render', '','<<$KPimgpath>>007.webm', func('KolkaPrince_strings', 'local_str42')
 								act 'Заглянуть':
 									*clr & cla
 									gs 'zz_render', '','<<$KPimgpath>>008.jpg', func('KolkaPrince_strings', 'local_str43')
@@ -267,7 +266,7 @@ if $ARGS[0] = 'KolkaPrince_4':
 										minut += 5
 										bj += 1
 										gs 'npc_editor','change_rep','+', 39
-										gs 'zz_render', '','<<$KPimgpath>>009.gif', func('KolkaPrince_strings', 'local_str45')
+										gs 'zz_render', '','<<$KPimgpath>>009.webm', func('KolkaPrince_strings', 'local_str45')
 										gs 'zz_render', '','', func('KolkaPrince_strings', 'local_str44')
 										act '<b>Отойти</b>': gt $loc, $metka
 									end
@@ -281,7 +280,7 @@ if $ARGS[0] = 'KolkaPrince_4':
 									minut += 5
 									bj += 1
 									gs 'npc_editor','change_rep','+', 39
-									gs 'zz_render', '','<<$KPimgpath>>009.gif', func('KolkaPrince_strings', 'local_str44')
+									gs 'zz_render', '','<<$KPimgpath>>009.webm', func('KolkaPrince_strings', 'local_str44')
 									act '<b>Отойти</b>': gt $loc, $metka
 								end
 								act 'Вернуться в комнату':
@@ -292,7 +291,7 @@ if $ARGS[0] = 'KolkaPrince_4':
 						end
 						act 'Сесть ему на колени':
 							*clr & cla
-							gs 'zz_render', '','<<$KPimgpath>>004.gif', func('KolkaPrince_strings', 'local_str54')
+							gs 'zz_render', '','<<$KPimgpath>>004.webm', func('KolkaPrince_strings', 'local_str54')
 							act 'Далее':
 								*clr & cla
 								minut += rand(10,15)
@@ -309,7 +308,7 @@ if $ARGS[0] = 'KolkaPrince_4':
 end
 if $ARGS[0] = 'KolkaPrince_4_room':
 	*clr & cla
-	gs 'zz_render', '','<<$KPimgpath>>010.gif',''
+	gs 'zz_render', '','<<$KPimgpath>>010.webm',''
 	if ARGS[1] = 1:
 		gs 'zz_render', '','', func('KolkaPrince_strings', 'local_str47')
 	elseif ARGS[1] = 2:
@@ -320,7 +319,7 @@ if $ARGS[0] = 'KolkaPrince_4_room':
 		*clr & cla
 		minut += rand(10,15)
 		gs 'npc_editor','change_rep','-', 39
-		gs 'zz_render', '','<<$KPimgpath>>011.gif', func('KolkaPrince_strings', 'local_str49')
+		gs 'zz_render', '','<<$KPimgpath>>011.webm', func('KolkaPrince_strings', 'local_str49')
 		act '<b>Отойти</b>': gt $loc, $metka
 	end
 	act 'Сбросить напряжение':
@@ -343,7 +342,7 @@ if $ARGS[0] = 'KolkaPrince_4_room':
 			*clr & cla
 			minut += 5 & kuni += 1 & horny = 0 & orgasm += 1
 			gs 'npc_editor','change_rep','+', 39
-			gs 'zz_render', '','<<$KPimgpath>>013.gif', func('KolkaPrince_strings', 'local_str53')
+			gs 'zz_render', '','<<$KPimgpath>>013.webm', func('KolkaPrince_strings', 'local_str53')
 			act '<b>Отойти</b>': gt $loc, $metka
 		end
 	act '<b>Отойти</b>': gt $loc, $metka

@@ -98,9 +98,9 @@ if $args[0] = 'rent_event_2':
 			ArendHouseSL +=30
 			gs 'zz_render', '', 'city/center/agency_rent/R_6.jpg', func('rent_flat_oleg_strings', $args[0], _stage)
 		end
-		gs 'stat'
 		killvar '_stage'
 		killvar '$_m_img'
+		gs 'stat'
 		act 'Далее': gt'korr'
 	end
 end

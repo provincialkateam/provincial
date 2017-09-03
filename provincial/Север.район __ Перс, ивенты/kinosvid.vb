@@ -26,9 +26,9 @@ act 'Смотреть кино':
 		end
 	elseif $telsob = 'Катя':
 		gs 'npc_editor','change_rep','+', 33
-		if $npc['33,relation']  >= 20:
+		if $npc['33,relation'] >= 20:
 			dynamic $kisvranddyn
-		elseif $npc['33,relation']  < 20:
+		elseif $npc['33,relation'] < 20:
 			gt'kinosvid','3'
 		end
 	end

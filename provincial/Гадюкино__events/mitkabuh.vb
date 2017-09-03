@@ -1,7 +1,7 @@
 ﻿gs'stat'
 gs'time'
 if miraingop = 0 and alko < 8:
-    *clr & cla
+	*clr & cla
 	'<center><img src="images/gadukino/mitka/3boys.2.jpg"></center>'
 	'Расположившись в укромном местечке три деревенских пацана, Митька Шкворень, Васян Пакет и Колямба пьют самогонку без всякой закуски. Митька наливает самогонки в стакан и подает вам.'
 	act 'Уйти':gt'gadukino'
@@ -17,7 +17,7 @@ if miraingop = 0 and alko < 8:
 elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 or dom <= -10):
 	*clr & cla
 	if mitkadaybuh ! daystart:
-        mitkadaybuh = daystart
+		mitkadaybuh = daystart
 		'<center><img src="images/gadukino/mitka/3boys.2.jpg"></center>'
 		if mitkasextimes < 13:'Вы напились в хлам, ноги уже практически не держат вас. Митька, заметив ваше состояние, удерживает вас за талию. "Ну чо, <<$name[2]>>, пойдем ебаться?"'
 		if mitkasextimes >= 13:'Вы напились в хлам, ноги уже практически не держат вас. Один из пацанов, заметив ваше состояние, требовательно предлагает вам перепихнуться.'
@@ -164,30 +164,30 @@ elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 
 				' - Гы-гы, - внезапно развеселился Митька. - Но бля, что-то влом мне ногами топать, а елдак-то чешется... Слышь, <<$name[2]>>, давай, загибайся прямо тут, чего уж по углам да кустам прятаться, все равно пацаны и так знают, что я тебя трахаю. Вы ведь не против, да? - обернулся он уже к захмелевшим дружбанам.'
 				' - Неее, - пьяно протянул Колямба. - Развлекайтесь, чо уж там, а мы пока с Пакетом еще накатим...'
 				' - Ну вот и... Ик... Чудно, - заикаясь, самодовольно промычал Митька, - так что давай, <<$name[1]>>... Ик... Нагибайся!'
-                if dom < 0:
-				    act 'Нагнуться':
-					    *clr & cla
-					    minut += 15
-					    $boy = 'Митька'
-					    silavag = 0
-					    dick = 16
-					    pose = 1
-					    dom -= 2
-					    mitkasextimes += 1
-					    gs'stat'
-					    '<center><img src="images/qwest/gadukino/MitkaSexPublic.jpg"></center>'
-					    'Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу...'
-					    if mesec = 0:
-						    gs 'zz_dynamic_sex', 'sex_start'
-						    gs 'zz_dynamic_sex', 'vaginal', 'dick'
-						    gs 'zz_dynamic_sex', 'sex_cum'
-					    else
+				if dom < 0:
+					act 'Нагнуться':
+						*clr & cla
+						minut += 15
+						$boy = 'Митька'
+						silavag = 0
+						dick = 16
+						pose = 1
+						dom -= 2
+						mitkasextimes += 1
+						gs'stat'
+						'<center><img src="images/qwest/gadukino/MitkaSexPublic.jpg"></center>'
+						'Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу...'
+						if mesec = 0:
+							gs 'zz_dynamic_sex', 'sex_start'
+							gs 'zz_dynamic_sex', 'vaginal', 'dick'
+							gs 'zz_dynamic_sex', 'sex_cum'
+						else
 							gs 'zz_dynamic_sex', 'anal_start', 'dick'
-						    gs 'zz_dynamic_sex', 'anal', 'dick'
-						    gs 'zz_dynamic_sex', 'anal_cum'
-					    end
-					    act 'Уйти':gt'gadukino'
-				    end
+							gs 'zz_dynamic_sex', 'anal', 'dick'
+							gs 'zz_dynamic_sex', 'anal_cum'
+						end
+						act 'Уйти':gt'gadukino'
+					end
 				else
 					act 'Протестовать':
 						*clr & cla
@@ -368,12 +368,12 @@ elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 
 								'<center><img src="images/qwest/gadukino/MitkaBjPublicGuys2.jpg"></center>'
 								'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать пацанам.'
 								$boy = 'Васян'
-					            silavag = 0
-					            dick = 14
+								silavag = 0
+								dick = 14
 								gs 'zz_dynamic_sex', 'bj'
 								$boy = 'Колямба'
-					            silavag = 0
-					            dick = 15
+								silavag = 0
+								dick = 15
 								gs 'zz_dynamic_sex', 'bj'
 								'Вскоре они кончают вам на лицо и теряют к вам всякий интерес...'
 								act 'Уйти':gt'gadukino'
@@ -509,7 +509,7 @@ elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 
 									bj += 1
 									gs'stat'
 									'<center><img src="images/qwest/gadukino/MitkaGroupCum2.jpg"></center>'
-                                    gs 'zz_dynamic_sex', 'bj'
+									gs 'zz_dynamic_sex', 'bj'
 									'Обессиленные, вы слышите, как начинает натужно сопеть Васян и не мешкая, тут же покрепче сжимаете его член и направляете его себе в рот, через секунду ощущая в нем терпкий вкус спермы...'
 									act 'Уйти':gt'gadukino'
 								end
@@ -793,7 +793,7 @@ elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 
 					silavag = 0
 					dick = 14
 					gs 'zz_dynamic_sex', 'bj'
-				    $boy = 'Колямба'
+					$boy = 'Колямба'
 					silavag = 0
 					dick = 15
 					gs 'zz_dynamic_sex', 'bj'
@@ -1014,13 +1014,13 @@ elseif miraingop = 0 and gadriver_gang < 3 and alko >= 8 and (mitkasextimes > 0 
 		act 'Уйти':gt'gadukino'
 	end
 elseif miraingop = 0 and alko >= 8 and mitkasextimes = 0 and dom > -10 or gadriver_gang >= 3:
-    *clr & cla
+	*clr & cla
 	'<center><img src="images/gadukino/mitka/3boys.2.jpg"></center>'
 	'Вы напились в хлам, ноги уже практически не держат вас. Митька, заметив ваше состояние, удерживает вас за талию. Кажется, с вас уже хватит...'
 	act 'Уйти':gt'gadukino'
 end
 if miraingop = 1 and miragopQW > 0:
-    *clr & cla
+	*clr & cla
 	'<center><img src="images/gadukino/mitka/3boys.2.jpg"></center>'
 	'Расположившись в укромном местечке, три деревенских пацана - Митька Шкворень, Васян Пакет и Колямба - пьют самогонку без всякой закуски. Вы с Мирославой подходите к ним и спрашиваете, можно ли к ним присоединиться. Парни тут же оживляются и активно кивают вам головами. Митька тут же начинает разливать самогон в стаканы, после чего подает один из них вам, сообщая, что так, как стаканов не всех не хватает, то вам придется пить из одного на двоих по очереди.'
 	if alko >= 8 and gadriver_gang < 3 and (miragopQW > 10 or mitkasextimes > 0):
@@ -1040,11 +1040,11 @@ if miraingop = 1 and miragopQW > 0:
 					pose = 0
 					mitkasextimes += 1
 					gs'stat'
-				    if vagina = 0:
-					    '<center><img src="images/qwest/gadukino/mitkafirst.jpg"></center>'
-				    else
-					    '<center><img src="images/qwest/gadukino/mitkasex1.jpg"></center>'
-				    end
+					if vagina = 0:
+						'<center><img src="images/qwest/gadukino/mitkafirst.jpg"></center>'
+					else
+						'<center><img src="images/qwest/gadukino/mitkasex1.jpg"></center>'
+					end
 					'Митька отвел вас к своему дому, где, ничуть не церемонясь, начал быстро вас раздевать.'
 					if mesec = 0:
 						gs 'zz_dynamic_sex', 'sex_start'
@@ -1152,30 +1152,30 @@ if miraingop = 1 and miragopQW > 0:
 				' - Гы-гы, - внезапно развеселился Митька. - Но бля, что-то влом мне ногами топать, а елдак-то чешется... Слышь, <<$name[2]>>, давай, загибайся прямо тут, чего уж по углам да кустам прятаться, все равно пацаны и так знают, что я тебя трахаю. Вы ведь не против, да? - обернулся он уже к захмелевшим дружбанам.'
 				' - Неее, - пьяно протянул Колямба. - Развлекайтесь, чо уж там, а мы пока с Пакетом еще накатим...'
 				' - Ну вот и... Ик... Чудно, - заикаясь, самодовольно промычал Митька, - так что давай, <<$name[1]>>... Ик... Нагибайся!'
-                if dom < 0:
-				    act 'Нагнуться':
-					    *clr & cla
-					    minut += 15
-					    $boy = 'Митька'
-					    silavag = 0
-					    dick = 16
-					    pose = 1
-					    dom -= 2
-					    mitkasextimes += 1
-					    gs'stat'
-					    '<center><img src="images/qwest/gadukino/MitkaSexPublic.jpg"></center>'
-					    'Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу...'
-					    if mesec = 0:
-						    gs 'zz_dynamic_sex', 'sex_start'
-						    gs 'zz_dynamic_sex', 'vaginal', 'dick'
-						    gs 'zz_dynamic_sex', 'sex_cum'
-					    else
+				if dom < 0:
+					act 'Нагнуться':
+						*clr & cla
+						minut += 15
+						$boy = 'Митька'
+						silavag = 0
+						dick = 16
+						pose = 1
+						dom -= 2
+						mitkasextimes += 1
+						gs'stat'
+						'<center><img src="images/qwest/gadukino/MitkaSexPublic.jpg"></center>'
+						'Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу...'
+						if mesec = 0:
+							gs 'zz_dynamic_sex', 'sex_start'
+							gs 'zz_dynamic_sex', 'vaginal', 'dick'
+							gs 'zz_dynamic_sex', 'sex_cum'
+						else
 							gs 'zz_dynamic_sex', 'anal_start', 'dick'
-						    gs 'zz_dynamic_sex', 'anal', 'dick'
-						    gs 'zz_dynamic_sex', 'anal_cum'
-					    end
-					    act 'Уйти':gt'gadukino'
-				    end
+							gs 'zz_dynamic_sex', 'anal', 'dick'
+							gs 'zz_dynamic_sex', 'anal_cum'
+						end
+						act 'Уйти':gt'gadukino'
+					end
 				else
 					act 'Протестовать':
 						*clr & cla
@@ -1356,12 +1356,12 @@ if miraingop = 1 and miragopQW > 0:
 								'<center><img src="images/qwest/gadukino/MitkaBjPublicGuys2.jpg"></center>'
 								'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать пацанам.'
 								$boy = 'Васян'
-					            silavag = 0
-					            dick = 14
+								silavag = 0
+								dick = 14
 								gs 'zz_dynamic_sex', 'bj'
 								$boy = 'Колямба'
-					            silavag = 0
-					            dick = 15
+								silavag = 0
+								dick = 15
 								gs 'zz_dynamic_sex', 'bj'
 								'Вскоре они кончают вам на лицо и теряют к вам всякий интерес...'
 								act 'Уйти':gt'gadukino'
@@ -1991,7 +1991,7 @@ if miraingop = 1 and miragopQW > 0:
 				end
 			end
 		end
-    elseif miralko >= 8:
+	elseif miralko >= 8:
 		if miragopQW = 5:
 			*clr & cla
 			minut += 10
@@ -2034,7 +2034,7 @@ if miraingop = 1 and miragopQW > 0:
 			act 'Отдать стакан Мирославе':
 				*clr & cla
 				if gadriver_gang < 3 and (miragopQW > 10 or mitkasextimes > 0):
-				    miralko += rand(1,4)
+					miralko += rand(1,4)
 				else
 					miralko += RAND(3,4)
 				end

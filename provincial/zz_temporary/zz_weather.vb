@@ -181,7 +181,7 @@ if $args[0] = 'forecast':
 			if _forecast['tC_min'] < 0: _forecast['tC_min'] = 0
 		end
 	end
-	gs 'zz_render','<br><br>Прогноз погоды на завтра','',func('zz_weather','make_image',_forecast['sunny'],_forecast['tC'],1,_forecast['tC_min'],_forecast['tC_max'])
+	gs 'zz_render','','','<center><h2>Прогноз погоды на завтра</h2></center>'+func('zz_weather','make_image',_forecast['sunny'],_forecast['tC'],1,_forecast['tC_min'],_forecast['tC_max'])
 	killvar '_forecast'
 	killvar 'tc'
 end
@@ -210,7 +210,14 @@ if $args[0] = 'make_image':
 	! add prefix if needed
 	$_wimg = iif(_forecast_flag=0, iif(hour >= func('zz_weather','sunrise') and hour <= func('zz_weather','sunset'),'d','n'),'d') + $_wimg
 	$_wstr = iif(_forecast_flag=0, _temperature+'&deg;C', iif(_t_min <= _t_max, _t_min+'...'+_t_max, _t_max+'...'+_t_min) + '<br>&deg;C')
-	$result = '<center><table border=0 width=250 align=center><tr><td><img height=128 src="images/common/mobile/weather/'+$_wimg+'.png"></td><td><img height=128 src="images/common/mobile/weather/therm.png"></td><td><font size=8>'+$_wstr+'</font></td></tr></table></center>'
+	if _forecast_flag = 0:
+		$_img0_text = 'style="width:72px; height:60px;"'
+		$_img1_text = 'style="width:11px; height:60px;"'
+	else
+		$_img0_text = 'style="width:154px; height:128px;"'
+		$_img1_text = 'style="width:24px; height:128px;"'
+	end
+	$result = '<center><table border=0 align=center><tr><td><img '+$_img0_text+' src="images/common/mobile/weather/'+$_wimg+'.png"></td><td><img '+$_img1_text+' src="images/common/mobile/weather/therm.png"></td><td><font size=8>'+$_wstr+'</font></td></tr></table></center>'
 	killvar '_sunny'
 	killvar '_temperature'
 	killvar '_forecast_flag'
@@ -219,6 +226,8 @@ if $args[0] = 'make_image':
 	killvar '_t_max'
 	killvar '$_wimg'
 	killvar '$_wstr'
+	killvar '$_img0_text'
+	killvar '$_img1_text'
 end
 ! восход
 if $args[0] = 'sunrise':
@@ -227,4 +236,10 @@ end
 ! закат
 if $args[0] = 'sunset':
 	result = val(func('zz_funcs','get_item_string','16,17,18,19,20,21,21,20,19,18,17,16',month-1))
+end
+! день или ночь
+if $args[0] = 'is_day':
+	! 0 - ночь
+	! 1 - день
+	result = iif(hour >= func('zz_weather','sunrise') and hour <= func('zz_weather','sunset'),1,0)
 end

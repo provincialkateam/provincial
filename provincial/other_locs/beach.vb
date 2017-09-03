@@ -23,7 +23,7 @@ if $ARGS[0] = 'undress':
 	if args[1] = 1:
 		if shameless['flag'] >= 1 or lake_people < 2:
 			if horny >= 90:
-				if shameless['flag'] > 1 or GorSlut > 2 or lake_people < 3:
+				if shameless['flag'] > 1 or func('zz_reputation','get') > 2 or lake_people < 3:
 					gt'beach','nude'
 				else
 					gs 'zz_render',$_str,'images/common/beach/wetpussy<<tanga>>.jpg','Вы хотите полностью раздеться, но понимаете, что все увидят влагу, сочащуюся из вашей писечки. От мысли, что всем это будет хорошо видно, вам становится не по себе и вы отказываетесь от этой идеи.**<dh>— Наверное стоит как-нибудь снять напряжение</dh>, — думаете вы.'
@@ -38,7 +38,7 @@ if $ARGS[0] = 'undress':
 		end
 	else
 		if horny >= 90:
-			if shameless['flag'] > 1 or GorSlut > 2 or lake_people < 3:
+			if shameless['flag'] > 1 or func('zz_reputation','get') > 2 or lake_people < 3:
 				gt 'beach','swimsuit'
 			else
 				gs 'zz_render',$_str,'images/common/beach/wetpussypants.jpg','Вы хотите переодеться в купальник, но понимаете, что ваша сочащаяся писечка тут же его намочит. От мысли, что люди могут это заметить, вам становится не по себе и вы отказываетесь от этой идеи.**<dh>— Наверное стоит как-нибудь снять напряжение</dh>, — думаете вы.'
@@ -96,12 +96,12 @@ if $ARGS[0] = 'swim':
 	horny -= iif(temper <= 25,10,5)
 	manna += 10
 	gs 'stat'
-	if $loc = 'gadbeach'  and mirainriver = 1:
+	if $loc = 'gadbeach' and mirainriver = 1:
 		gs 'zz_render', $_str, 'images/common/beach/swim_mira'+iif(current_clothing = 0,'_nude'+i,i)+'.jpg','Вы искупнулись в речушке, весело брызгаясь с Мирой, друг на дружку, водой.'
 	else
 		gs 'zz_render', $_str, 'images/common/beach/swim_<<$loc>>'+iif(current_clothing = 0,'_nude'+i,i)+'.jpg','Вы искупнулись в озере, вода освежает и бодрит.'
 	end
-	if $loc = 'glake'  and current_clothing = 0: manna -= 10 & gs 'zz_render','', '','Вы слышите как женщины вокруг вас шушукаются, что мол вон, гляди какая безстыжая <<$surname>>, совсем совесть потеряла, а мужики пристально разглядывают ваше обнаженное тело.'
+	if $loc = 'glake' and current_clothing = 0: manna -= 10 & gs 'zz_render','', '','Вы слышите как женщины вокруг вас шушукаются, что мол вон, гляди какая безстыжая <<$surname>>, совсем совесть потеряла, а мужики пристально разглядывают ваше обнаженное тело.'
 	if $loc = 'glakenude' and lake_people > 1 and current_clothing = 2 and shameless['flag'] < 3: manna -= 10 & gs 'zz_render','', '','<b>Вы чувствуете себя неловко, будучи в купальнике, в окружении совершенно обнажённых людей.</b>'
 	act 'Выйти из воды':
 		if $loc = 'gadbeach': gs 'river_events','swim_guys'
@@ -126,7 +126,7 @@ if $ARGS[0] = 'sunbathe':
 	else
 		gs 'zz_render', $_str, 'images/common/beach/sunbathe_<<$loc>>'+iif(current_clothing = 0,'_nude'+i,i)+'.jpg','Вы загораете на пляже'+iif(sunWeather >= 2,', нежась в лучах солнца.','. На небе облачно, поэтому загар не очень.')
 	end
-	if $loc = 'glake'  and current_clothing = 0: manna -= 10 & gs 'zz_render','', '','Вы слышите как женщины вокруг вас шушукаются, что мол вон, гляди какая безстыжая <<$surname>>, совсем совесть потеряла, а мужики пристально разглядывают ваше обнаженное тело.'
+	if $loc = 'glake' and current_clothing = 0: manna -= 10 & gs 'zz_render','', '','Вы слышите как женщины вокруг вас шушукаются, что мол вон, гляди какая безстыжая <<$surname>>, совсем совесть потеряла, а мужики пристально разглядывают ваше обнаженное тело.'
 	if $loc = 'gLakeNude' and lake_people > 1 and current_clothing = 2 and shameless['flag'] < 3: manna -= 10 & gs 'zz_render','', '','<b>Вы чувствуете себя неловко, будучи в купальнике, в окружении совершенно обнажённых людей.</b>'
 	if $loc = 'gLakeNude' and lake_people > 1: gs'glake_events','voyeurism_start'
 	act 'Далее':

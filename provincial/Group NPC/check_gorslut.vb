@@ -1,11 +1,13 @@
-﻿if GorSlut > 1:
+﻿if func('zz_reputation','get') > 1:
 	! отдельно для важных нпс
 	if numnpc = 14 or numnpc = 15:
 		!Катя/Вика Мейнольд
+		achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str20')
 		exit
 	elseif $npc['23,qwMain'] = 55 and numnpc = 23:
 		! Альбина
+		achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str21')
 		exit
 	elseif numnpc = 18:
@@ -14,14 +16,17 @@
 		exit
 	elseif numnpc = 9:
 		!Котов
+		achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str25')
 		exit
 	elseif numnpc = 4 and $npc['4,group'] = 0:
 		!Круглов
+		achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str33')
 		exit
 	elseif numnpc = 25 and $npc['25,group'] = 0:
 		!Соня
+		achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str40')
 		gs 'npc_editor','change_rep','+',numnpc
 		exit
@@ -29,6 +34,7 @@
 	! остальные нпс
 	gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str'+($npc['<<numnpc>>,group']*2 + iif($npc['<<numnpc>>,dick'] > 0,3,4)))
 else
+	achiev['talk,'+val($npc['<<numnpc>>,group'])] += 1
 	gs 'npc_editor','change_rep','+',numnpc
 	if $npc['<<numnpc>>,relation'] < 20:
 		gs 'zz_render', '', '', func('check_gorslut_strings', 'local_str30')

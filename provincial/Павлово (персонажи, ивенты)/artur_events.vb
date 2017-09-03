@@ -71,7 +71,7 @@ if $args[0] = 'facefuck':
 		act 'Дальше': gt 'artur_events', iif(rand(0,1)=0,'artlick','artchik')
 	else
 		! иначе переброс на выбор вариаций
-		act 'Дальше':  gt 'artur_events', iif(artsextimes < 3,'sex_init','bj_cum')
+		act 'Дальше': gt 'artur_events', iif(artsextimes < 3,'sex_init','bj_cum')
 	end
 end
 if $args[0] = 'artlick':

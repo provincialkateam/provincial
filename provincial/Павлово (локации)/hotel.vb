@@ -108,21 +108,21 @@ if $args[0] = 'work':
 		end
 		exit
 	end
-  ! ИВЕНТ С РАБОЧИМ В ПОДСОБКЕ
-  if _current_room = 0 and $npc['0,hotel_events_worker_day'] ! day and $npc['0,hotel_events_stage'] >= 5 and rand(1,3) = 1:
-    $npc['0,hotel_events_worker_day'] = day
-    if $npc['0,hotel_events_worker_flag'] = 0:
-      gt $curloc, 'maid_event_worker_1', 0
-      !Только в среду если возбуждение > 50 можно зайти в подсобку
-    elseif week = 3 and horny > 50 and $npc['0,hotel_events_worker_flag'] = 1:
-      act 'Зайти к Ренату в подсобку': gt $curloc, 'maid_event_worker_2', 0
-    end
-  end
-  ! ИВЕНТ С НЕФТЯНИКАМИ В КОРИДОРЕ
-  if _current_room = 0 and $npc['0,hotel_events_oilers_day'] ! day and $npc['0,hotel_events_oilers_stage'] > 0 and $npc['0,hotel_events_stage'] >= 5 and rand(1,3) = 1:
-    $npc['0,hotel_events_oilers_day'] = day
-    gt $curloc, 'maid_event_4', 0
-  end
+ ! ИВЕНТ С РАБОЧИМ В ПОДСОБКЕ
+	if _current_room = 0 and $npc['0,hotel_events_worker_day'] ! day and $npc['0,hotel_events_stage'] >= 5 and rand(1,3) = 1:
+		$npc['0,hotel_events_worker_day'] = day
+		if $npc['0,hotel_events_worker_flag'] = 0:
+			gt $curloc, 'maid_event_worker_1', 0
+			!Только в среду если возбуждение > 50 можно зайти в подсобку
+		elseif week = 3 and horny > 50 and $npc['0,hotel_events_worker_flag'] = 1:
+			act 'Зайти к Ренату в подсобку': gt $curloc, 'maid_event_worker_2', 0
+		end
+	end
+	! ИВЕНТ С НЕФТЯНИКАМИ В КОРИДОРЕ
+	if _current_room = 0 and $npc['0,hotel_events_oilers_day'] ! day and $npc['0,hotel_events_oilers_stage'] > 0 and $npc['0,hotel_events_stage'] >= 5 and rand(1,3) = 1:
+		$npc['0,hotel_events_oilers_day'] = day
+		gt $curloc, 'maid_event_4', 0
+	end
 	! уборка
 	! current_room - текущий номер, 1 - 5
 	if _current_room > 0:
@@ -138,7 +138,7 @@ if $args[0] = 'work':
 				! если все номера уже убраны
 				if func($curloc,'clean_count') = 0:
 					act 'Подождать и убрать':
-					  minut += _work_time - (hour * 60 + minut)
+					 minut += _work_time - (hour * 60 + minut)
 						gt $curloc,'work',_current_room
 					end
 				else
@@ -171,38 +171,38 @@ if $args[0] = 'work':
 			minut += (_work[_current_room-1] + 1) * 10
 			_work[_current_room-1] = -1
 			gs 'stat'
-!ВСЕ ИВЕНТЫ С РАНДОМОМ 1 К 3
-!$npc['0,hotel_events_worker_day'] - день ивента с рабочим, нужен чтобы был раз в день
-!$npc['0,hotel_events_oilers_day'] - день ивента с нефтяниками в коридоре, нужен чтобы был раз в день
-!флаги сюжета
-!$npc['0,hotel_events_stage'] - уровень развития ивентов в отеле, изначально ноль
-!$npc['0,hotel_events_stage'] += 1 - плюс одно очко, дается за участие в ивентах event, event_1, event_2
-!$npc['0,hotel_events_stage'] >= 5 - когда уровень развития становится больше или равен 5 открываются первый ивент с нефтяниками maid_event3 в субботу в номере люкс
-!после встречи с ними срабатывает флаг $npc['0,hotel_events_oilers_stage'] = 1
-!$npc['0,hotel_events_oilers_stage'] > 0 - значит что гг уже встречалась с нефтяниками
-!$npc['0,hotel_events_worker_flag'] = 0 - флаг ивента с рабочим в подсобке maid_event_worker_1. После первого минета с ним $npc['0,hotel_events_worker_flag'] = 1
-!$npc['0,hotel_events_oilers_gift'] = 1 - наличие подарка от нефтяников, если есть то включается maid_event_6 в котором $npc['0,hotel_events_oilers_stage'] = 2
-!после $npc['0,hotel_events_oilers_stage'] > 1 включается maid_event_7(алена с ноутбуком)
-!В общем для прохождения нужно запустить первые 3 ивента больше 5 раз, после чего станет доступен рабочий
-!а в субботу в люксе доступны нефтяники, после чего в выходные доступен ивент с получением ожерелья от нефтяников
-!если ожерелье получено то доступен шестой ивент.
-!после шестого ивента на выходных доступен ивент с Алёной и ешестым ивентом c вероятностью 50/50 соответсвенно
+			!ВСЕ ИВЕНТЫ С РАНДОМОМ 1 К 3
+			!$npc['0,hotel_events_worker_day'] - день ивента с рабочим, нужен чтобы был раз в день
+			!$npc['0,hotel_events_oilers_day'] - день ивента с нефтяниками в коридоре, нужен чтобы был раз в день
+			!флаги сюжета
+			!$npc['0,hotel_events_stage'] - уровень развития ивентов в отеле, изначально ноль
+			!$npc['0,hotel_events_stage'] += 1 - плюс одно очко, дается за участие в ивентах event, event_1, event_2
+			!$npc['0,hotel_events_stage'] >= 5 - когда уровень развития становится больше или равен 5 открываются первый ивент с нефтяниками maid_event3 в субботу в номере люкс
+			!после встречи с ними срабатывает флаг $npc['0,hotel_events_oilers_stage'] = 1
+			!$npc['0,hotel_events_oilers_stage'] > 0 - значит что гг уже встречалась с нефтяниками
+			!$npc['0,hotel_events_worker_flag'] = 0 - флаг ивента с рабочим в подсобке maid_event_worker_1. После первого минета с ним $npc['0,hotel_events_worker_flag'] = 1
+			!$npc['0,hotel_events_oilers_gift'] = 1 - наличие подарка от нефтяников, если есть то включается maid_event_6 в котором $npc['0,hotel_events_oilers_stage'] = 2
+			!после $npc['0,hotel_events_oilers_stage'] > 1 включается maid_event_7(алена с ноутбуком)
+			!В общем для прохождения нужно запустить первые 3 ивента больше 5 раз, после чего станет доступен рабочий
+			!а в субботу в люксе доступны нефтяники, после чего в выходные доступен ивент с получением ожерелья от нефтяников
+			!если ожерелье получено то доступен шестой ивент.
+			!после шестого ивента на выходных доступен ивент с Алёной и ешестым ивентом c вероятностью 50/50 соответсвенно
 			if day < 14 and _current_room < 4 and rand(1,3) = 1 and shameless['flag'] >= 2: gt $curloc,'maid_event', 0
 			if _current_room < 4 and rand(1,3) = 1 and shameless['flag'] >= 2: gt $curloc,'maid_event_1', 0
 			if week = 7 and _current_room = 4 and rand(1,3) = 1 and shameless['flag'] >= 2: gt $curloc,'maid_event_2', 0
 			if week = 6 and _current_room = 5 and $npc['0,hotel_events_stage'] >= 5 and $npc['0,hotel_events_oilers_stage'] = 0 and rand(1,3) = 1:
-			  $npc['0,hotel_events_oilers_stage'] = 1
-          gt $curloc,'maid_event3'
-        end
-      if week > 5 and $npc['0,hotel_events_oilers_stage'] = 1 and _current_room = 5 and rand(1,3) = 1 and $npc['0,hotel_events_oilers_gift'] = 0: gt $curloc,'maid_event_5', 0
-      if week > 5 and $npc['0,hotel_events_oilers_gift'] = 1 and _current_room = 5 and rand(1,3) = 1: gt $curloc,'maid_event_6', 0
-      if week > 5 and $npc['0,hotel_events_oilers_stage'] > 1 and _current_room = 5 and rand(1,3) = 1:
-        if rand(1,2) = 1:
-          gt $curloc,'maid_event_7', 0
-        else
-          gt $curloc,'maid_event_6', 0
-        end
-      end
+				$npc['0,hotel_events_oilers_stage'] = 1
+				gt $curloc,'maid_event3'
+			end
+			if week > 5 and $npc['0,hotel_events_oilers_stage'] = 1 and _current_room = 5 and rand(1,3) = 1 and $npc['0,hotel_events_oilers_gift'] = 0: gt $curloc,'maid_event_5', 0
+			if week > 5 and $npc['0,hotel_events_oilers_gift'] = 1 and _current_room = 5 and rand(1,3) = 1: gt $curloc,'maid_event_6', 0
+			if week > 5 and $npc['0,hotel_events_oilers_stage'] > 1 and _current_room = 5 and rand(1,3) = 1:
+			if rand(1,2) = 1:
+				gt $curloc,'maid_event_7', 0
+			else
+				gt $curloc,'maid_event_6', 0
+			end
+		end
 			if $npc['0,hotelwork_purse_day'] ! day and rand(0,20) = 1: gs $curloc,'purse_event'
 		end
 	else
@@ -362,7 +362,7 @@ if $args[0] = 'peepshow':
 			$npc['25,qwSonya_day'] = day
 		end
 		! --
-		gs 'zz_render','','pavlovo/hotel/peepshow/'+ i + iif(i<5,'.jpg','.gif'),func('hotel_strings',39+i)
+		gs 'zz_render','','pavlovo/hotel/peepshow/'+ i + iif(i<5,'.jpg','.webm'),func('hotel_strings',39+i)
 		act 'Идти работать': gt $curloc,'work'
 	else
 		gt $curloc,'mini_steps_events',rand(1,2)
@@ -448,212 +448,213 @@ if $args[0] = 'police_sex':
 end
 !------
 if $args[0] = 'maid_event':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  if _stage < 3:
-    gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.gif', func('hotel_strings', 111 + _stage)
-    act 'Далее': gt $curloc,'maid_event',_stage+1
-  elseif _stage = 3:
-    gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.gif', func('hotel_strings', 111 + _stage)
-    horny += 5
-    act 'Возмутиться и уйти.':
-      gs 'zz_render', '', '', '\\Мужчина, здесь вам не бордель!// - резко осаживаете вы “ухажёра”.'
-      cla
-      killvar '_stage'
-      act 'Уйти': gt $curloc, 'work'
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	if _stage < 3:
+		gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage + iif(_stage=0,'.jpg','.webm'), func('hotel_strings', 111 + _stage)
+		act 'Далее': gt $curloc,'maid_event',_stage+1
+	elseif _stage = 3:
+		gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.webm', func('hotel_strings', 111 + _stage)
+		horny += 5
+		act 'Возмутиться и уйти.':
+			gs 'zz_render', '', '', '\\Мужчина, здесь вам не бордель!// - резко осаживаете вы “ухажёра”.'
+			cla
+			killvar '_stage'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Смутиться и убежать':
+			killvar '_stage'
+			gt $curloc, 'work'
+		end
+		if sex > 0 and vagina >= 8 and anus >= 8 and shameless['flag'] >= 2:
+			act 'Поддаться и согласиться на предложение': gt $curloc, 'maid_event', _stage+1
+			act 'Намекнуть на оплату':
+				hotel_maid_event_ask_pay = 1
+				gt $curloc, 'maid_event', _stage+1
+			end
+		end
+	elseif _stage >= 4 and _stage < 10:
+		if horny < 70:
+			horny += 10
+			gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.webm', func('hotel_strings', 111 + _stage)
+			act 'Далее': gt $curloc,'maid_event',_stage+1
+		else
+			gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.webm', func('hotel_strings', 111 + _stage)
+			_stage += 7
+			act 'Далее': gt $curloc,'maid_event',_stage+1
+		end
+	elseif _stage = 10:
+		swallow += 1
+		if hotel_maid_event_ask_pay = 1:
+			money += 1500
+			gs 'zz_render','','', func('hotel_strings', 122)
+		else
+			money += 1000
+			gs 'zz_render','','', func('hotel_strings', 121)
+		end
+		killvar 'hotel_maid_event_ask_pay'
+		act 'Уйти':
+			killvar '_stage'
+			gt $curloc, 'work'
+		end
+	elseif _stage >= 12 and _stage < 21:
+		horny += 20
+		gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.webm', func('hotel_strings', 111 + _stage)
+		act 'Далее': gt $curloc,'maid_event',_stage+1
+	elseif _stage = 21:
+		anal += 1
+		money += 1500
+		$npc['0,hotel_events_stage'] += 1
+		gs 'zz_render','','pavlovo/hotel/event/M0_'+ 9 + '.webm', func('hotel_strings', 132)
+		act 'Уйти':
+		killvar '_stage'
+		gt $curloc, 'work'
+		end
 	end
-      act 'Смутиться и убежать':
-        killvar '_stage'
-        gt $curloc, 'work'
-      end
-      if sex > 0 and vagina >= 8 and anus >= 8 and shameless['flag'] >= 2:
-        act 'Поддаться и согласиться на предложение': gt $curloc, 'maid_event', _stage+1
-        act 'Намекнуть на оплату':
-          hotel_maid_event_ask_pay = 1
-          gt $curloc, 'maid_event', _stage+1
-        end
-      end
-  elseif _stage >= 4 and _stage < 10:
-    if horny < 70:
-      horny += 10
-      gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.gif', func('hotel_strings', 111 + _stage)
-      act 'Далее': gt $curloc,'maid_event',_stage+1
-    else
-      gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.gif', func('hotel_strings', 111 + _stage)
-      _stage += 7
-      act 'Далее': gt $curloc,'maid_event',_stage+1
-    end
-  elseif _stage = 10:
-    swallow += 1
-    if hotel_maid_event_ask_pay = 1:
-      money += 1500
-      gs 'zz_render','','', func('hotel_strings', 122)
-    else
-      money += 1000
-      gs 'zz_render','','', func('hotel_strings', 121)
-    end
-    killvar 'hotel_maid_event_ask_pay'
-    act 'Уйти':
-      killvar '_stage'
-      gt $curloc, 'work'
-    end
-  elseif _stage >= 12 and _stage < 21:
-    horny += 20
-    gs 'zz_render','','pavlovo/hotel/event/M0_'+ _stage+ '.gif', func('hotel_strings', 111 + _stage)
-    act 'Далее': gt $curloc,'maid_event',_stage+1
-  elseif _stage = 21:
-    anal += 1
-    money += 1500
-    $npc['0,hotel_events_stage'] += 1
-    gs 'zz_render','','pavlovo/hotel/event/M0_'+ 9 + '.gif', func('hotel_strings', 132)
-    act 'Уйти':
-      killvar '_stage'
-      gt $curloc, 'work'
-    end
-  end
 end
 !------
 if $args[0] = 'maid_event_1':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  if _stage < 4:
-    horny += 5
-    gs 'zz_render','','pavlovo/hotel/event1/M1_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_1',_stage+1
-  elseif _stage = 4:
-    gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Отказаться и уйти':
-      killvar '_stage'
-      gt $curloc, 'work'
-    end
-    act 'Согласиться и приступить.': gt $curloc, 'maid_event_1', _stage+1
-    act 'Сказать, что маловато будет':
-      cla
-      hotel_maid_event_ask_pay = 1
-      gs 'zz_render', '', '', '-\\ Мне кажется вы меня недооценили//<br>\\\- Ладно, дам побольше!///<br>Вы удовлетворённо киваете.'
-      act 'Далее': gt $curloc, 'maid_event_1', _stage+1
-    end
-  elseif _stage > 4 and _stage < 9:
-    gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_1',_stage+1
-  elseif _stage = 9:
-    horny += 25
-    bj += 1
-    swallow += 1
-    if hotel_maid_event_ask_pay = 1:
-      killvar 'hotel_maid_event_ask_pay'
-      money += 400
-      gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ 4 + '.gif', func('hotel_events_data', $args[0], _stage+1)
-    else
-      money += 300
-      gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ 4 + '.gif', func('hotel_events_data', $args[0], _stage)
-    end
-    if hotel_maid_event_forgot_pay = 1:
-      gs 'zz_render', '', '', func('hotel_events_data', $args[0], _stage+1)
-      killvar 'hotel_maid_event_forgot_pay'
-    end
-    $npc['0,hotel_events_stage'] += 1
-    killvar '_stage'
-    act 'Уйти': gt $curloc, 'work'
-    act 'Попросить после минета отлизать вам киску.': gt $curloc, 'maid_event_1_anal', 0
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	if _stage < 4:
+		horny += 5
+		gs 'zz_render','','pavlovo/hotel/event1/M1_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_1',_stage+1
+	elseif _stage = 4:
+		gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Отказаться и уйти':
+			killvar '_stage'
+			gt $curloc, 'work'
+		end
+		act 'Согласиться и приступить.': gt $curloc, 'maid_event_1', _stage+1
+		act 'Сказать, что маловато будет':
+			cla
+			hotel_maid_event_ask_pay = 1
+			gs 'zz_render', '', '', '-\\ Мне кажется вы меня недооценили//<br>\\\- Ладно, дам побольше!///<br>Вы удовлетворённо киваете.'
+			act 'Далее': gt $curloc, 'maid_event_1', _stage+1
+		end
+	elseif _stage > 4 and _stage < 9:
+		gs 'zz_render', '', 'pavlovo/hotel/event1/M1_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_1',_stage+1
+	elseif _stage = 9:
+		horny += 25
+		bj += 1
+		swallow += 1
+		if hotel_maid_event_ask_pay = 1:
+			killvar 'hotel_maid_event_ask_pay'
+			money += 400
+			gs 'zz_render', '', 'pavlovo/hotel/event1/M1_4.webm', func('hotel_events_data', $args[0], _stage+1)
+		else
+			money += 300
+			gs 'zz_render', '', 'pavlovo/hotel/event1/M1_4.webm', func('hotel_events_data', $args[0], _stage)
+		end
+		if hotel_maid_event_forgot_pay = 1:
+			gs 'zz_render', '', '', func('hotel_events_data', $args[0], _stage+1)
+			killvar 'hotel_maid_event_forgot_pay'
+		end
+		$npc['0,hotel_events_stage'] += 1
+		killvar '_stage'
+		act 'Уйти': gt $curloc, 'work'
+		act 'Попросить после минета отлизать вам киску.': gt $curloc, 'maid_event_1_anal', 0
+	end
 end
+!---
 if $args[0] = 'maid_event_1_anal':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  if _stage = 0:
-    gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее':
-      cla
-      if horny > 85:
-        orgasm += 1
-        gs 'zz_render','','', func('hotel_events_data', $args[0], 1)
-        hotel_maid_event_forgot_pay = 1
-        killvar '_stage'
-        act 'Уйти': gt $curloc, 'work'
-      else
-        gs 'zz_render','','', func('hotel_events_data', $args[0], 2)
-        act 'Возмутиться и потребовать прекратить':
-          *clr & cla
-          money += 300
-          gs 'zz_render','','pavlovo/hotel/event1/M1_'+ 4 + '.gif', func('hotel_events_data', $args[0], 3)
-          killvar '_stage'
-		  act 'Уйти': gt $curloc, 'work'
-        end
-        act 'Позволить ему и наслаждаться процессом.':
-          gt $curloc,'maid_event_1_anal',_stage+4
-        end
-      end
-    end
-  elseif _stage > 3 and _stage < 16:
-    horny += 15
-    gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_1_anal',_stage+1
-  elseif _stage = 16:
-    money += 600
-    horny = 0
-    anal += 1
-    orgasm += 1
-    gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.gif', func('hotel_events_data', $args[0], _stage)
-    killvar '_stage'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	if _stage = 0:
+		gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее':
+			cla
+			if horny > 85:
+				orgasm += 1
+				gs 'zz_render','','', func('hotel_events_data', $args[0], 1)
+				hotel_maid_event_forgot_pay = 1
+				killvar '_stage'
+				act 'Уйти': gt $curloc, 'work'
+			else
+				gs 'zz_render','','', func('hotel_events_data', $args[0], 2)
+				act 'Возмутиться и потребовать прекратить':
+					*clr & cla
+					money += 300
+					gs 'zz_render','','pavlovo/hotel/event1/M1_4.webm', func('hotel_events_data', $args[0], 3)
+					killvar '_stage'
+					act 'Уйти': gt $curloc, 'work'
+				end
+				act 'Позволить ему и наслаждаться процессом.':
+					gt $curloc,'maid_event_1_anal',_stage+4
+				end
+			end
+		end
+	elseif _stage > 3 and _stage < 16:
+		horny += 15
+		gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_1_anal',_stage+1
+	elseif _stage = 16:
+		money += 600
+		horny = 0
+		anal += 1
+		orgasm += 1
+		gs 'zz_render','','pavlovo/hotel/event1/M1_A_'+ _stage + '.webm', func('hotel_events_data', $args[0], _stage)
+		killvar '_stage'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 !------
 ! maid_event_2
 if $args[0] = 'maid_event_2':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  if _stage = 0:
-    gs 'zz_render','','', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage = 1:
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage = 2:
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Смущенно убежать':
-      killvar '_stage'
-      gt $curloc, 'work'
-    end
-      act 'Не обращать внимания, доделать работу и уйти':
-        cla
-        gs 'zz_render','','', 'Вы доделываете работу и уходите'
-        killvar '_stage'
-        act 'Уйти': gt $curloc, 'work'
-      end
-      act 'Заглянуть в спальню': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage > 2 and _stage < 8:
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage = 8:
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Отказаться':
-        cla
-        gs 'zz_render','','', 'Вы бормочете: -\\Нет, я не могу...я...мне надо...простите, я пойду!//'
-        killvar '_stage'
-        act 'Уйти': gt $curloc, 'work'
-    end
-    act 'Принять участие.': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage > 8 and _stage < 21:
-    horny += 10
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_2', _stage+1
-  elseif _stage = 21:
-    orgasm += 1
-    horny = 0
-    money += 3000
-    swallow += 1
-    $npc['0,hotel_events_stage'] += 1
-    gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.gif', func('hotel_events_data', $args[0], _stage)
-    killvar '_stage'
-    gs 'stat'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	if _stage = 0:
+		gs 'zz_render','','', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage = 1:
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage = 2:
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Смущенно убежать':
+			killvar '_stage'
+			gt $curloc, 'work'
+		end
+		act 'Не обращать внимания, доделать работу и уйти':
+			cla
+			gs 'zz_render','','', 'Вы доделываете работу и уходите'
+			killvar '_stage'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Заглянуть в спальню': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage > 2 and _stage < 8:
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage = 8:
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Отказаться':
+			cla
+			gs 'zz_render','','', 'Вы бормочете: -\\Нет, я не могу...я...мне надо...простите, я пойду!//'
+			killvar '_stage'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Принять участие.': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage > 8 and _stage < 21:
+		horny += 10
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_2', _stage+1
+	elseif _stage = 21:
+		orgasm += 1
+		horny = 0
+		money += 3000
+		swallow += 1
+		$npc['0,hotel_events_stage'] += 1
+		gs 'zz_render','','pavlovo/hotel/event2/M2_'+ _stage+'.webm', func('hotel_events_data', $args[0], _stage)
+		killvar '_stage'
+		gs 'stat'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 ! maid_event3
 if $args[0] = 'maid_event3':
@@ -664,7 +665,7 @@ if $args[0] = 'maid_event3':
 		gs 'stat'
 	end
 	$_m_img = func('zz_funcs','get_item_string','M3-01,M3-02,M3-04,M3-05,M3-08,M3-09,M3-09',_stage)
-	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.gif',func('hotel_strings',79+_stage)
+	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.webm',func('hotel_strings',79+_stage)
 	act iif(_stage ! 5,'Далее','Вырваться и убежать'):
 		if _stage < 5:
 			gt $curloc,'maid_event3',_stage+1
@@ -689,6 +690,7 @@ if $args[0] = 'maid_event3':
 		end
 	end
 end
+!---
 if $args[0] = 'maid_event3_bj':
 	_bj_var = args[1]
 	_stage = args[2]
@@ -696,7 +698,7 @@ if $args[0] = 'maid_event3_bj':
 	horny += rand(5,10)
 	gs 'stat'
 	$_m_img = func('zz_funcs','get_item_string','M3-11,M3-15,M3-12,M3-41',_stage)
-	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.gif',func('hotel_strings',91+_stage) + iif(_stage = 3,func('hotel_strings',iif(_bj_var=1,95,96)),'')
+	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.webm',func('hotel_strings',91+_stage) + iif(_stage = 3,func('hotel_strings',iif(_bj_var=1,95,96)),'')
 	act iif(_stage < 3,'Далее','Уйти'):
 		if _stage < 3:
 			gt $curloc,'maid_event3_bj',_bj_var,_stage+1
@@ -717,6 +719,7 @@ if $args[0] = 'maid_event3_bj':
 		end
 	end
 end
+!---
 if $args[0] = 'maid_event3_sex':
 	_sex_var = args[1]
 	_stage = args[2]
@@ -728,7 +731,7 @@ if $args[0] = 'maid_event3_sex':
 	end
 	gs 'stat'
 	$_m_img = func('zz_funcs','get_item_string','M3-16,M3-21,M3-24,M3-21,M3-28,M3-31,M3-33,M3-29,M3-36,M3-40,M3-37,M3-41,M3-42',_stage)
-	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.gif',func('hotel_strings',97+_stage) + iif(_stage = 12,func('hotel_strings',iif(_sex_var=1,109,110)),'')
+	gs 'zz_render','','pavlovo/hotel/event3/' + $_m_img + '.webm',func('hotel_strings',97+_stage) + iif(_stage = 12,func('hotel_strings',iif(_sex_var=1,109,110)),'')
 	act iif(_stage < 12,'Далее','Уйти'):
 		if _stage < 12:
 			gt $curloc,'maid_event3_sex',_sex_var,_stage+1
@@ -755,292 +758,294 @@ end
 !------
 ! maid_event_4
 if $args[0] = 'maid_event_4':
-  *clr & cla
-  _stage = args[1]
-  if _stage < 2:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_'+ _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_4', _stage+1
-  elseif _stage = 2:
-    gt $curloc, 'maid_event_4_opt<<rand(1,2)>>', 0
-  end
+	*clr & cla
+	_stage = args[1]
+	if _stage < 2:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_'+ _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_4', _stage+1
+	elseif _stage = 2:
+		gt $curloc, 'maid_event_4_opt<<rand(1,2)>>', 0
+	end
 end
+!---
 if $args[0] = 'maid_event_4_opt1':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string','1_0,1_1,,,1_2,1_3,1_4,1_5,1_6,1_7,1_8,2_2,1_9,1_10,1_11',_stage)
-  if _stage < 1:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
-  elseif _stage = 1:
-    horny += 10
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Обслужить':
-      gs 'zz_render','','', func('hotel_events_data', $args[0], 2)
-      cla
-      act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+3
-    end
-    act 'Потребовать деньги':
-      cla
-      maid_event_4_ask_pay = 1
-      gs 'zz_render','','', func('hotel_events_data', $args[0], 3)
-      act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+3
-    end
-  elseif _stage > 3 and _stage < 8:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
-  elseif _stage = 8:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Отлизать':
-      dom -= 2
-      gt $curloc,'maid_event_4_opt1',_stage+1
-    end
-    act 'Отказать': gt $curloc,'maid_event_4_opt1',_stage+3
-  elseif _stage > 8 and _stage < 14:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
-  elseif _stage = 14:
-    horny += 25
-    swallow += 1
-    if maid_event_4_ask_pay = 0:
-      gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    else
-      killvar 'maid_event_4_ask_pay'
-      money += 400
-      gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage+1)
-    end
-    killvar '_stage'
-    killvar '$_m_img'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string','1_0,1_1,,,1_2,1_3,1_4,1_5,1_6,1_7,1_8,2_2,1_9,1_10,1_11',_stage)
+	if _stage < 1:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
+	elseif _stage = 1:
+		horny += 10
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Обслужить':
+			gs 'zz_render','','', func('hotel_events_data', $args[0], 2)
+			cla
+			act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+3
+		end
+		act 'Потребовать деньги':
+			cla
+			maid_event_4_ask_pay = 1
+			gs 'zz_render','','', func('hotel_events_data', $args[0], 3)
+			act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+3
+		end
+	elseif _stage > 3 and _stage < 8:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
+	elseif _stage = 8:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Отлизать':
+			dom -= 2
+			gt $curloc,'maid_event_4_opt1',_stage+1
+		end
+		act 'Отказать': gt $curloc,'maid_event_4_opt1',_stage+3
+	elseif _stage > 8 and _stage < 14:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_4_opt1',_stage+1
+	elseif _stage = 14:
+		horny += 25
+		swallow += 1
+		if maid_event_4_ask_pay = 0:
+			gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		else
+			killvar 'maid_event_4_ask_pay'
+			money += 400
+			gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage+1)
+		end
+		killvar '_stage'
+		killvar '$_m_img'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
+!---
 if $args[0] = 'maid_event_4_opt2':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string','2_0,1_0,1_2,1_3,1_4,2_1,2_2,1_9,1_10,1_11,2_3',_stage)
-  if _stage < 1:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
-  elseif _stage = 1:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Отсосать': gt $curloc,'maid_event_4_opt2',_stage+1
-    act 'Отказать':
-      cla
-      gs 'zz_render','','', '-\\ Извините, я пойду, мне работать надо!//'
-      killvar '_stage'
-      killvar '$_m_img'
-      act 'Уйти': gt $curloc, 'work'
-    end
-    act 'Потребовать деньги':
-      cla
-      maid_event_4_ask_pay = 1
-      gs 'zz_render','','', '-\\ Три сотни, Сергей Александрович, раз уж вы торопитесь!//<br>Вы задорно подмигнули развратному постояльцу.'
-      act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
-    end
-  elseif _stage > 1 and _stage < 10:
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
-  elseif _stage = 10:
-    horny += 25
-    swallow += 1
-    gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    if maid_event_4_ask_pay = 1:
-      gs 'zz_render','','', func('hotel_events_data', $args[0], _stage+1)
-      killvar 'maid_event_4_ask_pay'
-      money += 400
-    end
-    killvar '_stage'
-    killvar '$_m_img'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string','2_0,1_0,1_2,1_3,1_4,2_1,2_2,1_9,1_10,1_11,2_3',_stage)
+	if _stage < 1:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
+	elseif _stage = 1:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Отсосать': gt $curloc,'maid_event_4_opt2',_stage+1
+		act 'Отказать':
+			cla
+			gs 'zz_render','','', '-\\ Извините, я пойду, мне работать надо!//'
+			killvar '_stage'
+			killvar '$_m_img'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Потребовать деньги':
+			cla
+			maid_event_4_ask_pay = 1
+			gs 'zz_render','','', '-\\ Три сотни, Сергей Александрович, раз уж вы торопитесь!//<br>Вы задорно подмигнули развратному постояльцу.'
+			act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
+		end
+	elseif _stage > 1 and _stage < 10:
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_4_opt2',_stage+1
+	elseif _stage = 10:
+		horny += 25
+		swallow += 1
+		gs 'zz_render','','pavlovo/hotel/event4/M4_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		if maid_event_4_ask_pay = 1:
+			gs 'zz_render','','', func('hotel_events_data', $args[0], _stage+1)
+			killvar 'maid_event_4_ask_pay'
+			money += 400
+		end
+		killvar '_stage'
+		killvar '$_m_img'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 !------
 ! maid_event_5
 if $args[0] = 'maid_event_5':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string','0.gif,1,2.gif,3.gif,4.gif,5.gif,6.gif,7.gif,8.gif,9.gif,10.gif,11.gif,12.gif,13.gif,,15',_stage)
-  if _stage < 1:
-    horny += 10
-    gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_5', _stage+1
-  elseif _stage = 1:
-    gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    if dom > 40 or horny < 40:
-      act 'Вежливо отказать и уйти.':
-		cla
-		gs 'zz_render','','', '-\\  Простите, я сегодня не в настроении...//'
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string','0.webm,1,2.webm,3.webm,4.webm,5.webm,6.webm,7.webm,8.webm,9.webm,10.webm,11.webm,12.webm,13.webm,,15',_stage)
+	if _stage < 1:
+		horny += 10
+		gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_5', _stage+1
+	elseif _stage = 1:
+		gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		if dom > 40 or horny < 40:
+			act 'Вежливо отказать и уйти.':
+				cla
+				gs 'zz_render','','', '-\\ Простите, я сегодня не в настроении...//'
+				killvar '_stage'
+				killvar '$_m_img'
+				act 'Уйти': gt $curloc, 'work'
+			end
+			act 'Согласиться и удовлетворить постояльцев.': gt $curloc, 'maid_event_5', _stage+1
+		else
+			act 'Отдаться':
+				dom -= 1
+				$npc['0,hotel_events_oilers_gift'] = 1
+				gt $curloc, 'maid_event_5', _stage+1
+			end
+		end
+	elseif _stage > 1 and _stage < 13:
+		horny += rand(5,10)
+		gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_5', _stage+1
+	elseif _stage = 13:
+		orgasm += 1
+		DPorgasm += 1
+		horny = 0
+		gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		if $npc['0,hotel_events_oilers_gift'] = 1:
+			gs 'zz_render','','', func('hotel_events_data', $args[0], _stage+1)
+			act 'Далее': gt $curloc, 'maid_event_5', _stage+2
+		else
+			killvar '_stage'
+			killvar '$_m_img'
+			act 'Уйти': gt $curloc, 'work'
+		end
+	elseif _stage = 15:
+		gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
 		killvar '_stage'
 		killvar '$_m_img'
 		act 'Уйти': gt $curloc, 'work'
-      end
-      act 'Согласиться и удовлетворить постояльцев.': gt $curloc, 'maid_event_5', _stage+1
-    else
-      act 'Отдаться':
-        dom -= 1
-        $npc['0,hotel_events_oilers_gift'] = 1
-        gt $curloc, 'maid_event_5', _stage+1
-      end
-    end
-  elseif _stage > 1 and  _stage < 13:
-    horny += rand(5,10)
-    gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_5', _stage+1
-  elseif _stage = 13:
-    orgasm += 1
-	DPorgasm += 1
-    horny = 0
-    gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    if $npc['0,hotel_events_oilers_gift'] = 1:
-      gs 'zz_render','','', func('hotel_events_data', $args[0], _stage+1)
-      act 'Далее': gt $curloc, 'maid_event_5', _stage+2
-    else
-      killvar '_stage'
-      killvar '$_m_img'
-      act 'Уйти': gt $curloc, 'work'
-    end
-   elseif _stage = 15:
-     gs 'zz_render','','pavlovo/hotel/event5/M5_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-     killvar '_stage'
-     killvar '$_m_img'
-     act 'Уйти': gt $curloc, 'work'
-  end
+	end
 end
 !------
 ! maid_event_6
 if $args[0] = 'maid_event_6':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string','0,1,2,3,4,5.gif,6,7.gif,8.gif,9,10.gif,11.gif,12.gif,13.gif,14.gif,15.gif,17.gif,18.gif,19.gif,20',_stage)
-  if _stage < 20:
-    horny += 5
-    gs 'zz_render','','pavlovo/hotel/event6/M6_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_6', _stage+1
-  elseif _stage = 20:
-    orgasm += 1
-    DPorgasm += 1
-	money += 500
-    horny = 0
-    $npc['0,hotel_events_oilers_stage'] += 1
-    gs 'zz_render','','pavlovo/hotel/event6/M6_'+ _stage, func('hotel_events_data', $args[0], _stage)
-    killvar '_stage'
-    killvar '$_m_img'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string','0,1,2,3,4,5.webm,6,7.webm,8.webm,9,10.webm,11.webm,12.webm,13.webm,14.webm,15.webm,17.webm,18.webm,19.webm,20',_stage)
+	if _stage < 20:
+		horny += 5
+		gs 'zz_render','','pavlovo/hotel/event6/M6_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_6', _stage+1
+	elseif _stage = 20:
+		orgasm += 1
+		DPorgasm += 1
+		money += 500
+		horny = 0
+		$npc['0,hotel_events_oilers_stage'] += 1
+		gs 'zz_render','','pavlovo/hotel/event6/M6_'+ _stage, func('hotel_events_data', $args[0], _stage)
+		killvar '_stage'
+		killvar '$_m_img'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 !------
 ! maid_event_7
 if $args[0] = 'maid_event_7':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string',',1,2,3,4,5,6,7,8,9,10,11,12,13',_stage)
-  if _stage = 0:
-    gs 'zz_render','','', func('hotel_events_data', $args[0], _stage)
-    act 'Проследить': gt $curloc, 'maid_event_7', _stage+1
-  elseif _stage = 1:
-    gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_7', _stage+1
-  elseif _stage > 1 and _stage < 4:
-    gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_7', _stage+1
-  elseif _stage = 4:
-    gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Пожелать нефтяникам успехов и выйти.':
-      cla
-      gs 'zz_render','','', '-\\\ Ага, Светка, спасибо. Еще отблагодарим, не ссы, - бросил вам вслед Мишаня, по-хозяйски шерудя у Алены под юбкой.///'
-      killvar '_stage'
-      killvar '$_m_img'
-      act 'Уйти': gt $curloc, 'work'
-    end
-    act 'Остаться посмотреть':
-      cla
-      act 'Далее': gt $curloc, 'maid_event_7', _stage+1
-    end
-  elseif _stage > 4 and _stage < 13:
-    horny += 15
-    gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc, 'maid_event_7', _stage+1
-  elseif _stage = 13:
-    gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
-    horny = 0
-    orgasm += 1
-    killvar '_stage'
-    killvar '$_m_img'
-    maid_event_7_request_phone = 1
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string',',1,2,3,4,5,6,7,8,9,10,11,12,13',_stage)
+	if _stage = 0:
+		gs 'zz_render','','', func('hotel_events_data', $args[0], _stage)
+		act 'Проследить': gt $curloc, 'maid_event_7', _stage+1
+	elseif _stage = 1:
+		gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_7', _stage+1
+	elseif _stage > 1 and _stage < 4:
+		gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_7', _stage+1
+	elseif _stage = 4:
+		gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Пожелать нефтяникам успехов и выйти.':
+			cla
+			gs 'zz_render','','', '-\\\ Ага, Светка, спасибо. Еще отблагодарим, не ссы, - бросил вам вслед Мишаня, по-хозяйски шерудя у Алены под юбкой.///'
+			killvar '_stage'
+			killvar '$_m_img'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Остаться посмотреть':
+			cla
+			act 'Далее': gt $curloc, 'maid_event_7', _stage+1
+		end
+	elseif _stage > 4 and _stage < 13:
+		horny += 15
+		gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc, 'maid_event_7', _stage+1
+	elseif _stage = 13:
+		gs 'zz_render','','pavlovo/hotel/event7/M7_'+ $_m_img, func('hotel_events_data', $args[0], _stage)
+		horny = 0
+		orgasm += 1
+		killvar '_stage'
+		killvar '$_m_img'
+		maid_event_7_request_phone = 1
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 !ивент с горничной/отсос рабочему в подсобке
 if $args[0] = 'maid_event_worker_1':
-  *clr & cla
-  gs 'stat'
-  _stage = args[1]
-  if _stage < 2:
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
-  elseif _stage = 2:
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Отказать':
-      dom += 1
-      *clr & cla
-      gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], 3)
-      killvar '_stage'
-      act 'Уйти': gt $curloc, 'work'
-    end
-    act 'Согласиться':
-      dom -= 1
-      *clr & cla
-      gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], 4)
-      act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
-    end
-  elseif _stage > 2 and _stage < 14:
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage+2)
-    act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
-  elseif _stage = 14:
-    swallow += 1
-    bj += 1
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage+2)
-    killvar '_stage'
-    $npc['0,hotel_events_worker_flag'] = 1
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	gs 'stat'
+	_stage = args[1]
+	if _stage < 2:
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
+	elseif _stage = 2:
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Отказать':
+			dom += 1
+			*clr & cla
+			gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], 3)
+			killvar '_stage'
+			act 'Уйти': gt $curloc, 'work'
+		end
+		act 'Согласиться':
+			dom -= 1
+			*clr & cla
+			gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], 4)
+			act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
+		end
+	elseif _stage > 2 and _stage < 14:
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage+2)
+		act 'Далее': gt $curloc,'maid_event_worker_1',_stage+1
+	elseif _stage = 14:
+		swallow += 1
+		bj += 1
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + _stage + '.jpg', func('hotel_events_data', $args[0], _stage+2)
+		killvar '_stage'
+		$npc['0,hotel_events_worker_flag'] = 1
+		act 'Уйти': gt $curloc, 'work'
+	end
 end
 if $args[0] = 'maid_event_worker_2':
-  *clr & cla
-  _stage = args[1]
-  gs 'stat'
-  $_m_img = func('zz_funcs','get_item_string','2,6,8,REPEAT_3,REPEAT_4,REPEAT_5,REPEAT_6,REPEAT_7,13',_stage)
-  if _stage = 0:
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Порадовать': gt $curloc,'maid_event_worker_2',_stage+1
-    act 'Отказать':
-      gs 'zz_render','','', '-\\Эээ, нет.//'
-      killvar '_stage'
-      killvar '$_m_img'
-      act 'Уйти': gt $curloc, 'work'
-    end
-  elseif _stage > 0 and _stage < 5:
-    horny += 20
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
-  elseif _stage = 5:
-    horny = 0
-    orgasm += 1
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
-  elseif _stage > 5 and _stage < 8:
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
-  elseif _stage = 8:
-    swallow += 1
-    bj += 1
-    gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
-    killvar '_stage'
-    killvar '$_m_img'
-    act 'Уйти': gt $curloc, 'work'
-  end
+	*clr & cla
+	_stage = args[1]
+	gs 'stat'
+	$_m_img = func('zz_funcs','get_item_string','2,6,8,REPEAT_3,REPEAT_4,REPEAT_5,REPEAT_6,REPEAT_7,13',_stage)
+	if _stage = 0:
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Порадовать': gt $curloc,'maid_event_worker_2',_stage+1
+		act 'Отказать':
+			gs 'zz_render','','', '-\\Эээ, нет.//'
+			killvar '_stage'
+			killvar '$_m_img'
+			act 'Уйти': gt $curloc, 'work'
+		end
+	elseif _stage > 0 and _stage < 5:
+		horny += 20
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
+	elseif _stage = 5:
+		horny = 0
+		orgasm += 1
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
+	elseif _stage > 5 and _stage < 8:
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		act 'Далее': gt $curloc,'maid_event_worker_2',_stage+1
+	elseif _stage = 8:
+		swallow += 1
+		bj += 1
+		gs 'zz_render','','pavlovo/hotel/event_worker_bj/MW_' + $_m_img + '.jpg', func('hotel_events_data', $args[0], _stage)
+		killvar '_stage'
+		killvar '$_m_img'
+		act 'Уйти': gt $curloc, 'work'
+	end
 end

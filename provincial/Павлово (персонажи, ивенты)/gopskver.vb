@@ -30,7 +30,7 @@
 $d_gop_triple_blow = {
 	act 'Сосать у Дэна':
 		*clr & cla
-		if GorSlut < 3:GorSlut = 3
+		if func('zz_reputation','get') < 3: gs 'zz_reputation','set',3
 		bj += 1
 		if $npc['10,sex'] = 0: $npc['10,sex'] = 1 & guy += 1
 		dick = $npc['10,dick']
@@ -137,7 +137,7 @@ else
 				dynamic $d_dan_blowjob
 				act 'Возмутиться':
 					*clr & cla
-					GorSlut = 2
+					gs 'zz_reputation','set',2
 					gs 'stat'
 					gs 'zz_render', '', '', func('gopskver_strings', 'local_str16')
 					act 'Уйти домой': gt 'korrPar'
@@ -182,7 +182,7 @@ else
 		end
 	elseif hour < 20:
 		gs 'zz_render', '', '', func('gopskver_strings', 'local_str22')
-		if GorSlut < 3:
+		if func('zz_reputation','get') < 3:
 			if alko < 4:
 				gs 'zz_render', '', '', func('gopskver_strings', 'local_str23')
 				act 'Уйти': gt $loc, $metka
@@ -196,7 +196,7 @@ else
 			else
 				gs 'zz_render', '', '', func('gopskver_strings', 'local_str25')
 				act 'Уйти': gt $loc, $metka
-				if GorSlut = 0:
+				if func('zz_reputation','get') = 0:
 					act 'Пить пиво':
 						*clr & cla
 						gs 'zz_funcs', 'alko', 2
@@ -204,7 +204,7 @@ else
 						gs 'zz_render', '', 'images/pic/ParkBeer.jpg', func('gopskver_strings', 'local_str26')
 						act 'Далее':gt $curloc
 					end
-				elseif GorSlut = 1:
+				elseif func('zz_reputation','get') = 1:
 					gs 'zz_render', '', '', func('gopskver_strings', 'local_str27')
 					act 'Да':
 						*clr & cla
@@ -216,7 +216,7 @@ else
 						gs 'zz_render', '', '', func('gopskver_strings', 'local_str29')
 						act 'Уйти':gt'zz_park'
 					end
-				elseif GorSlut >= 2:
+				elseif func('zz_reputation','get') >= 2:
 					gs 'zz_render', '', '', func('gopskver_strings', 'local_str30')
 					act 'Да':
 						*clr & cla
@@ -234,8 +234,6 @@ else
 								end
 								act 'Западло':
 									minut += 5
-									fingal += 1
-									body_write = 1
 									dom -= 1
 									manna -= 5
 									*clr & cla
@@ -271,7 +269,7 @@ else
 					end
 				end
 			end
-		elseif GorSlut >= 3:
+		elseif func('zz_reputation','get') >= 3:
 			shultextrand = RAND(0,2)
 			if shultextrand = 0:$shultextrand = 'хочешь конфетку красный богатырь?'
 			if shultextrand = 1:$shultextrand = 'хочешь Чупахуй?'

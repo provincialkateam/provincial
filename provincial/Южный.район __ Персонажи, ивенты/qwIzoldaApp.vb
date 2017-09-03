@@ -1,8 +1,7 @@
 ﻿minut += 15
 gs'stat'
 if hour >= 16 and izoldaday ! day:
-	'<center><b><font color = maroon>Изольда</font></b></center>'
-	gs 'zz_render', '', 'images/qwest/kolan/izolda.jpg', func('qwIzoldaApp_strings', 'local_str1')
+	gs 'zz_render', 'Изольда', 'images/qwest/kolan/izolda.jpg', func('qwIzoldaApp_strings', 'local_str1')
 	act 'Уйти':gt'down'
 	act 'Войти в квартиру':
 		cla

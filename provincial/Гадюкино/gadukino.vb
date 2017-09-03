@@ -37,5 +37,5 @@ if gadriver_gang < 3:
 end
 if gadriver_gang = 1 and hour >= 6 and hour <= 21 and gadboyday ! daystart: gt 'gadukino_event', 'gang_apologise'
 if gadriver_gang = 3 and hour >= 6 and hour <= 21 and gadboyday ! daystart: gt 'gadukino_event', 'mitka_apologise'
-if gadriver_gang = 4  and mirasex = 1 and miralick = 0 and hour >= 8 and hour <= 20 and gadboyday ! daystart: gt 'gadukino_event', 'mira_apologise'
+if gadriver_gang = 4 and mirasex = 1 and miralick = 0 and hour >= 8 and hour <= 20 and gadboyday ! daystart: gt 'gadukino_event', 'mira_apologise'
 if mitkasextimes > 13 and mirasex = 1 and miragopQW < 11 and mitkarand >= 15 and miraday ! day:gt 'Meadow_event','mira_lesb_talk4'

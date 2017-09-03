@@ -45,9 +45,7 @@ elseif gophouse = 1:
 			cla
 			*clr & cla
 			minut += 5
-			body_write = 5
-			face_write = 1
-			podvalwriterand = RAND (1,6)
+			podvalwriterand = RAND(1,6)
 			gs 'stat'
 			gs 'zz_render', '', 'images/qwest/alter/placer/podvalwrite<<podvalwriterand>>.jpg', func('gopnik_house_strings', 'local_str6')
  			act 'Осмотреться':podvalrape = 0 & dormrape = 0 & gt'gorodok'

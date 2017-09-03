@@ -7,26 +7,26 @@
 	gs 'zz_funcs', 'colorize_day'
 	gs 'zz_render','Супермаркет','images/common/shop/shop.jpg','В холле стоит <a href="exec: gt''zz_atm'',''main'' ">универсальный банковский терминал</a>, где вы можете положить или снять деньги со счета, пополнить баланс мобильного, а также оплатить некоторые услуги.<br>Самое большое место в супермаркете занимает <a href="exec: gt ''shop'',''food''">продуктовый отдел</a>, но в магазине есть еще отделы <a href="exec: gt ''shop'',''cosm''">косметики</a>, <a href="exec: gt ''shop'',''hos''">хозяйственный</a>, <a href="exec: gt ''shop'',''clo''">одежды</a>, и отдел <a href="exec: gt ''shop'',''teh''">бытовой техники</a>.'
 	if hour >= 8 and hour <= 20:
-		if $loc = 'gorodok': gs 'zz_render','','','Чуть в сторонке разместился небольшой <a href="exec:gt''shop'',''sport''">магазинчик спорттоваров.</a>'
+		if $control_point = 'gorodok': gs 'zz_render','','','Чуть в сторонке разместился небольшой <a href="exec:gt''shop'',''sport''">магазинчик спорттоваров.</a>'
 		gs 'zz_render','','','Недалеко от входа стоит <a href="exec:gt ''zz_common'',''icecream''">прилавок с мороженным</a> и <a href="exec: gt ''zz_common'',''coffee''">кофейня.</a>'
 	end
-	if $loc = 'gorodok':
+	if $control_point = 'gorodok':
 		if week < 6 and hour >= 8 and hour < 16: gs 'zz_render','','','Ваша сестра <a href="exec:GT ''sister''">Аня</a> сидит на кассе.'
 		gs 'zz_family', 'mother_sheduler'
 	end
-	if $loc = 'street' and rand(1,100) >= 95: gs 'event','dimaQW_intro'
+	if $control_point = 'street' and rand(1,100) >= 95: gs 'event','dimaQW_intro'
 	if hour >= 8 and hour <= 20:
 		gs 'zz_render','','','В магазине толпы покупателей.'
-		if TorgPredZ > 0 and (($loc = 'street' and StreetShopTPday ! day) or ($loc = 'nord' and nordShopTPday ! day) or ($loc = 'torgcentr' and downShopTPday ! day)):
+		if TorgPredZ > 0 and (($control_point = 'street' and StreetShopTPday ! day) or ($control_point = 'nord' and nordShopTPday ! day) or ($loc = 'torgcentr' and downShopTPday ! day)):
 			act 'Расставлять продукцию':
 				*clr & cla
 				minut += RAND(40,130)
 				gs 'stat'
 				TorgPredZ -= 1
 				TorgPredZV += 1
-				if $loc = 'street':
+				if $control_point = 'street':
 					StreetShopTPday = day
-				elseif $loc = 'nord':
+				elseif $control_point = 'nord':
 					nordShopTPday = day
 				elseif $loc = 'torgcentr':
 					downShopTPday = day
@@ -38,7 +38,13 @@
 	else
 		gs 'zz_render','','','Магазин закрыт.'
 	end
-	act 'Выйти из магазина': gt $loc, $metka
+	act 'Выйти из магазина':
+		if $loc = 'torgcentr':
+			gt $loc, $metka
+		else
+			gt $control_point
+		end
+	end
 end
 if $ARGS[0] = 'food':
 	*clr & cla
@@ -57,7 +63,7 @@ if $ARGS[0] = 'cosm':
 	gs 'zz_funcs', 'colorize_day'
 	gs 'zz_render','Отдел косметики','images/common/shop/cosm.jpg'
 	if hour < 8 or hour > 20: gs 'shop', 'closed' & exit
-	if cheatHapri_mod = 1:
+	if $settings['hapri_mod'] = 1:
 		gs 'shop', 'make_table', 6, 13
 	else
 		gs 'shop', 'make_table', 6, 12
@@ -138,7 +144,7 @@ if $args[0] = 'make_table':
 	$zz_arr0[10] = 'Шампунь' & zz_arr1[10] = 300
 	$zz_arr0[11] = 'Тампоны(20шт)' & zz_arr1[11] = 200
 	$zz_arr0[12] = 'Влажные салфетки' & zz_arr1[12] = 100
-	if cheatHapri_mod = 1: $zz_arr0[13] = 'Расческа' & zz_arr1[13] = 200
+	if $settings['hapri_mod'] = 1: $zz_arr0[13] = 'Расческа' & zz_arr1[13] = 200
 	! common
 	$zz_arr0[14] = 'Средство для мытья посуды' & zz_arr1[14] = 200
 	$zz_arr0[15] = 'Стиральный порошок' & zz_arr1[15] = 200
@@ -227,17 +233,17 @@ if $args[0] = 'buy':
 			if zz_id = 30: skak = 1
 			if zz_id = 31: obruch = 1
 			gs 'stat'
-			gs 'zz_funcs','message','','<font color=green>' + $zz_arr0[zz_id] + ':</font><font color=green> +' + zz_count + '</font>'
+			gs 'zz_funcs','message','','<green>' + $zz_arr0[zz_id] + ': ' + zz_count + '</green>'
 		else
-			gs 'zz_funcs','message','','<font color=red>У вас недостаточно денег.</font>'
+			gs 'zz_funcs','message','','<red>У вас недостаточно денег.</red>'
 		end
 	else
-		gs 'zz_funcs','message','','<font color=red>Вы столько не унесете!</font>'
+		gs 'zz_funcs','message','','<red>Вы столько не унесете!</red>'
 	end
 	gs 'shop','buy_finalize'
 end
 if $args[0] = 'buy_error':
-	gs 'zz_funcs','message','','<font color=red>У вас уже есть ' + $zz_arr0[zz_id] + '</font>'
+	gs 'zz_funcs','message','','<red>У вас уже есть ' + $zz_arr0[zz_id] + '</red>'
 	gs 'shop','buy_finalize'
 end
 if $args[0] = 'buy_finalize':
@@ -247,6 +253,6 @@ if $args[0] = 'buy_finalize':
 end
 if $args[0] = 'closed':
 	cla
-	gs 'zz_render','','','<center><font color=red>Отдел закрыт, рабочие часы: 08.00-21.00</font></center>'
+	gs 'zz_render','','','<red>Отдел закрыт, рабочие часы: 08.00-21.00</red>'
 	act 'Назад': gt 'shop', 'start'
 end

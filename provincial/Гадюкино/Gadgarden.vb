@@ -9,7 +9,7 @@
 	$_str = 'Огород'
 	gs 'zz_render', $_str, func('zz_funcs','mk_image','qwest/gadukino/new/garden'),	'Большой огород на котором растет практически все.'
 	if snow = 0:gs 'zz_render', '', '','Немного в стороне есть <a href="exec: gt ''Gadgarden'',''strawberry'' ">клубничная делянка</a> и <a href="exec: gt ''Gadgarden'',''fruit_garden'' ">фруктовый сад</a>.'
-	if (month >= 6 and month <= 8 and graze_cow = 0 or  month >= 5 and month <= 9 and graze_cow > 0) and sunWeather >= 0 and hour > 7 and hour < 13:grandma_ingadgarden = 1 & 'На огороде ковыряется в грядках ваша '+iif(grandma_notalk = 0,'<a href="exec: gt ''grandma'' ">бабушка</a>','сердитая бабушка')+'.'
+	if (month >= 6 and month <= 8 and graze_cow = 0 or month >= 5 and month <= 9 and graze_cow > 0) and sunWeather >= 0 and hour > 7 and hour < 13:grandma_ingadgarden = 1 & 'На огороде ковыряется в грядках ваша '+iif(grandma_notalk = 0,'<a href="exec: gt ''grandma'' ">бабушка</a>','сердитая бабушка')+'.'
 	if sunWeather >= 0 and hour > 7 and hour < 13 and graze_cow = 0 and (month = 5 or month = 9):grandpa_ingadgarden = 1 & grandma_ingadgarden = 1 & 'На огороде работают ваши '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+' и '+iif(grandma_notalk = 0,'<a href="exec: gt ''grandma'' ">бабушка</a>','бабушка')+'.'
 	if grandma_ingadgarden = 1 and grandmaknowsick = 1:gt'grandma'
 	!задание бабушки
@@ -117,8 +117,8 @@ if $ARGS[0] = 'fruit_garden':
 	$loc = $CURLOC
 	*clr & cla
 	gs 'stat'
-    gs 'time'
-    $_str = 'Фруктовый сад'
+	gs 'time'
+	$_str = 'Фруктовый сад'
 	gs 'zz_render', $_str, 'qwest/gadukino/new/fruit_garden'+iif(hour >= func('zz_weather','sunrise') and hour <= func('zz_weather','sunset'),'','_night')+'.jpg','Фруктовый сад в котором растут яблоки и груши.'
 	if month >= 6 and month <= 8 and sunWeather >= 0 and hour > 7 and hour < 13 and week = 6 and graze_cow = 0:gs 'zz_render', '', '','Ваш '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+' косит в саду траву.'
 	if month >= 7 and month <= 9 and fruitday ! daystart:

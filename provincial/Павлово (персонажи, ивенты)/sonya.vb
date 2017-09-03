@@ -187,7 +187,7 @@ if $args[0] = 'meet_near_school':
 	act iif(_stage=1 or _stage=3,'Уйти','...'):
 		if _stage < 3:
 			if _stage = 0:
-				gt 'sonya','meet_near_school',iif(dom < 10 and GorSlut > 1,1,2)
+				gt 'sonya','meet_near_school',iif(dom < 10 and func('zz_reputation','get') > 1,1,2)
 			else
 				gt 'sonya','meet_near_school',_stage+1
 			end
@@ -202,9 +202,11 @@ if $args[0] = 'meet_near_school':
 end
 ! отбиваем Соню от гопоты - разговор
 if $args[0] = 'talk_in_toilet':
-	gs 'zz_render','','pavlovo/sonya/school/toilet/toilet_group1',func('sonya_strings',32)
+	! рисунок здесь по ходу не нужен - текст дописывается до существующего
+	!gs 'zz_render','','pavlovo/sonya/school/toilet/toilet_group1',func('sonya_strings',32)
+	gs 'zz_render','','',func('sonya_strings',32)
 	if boxing > 90 and dom > 40:
-		act	'Вписаться за Соню': gt 'sonya','toilet_fight'
+		act 'Вписаться за Соню': gt 'sonya','toilet_fight'
 	else
 		$npc['25,qwSonya'] = 40
 		gs 'zz_render','','',func('sonya_strings',37)
@@ -232,13 +234,20 @@ if $args[0] = 'ask_ivan_for_help':
 	*clr & cla
 	gs 'npc_editor','get_npc_profile',3
 	gs 'zz_render','','',func('sonya_strings',39)
-	act 'Уйти':
-		*clr & cla
-		gs 'npc_editor','get_npc_profile',3
-		gs 'zz_render','','',func('sonya_strings',40)
-		$npc['25,qwSonya'] = 41
-		$npc['25,qwSonya_day'] = day
+	! $npc['3,qwIvanShower'] > 0 - если ГГ трахалась с Иваном в душе
+	! $npc['15,qwVika'] >= 27 - если был тройничек с Викой и Иваном
+	if $npc['3,relation'] >= 80 and ($npc['3,qwIvanShower'] > 0 or $npc['15,qwVika'] >= 27):
+		act '...':
+			*clr & cla
+			gs 'npc_editor','get_npc_profile',3
+			gs 'zz_render','','',func('sonya_strings',40)
+			$npc['25,qwSonya'] = 41
+			$npc['25,qwSonya_day'] = day
+			act 'Уйти': gt $loc,$metka
+		end
+	else
 		act 'Уйти': gt $loc,$metka
+		gs 'zz_render','','',func('sonya_strings',85)
 	end
 end
 ! Иван помогает отбить Соню
@@ -392,7 +401,7 @@ if $args[0] = 'check_payment':
 		gs 'npc_editor','get_npc_profile',25
 		gs 'npc_editor','change_rep','down',25,100
 		gs 'zz_render','','',func('sonya_strings',59) + func('sonya_strings',iif($npc['25,qwSonya_paysuck']=1,60,61))
-		if $npc['25,qwSonya_paysuck'] = 1 and GorSlut = 0: GorSlut = 1
+		if $npc['25,qwSonya_paysuck'] = 1 and func('zz_reputation','get') = 0: gs 'zz_reputation','set',1
 		act 'Отойти': gt $loc,$metka
 	end
 end

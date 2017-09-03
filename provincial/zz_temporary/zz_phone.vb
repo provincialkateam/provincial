@@ -7,15 +7,15 @@
 	! make table
 	$_img = 'images/common/mobile/'
 	gs 'zz_phone','header'
-	$_str = '<center><table bgcolor="#0094A8" width=360 border=0 cellspacing=0 cellpadding=0><tr><td colspan=3>&nbsp;</td></tr><tr><td align=center width=120><a href="exec:gs''zz_phone'',''phonebook''"><img src="'+$_img+'buttons/contacts.png"></a></td>'
-	$_str += '<td align=center width=120><img src="'+$_img+'buttons/camera.png"></td>'
-	$_str += '<td align=center width=120><img src="'+$_img+'buttons/photos.png"></td></tr>'
-	$_str += '<tr><td align=center><a href="exec:gs''zz_phone'',''weather''"><img src="'+$_img+'buttons/weather.png"></a></td>'
-	$_str += '<td align=center><a href="exec:gs''zz_phone'',''gmap''"><img src="'+$_img+'buttons/maps.png"></a></td>'
-	$_str += '<td align=center><img src="'+$_img+'buttons/reminder.png"></td></tr>'
-	$_str += '<tr><td align=center><img src="'+$_img+'buttons/notes.png"></td>'
-	$_str += '<td align=center><a href="exec:gs''zz_phone'',''calendar''"><img src="'+$_img+'buttons/health.png"></td>'
-	$_str += '<td align=center><a href="exec:gs''zz_phone'',''taxi''"><img src="'+$_img+'buttons/taxi.png"></a></td></tr>'
+	$_str = '<center><table bgcolor="#0094A8" width=360 border=0 cellspacing=0 cellpadding=0><tr><td colspan=3>&nbsp;</td></tr><tr><td width=120><a href="exec:gs''zz_phone'',''phonebook''"><img src="'+$_img+'buttons/contacts.png"></a></td>'
+	$_str += '<td width=120><img src="'+$_img+'buttons/camera.png"></td>'
+	$_str += '<td width=120><img src="'+$_img+'buttons/photos.png"></td></tr>'
+	$_str += '<tr><td><a href="exec:gs''zz_phone'',''weather''"><img src="'+$_img+'buttons/weather.png"></a></td>'
+	$_str += '<td><a href="exec:gs''zz_phone'',''gmap''"><img src="'+$_img+'buttons/maps.png"></a></td>'
+	$_str += '<td><img src="'+$_img+'buttons/reminder.png"></td></tr>'
+	$_str += '<tr><td><img src="'+$_img+'buttons/notes.png"></td>'
+	$_str += '<td><a href="exec:gs''zz_phone'',''calendar''"><img src="'+$_img+'buttons/health.png"></td>'
+	$_str += '<td><a href="exec:gs''zz_phone'',''taxi''"><img src="'+$_img+'buttons/taxi.png"></a></td></tr>'
 	$_str += '</table></center>'
 	gs 'zz_render', '', '', $_str
 	killvar '$_str'
@@ -86,12 +86,13 @@ if $args[0] = 'clearing':
 	killvar '$_img'
 end
 if $args[0] = 'header':
-	$_str = '<center><table width=360 border=0 cellspacing=0 cellpadding=0>'
+	$_str = '<center><br><table width=360 border=0 cellspacing=0 cellpadding=0>'
 	$_str += '<tr><td colspan=3 align=center><img src="'+$_img+'samsung.png"></td></tr>'
-	$_str += '<tr><td align=left width=120><font size=5>'+func('zz_funcs','make_datetime',hour,minut,':')+'</font></td>'
-	$_str += '<td colspan=2 align=right><img src="'+$_img+'network.png"> <img src="'+$_img+'battery.png"></td></tr>'
-	$_str += '<tr><td colspan=3 align=center><img src="'+$_img+'line.png"></td></tr></table></center>'
+	$_str += '<tr><td align=left width=120 style="border-bottom:2px solid navy"><font size=5>'+func('zz_funcs','make_datetime',hour,minut,':')+'</font></td>'
+	$_str += '<td colspan=2 align=right style="border-bottom:2px solid navy"><img src="'+$_img+'network.png"> <img src="'+$_img+'battery.png"></td></tr>'
+	$_str += '</table></center>'
 	gs 'zz_render','','',$_str
+	killvar '$_str'
 end
 if $args[0] = 'phonebook':
 	*clr & cla
@@ -111,12 +112,12 @@ if $args[0] = 'phonebook':
 	! выводим список контактов для страницы
 	:loop_contacts
 	if _phonebook_i < iif(_phonebook_page = _phonebook_page_count,arrsize('$_contact')/2 - 2,_phonebook_page*5 + 5):
-		gs 'zz_phone','box',_phonebook_i,'<a href="exec:gs''zz_phone'',''call'',<<_phonebook_i>>"><img src="'+$_img+'contact_call.png" width=36></a>  <img src="'+$_img+'contact_sms.png" width=36>',-1
+		gs 'zz_phone','box',_phonebook_i,'<a href="exec:gs''zz_phone'',''call'',<<_phonebook_i>>"><img src="'+$_img+'contact_call.png" width=36></a> <img src="'+$_img+'contact_sms.png" width=36>',-1
 		_phonebook_i += 1
 		jump 'loop_contacts'
 	end
 	! добавляем пагинатор
-	$_str = '<br><br><center><table width=360 border=0 cellspacing=0 cellpadding=0><tr><td colspan=3 align=center>'
+	$_str = '<br><center><table width=360 border=0 cellspacing=0 cellpadding=0><tr><td colspan=3 align=center>'
 	if _phonebook_page = 0:
 		$_str += '<img src="'+$_img+'buttons/pager_back.png"> '
 	else
@@ -137,28 +138,25 @@ end
 ! message/call box
 ! args[1] - id
 ! $args[2] - text
-! args[3]  - padding, 0/1
-! args[4]  - function - 0/1, return box content
+! args[3] - padding, 0/1
+! args[4] - function - 0/1, return box content
 if $args[0] = 'box':
 	_box_id = args[1]
 	$_box_text = $args[2]
+	!_box_padding:
+	! -1 - center
+	! 0 - left
+	! 1 - right
 	_box_padding = args[3]
 	_box_function = args[4]
 	! id = 900 - boyfriend
 	! id = 901 - question icon
-	$_img = 'images/common/mobile/'
-	$_box += '<center><table width=360 border=0 cellspacing=0 cellpadding=0><tr><td>'
-	$_box += '<table border=0 cellspacing=0 cellpadding=0>'
-	$_box += '<tr bgcolor="#ffffff"><td colspan=3><font size=-3> </font></td></tr>'
-	$_box += '<tr bgcolor="#ffffff"><td width='+iif(_box_padding=1,60,iif(_box_padding=-1,40,20))+'></td><td width=280>'
-	$_box += '<table border=0 cellspacing=0 cellpadding=0>'
-	$_box += '<tr><td width=10><img src="'+$_img+'tl.png"></td><td colspan=3 bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'tr.png"></td></tr>'
-	$_box += '<tr bgcolor="#eeeeee"><td rowspan=2></td><td width=60 rowspan=2><img src='+func('zz_phone','get_box_photo')+' width=60></td><td width=10 rowspan=2></td><td width=190><b>'+iif(_id=900,$nameBoyfrend[numnpcboy],$_contact['<<_box_id>>,name'])+'</b></td><td rowspan=2></td></tr>'
-	$_box += '<tr bgcolor="#eeeeee"><td width=190><font size=3><i>'+$_box_text+'</i></font></td></tr>'
-	$_box += '<tr><td width=10><img src="'+$_img+'bl.png"></td><td colspan=3 bgcolor="#eeeeee"></td><td width=10><img src="'+$_img+'br.png"></td></tr>'
-	$_box += '</table>'
-	$_box += '</td><td></td></tr></table>'
-	$_box += '</td></tr></table></center>'
+	$_box = '<center><div class="phone_box">'
+	$_box += '<div class="phone_box_content" style="left:'+iif(_box_padding=1,60,iif(_box_padding=-1,40,20))+'px;">'
+	$_box += '<div class="phone_box_image"><img src='+func('zz_phone','get_box_photo')+'></div>'
+	$_box += '<div class="phone_box_name">'+iif(_id=900,$nameBoyfrend[numnpcboy],$_contact['<<_box_id>>,name'])+'</div>'
+	$_box += '<div class="phone_box_text">'+$_box_text+'</div>'
+	$_box += '</div></div></center>'
 	if _box_function = 1:
 		$result = $_box
 	else
@@ -172,7 +170,7 @@ if $args[0] = 'box':
 end
 if $args[0] = 'get_box_photo':
 	! hero
-	if _box_id = -1: $result = func('zz_common','get_hero_face')
+	if _box_id = -1: $result = func('zz_common','get_face')
 	! contacts
 	if _box_id >= 0:
 		if _box_id < 900: $result = 'images/common/npc/'+$_contact['<<_box_id>>,id']+'.jpg'
@@ -188,7 +186,7 @@ if $args[0] = 'call':
 	_call_npc = $_contact['<<_call>>,id']
 	! make table
 	gs 'zz_phone', 'header'
-	gs 'zz_render', '', $_img + 'call.gif'
+	gs 'zz_render','','','<center><br/><br/><br/><br/><img src="'+ $_img + 'call.gif"></center>'
 	! wait
 	wait rand(10,30)*100
 	! clear & remake table
@@ -199,7 +197,7 @@ if $args[0] = 'call':
 	gs 'zz_phone', 'header'
 	! ограничения звонков
 	_noanswer = 0
-	if hour <= 8 and hour >= 21:
+	if hour <= 8 and hour >= 22:
 		_noanswer = 1
 	else
 		if _call_npc <= 25 and ((week <= 5 and hour < 15) or (week >= 5 and hour < 10)): _noanswer = 1
@@ -207,6 +205,8 @@ if $args[0] = 'call':
 		if _call_npc = 38 and (hour > 22 or (week < 6 and hour < 16) or (week >= 6 and hour < 12)): _noanswer = 1
 		if _call_npc = 39 and (hour >= 18 or (week < 6 and hour < 16) or (week >= 6 and hour < 11)): _noanswer = 1
 		if _call_npc = 35 and (hour >= 21 or (week >= 6 and hour < 18) or (hour >= 18 and father['in_garage'] = 0)): _noanswer = 1
+		if _call_npc = 48 and $npc['38,qwKolka'] = 8 and week = 5 and hour = 22 and anus >= 13 and vagina >= 13: _noanswer = 0
+		if _call_npc = 48 and $npc['38,qwKolka'] = 9 and week <= 4 and hour = 22 and anus >= 13 and vagina >= 13: _noanswer = 0
 		! временно глушим всех остальных нпс
 		!if (_call_npc >= 25 and _call_npc <= 34) or _call_npc = 36 or _call_npc >= 40 and _call_npc < npc_arrsize: _noanswer = 1
 	end
@@ -321,8 +321,28 @@ if $args[0] = 'dialogues':
 			$_dialogue['2,ans'] = 'Ох, <<$name[2]>>, <a href="exec:minut+=10 & gs''zz_phone'',''clearing'' & gt ''gargazel''">приходи</a>, порадуй папочку.'
 		end
 	end
+	!Мишка
+	if _call_npc = 48:
+		if $npc['38,qwKolka'] = 8:
+				$_dialogue['0,que'] = 'Алло Миша?'
+				$_dialogue['0,ans'] = 'Да. Кто это?'
+				$_dialogue['1,que'] = 'Это я, Света ну вся твоя, которая'
+				$_dialogue['1,ans'] = 'А, Светик, не узнал прости!'
+				$_dialogue['2,que'] = 'Да ничего. Слушай, ты сегодня к нам прийти сможешь?'
+				$_dialogue['2,ans'] = 'Смогу, почему нет! А ничего что я после того раза с твоим отцом опять приду?'
+				$_dialogue['3,que'] = 'Он мой отчим, не переживай, я все уладила! <a href="exec:gt''sisterQW','incest_event9''">Приходи, буду ждать!</a>'
+			$_dialogue['3,ans'] = 'Скоро буду!'
+				$npc[48,'incest_event9_flag'] = 1
+		elseif $npc['38,qwKolka'] = 9:
+			$_dialogue['0,que'] = 'Алло, Миша, Светлана на линии!'
+			$_dialogue['0,ans'] = 'Привет, Светик, как житуха, есть дело ко мне?'
+			$_dialogue['1,que'] = 'Ага, мы сегодня хотели все вместе подурачиться, не хочешь присоединиться?'
+			$_dialogue['1,ans'] = 'Конечно, хочу! <a href="exec:gt''sisterQW','incest_event10''">Скоро буду!</a>'
+			$npc[48,'incest_event10_flag'] = 1
+		end
+	end
 	! taxi
-	if _call_npc =  arrsize('$_contact')/2 - 2:
+	if _call_npc = arrsize('$_contact')/2 - 2:
 		$_dialogue['0,que'] = 'Здравствуйте, мне б такси...'
 		$_dialogue['0,ans'] = 'Здравствуйте, недалеко от Вас есть машина, будет ' + iif($control_point='nord' or $control_point='street' or $control_point='down' or $control_point='gorodok','с минуты на минуту.','минут через 20.')
 		$_dialogue['1,que'] = 'Отлично, спасибо.'
@@ -418,8 +438,8 @@ if $args[0] = 'calendar':
 		$_str += '</tr>'
 	end
 	! формируем табличку
-	$_str = '<center><font size=3><br/><br/><table align=center border=0><tr bgcolor="#f3f4ee"><td><b>Пн</b></td><td><b>Вт</b></td><td><b>Ср</b></td><td><b>Чт</b></td><td><b>Пт</b></td><td><b>Сб</b></td><td><b>Вс</b></td></tr>' + $_str + '</table></font></center>'
-	gs 'zz_render','<br/><br/>Женский календарь','',$_str
+	$_str = '<center><font size=3><table align=center border=0><tr bgcolor="#f3f4ee"><td><b>Пн</b></td><td><b>Вт</b></td><td><b>Ср</b></td><td><b>Чт</b></td><td><b>Пт</b></td><td><b>Сб</b></td><td><b>Вс</b></td></tr>' + $_str + '</table></font></center>'
+	gs 'zz_render','','','<center><h2>Женский календарь</h2></center>'+$_str
 	killvar '_wday'
 	killvar '_startday'
 	killvar '$_str'
@@ -432,8 +452,8 @@ if $args[0] = 'gmap':
 	*clr & cla
 	! make table
 	gs 'zz_phone','header'
-	gs 'zz_render', '', '','<br/><br/><br/><br/><br/><br/>'
-	gs 'zz_render', '', $_img + 'map_load.gif'
+	gs 'zz_render', '', '','<center><br/><br/><br/><img src="'+ $_img + 'map_load.gif"></center>'
+	!gs 'zz_render', '', $_img + 'map_load.gif'
 	! wait
 	wait rand(5,15)*100
 	! clear & remake table
@@ -490,7 +510,7 @@ if $args[0] = 'gmap':
 	if $_map = '':
 		gs 'zz_render', '', $_img + 'map_error.png'
 	else
-		gs 'zz_render', 'Ваше местонахождение', $_img + '/maps/'+$_map+'.png'
+		gs 'zz_render','','','<center><img src="'+$_img + 'maps/'+$_map+'.png" width=360></center>'
 	end
 	killvar '$_map'
 end
@@ -499,7 +519,6 @@ if $args[0] = 'weather':
 	act 'Exit': gs 'zz_phone','exit'
 	act 'Menu': gs 'zz_phone','menu'
 	gs 'zz_phone', 'header'
-	!gs 'zz_weather'
 	gs 'zz_weather','forecast'
 end
 if $args[0] = 'taxi':

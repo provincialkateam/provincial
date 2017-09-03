@@ -550,7 +550,7 @@ $shkuh = {
 		act 'Далее': dynamic $shkuh
 	end
 	!старт ивента с гопотой на кухне
-	if RAND(0,100) <= 5 and GorSlut >=3 and gangsexroom_count > 0 and week < 6 and hour >= 0 and hour < 3:
+	if RAND(0,100) <= 5 and func('zz_reputation','get') >=3 and gangsexroom_count > 0 and week < 6 and hour >= 0 and hour < 3:
 		dynamic $gang_sex_ev1
 	end
 }

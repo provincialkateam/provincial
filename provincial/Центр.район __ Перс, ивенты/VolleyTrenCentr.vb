@@ -18,7 +18,7 @@ elseif centr=2:
 	act 'Здравствуйте':
 		cla & *clr
 		gs 'zz_render', '', 'images/pavlovo/dk/volley/VoltrenerSpeak13.jpg', func('VolleyTrenCentr_strings', 'local_str5')
-		if wine = 1 and alkowine = 0:
+		if wine = 1:
 			act'Отдать вино':
 				cla
 				wine = 0
@@ -36,7 +36,7 @@ elseif centr=2:
 							act 'Удивится':
 								cla & *clr
 								gs 'zz_render', '', 'images/pavlovo/dk/volley/VoltrenerSpeak17.jpg', func('VolleyTrenCentr_strings', 'local_str10')
-				act 'Отойти':gt 'fit','raz'
+								act 'Отойти':gt 'fit','raz'
 							end
 						end
 					end

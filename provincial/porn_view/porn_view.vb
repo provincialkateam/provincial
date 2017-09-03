@@ -10,12 +10,12 @@ if $npc['39,qwPornoFootball'] < 10:
 	if (sex + bj + hj + anal + kuni) = 0:
 		! гг без опыта
 		if $npc['39,qwPornoFootball'] = 0:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_1_virgin')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_1_virgin')
 			$npc['39,qwPornoFootball'] += 1
 			cla
 			act 'Уйти': gt 'gorodok'
 		elseif $npc['39,qwPornoFootball'] > 0 and $npc['39,qwPornoFootball'] < 3:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_2_virgin')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_2_virgin')
 			! если сбегает - просмотр не защитываем
 			act 'Сбежать из квартиры': gt 'gorodok'
 			act 'Остаться':
@@ -25,19 +25,19 @@ if $npc['39,qwPornoFootball'] < 10:
 				gs 'zz_render', '', '', func('porn_view_strings', 'view_2_virgin_next')
 			end
 		elseif $npc['39,qwPornoFootball'] = 3 or $npc['39,qwPornoFootball'] = 4:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_3_virgin'+iif(horny > 70,'_horny',''))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_3_virgin'+iif(horny > 70,'_horny',''))
 			$npc['39,qwPornoFootball'] +=1
 			horny += 10
 			cla
 			act 'Уйти': gt 'gorodok'
 		elseif $npc['39,qwPornoFootball'] = 5 or $npc['39,qwPornoFootball'] = 6:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_'+$npc['39,qwPornoFootball']+'_virgin'+iif(horny > 70,'_horny',''))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_'+$npc['39,qwPornoFootball']+'_virgin'+iif(horny > 70,'_horny',''))
 			$npc['39,qwPornoFootball'] += 1
 			horny += 10
 			cla
 			act 'Уйти': gt 'gorodok'
 		elseif $npc['39,qwPornoFootball'] >= 7 and $npc['39,qwPornoFootball'] < 10:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_7_virgin'+iif(horny > 70,'_horny',''))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_7_virgin'+iif(horny > 70,'_horny',''))
 			$npc['39,qwPornoFootball'] +=1
 			horny += 10
 			if tanga = 0:
@@ -48,7 +48,7 @@ if $npc['39,qwPornoFootball'] < 10:
 						gs 'zz_render', '', '', func('porn_view_strings', 'view_7_virgin_horny_no_tanga')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/3.gif', func('porn_view_strings', 'view_71_virgin_horny_no_tanga')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/3.webm', func('porn_view_strings', 'view_71_virgin_horny_no_tanga')
 							! у нас тут юбка!
 							if func('zz_clothing','is_skirt') = 1:
 								act '...':
@@ -72,17 +72,17 @@ if $npc['39,qwPornoFootball'] < 10:
 		! у гг есть опыт
 		horny += rand(10,20)
 		if $npc['39,qwPornoFootball'] < 3:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_1')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_1')
 			$npc['39,qwPornoFootball'] += 1
 			cla
 			act 'Уйти': gt 'gorodok'
 		elseif $npc['39,qwPornoFootball'] = 3 or $npc['39,qwPornoFootball'] = 4:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_3'+iif(horny > 70,'_horny',''))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_3'+iif(horny > 70,'_horny',''))
 			$npc['39,qwPornoFootball'] += 1
 			cla
 			act 'Уйти': gt 'gorodok'
 		elseif $npc['39,qwPornoFootball'] = 5:
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_5'+iif(horny > 70,'_horny',''))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_5'+iif(horny > 70,'_horny',''))
 			! а есть ли труселя
 			if tanga = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_5'+iif(horny > 70,'_horny_no_tanga','_no_tanga'))
 			$npc['39,qwPornoFootball'] += 1
@@ -91,13 +91,13 @@ if $npc['39,qwPornoFootball'] < 10:
 		elseif $npc['39,qwPornoFootball'] = 6:
 			gs 'zz_render', '', '', func('porn_view_strings', 'view_6')
 			! а есть ли труселя
-			if tanga = 0: gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.gif', func('porn_view_strings', 'view_6'+iif(horny > 70,'_horny_no_tanga','_no_tanga'))
+			if tanga = 0: gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/1.webm', func('porn_view_strings', 'view_6'+iif(horny > 70,'_horny_no_tanga','_no_tanga'))
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/3.gif', func('porn_view_strings','view_6_next')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/3.webm', func('porn_view_strings','view_6_next')
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.gif', func('porn_view_strings','view_61_next')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.webm', func('porn_view_strings','view_61_next')
 					horny = 0
 					$npc['39,qwPornoFootball'] += 1
 					act 'Уйти': gt 'gorodok'
@@ -107,7 +107,7 @@ if $npc['39,qwPornoFootball'] < 10:
 		if $npc['39,qwPornoFootball'] = 7:
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.gif', func('porn_view_strings','view_7')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.webm', func('porn_view_strings','view_7')
 				horny = 0
 				$npc['39,qwPornoFootball'] += 1
 				act 'Уйти': gt 'gorodok'
@@ -117,9 +117,9 @@ if $npc['39,qwPornoFootball'] < 10:
 				*clr & cla
 				horny = 0
 				$npc['39,qwPornoFootball'] = 10
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.gif', func('porn_view_strings','view_8')
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/5.gif', func('porn_view_strings','view_8'+iif(tanga=0,'_no_tanga','_tanga'))
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/5.gif', func('porn_view_strings','view_8_next')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/5.webm', func('porn_view_strings','view_8')
+				gs 'zz_render', '', '', func('porn_view_strings','view_8'+iif(tanga=0,'_no_tanga','_tanga'))
+				gs 'zz_render', '', '', func('porn_view_strings','view_8_next')
 				! разработанность Светки
 				if anus <= 15 and vagina <= 15:
 					gs 'zz_render', '', '', func('porn_view_strings','view_8_tight')
@@ -163,10 +163,10 @@ if $npc['39,qwPornoFootball'] >= 10:
 	if $npc['39,qwPornoFootball'] = 10:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.gif', func('porn_view_strings', 'view_10')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.webm', func('porn_view_strings', 'view_10')
 			act '...':
 			*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.gif', func('porn_view_strings', 'view_10'+iif(horny>70,'_horny','_no_horny'))
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.webm', func('porn_view_strings', 'view_10'+iif(horny>70,'_horny','_no_horny'))
 				$npc['39,qwPornoFootball'] += 1
 				horny = 0
 				act 'Уйти': gt 'gorodok'
@@ -175,7 +175,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 11:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.gif', func('porn_view_strings', 'view_11')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.webm', func('porn_view_strings', 'view_11')
 			$npc['39,qwPornoFootball'] += 1
 			horny = 0
 			act 'Уйти': gt 'gorodok'
@@ -183,7 +183,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 12:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/5.gif', func('porn_view_strings', 'view_12')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/5.webm', func('porn_view_strings', 'view_12')
 			$npc['39,qwPornoFootball'] += 1
 			horny = 0
 			act 'Уйти': gt 'gorodok'
@@ -191,15 +191,15 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 13:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.gif', func('porn_view_strings', 'view_13')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.webm', func('porn_view_strings', 'view_13')
 			if horny>70:
 				act '...':
 					*clr & cla
 					$npc['39,qwPornoFootball'] += 1
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.gif', func('porn_view_strings', 'view_13_horny')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/4.webm', func('porn_view_strings', 'view_13_horny')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.gif', func('porn_view_strings', 'view_131_horny')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.webm', func('porn_view_strings', 'view_131_horny')
 						horny = 0
 						gs 'zz_bathroom', 'clean_me'
 						hapri = 1
@@ -207,19 +207,19 @@ if $npc['39,qwPornoFootball'] >= 10:
 					end
 				end
 			else
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.gif', func('porn_view_strings', 'view_13_no_horny')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.webm', func('porn_view_strings', 'view_13_no_horny')
 				act 'Уйти': gt 'gorodok'
 			end
 		end
 	elseif $npc['39,qwPornoFootball'] = 14:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.gif', func('porn_view_strings', 'view_14')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.webm', func('porn_view_strings', 'view_14')
 			gs 'zz_render', '', '', func('porn_view_strings', 'view_14'+iif(tanga=1,'_tanga','_no_tanga'))
 			gs 'zz_render', '', '', func('porn_view_strings', 'view_14'+iif(lobok>2,'_bush','_no_bush'))
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/5.gif', func('porn_view_strings', 'view_14_next')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/5.webm', func('porn_view_strings', 'view_14_next')
 				gs 'zz_bathroom', 'clean_me'
 				hapri = 1
 				horny = 0
@@ -231,16 +231,16 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 15:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/6.gif', func('porn_view_strings', 'view_15_prev')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/6.webm', func('porn_view_strings', 'view_15_prev')
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/13.gif', func('porn_view_strings', 'view_15_prev2')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/13.webm', func('porn_view_strings', 'view_15_prev2')
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.gif', func('porn_view_strings', 'view_15')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.webm', func('porn_view_strings', 'view_15')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/4.gif', func('porn_view_strings', 'view_15_next'+iif(vagina=0,'_virgin',iif(mesec>0,'_wdays','')))
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/4.webm', func('porn_view_strings', 'view_15_next'+iif(vagina=0,'_virgin',iif(mesec>0,'_wdays','')))
 						gs 'zz_render', '', '', func('porn_view_strings', 'view_15_fin')
 						gs 'zz_bathroom', 'clean_me'
 						hapri = 1
@@ -257,22 +257,22 @@ if $npc['39,qwPornoFootball'] >= 10:
 	if $npc['39,qwPornoFootball'] = 16:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/2.gif', func('porn_view_strings', 'view_15')
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/4.gif', func('porn_view_strings', 'view_15_next'+iif(vagina=0,'_virgin',iif(mesec>0,'_wdays','')))
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/4.webm', func('porn_view_strings', 'view_15')
+			gs 'zz_render', '', '', func('porn_view_strings', 'view_15_next'+iif(vagina=0,'_virgin',iif(mesec>0,'_wdays','')))
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/5.gif', func('porn_view_strings', 'view_16')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/5.webm', func('porn_view_strings', 'view_16')
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.gif', func('porn_view_strings', 'view_16_next')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/2.webm', func('porn_view_strings', 'view_16_next')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', '', func('porn_view_strings', 'view_16_next1'+iif(mesec>0,'_wdays',iif(vagina=0,'_virgin','')))
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/8.gif', func('porn_view_strings', 'view_16_next2')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/8.webm', func('porn_view_strings', 'view_16_next1'+iif(mesec>0,'_wdays',iif(vagina=0,'_virgin','')))
+						gs 'zz_render', '', '', func('porn_view_strings', 'view_16_next2')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', '', func('porn_view_strings', 'view_16_next3'+iif(bj=0,'_virgin',''))
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/20.gif', func('porn_view_strings', 'view_16_fin')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/20.webm', func('porn_view_strings', 'view_16_next3'+iif(bj=0,'_virgin',''))
+							gs 'zz_render', '', '', func('porn_view_strings', 'view_16_fin')
 							bj += 3
 							hj += 3
 							kuni += 1
@@ -293,9 +293,9 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 17 or $npc['39,qwPornoFootball'] = 18:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', '', func('porn_view_strings', 'view_17')
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/9.gif', func('porn_view_strings', 'view_17_next')
-			if rand(0,10) > 5: kuni += 1 &  gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.gif', func('porn_view_strings', 'view_17_next_rand')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/9.webm', func('porn_view_strings', 'view_17')
+			gs 'zz_render', '', '', func('porn_view_strings', 'view_17_next')
+			!if rand(0,10) > 5: kuni += 1 & gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.webm', func('porn_view_strings', 'view_17_next_rand')
 			gs 'zz_render', '', '', func('porn_view_strings', 'view_17_fin')
 			bj += 1
 			hj += 2
@@ -309,13 +309,13 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 19:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/10.gif', func('porn_view_strings', 'view_19')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/10.webm', func('porn_view_strings', 'view_19')
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.gif', func('porn_view_strings', 'view_191')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.webm', func('porn_view_strings', 'view_191')
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/13.gif', func('porn_view_strings', 'view_192')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/13.webm', func('porn_view_strings', 'view_192')
 					bj += 3
 					kuni += 3
 					swallow += 3
@@ -331,14 +331,14 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 20 or $npc['39,qwPornoFootball'] = 21:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/11.gif', func('porn_view_strings', 'view_20')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/11.webm', func('porn_view_strings', 'view_20')
 			if mesec > 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_20_wdays')
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.gif', func('porn_view_strings', 'view_20_end')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/7.webm', func('porn_view_strings', 'view_20_end')
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/13.gif', func('porn_view_strings', 'view_201_end')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/13.webm', func('porn_view_strings', 'view_201_end')
 					bj += 3
 					kuni += 3
 					swallow += 3
@@ -354,20 +354,20 @@ if $npc['39,qwPornoFootball'] >= 10:
 	elseif $npc['39,qwPornoFootball'] = 22:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/11.gif', func('porn_view_strings', 'view_20')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/11.webm', func('porn_view_strings', 'view_20')
 			if mesec > 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_20_wdays')
 			act '...':
 				*clr & cla
-				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/15.gif', func('porn_view_strings', 'view_22')
+				gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/15.webm', func('porn_view_strings', 'view_22')
 				if vagina > 0:
 					if mesec = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_22_no_virgin_no_wdays')
 					if tabletki = 0 and prezik = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_22_no_pills')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/3.gif', func('porn_view_strings', 'view_22_no_virgin')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/3.webm', func('porn_view_strings', 'view_22_no_virgin')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/6.gif', func('porn_view_strings', 'view_221_no_virgin')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/6.webm', func('porn_view_strings', 'view_221_no_virgin')
 							sex += 3
 							gang += 1
 							bj += 3
@@ -387,25 +387,25 @@ if $npc['39,qwPornoFootball'] >= 10:
 					act '...':
 						*clr & cla
 						if anus = 0:
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_22_virgin_first_anal')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_22_virgin_first_anal')
 							act '...':
 								*clr & cla
-								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/9.gif', func('porn_view_strings', 'view_221_virgin_first_anal')
+								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/9.webm', func('porn_view_strings', 'view_221_virgin_first_anal')
 								act '...':
 									*clr & cla
 									gs 'zz_render', '', '', func('porn_view_strings', 'view_222_virgin_first_anal')
 									act '...':
 										*clr & cla
-										gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.gif', func('porn_view_strings', 'view_223_virgin_first_anal')
+										gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.webm', func('porn_view_strings', 'view_223_virgin_first_anal')
 										act 'Уйти': gt 'gorodok'
 									end
 								end
 							end
 						else
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_22_virgin_anal')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_22_virgin_anal')
 							act '...':
 								*clr & cla
-								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.gif', func('porn_view_strings', 'view_221_virgin_anal')
+								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.webm', func('porn_view_strings', 'view_221_virgin_anal')
 								act 'Уйти': gt 'gorodok'
 							end
 						end
@@ -428,7 +428,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/9.gif', func('porn_view_strings', 'view_23')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/9.webm', func('porn_view_strings', 'view_23')
 			act '...':
 				*clr & cla
 				if agape > 0:
@@ -437,20 +437,20 @@ if $npc['39,qwPornoFootball'] >= 10:
 					act 'Уйти': gt 'gorodok'
 				else
 					if $npc['39,qwPornoFootball'] = 23:
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_23_anal')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_23_anal')
 						act '...':
 							*clr & cla
 							anal += 1
 							agape = 1
 							swallow += 2
 							if anus <= 5: anus += 1
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.gif', func('porn_view_strings', 'view_231_anal')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.webm', func('porn_view_strings', 'view_231_anal')
 							act 'Уйти': gt 'gorodok'
 						end
 					else
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/18.gif', func('porn_view_strings', 'view_24')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/18.webm', func('porn_view_strings', 'view_24')
 							act 'Уйти': gt 'gorodok'
 						end
 					end
@@ -468,20 +468,20 @@ if $npc['39,qwPornoFootball'] >= 10:
 			horny = 0
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/15.gif', func('porn_view_strings', 'view_23')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/15.webm', func('porn_view_strings', 'view_23')
 			if agape > 0:
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/16.gif', func('porn_view_strings', 'view_27_pain')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/16.webm', func('porn_view_strings', 'view_27_pain')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/6.gif', func('porn_view_strings', 'view_27')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/6.webm', func('porn_view_strings', 'view_27')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_271')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_271')
 							act '...':
 								*clr & cla
-								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.gif', func('porn_view_strings', 'view_27_rand')
+								gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.webm', func('porn_view_strings', 'view_27_rand')
 								anal += 3
 								bj += 3
 								minut += 20
@@ -496,13 +496,13 @@ if $npc['39,qwPornoFootball'] >= 10:
 			else
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_27')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_27')
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_271')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_271')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.gif', func('porn_view_strings', 'view_27_rand')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/11.webm', func('porn_view_strings', 'view_27_rand')
 							anal += 3
 							bj += 3
 							minut += 20
@@ -524,11 +524,11 @@ if $npc['39,qwPornoFootball'] >= 10:
 			horny = 0
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/6.gif', func('porn_view_strings', 'view_30')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/6.webm', func('porn_view_strings', 'view_30')
 			if mesec > 0:
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.gif', func('porn_view_strings', 'view_30_anal')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/19.webm', func('porn_view_strings', 'view_30_anal')
 					anal += 1
 					if anus <= 5: anus += 1
 					act 'Уйти': gt 'gorodok'
@@ -540,11 +540,11 @@ if $npc['39,qwPornoFootball'] >= 10:
 				if vagina > 0:
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_22_no_virgin_no_wdays')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_22_no_virgin_no_wdays')
 						if tabletki = 0 and prezik = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_22_no_pills')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/9.gif', func('porn_view_strings', 'view_30_sex')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/9.webm', func('porn_view_strings', 'view_30_sex')
 							cla
 							act 'Уйти': gt 'gorodok'
 						end
@@ -553,10 +553,10 @@ if $npc['39,qwPornoFootball'] >= 10:
 				else
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/9.gif', func('porn_view_strings', 'view_30_first_sex')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/9.webm', func('porn_view_strings', 'view_30_first_sex')
 						act '...':
 							*clr & cla
-							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/10.gif', func('porn_view_strings', 'view_301_first_sex')
+							gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/10.webm', func('porn_view_strings', 'view_301_first_sex')
 							vagina += 1
 							vgape = 2
 							act 'Уйти': gt 'gorodok'
@@ -572,13 +572,13 @@ if $npc['39,qwPornoFootball'] >= 10:
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/21.gif', func('porn_view_strings', 'view_31')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/21.webm', func('porn_view_strings', 'view_31')
 			if vgape > 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_31_vpain')
 			if mesec > 0 or vgape > 0:
 				if anus = 0:
 					act '...':
 						*clr & cla
-						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.gif', func('porn_view_strings', 'view_31_first_anal')
+						gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/8.webm', func('porn_view_strings', 'view_31_first_anal')
 						gs 'zz_render', '', '', func('porn_view_strings', 'view_22_virgin_first_anal')
 						if anus = 0: agape = 2
 						anal += 1
@@ -597,7 +597,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			else
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/10.gif', func('porn_view_strings', 'view_31_sex')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/10.webm', func('porn_view_strings', 'view_31_sex')
 					gs 'zz_render', '', '', func('porn_view_strings', 'view_22_no_pills')
 					gs 'porn_view_construct', 'vaginal'
 					if vagina < 10: vagina += 1
@@ -631,7 +631,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 	if $npc['39,qwPornoFootball'] = 36:
 		act '...':
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/8.gif', func('porn_view_strings', 'view_36')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/8.webm', func('porn_view_strings', 'view_36')
 			act '...':
 				*clr & cla
 				gs 'porn_view_construct', iif(mesec > 0,'wdays','dp')
@@ -650,7 +650,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			gang += 1
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/18.gif', func('porn_view_strings', 'view_40')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_1/18.webm', func('porn_view_strings', 'view_40')
 			if mesec > 0:
 				act '...':
 					*clr & cla
@@ -660,7 +660,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			else
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/4.gif', func('porn_view_strings', 'view_37')
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/4.webm', func('porn_view_strings', 'view_37')
 					gs 'zz_render', '', '', func('porn_view_strings', 'view_37'+iif(vagina<30,'_no_more','_more'))
 					gs 'zz_render', '', '', func('porn_view_strings', 'view_37_next')
 					act '...':
@@ -682,7 +682,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/5.gif', func('porn_view_strings', 'view_40')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/5.webm', func('porn_view_strings', 'view_40')
 			if mesec > 0:
 				act '...':
 					*clr & cla
@@ -692,7 +692,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			else
 				act '...':
 					*clr & cla
-					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/10.gif', func('porn_view_strings', 'view_36_dp0')+func('porn_view_strings', 'view_36_dp'+iif(vagina>=30,2,1))
+					gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/10.webm', func('porn_view_strings', 'view_36_dp0')+func('porn_view_strings', 'view_36_dp'+iif(vagina>=30,2,1))
 					if tabletki = 0 and prezik = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_cum_in_mind'+rand(0,2))
 					gs 'zz_render', '', '', func('porn_view_strings', 'view_36_fin')
 					anal += 1
@@ -712,7 +712,7 @@ if $npc['39,qwPornoFootball'] >= 10:
 			gs 'zz_bathroom', 'clean_me'
 			hapri = 1
 			*clr & cla
-			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/6.gif', func('porn_view_strings', 'view_40')
+			gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_3/6.webm', func('porn_view_strings', 'view_40')
 			gs 'zz_render', '', '', func('porn_view_strings', 'view_41')
 			if mesec > 0:
 				act '...':

@@ -21,73 +21,40 @@ lipkoef -= 1
 !!!!!!!!!!!!
 !!!РАБОТЫ!!!
 !!!!!!!!!!!!
-if isprok = 1: isprok = 0 & 'Вы выкинули использованный тампон.'
+if isprok = 1: isprok = 0 & gs 'zz_render','','','Вы выкинули использованный тампон.'
 !ЦИКЛ 28 дней, 4 дня ментсруация
-if preg = 0:
+if pregnancy = 0:
 	if mesec > 0:mesec -= 1
 	if mesec = 0:cikl += 1
-	if cikl >= 23 and preg ! 1:mesec = 4 & cikl = 0
-	if mesec > 0 and tampon > 0 and cheatTampon = 1:
+	if cikl >= 23 and pregnancy = 0: mesec = 4 & cikl = 0
+	if mesec > 0 and tampon > 0 and $settings['autotampon'] = 1:
 		isprok = 1
 		tampon -= 1
 	end
-elseif preg = 1 and pregtime < 280:
-	pregtime += 1
-	if pregTimes = 0:pregTimes = 1
-elseif preg = 1 and pregtime = 280 and hourpreg ! hour:
-	hourpreg = hour
-	'<center><b>Резко толкнуло в живот и что-то потекло по ногам. Черт, у вас отошли воды! Надо срочно в поликлинику!</b></center>'
-elseif preg = 1 and pregtime > 280:
-	*clr & cla
-	'<center><b>Страшная боль пронзила вас внизу живота</b></center>'
-	xgt 'gameover',3
-	exit
+else
+	if pregnancy < 280:
+		pregnancy += 1
+		if pregTimes = 0: pregTimes = 1
+	elseif pregnancy = 280:
+		gs 'zz_render','','','<red>Резко толкнуло в живот и что-то потекло по ногам. Черт, у вас отошли воды! Надо срочно в поликлинику!</red>'
+	else
+		*clr & cla
+		gs 'zz_render','','','<red>Страшная боль пронзила вас внизу живота.</red>'
+		xgt 'gameover',3
+		exit
+	end
 end
 if vagina = 0:
-	razeba = 0
-	if horny > 0 and horny <= 50:horny -= 10
-	if horny > 50:horny -= 25
+	horny -= horny/5 + 1
 elseif vagina > 0:
 	if pregTimes = 0:
-		if age < 18:
-			razeba = 1
-			if horny > 0 and horny <= 50:horny -= 5
-			if horny > 50 and horny < 80:horny -= 10
-			if horny >= 80:horny -= 20
-		elseif age >= 18 and age < 21:
-			razeba = 2
-			if horny > 0 and horny <= 50:horny -= 1
-			if horny > 50 and horny < 80:horny -= 5
-			if horny >= 80:horny -= 10
-		elseif age >= 21 and age < 25:
-			razeba = 3
-			if horny > 0 and horny <= 50:horny += 1
-			if horny > 50 and horny < 80:horny -= 1
-			if horny >= 80:horny -= 5
-		elseif age >= 25 and age < 30:
-			razeba = 4
-			if horny > 0 and horny <= 50:horny += 5
-			if horny > 50 and horny < 80:horny += 1
-			if horny >= 80:horny -= 5
-		elseif age >= 30:
-			razeba = 5
-			if horny > 0 and horny <= 50:horny += 10
-			if horny > 50 and horny < 80:horny += 5
-			if horny >= 80:horny += 1
-		end
+		horny -= horny/(iif(age < 18,5,8))
 	else
-		if preg <= 0:
-			razeba = 5
-			if horny > 0 and horny <= 50:horny += 10
-			if horny > 50 and horny < 80:horny += 5
-			if horny >= 80:horny += 1
-		else
-			razeba = 6
-			if horny < 100:horny += (pregtime/10)
-		end
+		horny += iif(pregnancy = 0,10 - horny/10,pregnancy/10)
 	end
 end
 if horny < 0: horny = 0
+if horny > 100: horny = 100
 ! Обработка веса
 if body['day_weight'] >= 3:
 	! набор 3 ед. за день - прирост веса

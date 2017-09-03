@@ -466,7 +466,7 @@ if $args[0] = 'gang_1':
 						act'Лечь на спину': gt 'belyi_events','gang_2'
 					else
 						gs 'zz_render', '', '', 'Внезапно вас отрывают от отсоса и <<$boy>> ставит вас раком'
-						act'Встать раком':  gt 'belyi_events','gang_3'
+						act'Встать раком': gt 'belyi_events','gang_3'
 					end
 				end
 			end

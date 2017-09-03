@@ -21,7 +21,6 @@ if shantpopala > 0:
 	gs 'zz_funcs', 'cum', 'face'
 	cumfrot += 1
 	gs 'zz_funcs', 'cum', 'anus'
-	fingal += 1
 	guy += 2
 	rape += 1
 	sex += 1
@@ -46,9 +45,8 @@ if workDolgDay <= 0 and workDolg > 0:
 		act 'Уйти':gt $curloc
 		exit
 	else
-		if money+stolmoney+karta >= workDolg:
-			money += stolmoney + karta
-			stolmoney = 0
+		if money + karta >= workDolg:
+			money += karta
 			karta = 0
 			money -= workDolg
 			workDolg = 0
@@ -56,8 +54,7 @@ if workDolgDay <= 0 and workDolg > 0:
 			act 'Уйти':gt'korr'
 			exit
 		else
-			money += stolmoney + karta
-			stolmoney = 0
+			money += karta
 			karta = 0
 			workDolg -= money
 			money = 0
@@ -115,7 +112,7 @@ if hour >= 8 and hour <= 14 and week ! 1: gs 'zz_render', '', '','В 20-ти м�
 if hour >= 11 and hour < 12 and week > 1 and week < 5 and workKafe = 1: gs 'zz_render', '', '','Вы можете выйти на рабочую смену в <a href="exec:GT ''kafe'',''work''">Кафе</a>'
 if hour >= 12 and hour <= 22 and week ! 1: gs 'zz_render', '', '','Неподалеку находится <a href="exec:GT ''kafe'',''start''">Кафе</a>.'
 if clener > 1 and hour >= 7 and hour <= 22 or clener <= 1 and hour >= 8 and hour <= 17: gs 'zz_render', '', '','Немного дальше расположено <a href="exec:GT ''south_office'',''start''">офисное здание</a>, в котором есть небольшое швейное ателье.'
-gs 'zz_render', '', '','В 20 минутах ходьбы расположен большой <a href="exec: minut += 20 & gt ''zz_park''">Парк Победы</a>, соединяющий все части города.<br>Единственное <a href="exec:minut += 60 & GT ''lake''">озеро</a> в городе находится на окраине в часе ходьбы<br>Круглосуточная <a href="exec:GT ''apteka'',''start''">Аптека</a>'
+gs 'zz_render', '', '','В 20 минутах ходьбы расположен большой <a href="exec: minut += 20 & gt ''zz_park''">Парк Победы</a>, соединяющий все части города.<br>Единственное <a href="exec:minut += 60 & GT ''lake''">озеро</a> в городе находится на окраине в часе ходьбы<br><a href="exec:GT ''apteka''">Аптека</a>'
 if katkey = 1: gs 'zz_render', '', '','Квартира <a href="exec:gt''katspalnya'',''start''">Кати</a>'
 if $npc['44,qwIrina'] >= 1: gs 'zz_render', '', '','Дом в котором расположена квартира <a href="exec:GT ''IrinaRoom'',''start''">Ирины</a>'
 if klofQW >= 2: gs 'zz_render', '', '','Квартира <a href="exec:GT ''klofdomhouse'',''start''">Жоры</a>'

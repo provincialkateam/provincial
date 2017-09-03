@@ -38,12 +38,12 @@
 	!16.00-1.00 - спецклиенты
 	!------------------------
 	!спит
-    $npc['47,sleep'] = 0
-    !душ
-    $npc['47,bath'] = 0
-    !еда
-    $npc['47,eat'] = 0
-    !зарядка
+	$npc['47,sleep'] = 0
+	!душ
+	$npc['47,bath'] = 0
+	!еда
+	$npc['47,eat'] = 0
+	!зарядка
 	$npc['47,exercise'] = 0
 	!универ
 	$npc['47,university'] = 0
@@ -61,7 +61,7 @@
 		if hour = 7 and minut > 30: $npc['47,bath'] = 1
 		if hour = 8 and minut <= 30: $npc['47,eat'] = 1
 		if hour >= 8 and minut > 30 and hour < 16: $npc['47,university'] = 1
-		if hour = 16 and hour = 20:  $npc['47,room'] = 1
+		if hour = 16 and hour = 20: $npc['47,room'] = 1
 		if hour >= 17 and hour < 20: $npc['47,nps'] = 1
 		if hour >= 21: $npc['47,bordello'] = 1
 	elseif week = 5:
@@ -70,7 +70,7 @@
 		if hour = 7 and minut > 30: $npc['47,bath'] = 1
 		if hour = 8 and minut <= 30: $npc['47,eat'] = 1
 		if hour >= 8 and minut > 30 and hour < 14: $npc['47,university'] = 1
-		if hour = 14 and hour <= 16 and hour = 19:  $npc['47,room'] = 1
+		if hour = 14 and hour <= 16 and hour = 19: $npc['47,room'] = 1
 		if hour >= 16 and hour < 19: $npc['47,nps'] = 1
 		if hour >= 20: $npc['47,bordello'] = 1
 	elseif week = 6:
@@ -78,7 +78,7 @@
 		if hour = 9 and hour < 14: $npc['47,sleep'] = 1
 		if hour = 14 and minut <= 30: $npc['47,bath'] = 1
 		if hour = 14 and minut > 30: $npc['47,eat'] = 1
-		if hour = 15 and hour = 19:  $npc['47,room'] = 1
+		if hour = 15 and hour = 19: $npc['47,room'] = 1
 		if hour >= 16 and hour < 19: $npc['47,nps'] = 1
 		if hour >= 20: $npc['47,bordello'] = 1
 	else

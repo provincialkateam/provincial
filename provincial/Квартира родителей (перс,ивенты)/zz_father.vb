@@ -11,7 +11,7 @@
 	if $father['location'] = 'sitrPar':
 		if father['payday'] ! day: gs 'zz_father', 'request_money'
 		gs 'zz_father', 'watch_tv'
-		if hour = 17:
+		if hour = 16 or hour = 17:
 			if $npc['35,qwOtchim'] >= 2: gs 'zz_father', 'check_clothing'
 			gs 'zz_father', 'seduce'
 		end
@@ -142,7 +142,7 @@ if $args[0] = 'check_tattoo':
 	end
 end
 if $args[0] = 'check_pregnant':
-	if (current_clothing = 0 and pregtime > 90) or (current_clothing > 0 and pregtime > 150):
+	if (current_clothing = 0 and pregnancy > 90) or (current_clothing > 0 and pregnancy > 150):
 		gs 'zz_render','','','Отчим удивлённо смотрит на ваш животик: <do>- <<$name[2]>>, ты залетела что ли? ' + iif($npc['35,sex'] = 1,'Не от меня, надеюсь?','') + '</do>'
 		father['pregnant_talk'] = 1
 	end
@@ -301,12 +301,12 @@ if $args[0] = 'molest_act':
 				minut += 5
 				gs 'stat'
 				gs 'zz_render','','images/qwest/alter/father/fatherim28.jpg','Не в силах удержаться, вы смотрите на его топорщащийся сквозь штаны член, и, не отдавая себе отчёт в своих действиях, непроизвольно начинаете одной рукой мять свою грудь.'
-				if $npc['35,relation']  < 60:
+				if $npc['35,relation'] < 60:
 					horny -= 10
 					gs 'npc_editor','change_rep','-', 35
 					father['talk_count'] = father['talk_max_count']
 					gs 'zz_render','','','И не стыдно тебе, <<name[1]>>? Брысь с глаз моих, а то еще ремня заработаешь!'
-				elseif $npc['35,relation']  >= 60 and $npc['35,relation']  < 80:
+				elseif $npc['35,relation'] >= 60 and $npc['35,relation'] < 80:
 					horny -= 5
 					father['horny'] += rand(1,5)
 					gs 'zz_render','','','Отчим явно смущён и удивлён вашей выходкой. Его красноречивое "Кхе-кхе" приводит вас в чувство и вам становится неловко из-за своего поведения.'
@@ -326,7 +326,7 @@ if $args[0] = 'molest_act':
 			minut += 5
 			horny += RAND(1,5)
 			gs 'zz_render','','','Вы, как бы случайно, чуть-чуть раздвигаете ножки во время разговора, открывая ему взор на свою промежность.'
-			if $npc['35,relation']  < 60:
+			if $npc['35,relation'] < 60:
 				horny -= 10
 				father['talk_count'] = father['talk_max_count']
 				if tanga = 1:
@@ -336,7 +336,7 @@ if $args[0] = 'molest_act':
 					gs 'npc_editor','change_rep','-', 35, 10
 					gs 'zz_render','','images/qwest/alter/father/fatherim24.jpg','Глаза отчима лезут на лоб когда он осознает увиденное. На вас нет трусиков, и он видит вашу нежную молодую писю. <do>- <<$name[1]>>, немедленно иди одень трусы.</do> - гневно говорит он.'
 				end
-			elseif $npc['35,relation']  >= 60 and $npc['35,relation']  < 80:
+			elseif $npc['35,relation'] >= 60 and $npc['35,relation'] < 80:
 				horny -= 5
 				if tanga = 1:
 					gs 'npc_editor','change_rep','-', 35
@@ -365,7 +365,7 @@ if $args[0] = 'molest_act':
 			act 'Уронить деталь':
 				*clr & cla
 				minut += 5
-				horny += RAND(1,5)
+				horny += RAND(5,10)
 				gs 'stat'
 				gs 'zz_render','','images/nigma/gor/father/gar/father.gar.pre'+rand(0,5)+'.jpg','Повинуясь сиюминутному порыву, вы с вскриком "Ой!" как-бы случайно роняете деталь и наклоняетесь, чтоб поднять её, при этом не сгибая ног в коленях, что предоставляет вашему отчиму отличный обзор вашей попки.'
 				act '...':
@@ -462,8 +462,8 @@ if $args[0] = 'request_money':
 	end
 end
 if $args[0] = 'cum_reaction':
-	if $npc['35,sex']  = 0:
-		$npc['35,relation']  = 0
+	if $npc['35,sex'] = 0:
+		$npc['35,relation'] = 0
 		gs 'zz_render','','','Отчим глядит на вас гневным взором: на вас заметна сперма.<br>- Ах ты, шлюха малолетняя, это что такое на тебе? Всем говорю, что дочь приличная, а она ебётся где-то с кем попало! Блядина! Пошла отсюда, не попадайся мне на глаза!'
 	else
 		gs 'zz_render','','','Отчим глядит на вас суровым взором: на вас заметна сперма.<br>- <<$name[1]>>, я конечно всё понимаю, но не могла бы ты убирать художества своих хахалей, а не таскаться, хвастаясь этими "орденами", что они на тебя понавешали? Быстро приведи себя в порядок, пока мать не увидела!'
@@ -476,18 +476,18 @@ if $args[0] = 'watch_tv':
 		manna += RAND(10,20)
 		gs 'stat'
 		gs 'zz_render','','images/pics/telek.jpg',''
-		if $npc['35,relation']  < 20: gs 'zz_father', 'watch_tv_act', 0
-		if $npc['35,relation']  >= 20 and $npc['35,relation']  < 40: gs 'zz_father', 'watch_tv_act', 1
-		if $npc['35,relation']  >= 40: gs 'zz_father', 'watch_tv_act', iif(vnesh < 40,2,3)
+		if $npc['35,relation'] < 20: gs 'zz_father', 'watch_tv_act', 0
+		if $npc['35,relation'] >= 20 and $npc['35,relation'] < 40: gs 'zz_father', 'watch_tv_act', 1
+		if $npc['35,relation'] >= 40: gs 'zz_father', 'watch_tv_act', iif(vnesh < 40,2,3)
 		act '<B>Далее</B>': gt $loc, $metka
 	end
 end
 if $args[0] = 'seduce':
-	if $npc['35,qwOtchim'] >= 5 and father['dadqw_day'] ! day and $npc['35,relation']  >= 80:
-		if hour = 16 or hour = 17 and ($npc['35,sex']  = 1 or (father['touched'] = 1 and horny >= 60)):
+	if $npc['35,qwOtchim'] >= 5 and father['dadqw_day'] ! day and $npc['35,relation'] >= 80:
+		if hour = 16 or hour = 17 and ($npc['35,sex'] = 1 or (father['touched'] = 1 and horny >= 60)):
 			act 'Соблазнить':
 				*clr & cla
-				$npc['35,sex']  = 1
+				$npc['35,sex'] = 1
 				father['dadqw_day'] = day
 				gs 'npc_editor','change_rep','+', 35, 10
 				minut += 30
@@ -693,7 +693,7 @@ if $args[0] = 'check_clothing':
 			else
 				cloth_remember[] = current_clothing
 				gs 'zz_render','','','Вы, кокетливо улыбнувшись отчиму, просите оценить ваш наряд.'
-				if $npc['35,qwOtchim'] < 3 or $npc['35,relation']  < 60:
+				if $npc['35,qwOtchim'] < 3 or $npc['35,relation'] < 60:
 					cla
 					father['horny'] += RAND(1,5)
 					gs 'zz_render','','','Вы, покрутившись на месте, даёте ему оглядеть себя со всех сторон, после чего с удовлетворённым видом уходите.'
@@ -793,7 +793,7 @@ if $args[0] = 'touch_cloth':
 end
 if $args[0] = 'drunk':
 	act '<B>Отойти</B>': gt 'gargazel'
-	if $npc['35,relation']  < 20:
+	if $npc['35,relation'] < 20:
 		gs 'zz_father','drunk_act',0
 	elseif $npc['35,relation'] >= 20 and $npc['35,relation'] < 40:
 		gs 'zz_father','drunk_act',1
@@ -829,14 +829,14 @@ if $args[0] = 'drunk_act':
 		$_str[2] = 'как дядя Миша и отчим уважают друг друга.'
 		'Вы присаживаетесь за импровизированный столик из двух покрышек и доски. Целый час вы слушаете ' + $_str[rand(0,2)]
 		killvar '$_str'
-		if gorslut >= 3 and $npc['42,qwDyadyaMisha'] >= 1 and dmishaday ! day and father['dadqw_day'] ! day:
+		if func('zz_reputation','get') >= 3 and $npc['42,qwDyadyaMisha'] >= 1 and dmishaday ! day and father['dadqw_day'] ! day:
 			*clr & cla
 			gs 'zz_render','','qwest/alter/father'
 			'Дядя Миша всё время пялился на вас. И вдруг он поворачивается в вашему отчиму:'
 			'- Слышь, Вован, а ты ваще в курсе, что твоя <<$name[2]>> - <<$gnikname>>?'
 			'Отчим: - Чё, блять?! Ты чё несешь, урил старый?'
 			'- Да Вован: я тут слышал краем уха, что пиздюшня беспонтовая, по которой малолетка плачет, ебёт её как ей вздумается.'
-			if $npc['35,sex']  = 0:
+			if $npc['35,sex'] = 0:
 				'- Это что, правда, <<$name[1]>>? - грозно глянул на вас отчим.'
 				'Вы замялись, и заерзали на стуле. Щёки вспыхнули, залив вас румянцем. "Ну...Я...Это..." - начали было вы...'
 				'Отчим протрезвел даже: - Ах, ты, дрянь такая! Мы с матерью стараемся сделать из тебя человека, а ты?!'

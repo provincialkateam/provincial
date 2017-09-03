@@ -300,7 +300,7 @@ gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex78.jpg', func('placer_
 							$din_dush_text='Приняв душ, и тщательно вымыв все свои дырочки. Вы стали собиратся. Выйдя из душа и поцеловав парней на прощанье.'
 							dynamic $din_dush
 							if Flag_tanga = 1: tanga = 1
-							Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+							Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 						end
 					end
 				end
@@ -342,7 +342,7 @@ gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex67.jpg', func('placer_
 						if horny < 100:
 							*clr & cla
 							gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex72.jpg', func('placer_sex_strings', 'local_str46')
-							Act 'Убежать': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+							Act 'Убежать': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 						elseif vagina > 10 and horny >= 100:
 							*clr & cla
 							gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex73.jpg', func('placer_sex_strings', 'local_str47')
@@ -371,7 +371,7 @@ gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex67.jpg', func('placer_
 											$din_dush_text='Приняв душ, и тщательно вымыв все свои дырочки. Вы стали собиратся. Выйдя из душа и поцеловав парней на прощанье.'
 											dynamic $din_dush
 											if Flag_tanga = 1: tanga = 1
-											Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+											Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 										end
 									end
 								end
@@ -430,7 +430,7 @@ $din_play_game = {
 	gs 'zz_render', '', 'images/qwest/alter/Ev/otel4.jpg', func('placer_sex_strings', 'local_str61')
 	Act 'В карты': dynamic $din_play_card
 	Act 'В твистер': dynamic $din_play_twister
-	Act 'Пойти домой':  dynamic $din_room_rape
+	Act 'Пойти домой': dynamic $din_room_rape
 }
 $din_stay_in_bed = {
 	if rand(1,2) = 1:
@@ -472,7 +472,7 @@ $din_stay_in_bed = {
 									$din_dush_text='Приняв душ, и тщательно вымыв все свои дырочки. Вы стали собиратся.'
 									dynamic $din_dush
 									if Flag_tanga = 1: tanga = 1
-									Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+									Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 								end
 							end
 						end
@@ -530,7 +530,7 @@ $din_stay_in_bed = {
 									$din_dush_text='Приняв душ, и тщательно вымыв все свои дырочки. Вы стали собиратся. Выйдя из душа и поцеловав парней на прощанье.'
 									dynamic $din_dush
 									if Flag_tanga = 1: tanga = 1
-									Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+									Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 								end
 							end
 						end
@@ -547,7 +547,7 @@ $din_sleep_sex = {
  Act 'Далее':
  *clr & cla
  '<center><img src="images/qwest/alter/parc_ev/placer_sex84.jpg"></center>'
- 'Этот страдающий «бессонницей» подошел к вам  стянул одеяло и задрал маячку, оголив сиськи. Вы задумались, что делать дальше, или дальше притворятся спящей, или «проснуться» и выгнать нахала к чертям?'
+ 'Этот страдающий «бессонницей» подошел к вам стянул одеяло и задрал маячку, оголив сиськи. Вы задумались, что делать дальше, или дальше притворятся спящей, или «проснуться» и выгнать нахала к чертям?'
 	Act '"Проснуться"':
 		*clr & cla
 		gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex85.jpg', func('placer_sex_strings', 'local_str75')
@@ -645,7 +645,7 @@ gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex40.gif', func('placer_
 								gs'stat'
 								gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex46.jpg', func('placer_sex_strings', 'local_str90')
 								if Flag_tanga = 1: tanga = 1
-								Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+								Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 							end
 						end
 					end
@@ -755,7 +755,7 @@ $din_drink_vodca2 = {
 												Act 'Остаться с парнями': dynamic $din_stay_the_night
 											end
 											if Flag_tanga = 1: tanga = 1
-											Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+											Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 										end
 									end
 								end
@@ -767,7 +767,7 @@ $din_drink_vodca2 = {
 		end
 	end
 }
-$din_dush  = {
+$din_dush = {
 	*clr & cla
 	gs 'zz_bathroom', 'clean_me'
 	minut += 15
@@ -886,10 +886,10 @@ $din_drink_vodca = {
 																		*clr & cla
 																		gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex20.jpg', func('placer_sex_strings', 'local_str124')
 																		act 'Сходить в душ':
-																			$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы  доползли до душа, вымыли свои дырочки. кое-как собрались, и пошли домой. '
+																			$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы доползли до душа, вымыли свои дырочки. кое-как собрались, и пошли домой. '
 																			dynamic $din_dush
 																			if Flag_tanga = 1: tanga = 1
-																			Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+																			Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 																		end
 																	end
 																end
@@ -914,10 +914,10 @@ $din_drink_vodca = {
 																		gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex15.gif', func('placer_sex_strings', 'local_str127')
 																		gs 'zz_funcs', 'cum', 'pussy'
 																		act 'Сходить в душ':
-																			$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы  доползли до душа, помылись. кое-как собрались, и пошли домой. '
+																			$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы доползли до душа, помылись. кое-как собрались, и пошли домой. '
 																			dynamic $din_dush
 																			if Flag_tanga = 1: tanga = 1
-																			Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+																			Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 																		end
 																	end
 																end
@@ -947,10 +947,10 @@ $din_drink_vodca = {
 																*clr & cla
 																gs 'zz_render', '', 'images/qwest/alter/parc_ev/placer_sex20.jpg', func('placer_sex_strings', 'local_str130')
 																act 'Сходить в душ':
-																	$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы  доползли до душа, вымыли свои дырочки. кое-как собрались, и пошли домой. '
+																	$din_dush_text='"Я в душ, и домой", - парни только обессилено кивнули. На трясущихся ногах вы доползли до душа, вымыли свои дырочки. кое-как собрались, и пошли домой. '
 																	dynamic $din_dush
 																	if Flag_tanga = 1: tanga = 1
-																	Act 'Собраться и пойти домой': nude = 0  & minut += 10 & gs'stat' & gt'gorodok'
+																	Act 'Собраться и пойти домой': nude = 0 & minut += 10 & gs'stat' & gt'gorodok'
 																end
 															end
 														end
@@ -1004,7 +1004,7 @@ $din_drink_vodca = {
 	act 'Отказатся': dynamic $din_play_game
 }
 $din_sleep = {
-	if disable_autosave = 0: SAVEGAME 'autosave.sav'
+	if disable_autosave = 0: SAVEGAME '10.sav'
 	*clr & cla
 	notathomesleep += 1
 	health += 5
@@ -1073,22 +1073,9 @@ else
 		end
 		if ciklkm > 0:'Затем место между ваших ног занял следующий парень.'
 		if ciklkm > 0 and cumbelly >= 5:cumbelly -= 4 & cumfrot += 4 & 'Один из парней начал возмущаться "Бля, пацаны, вы чо как эту шалаву заструхали? К ей же подойти стремно! Короче дайте ее шмотки, я хоть ей пиздень протру" Вы почувствовали как вам вытирают живот и натруженное влагалище какой-то тканью.'
-		gs'stat'
-		if ciklkm > 0:jump'markdormrape'
-		if RAND(0,1) = 0:
-			gs 'zz_render', '', '', func('placer_sex_strings', 'local_str140')
-			act 'Уйти': podvalrape = 0 & dormrape = 0 & gt'gorodok'
-		else
-			act 'Очухаться':
-				cla
-				*clr & cla
-				minut += 5
-				body_write = 5
-				face_write = 1
-				gs 'stat'
-				gs 'zz_render', '', 'images/qwest/alter/placer/podvalwrite'+RAND(1,6)+'.jpg', func('placer_sex_strings', 'local_str141')
-				act 'Уйти':podvalrape = 0 & dormrape = 0 & gt'gorodok'
-			end
-		end
+		gs 'stat'
+		if ciklkm > 0: jump'markdormrape'
+		gs 'zz_render', '', '', func('placer_sex_strings', 'local_str140')
+		act 'Уйти': podvalrape = 0 & dormrape = 0 & gt'gorodok'
 	end
 end

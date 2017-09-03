@@ -269,8 +269,7 @@ if $ARGS[0] = 'start':
 end
 if $ARGS[0] = 'pivas':
 	minut += 30
-	gs'stat'
-	'<center><b>ДВОР У ДОМА</b></center>'
+	gs 'stat'
 	gs 'zz_render', '', 'images/pic/dvor.jpg', func('gopnew_strings', 'local_str43')
 	if cumface > 0 or cumlip > 0 or cumfrot > 0:
 		gs 'zz_render', '', '', func('gopnew_strings', 'local_str44')
@@ -483,8 +482,8 @@ end
 if $ARGS[0] = 'dolg':
 	minut += 3
 	loh += 1
-	gopdolg = money+stolmoney+karta+10000
-	gopdaydolg = daystart+10
+	gopdolg = money + karta + 10000
+	gopdaydolg = daystart + 10
 	gs 'zz_render', '', '', func('gopnew_strings', 'local_str79')
 	act 'Уйти':gt'street'
 	act 'Ребят, это слишком много, у меня нет таких денег':

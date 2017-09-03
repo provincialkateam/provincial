@@ -5,16 +5,16 @@ if $args[0] = '21': $result = '- Я на такое не согласна, пр�
 if $args[0] = '22': $result = '- "Конечно милый!", и озвучиваете ему цену на услуги:'
 if $args[0] = '23': $result = ' — Так как ты мне понравился, для тебя все услуги по спец цене:'
 if $args[0] = '24': $result = ' — Отсосу за <<whore_money_bjsex>>р, дам в пизду за <<whore_money_clsex>>р, в зад <<whore_money_analsex>>р, а все сразу дешевле: <<whore_money_allsex>>р. Если ты с друзьями, то я возьму <<whore_money_groupsex>> руб.'
-if $args[0] = '25': $result = 'Клиент отвечает:  — <<$rnd_client_text>>, <<$rnd_client_torgtext>>' & total_money -= 100
-if $args[0] = '26': $result = 'Клиент отвечает:  — <<$rnd_client_text>>!'
-if $args[0] = '27': $result = 'Клиент отвечает:  — <<$rnd_client_text>>, <<$rnd_client_torgtext2>>' & total_money -= 50
-if $args[0] = '28': $result = 'Клиент отвечает:  — <<$rnd_client_text>>!'
-if $args[0] = '29': $result = 'Клиент отвечает:  — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money>> руб <<$rnd_client_torgtext4>>'
-if $args[0] = '30': $result = 'Клиент отвечает:  — <<$rnd_client_text>>!'
-if $args[0] = '31': $result = 'Клиент отвечает:  — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money2>> руб <<$rnd_client_torgtext4>>'
-if $args[0] = '32': $result = 'Клиент отвечает:  — <<$rnd_client_text>>!'
-if $args[0] = '33': $result = 'Клиент отвечает:  — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money3>> руб <<$rnd_client_torgtext4>>'
-if $args[0] = '34': $result = 'Клиент отвечает:  — <<$rnd_client_text>>!'
+if $args[0] = '25': $result = 'Клиент отвечает: — <<$rnd_client_text>>, <<$rnd_client_torgtext>>' & total_money -= 100
+if $args[0] = '26': $result = 'Клиент отвечает: — <<$rnd_client_text>>!'
+if $args[0] = '27': $result = 'Клиент отвечает: — <<$rnd_client_text>>, <<$rnd_client_torgtext2>>' & total_money -= 50
+if $args[0] = '28': $result = 'Клиент отвечает: — <<$rnd_client_text>>!'
+if $args[0] = '29': $result = 'Клиент отвечает: — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money>> руб <<$rnd_client_torgtext4>>'
+if $args[0] = '30': $result = 'Клиент отвечает: — <<$rnd_client_text>>!'
+if $args[0] = '31': $result = 'Клиент отвечает: — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money2>> руб <<$rnd_client_torgtext4>>'
+if $args[0] = '32': $result = 'Клиент отвечает: — <<$rnd_client_text>>!'
+if $args[0] = '33': $result = 'Клиент отвечает: — <<$rnd_client_text>>, <<$rnd_client_torgtext3>>, <<$rnd_client_torgtext5>> <<rnd_client_money3>> руб <<$rnd_client_torgtext4>>'
+if $args[0] = '34': $result = 'Клиент отвечает: — <<$rnd_client_text>>!'
 if $args[0] = '35': $result = '<<$rnd_clint_torg>>'
 if $args[0] = '36': $result = '- "Да тут такое дело, знакомые адресок подкинули, сказали тут красивая девочка живет, можно душой и телом отдохнуть.", не громко пробубнил мужик.'
 if $args[0] = '37': $result = '- "Да что же это за наглость то такая?, это вообще нормально такое тут мне говорить?", громко выражаете свое недовольство.'

@@ -17,7 +17,7 @@
 		if shampoo <= 0 and $loc = 'skk':gs 'zz_render', '','','<b>У вас нет шампуня.</b>'
 	elseif $loc = 'korr':
 		! квартира Южн.рн.
-		gs 'zz_render', 'Ванна','common/interior/bathroom/bath'+iif(my_house = 1,'',remvanr)+'.jpg',iif(remvanr = 0 and my_house = 2,'В этой ванне явно помыться не получится.', '')
+		gs 'zz_render', 'Ванная','common/interior/bathroom/bath'+iif(my_house = 1,'',remvanr)+'.jpg',iif(remvanr = 0 and my_house = 2,'В этой ванне явно помыться не получится.', '')
 	end
 	gs 'zz_render', '','',''+iif($loc = 'korr' and my_house = 2 and remvanr = 0,'Судя по оставшемуся контуру, на этом месте висело зеркало.','Над раковиной висит <a href="exec: gt ''mirror'',''start'',''bath''">зеркало</a>.')
 	if prev_clothing > 2: gs 'zz_render', '','','Рядом с раковиной акуратно сложена ваша <a href="exec: gs ''zz_bathroom'',''dress_after_shower''">одежда</a>'
@@ -33,6 +33,7 @@
 			vanr_lock = iif(vanr_lock = 0, 1, 0)
 			gt 'zz_bathroom'
 		end
+		if $npc['38,qwKolka'] >= 5 and week <= 5 and hour = 6 and tanga = 1 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event5sub'
 	end
 	act 'Выйти из комнаты':
 		if current_clothing > 2 or ((current_clothing = 0 and shameless['flag'] >= 2) or (current_clothing > 0 and shameless['flag'] >= 1)) and ($loc = 'korrPar' or $loc = 'kat_apartment' or $loc = 'korr'):
@@ -137,14 +138,13 @@
 			mop = 1
 			cumlip = 0
 			cumface = 0
-			face_write = 0
 			sweat -= 1
 			gs 'stat'
 			gs 'zz_render', '', 'pic/facesp.jpg','Вы тщательно умыли лицо и смыли косметику.'
 			act 'Далее': gt 'zz_bathroom', 'start'
 		end
 	end
-	if tampon > 0 and mesec > 0 and isprok = 0 and cheatTampon = 0:
+	if tampon > 0 and mesec > 0 and isprok = 0 and $settings['autotampon'] = 0:
 		act 'Поменять тампон':
 			cla
 			*clr
@@ -154,17 +154,6 @@
 			manna -= 5
 			gs 'zz_render','','picb/tampon.jpg','Вы поменяли тампон'
 			act 'Закончить': gt 'zz_bathroom', 'start'
-		end
-	end
-	if mosolmaz > 0 and mosol >= 10:
-		act 'Втереть мазь от мозолей в писю 5 мин':
-			cla
-			minut += 5
-			mosolmaz -= 1
-			mosol -= 10
-			gs 'stat'
-			gs 'zz_render', '','','Достав тюбик с противомозольным кремом вы втерли его в свою '+iif(mosol >= 30,'зудящую ','')+'писю.'
-			act 'Выйти из ванной и одеться':gt 'zz_bathroom', 'start'
 		end
 	end
 	if cumpussy > 0 or cumbelly > 0 or cumass > 0 or cumanus > 0:
@@ -217,17 +206,6 @@
 			act 'Закончить': gt 'zz_bathroom', 'start'
 		end
 	end
-	if body_write > 0 or face_write > 0:
-		act 'Стереть надписи на теле':
-			cla
-			body_write = 0
-			face_write = 0
-			minut += 5
-			!'тут нужна картинка'
-			gs 'zz_render','','','Вы стёрли непристойные надписи.'
-			act 'Закончить': gt 'zz_bathroom', 'start'
-		end
-	end
 	if leghair > 0 and stanok > 0:
 		act 'Брить ноги 15 мин':
 			cla
@@ -277,8 +255,9 @@
 		act 'Сделать тест на беременность':
 			cla
 			pregtest -= 1
-			if preg = 1:
-				gs 'zz_render','','','Тест показал две полоски. Вы беременны.<br>Вы думаете, что отец <<$father>>.'
+			if pregnancy > 0:
+				pregnancyKnow = 1
+				gs 'zz_render','','','Тест показал две полоски. Вы беременны. Вы думаете, что отец <<$father>>.'
 			else
 				gs 'zz_render','','','Тест показал одну полоску.'
 			end
@@ -308,7 +287,6 @@
 	! квартира Южн.рн.
 	if $loc = 'korr':
 		housrA = 1
-		elektro += 1
 		if stiralka > 0 or my_house = 1:
 			if husband > 0 and husbanday > 0 and husporday ! day and poroshok >= 2:
 				husband += 5
@@ -320,7 +298,6 @@
 				wetbelo += dirtbelo
 				poroshok -= dirtbelo
 				dirtbelo = 0
-				elektro += 5
 				gs 'zz_render', '','','<font color = blue>Стиральная машина выстирала ваше белье</font>'
 			elseif poroshok < dirtbelo:
 				gs 'zz_render', '','','<b><font color = red>У вас кончился порошок для стиральной машины.</font></b>'

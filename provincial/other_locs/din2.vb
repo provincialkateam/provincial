@@ -1,11 +1,4 @@
-﻿$clear_write = {
-	body_write = 0
-	face_write = 0
-	minut += 10
-	gs 'stat'
-	gs 'zz_render', '', '', func('din2_strings', 'local_str1')
-}
-$d_slut_horny = {
+﻿$d_slut_horny = {
 	you_slut += 1
 	horny += iif(you_slut > 100, 10, you_slut/10)
 }

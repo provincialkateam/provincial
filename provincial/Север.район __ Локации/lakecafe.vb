@@ -146,9 +146,8 @@ if $ARGS[0] = 'bandits':
 			act 'Уйти':gt'lakecafe', 'main'
 			exit
 		else
-			if money+stolmoney+karta >= workDolg:
-				money += stolmoney+karta
-				stolmoney = 0
+			if money+karta >= workDolg:
+				money += karta
 				karta = 0
 				money -= workDolg
 				workDolg = 0
@@ -156,8 +155,7 @@ if $ARGS[0] = 'bandits':
 				act 'Уйти':gt'korr'
 				exit
 			else
-				money += stolmoney+karta
-				stolmoney = 0
+				money += karta
 				karta = 0
 				workDolg -= money
 				money = 0

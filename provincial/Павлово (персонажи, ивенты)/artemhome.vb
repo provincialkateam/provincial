@@ -96,9 +96,9 @@ frost = 0
 		DimaRudeBlock = 1
 		gs 'zz_render', '', '', func('artemhome_strings', '12')
 	end
-	if artemtimes >= 15 and $npc['2,qwartem'] = 0 and school['homework'] > 0 and GorSlut < 2:$npc['2,qwartem'] = 1 & gt'artemev2'
+	if artemtimes >= 15 and $npc['2,qwartem'] = 0 and school['homework'] > 0 and func('zz_reputation','get') < 2:$npc['2,qwartem'] = 1 & gt'artemev2'
 	gs 'zz_render', '', '', func('artemhome_strings', '13')
-	if rand(0,1) = 1 and artemtimes >= 45 and $npc['2,qwSex'] = 0 and artomanal > 0 and artomProgul ! day and (GorSlut < 2 or artemblag = 1):
+	if rand(0,1) = 1 and artemtimes >= 45 and $npc['2,qwSex'] = 0 and artomanal > 0 and artomProgul ! day and (func('zz_reputation','get') < 2 or artemblag = 1):
 		artomProgul = day
 		cla
 		gs 'stat'
@@ -126,7 +126,7 @@ frost = 0
 		!дрочила артему
 		gs 'zz_render', '', '', func('artemhome_strings', '18')
 		dynamic $artomKiss
-	elseif $npc['2,qwartem'] >= 2 and $npc['2,qwartem'] <= 3 and artemtimes >= 30 and school['progress'] >= 90 and GorSlut < 2:
+	elseif $npc['2,qwartem'] >= 2 and $npc['2,qwartem'] <= 3 and artemtimes >= 30 and school['progress'] >= 90 and func('zz_reputation','get') < 2:
 		$npc['2,qwartem'] = 10
 		gt'artemev2'
 	elseif $npc['2,qwartem'] = 20 and artomkissday ! daystart:

@@ -2,7 +2,7 @@
 gs 'npc_editor','get_npc_profile',numnpc
 gs 'gnpc_events','cumreaction'
 gs 'gnpc_events','mock'
-if $npc['<<numnpc>>,group'] = 3 and GorSlut < 2:
+if $npc['<<numnpc>>,group'] = 3 and func('zz_reputation','get') < 2:
 	if $npc['<<numnpc>>,dick'] > 0 and $loc = 'gdkin' and $npc['<<numnpc>>,relation'] >= 40 and (vnesh >= 40 or $npc['1,qwDimaRude'] > 0 or $npc['4,qwIgorLove'] > 0):
 		gs 'zz_render', '', '', func('krutishi_strings', 'local_str1')
 		act 'Танцевать': gt 'gnpc_events','krutishi_dance'
@@ -10,7 +10,7 @@ if $npc['<<numnpc>>,group'] = 3 and GorSlut < 2:
 	end
 end
 if numnpc = 23:
-	if $npc['23,qwMain'] > 0 and $npc['23,qwMain'] < 50: gs 'zz_render', '', '', func('Snpc_strings', 'local_str2') + iif(GorSlut > 0,func('Snpc_strings', 'local_str44'),'')
+	if $npc['23,qwMain'] > 0 and $npc['23,qwMain'] < 50: gs 'zz_render', '', '', func('Snpc_strings', 'local_str2') + iif(func('zz_reputation','get') > 0,func('Snpc_strings', 'local_str44'),'')
 	if artomIzdev = 1:
 		act 'Спросить про микрокамеру':
 			cla
@@ -27,12 +27,12 @@ if $npc['<<numnpc>>,group'] = 4:
 	if numnpc = 9:
 		! Котов что-то подозревает
 		if $npc['9,qwKotovLove'] > 5:
-			if GorSlut > 0: gt 'kotovtalker','kotov_suspicion'
+			if func('zz_reputation','get') > 0: gt 'kotovtalker','kotov_suspicion'
 			if $loc = 'zz_school': gt 'kotovtalker','talk'
 		end
 	end
 	if $loc = 'gdkin':
-		if GorSlut < 2:
+		if func('zz_reputation','get') < 2:
 			if numnpc = 9 and alko > 2 and $npc['<<numnpc>>,relation'] >= 60 and (vnesh >= 60 or $npc['9,qwKotovLove'] > 5):
 				gt 'kotovtalker','kotov_dancing'
 			else
@@ -54,7 +54,7 @@ act 'Болтать':
 	if numnpc = 1 and $npc['<<numnpc>>,relation'] = 0:
 		gs 'zz_render', '', '', func('Snpc_strings', 'local_str11')
 		act 'Отойти': gt $loc, $metka
-	elseif numnpc = 4 and $npc['<<numnpc>>,relation'] = 0 and GorSlut < 2:
+	elseif numnpc = 4 and $npc['<<numnpc>>,relation'] = 0 and func('zz_reputation','get') < 2:
 		gs 'zz_render', '', '', func('Snpc_strings', 'local_str45')
 		act 'Отойти': gt $loc, $metka
 	elseif numnpc = 3 and IvanShowerYes = 0 and $npc['3,qwIvanShower'] = 11:
@@ -94,11 +94,11 @@ if numnpc = 2:
 		act 'Ты не мог бы немного подтянуть меня по учёбе?':
 			*clr & cla
 			if $loc = 'gdkin': minut += 5
-			if GorSlut < 3: artomLernQW = 1
+			if func('zz_reputation','get') < 3: artomLernQW = 1
 			gs 'stat'
 			gs 'npc_editor','change_rep','+',numnpc
 			gs 'npc_editor','get_npc_profile',numnpc
-			gs 'zz_render','','',func('Snpc_strings', 'local_str'+iif(GorSlut < 3,16,17))
+			gs 'zz_render','','',func('Snpc_strings', 'local_str'+iif(func('zz_reputation','get') < 3,16,17))
 			act 'Отойти': gt $loc, $metka
 		end
 	end
@@ -106,9 +106,7 @@ end
 ! Прохоров
 if numnpc = 3:
 	! попросить помощи у Ивана в случае с Соней
-	! $npc['3,qwIvanShower'] > 0 - если ГГ трахалась с Иваном в душе
-	! $npc['15,qwVika'] >= 27 - если был тройничек с Викой и Иваном
-	if $npc['25,qwSonya'] = 40 and $npc['25,qwSonya_day'] ! day and $npc['3,relation'] >= 80 and ($npc['3,qwIvanShower'] > 0 or $npc['15,qwVika'] >= 27):
+	if $npc['25,qwSonya'] = 40:
 		act 'Попросить помощи с Соней': gt 'sonya','ask_ivan_for_help'
 	end
 end
@@ -122,7 +120,7 @@ if numnpc = 12:
 			gs 'stat'
 			gs 'npc_editor','change_rep','+',numnpc
 			gs 'npc_editor','get_npc_profile',numnpc
-			gs 'zz_render','','',func('Snpc_strings', 'local_str'+iif(GorSlut < 1,40,18))
+			gs 'zz_render','','',func('Snpc_strings', 'local_str'+iif(func('zz_reputation','get') < 1,40,18))
 			act 'Отойти': gt $loc, $metka
 		end
 	end
@@ -185,7 +183,7 @@ if numnpc = 16:
 			gs 'stat'
 			gs 'npc_editor','change_rep','+',numnpc
 			gs 'npc_editor','get_npc_profile',numnpc
-			gs 'zz_render','','',func('Snpc_strings','local_str'+iif(GorSlut < 1,42,43))
+			gs 'zz_render','','',func('Snpc_strings','local_str'+iif(func('zz_reputation','get') < 1,42,43))
 			act 'Отойти': gt $loc, $metka
 		end
 	end

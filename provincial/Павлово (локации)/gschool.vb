@@ -8,6 +8,7 @@ if hour >= 7 and hour <= 15 and school['certificate'] = 0 and school['vacation']
 	gs 'zz_render', '', '', func('gschool_strings', 'local_str2')
 end
 act 'Выйти': gt'gorodok'
+if hour >= 19 or hour < 7: exit
 if zverRageQW = 1:
 	*clr & cla
 	zverRageQW = 2
@@ -105,7 +106,7 @@ if (hour >= 7 and hour <= 15) and week < 6 and school['certificate'] = 0 and sch
 		gs 'zz_render', '', '', func('gschool_strings', 'local_str19')
 	end
 end
-if hour = 15 and GorSlut >= 3 and SchoolGossip > 0 and afterschoolday ! day:
+if hour = 15 and func('zz_reputation','get') >= 3 and SchoolGossip > 0 and afterschoolday ! day:
 	if RAND(0,2) = 0:
 		cla
 		gs 'zz_render', '', '', func('gschool_strings', 'local_str20')
@@ -162,7 +163,7 @@ if hour = 15 and minut < 20 and week < 6 and school['vacation'] = 0 and school['
 	if artomLernQW = 1 and artomVitokQW ! 2 and artemblok = 0: gs 'zz_render','','','Во дворе школы вас уже ожидает <a href="exec:GT ''artemEv''">Артем Чеботарев</a>'
 	if $npc['23,qwMain'] = 50 or $npc['23,qwMain'] = 55: gs 'zz_render','','',func('gschool_strings', 'local_str27')
 	if $npc['1,qwDimaRude'] > 0 and dimarudeday ! day and DimaRudeBlock = 0: gs 'zz_render','','','Во дворе школы стоит, задумавшись, <a href="exec:GT ''dimaGoHome''">Дима Носов</a>'
-	if $npc['4,qwIgorLove'] > 0 and igorkruglovday ! day: gs 'zz_render','','','Во дворе школы вас ждёт <a href="exec:minut += 15 & gt ''igorhome'', ''igorkom''">Игорь Круглов</a> чтобы идти с вами домой.'
+	if $npc['4,qwIgorLove'] > 0 and igorkruglovday ! day: gs 'zz_render','','','Во дворе школы вас ждёт <a href="exec:minut += 15 & gt ''igorhome''">Игорь Круглов</a> чтобы идти с вами домой.'
 	! meynold`s events
 	if $npc['14,qwKatya'] >= 10 and $npc['14,qwKatya'] < 200: gs 'zz_render','','','Во дворе школы прогуливается <a href="exec:gt''mey_katya_events'',''goto_home''">Катя Мейнольд</a>'
 	if minut <= 10 and school['vacation'] = 0: gs 'mey_vika_events','near_school'

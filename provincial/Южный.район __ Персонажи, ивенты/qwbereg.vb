@@ -43,11 +43,9 @@
 }
 minut += 30
 gs'stat'
-'<center><b><font color = maroon>Катер</font></b></center>'
-gs 'zz_render', '', 'images/qwest/vladimir/kater.jpg', func('qwbereg_strings', 'local_str7')
+gs 'zz_render','','images/qwest/vladimir/kater.jpg', func('qwbereg_strings', 'local_str7')
 act 'Сесть рядом':
 	*clr & cla
-	'<center><b><font color = maroon>Владимир</font></b></center>'
 	gs 'zz_render', '', 'images/qwest/vladimir/001.jpg', func('qwbereg_strings', 'local_str8')
 	act 'Было не плохо. Отличный катер':
 		cla

@@ -135,22 +135,14 @@
 			act 'Выйти':gt'poli','start'
 		end
 	end
-	if money >= 20000 and preg = 1 and pregtime < 84:
+	if money >= 20000 and pregnancy > 0 and pregnancy < 84:
 		act 'Сделать аборт (20000 руб)':
 			cla
 			vidage += 1
 			abort += 1
 			money -= 20000
-			pregtime = 0
+			pregnancy = 0
 			pregtalk = 0
-			abortrand = RAND(0,10)
-			if age > 18:
-				if abortrand < 10:preg = 0
-				if abortrand = 10:preg = 2
-			else
-				if abortrand < 4:preg = 0
-				if abortrand >= 5:preg = 2
-			end
 			gs 'zz_render','','', func('poli_strings', 'local_str15')
 			act 'Выйти': gt'poli','start'
 		end
@@ -199,7 +191,7 @@
 			act 'Выйти':gt'poli','start'
 		end
 	end
-	if preg = 1 and pregtime = 280:
+	if pregnancy = 280:
 		act 'Родить':
 			cla
 			xgt 'gameover',3
@@ -215,26 +207,6 @@
 		end
 	end
 	if katjob > 0:act 'Зайти к Главврачу':gt'poli','glavdoc'
-	if zub > 0:
-		act 'Идти к Стоматологу':
-			*clr & cla
-			zubpay = zub*30000
-			gs'stat'
-			gs 'zz_render', '', '', func('poli_strings', 'local_str19')
-			act 'Уйти из поликлиники':gt'street'
-			if money >= zubpay:
-				act 'Оплатить протезирование':
-					*clr & cla
-					money -= zubpay
-					minut += 60
-					zub = 0
-					gs'stat'
-					gs 'zz_render', '', '', func('poli_strings', 'local_str20')
-					act 'Уйти из поликлиники':gt'street'
-				end
-			end
-		end
-	end
 	if anus > 5:
 		act 'Идти к Проктологу':
 			*clr & cla

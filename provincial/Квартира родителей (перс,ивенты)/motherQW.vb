@@ -40,10 +40,11 @@ if $ARGS[0] = 'motherQW_3':
 	act 'Далее':
 		*clr & cla
 		gs 'zz_render', '', '', func('motherQW_strings', 'local_str2')
-		if gorslut = 0:'- Племяшка, держи - тётя протянула вам пачку презервативов:'
-		gs 'zz_render', '', '', func('motherQW_strings', 'local_str3')
-		if gorslut > 0:'- Тогда и не надо из меня дуру делать. Все в Павлово в курсе, что ты <<$gnikname>>.'
-		gs 'zz_render', '', '', func('motherQW_strings', 'local_str4')
+		if func('zz_reputation','get') = 0:
+			gs 'zz_render', '', '', func('motherQW_strings', 'local_str3')
+		else
+			gs 'zz_render', '', '', func('motherQW_strings', 'local_str4')
+		end
 		act 'Отойти от прилавка':gt'gaptek','start'
 	end
 end

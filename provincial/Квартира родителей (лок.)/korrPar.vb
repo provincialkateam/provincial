@@ -4,13 +4,14 @@ gs 'zz_phone','boyfriend_call_init'
 popolaini = 0
 frost = 0
 minut += 1
-bonusZ = 0
 gs 'stat'
 gs 'zz_funcs', 'colorize_day'
 if father['in_garage'] = 0: gs 'zz_family', 'father_sheduler'
 gs 'zz_family', 'mother_sheduler'
 gs 'zz_family', 'sister_sheduler'
 gs 'zz_family', 'brother_sheduler'
+if $npc['38,wedding'] >= 2 and month >= 5 and month <= 9 and week = 7 and hour = 10 and sunWeather > 0: gt 'sisterQW','incest_event12sub'
+if week = 7 and hour = 10 and $npc['38,anayslut'] = 1 and $npc['38,incest_event14'] = 0: gt 'sisterQW','incest_event14'
 if hour ! 18 and blockBedrPar = 1: blockBedrPar = 0
 if blockBedrPar = 0 and sisboyday + 1 = daystart and hour = 18 and ($npc['38,qwSisterBoy'] = 3 or $npc['38,qwSisterBoy'] = 5 or $npc['38,qwSisterBoy'] = 7 or ($npc['38,qwSisterBoy'] = 9 and $npc['38,qwSisterTrio'] ! 1)):
 	act 'Идти в вашу комнату': gt 'sisterQW','sisboyQW_bedroom'
@@ -130,5 +131,5 @@ end
 !------------------------------------------!
 !если гг шлюха и она отдавалась уже пацанам в подъезде, то клиенты долбят в дверь: !
 gs 'pod_whore'
-if RAND(0,100) <= iif(pod_whore_countQW <= 15,5,20) and hour >= 10 and hour <= 23 and gorslut >=6 and $npc['0,qwPodezdWhore'] >=3: 'Кто-то трезвонит вам в дверь: <a href="exec: dynamic $pod_client_talk">открыть</a>'
+if RAND(0,100) <= iif(pod_whore_countQW <= 15,5,20) and hour >= 10 and hour <= 23 and func('zz_reputation','get') >= 4 and $npc['0,qwPodezdWhore'] >=3: 'Кто-то трезвонит вам в дверь: <a href="exec: dynamic $pod_client_talk">открыть</a>'
 !==========================================!

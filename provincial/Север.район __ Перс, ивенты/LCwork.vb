@@ -66,15 +66,13 @@
 	sex += 1
 	slutty += 1
 	minut += 140
-	'<center><img src="images/LakeCafe/LakeWork/'+$args[1]+'a.jpg"></center>'
-	*pl $zz_str[0]
+	gs 'zz_render','','LakeCafe/LakeWork/'+$args[1]+'a.jpg', $zz_str[0]
 	gs 'zz_funcs', 'hornyrand'
 	act '...':
 		*clr & cla
-		gs'stat'
-		'<center><img src="images/LakeCafe/LakeWork/'+$args[1]+'b.jpg"></center>'
+		gs 'stat'
 		randLCpay = RAND(500,2000)
-		*pl $zz_str[1]+'Вы получили за это <<randLCpay>> рублей.'
+		gs 'zz_render','','LakeCafe/LakeWork/'+$args[1]+'b.jpg', $zz_str[1]+'Вы получили за это <<randLCpay>> рублей.'
 		act '...':
 			money += randLCpay
 			killvar 'randLCpay'
@@ -90,8 +88,7 @@ if $ARGS[0] = 'Kitchen':
 	LCwork2 += 1
 	money += 175
 	LCwork2day = day
-	'<center><img src="images/LakeCafe/KitchenWorkCafe.jpg"></center>'
-	'Вы моете посуду, полы, нарезаете овощи, готовите еду на протяжении полутора часов, за что вам дают ваши заслуженные 175 рублей.'
+	gs 'zz_render','','LakeCafe/KitchenWorkCafe.jpg','Вы моете посуду, полы, нарезаете овощи, готовите еду на протяжении полутора часов, за что вам дают ваши заслуженные 175 рублей.'
 	act '...':
 		gs 'stat'
 		gt 'lakecafe','main'

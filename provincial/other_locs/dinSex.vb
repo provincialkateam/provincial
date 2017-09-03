@@ -149,11 +149,11 @@ $whore_event_3={
 	end
 }
 $venerasiak = {
-	if prezik > 0:
-		if RAND(0,1000) = 1000: dynamic $veneradinitog
-	else
-		if RAND(0,100) >= 80: dynamic $veneradinitog
-	end
+	!if prezik > 0:
+	!	if RAND(0,1000) = 1000: dynamic $veneradinitog
+	!else
+	!	if RAND(0,100) >= 80: dynamic $veneradinitog
+	!end
 }
 $veneradinitog = {
 	tipvenerarand = RAND(0,10)

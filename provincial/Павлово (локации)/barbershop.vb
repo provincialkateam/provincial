@@ -5,7 +5,7 @@
 	*clr & cla
 	gs 'stat'
 	if money >= 1000:
-		if cheatHapri_mod = 1:
+		if $settings['hapri_mod'] = 1:
 			$_str = '<a href="exec: gt ''barbershop'', ''hair_short'' ">Прическа под мальчика - 1 тыс.руб</a>'
 			if shorthair <= 2: $_str += '<br><a href="exec: gt ''barbershop'', ''hair_medium_short'' ">Короткая прическа - 1 тыс.руб</a>'
 			if shorthair <= 1: $_str += '<br><a href="exec: gt ''barbershop'', ''hair_medium''">Средняя прическа - 1 тыс.руб</a>'
@@ -61,10 +61,10 @@ if $args[0] = 'hair_medium':
 	hapri = 1
 	money -= iif($loc = 'salon',1500,1000)
 	if salonrand = 0 and masha = 0 and $loc = 'salon': gt'salon','0'
-	gs'stat'
+	gs 'stat'
 	*clr
 	gs 'barbershop','hair_loc_description','short'
-	'Вас подстригли, сделав вам волосы средней длинны.'
+	gs 'zz_render','','','Вас подстригли, сделав вам волосы средней длинны.'
 	act 'Выйти': gt $loc, $metka
 end
 if $args[0] = 'hair_medium_short':
@@ -77,7 +77,7 @@ if $args[0] = 'hair_medium_short':
 	gs'stat'
 	*clr
 	gs 'barbershop','hair_loc_description','short'
-	'Вам подстригли волосы, сделав короткую прическу.'
+	gs 'zz_render','','','Вам подстригли волосы, сделав короткую прическу.'
 	act 'Выйти': gt $loc, $metka
 end
 if $args[0] = 'hair_short':

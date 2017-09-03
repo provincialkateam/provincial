@@ -127,16 +127,11 @@ if plact = 1:
 					guy += kol_man
 					gs 'zz_funcs', 'cum', 'lip'
 					gs 'zz_funcs', 'cum', 'face'
-					face_write = 1
 					gang += 1
-					if mop > 1: mop = 0 & vidageday -= 1
+					if mop > 1: mop = 0
 					gs 'stat'
 					gs 'zz_render', '', 'images/qwest/alter/placer/blowbang2.jpg', func('placer_act_strings', 'local_str29')
-					act 'Тереть глаза':
-						*clr & cla
-						gs 'zz_render', '', 'images/qwest/alter/placer/blowbang'+RAND(3,4)+'.jpg', func('placer_act_strings', 'local_str30')
-						act 'Уйти':gt'zz_park'
-					end
+					act 'Уйти': gt'zz_park'
 				end
 			end
 		elseif know_gor_slut = 1:

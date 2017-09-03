@@ -64,7 +64,7 @@ $workbomzdi = {
 			*clr & cla
 			workDisk = 1
 			minut += 15
-			gs'stat'
+			gs 'stat'
 			gs 'zz_render', '', '', func('trashplace_strings', 'local_str20')
 			if saunasex = 1:
 				gs 'zz_render', '', '', func('trashplace_strings', 'local_str21')
@@ -78,19 +78,19 @@ $workbomzdi = {
 		end
 	end
 }
-*clr
+*clr & cla
 gs 'stat'
 gs 'time'
-'<center><b>Мусорка</b></center>'
-'<center><img src="images/pic/musorka.jpg"></center>'
-gs 'zz_render', '', '', func('trashplace_strings', 'local_str25')
+if anus > 10 and vagina > 10 and mesec = 0 and func('zz_weather','is_day') = 1 and city['cherdak'] = 3 and city['cherdak_day'] ! day and rand(0,10) > 8:
+	gt 'front_door_event','front_ev1_init'
+end
+gs 'zz_render', 'Мусорка', 'images/pic/musorka.jpg', func('trashplace_strings', 'local_str25')
 if bumtolik = 2 and RAND(0,100) >= 50:
 	*clr & cla
-	gs'stat'
-	gs'time'
-	'<center><img src="images/pic/musorka.jpg"></center>'
-	gs 'zz_render', '', '', func('trashplace_strings', 'local_str26')
-	act 'Выслушать':gt'musorkaexh','pos8'
+	gs 'stat'
+	gs 'time'
+	gs 'zz_render', '', 'images/pic/musorka.jpg', func('trashplace_strings', 'local_str26')
+	act 'Выслушать': gt'musorkaexh','pos8'
 end
 if bumtolik = 3 and hour >= 6 and hour <= 20 and RAND(0,100) >= 50:
 	*clr & cla
@@ -106,9 +106,8 @@ if take_out_trash > 0:
 		minut += 5
 		take_out_trash = 0
 		garbage = 0
-		gs'stat'
-		'<center><img src="images/pic/musorka.jpg"></center>'
-		gs 'zz_render', '', '', func('trashplace_strings', 'local_str29')
+		gs 'stat'
+		gs 'zz_render', '', 'images/pic/musorka.jpg', func('trashplace_strings', 'local_str29')
 		if bumtolik = 0:
 			gs 'zz_render', '', '', func('trashplace_strings', 'local_str31')
 			act 'Посмотреть кто это сказал':gt'musorkaexh','pos2'

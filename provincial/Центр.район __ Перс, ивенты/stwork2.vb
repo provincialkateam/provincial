@@ -53,10 +53,6 @@ if hour >= 15 or hour <= 2:
 				if vesrand >= 75:
 					publichot = 15
 					gs 'zz_render', '', '', func('stwork2_strings', 'local_str5')
-					if RAND(0,100) >= 75:
-						fingal += RAND(2,5)
-						gs 'zz_render', '', '', func('stwork2_strings', 'local_str6')
-					end
 				elseif vesrand >= 50:
 					publichot -= RAND(5,10)
 					gs 'zz_render', '', '', func('stwork2_strings', 'local_str7')

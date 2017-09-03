@@ -1,5 +1,11 @@
 ﻿clr
+! очистка временных переменных системы достижений
+gs 'zz_achievements','clear_ach_variables'
 ! ---
+! автоприменение салфеток
+if $settings['auto_wipes'] = 1:
+	gs 'zz_common','wet_wipes',1
+end
 if father['horny'] > 100: father['horny'] = 100
 if father['horny'] < 0: father['horny'] = 0
 if hour >= 21 and week = 7 and family_trip_month ! month: family_trip_month = month & family_trip = 0
@@ -7,39 +13,6 @@ if hour >= 21 and week = 7 and family_trip_month ! month: family_trip_month = mo
 gs 'university_events','university_status'
 ! --
 if poSkill > 1000: poSkill = 1000
-if nippain = 2:
-	if nippainday+5 < daystart:
-		$nippain = 'У вас сильно болят соски.'
-		nippain = 1
-		nippainday = daystart
-	else
-		$nippain = 'У вас сильно болят соски.'
-	end
-elseif nippain = 1:
-	if nippainday+5 < daystart:
-		$nippain = ''
-		nippain = 0
-	else
-		$nippain = 'У вас немного болят соски.'
-	end
-end
-if painpub = 2:
-	if painpubday+5 < daystart:
-		$painpub = 'У вас сильно болит влагалище.'
-		painpub = 1
-		painpubday = daystart
-	else
-		$painpub = 'У вас сильно болит влагалище.'
-	end
-elseif painpub = 1:
-	if painpubday+5 < daystart:
-		$painpub = ''
-		painpub = 0
-		painpubday = daystart
-	else
-		$painpub = 'У вас немного болит влагалище.'
-	end
-end
 if analplay >= 2 and anus <= 10:anus += 1 & analplay = 0
 if analplay >= 4 and anus <= 15:anus += 1 & analplay = 0
 if analplay >= 8 and anus <= 20:anus += 1 & analplay = 0
@@ -48,15 +21,12 @@ if cheatHapri = 1:hapri = 1
 !!!!!!!!!!!!
 if alko > 0: frost = 0
 if StrongNarkota >= 20 and alko > 0: alko = 0
-if GorSlut > 0:
-	if GorSlut > 6: GorSlut = 6
-	$_gnik[0] = 'давалка'
-	$_gnik[1] = 'вафлерша'
-	$_gnik[2] = 'общая хуесоска'
-	$_gnik[3] = 'общая дырка'
-	$_gnik[4] = 'опущенная шалава'
-	$_gnik[5] = 'проститутка'
-	$gnikname = $_gnik[GorSlut-1]
+if func('zz_reputation','get') > 0:
+	$_gnik[0] = 'соска'
+	$_gnik[1] = 'давалка'
+	$_gnik[2] = 'безотказная давалка'
+	$_gnik[3] = 'шлюха'
+	$gnikname = $_gnik[func('zz_reputation','get')-1]
 	killvar '$_gnik'
 end
 !!!Новая формула развратности основана на собранной статистике.(старая формула: shameless = guy+bj+anal+hj+(slutty*2)+(gang*2))
@@ -80,7 +50,6 @@ if shameless['main'] < shameless['limit_1']:
 	elseif shameless['main'] > shameless['limit_3']:
 	shameless['flag'] = 3
 end
-moneySUM = money+karta+stolmoney
 !cumSUM = cumbelly+cumpussy+cumass+cumlip+cumface+cumfrot+cumanus
 if husbizvradd > 5:izvratH = 1
 if husbharmin > 10:harakHusb = 0
@@ -176,9 +145,15 @@ if minut >= 60:
 		nerdism -= 1
 		manna -= 4 - nerdism/20
 	end
+	! не спать - вредно для настроения и здоровья
+	if no_sleep_time > 0:
+		manna -= 5
+		health -= 2
+	end
 	! попоболь, снижение на 1 в час
-	if spanked < 0: spanked = 0
-	if spanked > 0:
+	if spanked <= 0:
+		spanked = 0
+	else
 		if spanked > 100: spanked = 100
 		spanked -= 1
 	end
@@ -186,14 +161,14 @@ if minut >= 60:
 	if obkvsdam > 0: obkvsdam = RAND(2,5)
 	hour += 1
 	if energy < 8:
-		manna -= 5
+		manna -= 2
 		hungry_time += 1
 	end
 	! сброс голодовки
-	if energy >= 24:hungry_time = 0
+	if energy >= 24: hungry_time = 0
 	energy -= 1
 	water -= 1
-	if water < 8: manna -= 5
+	if water < 8: manna -= 2
 	if InSleep = 0: son -= 1
 	minut -= 60
 	if alko > 0:
@@ -237,13 +212,6 @@ if minut >= 60:
 	if cumpussy > 0: cumpussy -= 1
 	if cumanus > 0: cumanus -= 1
 	! ---
-	if current_clothing > 2 and tanga = 0 and func('zz_clothing','is_skirt') = 0: mosolpred += 1
-	if mosolpred >= 10:
-		mosol += 1
-		mosolpred = 0
-	end
-	if mosol >= 50: manna -= 5
-	if (tanga = 1 or func('zz_clothing','is_skirt') = 1) and mosol > 0: mosol -= 1
 	if lipbalmstat > 0: lipbalmstat -= 1
 	if sickstage = 1: sick += 1 & sicktimer += 1
 	if sickstage = 1 and sicktimer >= 80: sicktimer = 0 & sickstage = 2
@@ -265,6 +233,10 @@ if minut >= 60:
 	if minut >= 60: jump 'loopmin'
 end
 if hour >= 24:
+	!---
+	if painpub > 0: painpub -= 1
+	if nippain > 0: nippain -= 1
+	!---
 	! счетчик оплаты кружка Сони
 	if $npc['25,qwSonya'] >= 60 and $npc['25,qwSonya'] < 255: $npc['25,qwSonya_payday'] += 1
 	! проверка местожительства Кати Мейнольд
@@ -311,6 +283,7 @@ if hour >= 24:
 	! протекание крыши
 	! если меньше 1/10 max
 	if manna < 10: crazy += 1
+	if no_sleep_time >= 36: crazy += 1
 	! если настроение больше 1/10 но меньше 1/4 - счетчик не обнуляем, но и не приращиваем
 	! если настроение больше 1/4 max - отнимаем
 	if manna >= 25 and crazy > 0: crazy -= 1
@@ -321,10 +294,7 @@ if hour >= 24:
 	trenerskaia = 0
 	coffee_drink = 0
 	if pirs_pain_ton > 0:pirs_pain_ton -= 1
-	if browper = 0:
-		if brow > 0: brow -= 1
-		if brow < 0: brow = 0
-	end
+	if brow > 0: brow -= 1
 	if shorthair > 0:
 		shorthairday += 1
 		if shorthairday >= 60: shorthairday = 0 & shorthair -= 1
@@ -356,7 +326,7 @@ if hour >= 24:
 	if sdaday = 0 and sdamonth = 1:
 		sdamonth = 0
 		BuyHous = 1
-		'<b><font color = red>Срок аренды вашей квартиры истёк, вам вернули ключи.</font></b>'
+		gs 'zz_render','','','<red>Срок аренды вашей квартиры истёк, вам вернули ключи.</red>'
 	end
 	if repairs_time > 0: repairs_time -= 1
 	if repairs_time = 0:
@@ -421,7 +391,6 @@ if hour >= 24:
 	if workDolgDay > 0:workDolgDay -= 1
 	if husband > 0:husbanday += 1
 	if husband > 10 and husbanday > 0:husband -= 15
-	if fingal > 0:fingal -= 1
 	if husbandMark = 1 and husband <= 10:
 		husbizvradd = 0
 		husbharmin = 0
@@ -429,7 +398,7 @@ if hour >= 24:
 		husband = 0
 		divorced += 1
 		if KFOnLineReaga > 0:KFOnLineReaga -= 1
-		'<b><font color = red>Ваш муж подал на развод.</font></b>'
+		gs 'zz_render','','','<red>Ваш муж подал на развод.</red>'
 	end
 	gs 'cikl'
 	if narkoman = 1:
@@ -451,7 +420,7 @@ if day = 25:
 	! -- meynold payment ---!
 	if $npc['45,qwTamara'] >= 3 and $npc['45,qwTamara'] ! 50 and $npc['0,mey_help_count'] >= 10:
 		money += 5000
-		'<b><font color=green>За ваши труды тетя Тамара вручила вам 5000 рублей</font></b>'
+		gs 'zz_render','','','<green>За ваши труды тетя Тамара вручила вам 5000 рублей</green>'
 		$npc['0,mey_help_count'] = 0
 	end
 	!--
@@ -460,33 +429,33 @@ if day = 25:
 		PersSecWorkTimes = 0
 		money += Pay
 		paydaybistrosec = 1
-		'<b><font color = green>Вам перечислили <<pay>> рублей зарплаты за работу секретаршей.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<pay>> рублей зарплаты за работу секретаршей.</green>'
 	end
 	if workKafe = 1 and paydayKafe = 0:
 		paydayKafe = 1
 		pay = smenaKafe*750
 		money += pay
 		smenaKafe = 0
-		'<b><font color = green>Вам перечислили <<pay>> рублей зарплаты за работу официанткой в кафе.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<pay>> рублей зарплаты за работу официанткой в кафе.</green>'
 	end
 	if workhosp = 1 and nopaypoly = 0:
 		pay = smena*700
 		money += pay
 		smena = 0
 		nopaypoly = 1
-		'<b><font color = green>Вам перечислили <<pay>> рублей зарплаты за работу в поликлинике.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<pay>> рублей зарплаты за работу в поликлинике.</green>'
 	end
 	if worksalon = 1 and nopaysalon = 0:
 		pay = smena*800
 		money += pay
 		smena = 0
 		nopaysalon = 1
-		'<b><font color = green>Вам перечислили <<pay>> рублей зарплаты за работу в салоне красоты.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<pay>> рублей зарплаты за работу в салоне красоты.</green>'
 	end
 	if tanwork = 1 and nopaytanwork = 0:
 		nopaytanwork = 1
 		money += 25000
-		'<b><font color = green>Вам перечислили 25000 рублей зарплаты за работу гувернанткой.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили 25000 рублей зарплаты за работу гувернанткой.</green>'
 	end
 	if workSec = 1 and paydaySec = 0:
 		paydaySec = 1
@@ -494,14 +463,14 @@ if day = 25:
 		if officebestslut >= 3:pay += 20000
 		karta += pay
 		sekDay = 0
-		'<b><font color = green>Вам перечислили на банковский счет <<pay>> рублей зарплаты за работу секретаршей.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили на банковский счет <<pay>> рублей зарплаты за работу секретаршей.</green>'
 	end
 	if workFabrika = 1 and paydayFabrika = 0:
 		paydayFabrika = 1
 		pay = smenaFabrika*300
 		money += pay
 		smenaFabrika = 0
-		'<b><font color = green>Вам перечислили <<pay>> рублей зарплаты за работу на фабрике.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<pay>> рублей зарплаты за работу на фабрике.</green>'
 	end
 	if husband > 0 and paydayHusb = 0:
 		paydayHusb = 1
@@ -509,12 +478,12 @@ if day = 25:
 		if husbFin = 1: huspay = 30000
 		if husbFin = 2: huspay = 60000
 		money += huspay
-		'<b><font color = green>Вашему мужу перечислили зарплату на банковский счёт, в количестве <<huspay>> рублей.</font></b>'
+		gs 'zz_render','','','<green>Вашему мужу перечислили зарплату на банковский счёт, в количестве <<huspay>> рублей.</green>'
 	end
 	if university['student'] = 2 and university['scholarship'] > 0 and university['scholarship_day'] = 0:
 		university['scholarship_day'] = 1
 		karta += university['scholarship']
-		'<b><font color = green>Вам перечислили <<university[''scholarship'']>> рублей стипендии.</font></b>'
+		gs 'zz_render','','','<green>Вам перечислили <<university[''scholarship'']>> рублей стипендии.</green>'
 	end
 	gs 'apartment_south_event', 'rent'
 end
@@ -577,18 +546,18 @@ $_week[5] = 'Суббота'
 $_week[6] = 'Воскресенье'
 $week = $_week[week-1]
 killvar '$_week'
-$_month[0] = 'Января'
-$_month[1] = 'Февраля'
-$_month[2] = 'Марта'
-$_month[3] = 'Апреля'
-$_month[4] = 'Мая'
-$_month[5] = 'Июня'
-$_month[6] = 'Июля'
-$_month[7] = 'Августа'
-$_month[8] = 'Сентября'
-$_month[9] = 'Октября'
-$_month[10] = 'Ноября'
-$_month[11] = 'Декабря'
+$_month[0] = 'января'
+$_month[1] = 'февраля'
+$_month[2] = 'марта'
+$_month[3] = 'апреля'
+$_month[4] = 'мая'
+$_month[5] = 'июня'
+$_month[6] = 'июля'
+$_month[7] = 'августа'
+$_month[8] = 'сентября'
+$_month[9] = 'октября'
+$_month[10] = 'ноября'
+$_month[11] = 'декабря'
 $month = $_month[month-1]
 killvar '$_month'
 !!!!!!!!!!!!!!!!!!!
@@ -621,7 +590,14 @@ $letgoda2 = iif(subagevne ! 1, 'лет', 'года')
 !!!!!!!!!!!!!
 !!!ЭНЕРГИЯ!!!
 !!!!!!!!!!!!!
-if son < 0: son = 0 & manna -= 5
+if son < 0:
+	! время без сна - при достижении 60 часов - gameover
+	no_sleep_time += 1
+	if no_sleep_time >= 60 and ($loc = 'gorodok' or $loc = 'down' or $loc = 'nord' or $loc = 'street' or $loc = 'gadukino'): gt 'gameover',12
+	!---
+	son = 0
+	manna -= 5
+end
 if son > 24: son = 24
 if energy < 0:
 	energy = 0
@@ -650,11 +626,11 @@ elseif rape > 0 and rape ! rape_count and orgasm > 0 and orgasm ! orgasm_count:
 end
 ! ограничения на растянутость дырок
 if sex <= 5 and vagina > 5: vagina = 5
-if sex > 5 and sex <= 100 and vagina > 15: vagina = 15
-if sex > 100 and sex <= 200 and vagina > 25: vagina = 25
+if sex > 5 and sex <= 50 and vagina > 15: vagina = 15
+if sex > 50 and sex <= 200 and vagina > 25: vagina = 25
 if anal <= 5 and anus > 5: anus = 5
-if anal > 5 and anal <= 100 and anus > 15: anus = 15
-if anal > 100 and anal <= 200 and anus > 25: anus = 25
+if anal > 5 and anal <= 50 and anus > 15: anus = 15
+if anal > 50 and anal <= 200 and anus > 25: anus = 25
 ! ---
 gs 'body'
 !--
@@ -662,87 +638,47 @@ if water > 24: water = 24
 if energy > 24: energy = 24
 if son > 24: son = 24
 !--
-! только для варианта с текстовыми описаниями
-if $settings['status_display'] = 1:
-	!--
-	$_stat_color[0] = 'red'
-	$_stat_color[1] = 'brown'
-	$_stat_color[2] = 'blue'
-	$_stat_color[3] = 'green'
-	$_stat_color[4] = 'green'
-	!--
-	$_stat[0] = 'Вы на пороге смерти.'
-	$_stat[1] = 'Вы болеете.'
-	$_stat[2] = 'Вам нездоровится.'
-	$_stat[3] = 'Вы здоровы.'
-	$_stat[4] = 'Вы полностью здоровы и сияете румянцем.'
-	$health = '<font color=' + $_stat_color[health/25] + '>' + $_stat[health/25] + '</font>'
-	!--
-	$_stat[0] = 'Ваше настроение ниже любого плинтуса и городской канализации.'
-	$_stat[1] = 'Вы в ужасном настроении.'
-	$_stat[2] = 'Вы в скверном настроении.'
-	$_stat[3] = 'У вас нормальное настроение.'
-	$_stat[4] = 'Вы в прекрасном настроении.'
-	$manna = '<font color=' + $_stat_color[manna/25] + '>' + $_stat[manna/25] + '</font>'
-	!--
-	$_stat[0] = 'Вы очень голодны.'
-	$_stat[1] = 'Вы голодны.'
-	$_stat[2] = 'Вы проголодались.'
-	$_stat[3] = 'Вы сыты.'
-	$_stat[4] = 'Вы наелись до отвала.'
-	$energy = '<font color=' + $_stat_color[energy/6] + '>' + $_stat[energy/6] + '</font>'
-	!--
-	$_stat[0] = 'У вас сушняк.'
-	$_stat[1] = 'Вы очень хотите пить.'
-	$_stat[2] = 'Вы хотите пить.'
-	$_stat[3] = 'Вы не хотите пить.'
-	$_stat[4] = 'Вы напились и больше не хотите пить.'
-	$water = '<font color=' + $_stat_color[water/6] + '>' + $_stat[water/6] + '</font>'
-	!--
-	$_stat[0] = 'Вы засыпаете на ходу.'
-	$_stat[1] = 'Вы хотите спать.'
-	$_stat[2] = 'Вы не хотите спать.'
-	$_stat[3] = 'Вы выспались.'
-	$_stat[4] = 'Вы отлично выспались и больше не хотите спать.'
-	$son = '<font color=' + $_stat_color[son/6] + '>' + $_stat[son/6] + '</font>'
-	!--
-	$_stat[0] = ''
-	$_stat[1] = ''
-	$_stat[2] = ''
-	$_stat[3] = 'Вы немного возбуждены: ощущение, как будто между ног что-то приятно <a href="exec:view''images/picb/briefs'+iif(tanga=1,'1','1a')+'.jpg''">зудит</a>.'
-	$_stat[4] = 'Вы чувствуете, что между ног всё <a href="exec:view''images/picb/briefs'+iif(tanga=1,'2','2a')+'.jpg''">промокло</a> от ваших соков.'
-	$horny = '<font color=' + $_stat_color[4-horny/25] + '>' + $_stat[horny/25] + '</font>'
-	killvar '$_stat'
-	killvar '$_stat_color'
-end
 !--- weather init
 if weather_day ! day: gs 'zz_weather'
 !---
 !!!!!!!!!!!!!!!!!!!!!
 !!!НАЧАЛО ОПИСАНИЯ!!!
 !!!!!!!!!!!!!!!!!!!!!
-pl func('zz_weather','make_image',sunWeather,temper)
-pl '<center><font size=5><b> '+ func('zz_funcs','make_datetime',hour,minut,':') + '</b></font><br><<$week>>, <i><<day>></i> <<$month>> <i><<year>></i> года</center>'
-pl '<center><font size=4><img src="images/common/icons/money.png"><b> <<money>></b> <img src="images/common/icons/card.png"><b> <<karta>></font></center>'
-pl $holiday
+p func('zz_weather','make_image',sunWeather,temper)
+!--- menu
+! картинка для кнопки персонажа
+$_mnu_face_icon = str(hcol) + str(iif(shorthair >= 2,2,shorthair)) + str(iif(glass > 0,1,0))
+$_mnu_buttons = '<div id="zz_user_menu">'
+$_mnu_buttons += '<div class="tip" title="Персонаж"><a href="exec:gt''menu_description''"><img src="images/common/icons/menu_faces/'+$_mnu_face_icon+'.png"></a></div>'
+$_mnu_buttons += '<div class="tip" title="Телефон"><a href="exec:gt''zz_phone''"><img src="images/common/icons/phone.png"></a></div>'
+$_mnu_buttons += '<div class="tip" title="Сумочка"><a href="exec:gt''menu_bag''"><img src="images/common/icons/bag.png"></a></div>'
+$_mnu_buttons += '<div class="tip" title="Блокнот"><a href="exec:gt''menu_notes''"><img src="images/common/icons/note.png"></a></div>'
+$_mnu_buttons += '<div class="tip" title="Настройки"><a href="exec:gt''zz_settings'',''tabs'',0"><img src="images/common/icons/settings.png"></a></div>'
+$_mnu_buttons += '<div class="tip" title="Аварийка"><a href="exec:gt''zz_common'',''error''"><img src="images/common/icons/warning.png"></a></div>'
+$_mnu_buttons += '</div>'
+p $_mnu_buttons
+killvar '$_mnu_face_icon'
+killvar '$_mnu_buttons'
+!---
+$_timebox = '<div class="time_box">'
+$_timebox += '<div class="ui_time">'
+$_timebox += iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''hours''">'+iif(hour<10,'0<<hour>>',hour)+'</a>:<a class="cheat" href="exec:gs''zz_cheats'',''minutes''">'+iif(minut<10,'0<<minut>>',minut)+'</a>',func('zz_funcs','make_datetime',hour,minut,':'))
+$_timebox += '</div>'
+$_timebox += iif($settings['cheats'] = 1,'<a class="cheat" href="exec:week+=1 & gs''stat''"><<$week>></a>',$week) + ', '
+$_timebox += iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''day''"><<day>></a>',day) + ' '
+$_timebox += iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''month''"><<$month>></a>',$month) + ' ' + year + ' года<br>'
+$_timebox += '<b><img src="images/common/icons/money.png"> ' + iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''money''"><<money>></a>',money)
+$_timebox += ' <img src="images/common/icons/card.png"> ' + iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''money'',0,1"><<karta>></a>',karta) + '</b></div>'
+p $_timebox
+killvar '$_timebox'
 if birthday = day and birthmonth = month: pl '<b>Сегодня ваш день рождения.</b>'
-if $settings['status_display'] = 1:
-	pl '<b><<$horny>></b>'
-	pl '<b><<$health>></b>'
-	pl '<b><<$manna>></b>'
-	pl '<b><<$energy>></b>'
-	pl '<b><<$water>></b>'
-	pl '<b><<$son>></b>'
-	pl '<b><<$vnesh>></b>'
-else
-	pl func('zz_funcs', 'scale', horny, 100, 1) + 'возбуждение'
-	pl func('zz_funcs', 'scale', health, 100) + 'здоровье'
-	pl func('zz_funcs', 'scale', manna, 100) + 'настроение'
-	pl func('zz_funcs', 'scale', energy, 24) + 'сытость'
-	pl func('zz_funcs', 'scale', water, 24) + 'жажда'
-	pl func('zz_funcs', 'scale', son, 24) + 'бодрость'
-	pl func('zz_funcs', 'scale', vnesh, 100,2) + 'привлекательность'
-end
+p func('zz_funcs', 'scale', horny, 100, 1, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''horny''">возбуждение</a>','возбуждение'))
+p func('zz_funcs', 'scale', health, 100, 0, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''health''">здоровье</a>','здоровье'))
+p func('zz_funcs', 'scale', manna, 100, 0, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''manna''">настроение</a>','настроение'))
+p func('zz_funcs', 'scale', energy, 24, 0, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''energy''">сытость</a>','сытость'))
+p func('zz_funcs', 'scale', water, 24, 0, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''water''">жажда</a>','жажда'))
+p func('zz_funcs', 'scale', son, 24, 0, iif($settings['cheats'] = 1,'<a class="cheat" href="exec:gs''zz_cheats'',''son''">бодрость</a>','бодрость'))
+p func('zz_funcs', 'scale', vnesh, 100,2, 'привлекательность')
 if PillToggle = 1 and tabletki > 0:
 	Stabletki += tabletki
 	tabletki = 0
@@ -757,157 +693,25 @@ elseif CondomToggle = 0 and Sprezik > 0:
 	prezik += Sprezik
 	Sprezik = 0
 end
-if pirs_pain_ton > 0:
-	if pirs_pain_ton = 1: pl'<font color = red>У вас ноет язык и он немного припухший.</font>'
-	if pirs_pain_ton = 2: pl'<font color = red>У вас сильно ноет язык и он заметно припухший.</font>'
-	if pirs_pain_ton > 2: pl'<font color = red><b>У вас болит язык, он сильно опух и едва ворочается во рту.</b></font>'
-end
-if nippain > 0: pl '<font color = red><b><<$nippain>></b></font>'
-if painpub > 0: pl '<font color = red><b><<$painpub>></b></font>'
-pl '<<$mop>> и <<$hapri>> волосы.'
-if func('zz_clothing','is_skirt') > 0 or current_clothing < 3: pl'<<$leghair>>'
-if current_clothing = 0 and tanga = 0: pl'<<$lobok>>'
 if sweat > 4: sweat = 4
-if sweat = 1: pl'<font color = brown>Вы вспотели.</font>'
-if sweat = 2: pl'<font color = red>От вас немного пахнет.</font>'
-if sweat = 3: pl'<font color = red>От вас разит потом.</font>'
-if sweat = 4: pl'<b><font color = red>От вас разит как от бомжихи.</font></b>'
-if sweat > 3 and dirtyclothes = 1:pl'<font color = red>Вы с ног до головы <a href="exec:view''images/qwest/gadukino/Swamp/dirtyclothes1.jpg''">перемазаны</a> в грязи.</font>'
-if sweat <= 3 and dirtyclothes = 1:pl'<font color = red>У вас грязная <a href="exec:view''images/qwest/gadukino/Swamp/dirtyclothes2.jpg''">одежда</a>.</font>'
-if isprok = 0 and mesec > 0 and preg = 0 and cheatTampon = 0:pl'<b><font color = red>У вас течёт кровь между ног, срочно нужна прокладка.</font></b>'
-if isprok = 1 and mesec > 0 and preg = 0:pl'У вас месячные, но прокладка вас защищает.'
-if preg = 1 and pregtime = 280: pl'<b><font color = red>У ВАС НАЧАЛИСЬ СХВАТКИ. ВАМ СРОЧНО НАДО В РОДДОМ!</font></b>'
-if preg = 1: rodtime = 280 - pregtime
-if preg = 1 and pregtime < 280 and pregtime > 6:pl'<b><font color = blue>Вы беременны <<pregtime>> дней, до родов осталось <<rodtime>> дней</font></b>'
-if preg = 1 and pregtime < 150 and pregtime >= 90:pl'<font color = black>У вас появился едва заметный <a href="exec:view''images/pregnant/1.jpg''"> животик</a>, который, впрочем, не заметен под одеждой</font>'
-if preg = 1 and pregtime < 210 and pregtime >= 150:pl'<font color = black>Ваш <a href="exec:view''images/pregnant/2.jpg''"> животик</a> округлился, и весьма заметно. Окружающие видят, что вы беременны</font>'
-if preg = 1 and pregtime <= 280 and pregtime >= 210:pl'<font color = black>У вас огромный <a href="exec:view''images/pregnant/3.jpg''"> живот</a> беременной женщины</font>'
-if hour >= 11 and hour < 12 and week > 1 and week < 5 and workKafe = 1:pl'<b><font color = red>ВЫ МОЖЕТЕ ВЫЙТИ НА РАБОЧУЮ СМЕНУ ОФИЦИАНТКОЙ В КАФЕ</font></b>'
-if hour >= 8 and hour < 9 and week < 5 and workSec >= 1:pl'<b><font color = red>ВАМ НУЖНО НА РАБОТУ СЕКРЕТАРЁМ В ПРОЕКТНУЮ ОРГАНИЗАЦИЮ</font></b>'
-if PersSecWork = 1 and week < 6 and hour < 10 and hour >= 5:pl'<b><font color = red>ВАМ НУЖНО НА РАБОТУ СЕКРЕТАРШЕЙ В БЫСТРОЕЖКУ, НЕ ПОЗДНЕЕ 9 ЧАСОВ</font></b>'
-if workFabrika = 1 and week => 1 and week <= 5 and hour = 8 and age >= 18 or workFabrika = 1 and week => 1 and week <= 5 and hour = 16 and age < 18:pl'<b><font color = red>ВAM НУЖНО НА РАБОТУ ШВЕЕЙ В ФАБРИКУ Павлово</font></b>'
-$zz_str = ''
-if body_write > 0 and face_write > 0: $zz_str = 'Ваше тело и лицо разрисованы похабными надписями.'
-if body_write > 1 and face_write = 0: $zz_str = 'Ваше тело исписано унизительными надписями.'
-if body_write = 1 and face_write = 0: $zz_str = 'На вашем теле непристойная надпись.'
-if body_write = 0 and face_write > 1: $zz_str = 'Ваше лицо исписано похабными словечками.'
-if body_write = 0 and face_write = 1: $zz_str = 'На вашем лице унизительная надпись.'
-if len($zz_str) > 0 : pl '<b><font color = red><a href="exec:dynamic $clear_write"><b><font color = red>' + $zz_str + '</font></b></a>'
-if cumlip > 0: pl'<b><font color = red>Из вашего рта пахнет спермой.</font></b>'
-if (cumbelly + cumpussy + cumass + cumface + cumfrot + cumanus) > 0: gs 'zz_common','cumeater_prepeare'
-if vgape = 3: pl'<b><font color = red>У вас сильно болит влагалище, вы даже с трудом ходите, при этом стараясь пошире расставлять ноги.</font></b>'
-if vgape = 2: pl'<b><font color = red>У вас болит влагалище и вы с трудом можете свести ноги вместе.</font></b>'
-if vgape = 1: pl'<b><font color = red>У вас немного болит влагалище.</font></b>'
-if agape = 3: pl'<b><font color = red>У вас сильно болит и кровоточит анус.</font></b>'
-if agape = 2: pl'<b><font color = red>У вас болит анус.</font></b>'
-if agape = 1: pl'<b><font color = red>У вас немного болит и чешется анус.</font></b>'
-if spanked > 0:
-	if spanked/25 >= 2: pl'<b><font color = red>Ваша бедная <a href="exec:view''images/picb/ass/spanked2.jpg''">задница</a> нещадно болит, на ней видны ярко красные рубцы от ударов, местами переходящие в синяки.</font></b>'
-	if spanked/25 = 1: pl'<b><font color = red>Ваши <a href="exec:view''images/picb/ass/spanked1.jpg''">ягодицы</a> горят огнём, на них отчётливо видны полосы.</font></b>'
-	if spanked/25 = 0: pl'<b><font color = red>Ваши <a href="exec:view''images/picb/ass/spanked0.jpg''">ягодицы</a> немного покраснели от шлепков и грубых прикосновений и побаливают.</font></b>'
-end
-if Gerpes >= 3: pl'<b><font color = red>На ваших губах язвочки. Все признаки генитального герпеса.</font></b>'
-if Gerpes < 10 and Gerpes >= 5: pl'<b><font color = red>Ваша киска покраснела и сильно зудит. Это генитальный герпес.</font></b>'
-if Gerpes >= 10: pl'<b><font color = red>На вашей киске появились язвочки. Это генитальный герпес.</font></b>'
-if Gerpes >= 20: pl'<b><font color = red>Вашу жопу покрывают язвочки генитального герпеса.</font></b>'
-if Sifilis >= 21 and Sifilis < 50: pl'<b><font color = red>У вас вскочила большая, твердая болячка на губе.</font></b>'
-if Sifilis >= 50: pl'<b><font color = red>Сифилитическая сыпь покрывает все ваше тело.</font></b>'
-if Triper > 2: pl'<b><font color = red>Из влагалища выходят белые выделения и сильная резь при мочеиспускании. Так же из влагалища сильно и противно пахнет.</font></b>'
-if Kandidoz > 30: pl'<b><font color = red>У вас молочница.</font></b>'
-if SLomka > 0: pl'<b><font color = red>Вам очень плохо и болят все кости. У вас ломка</font></b>'
-if narkday ! day and narkoman = 1: pl'<b><font color = red>Вам очень плохо и болят все кости. Срочно нужна бледная леди!</font></b>'
-if fingal > 0: pl'<b><font color = red>У вас фингал на лице.</font></b>'
-if current_clothing = 0:
-	if tanga = 0: pl '<b><font color = red>Вы абсолютно обнажены, и от этого внутри всё трепещет</font></b>'
-	if tanga = 1: pl '<b><font color = red>Вы разделись до трусиков и ваши сисечки призывно раскачиваются при ходьбе</font></b>'
-elseif current_clothing = 1:
-	pl '<b><font color = red>Ваше голое тело прикрывает лишь короткое полотенце</font></b>'
-elseif current_clothing > 2:
-	if tanga = 0:
-		if func('zz_clothing', 'is_skirt') = 1 and shameless['flag'] = 0 :
-			pl '<b><font color = red>Румянец заливает ваше лицо: вы не надели трусики и теперь из под вашей короткой юбки иногда сверкает <a href="exec:view''images/picb/upskirt.jpg''">голая задница</a>.</font></b>'
-		else
-			pl '<b><font color = red>Вы не надели трусики.</font></b>'
-		end
-	end
-end
-if mosol >= 30 and mosol < 50: pl'<b><font color = red>Пися покраснела и зудит, кажется вы её натёрли об одежду.</font></b>'
-if mosol >= 50: pl '<b><font color = red>Пися болит и каждый шаг дается через боль, она пунцовая и видны потертости от хождения без нижнего белья.</font></b>'
-if analplugIN = 1: pl '<b><font color = red>У вас в попу вставлена анальная пробка.</font></b>'
-if vibratorin = 1: pl '<b><font color = red>У вас во влагалище работает вибратор.</font></b>'
-if young_shop_work = 1 and week < 6:
-	if hour = 14: pl'<b><font color = red>В 15 часов вам надо быть на работе в магазине "Кис-Киска".</font></b>'
-	if hour = 16 and inWorkYoungShop = 0: young_shop_miss += 1 & pl'<b><font color = red>Вы прогуляли работу.</font></b>'
-end
-if uber['work'] = 1:
-	if uber['work_day'] ! day and week ! 3 and week ! 7:
-		if hour = uber['work_week']*8-1 or hour = uber['work_week']*8:
-			pl '<b><font color = red>В <<uber[''work_week'']*8>> часов вам надо быть на работе в службе такси.</font></b>'
-		elseif hour > uber['work_week']*8:
-			uber['work_day'] = day
-			uber['work_absent'] += 1
-		end
-	end
-end
-if workrin = 1:
-	if week mod 2 = 0:
-		if hour = 7: pl '<b><font color = red>В 08.00 нужно вам на работу на рынок.</font></b>'
-		if hour = 8: pl '<b><font color = red>Вам надо на работу на рынок.</font></b>'
-	end
-end
-!корзинка с грибами и ягодами
-if boletus > 0 and bilberry = 0 and boletus + bilberry < 10:pl'У вас в корзинке <b><<boletus>></b> кг грибов.'
-if boletus = 0 and bilberry > 0 and boletus + bilberry < 10:pl'У вас в корзинке <b><<bilberry>></b> кг ягод.'
-if boletus > 0 and bilberry > 0 and boletus + bilberry < 10:pl'У вас в корзинке <b><<boletus>></b> кг грибов и <b><<bilberry>></b> кг ягод.'
-if boletus + bilberry >= 10:pl'<b><font color = black>У вас полная корзина, больше в неё ничего не влазит. В ней <b><<boletus>></b> кг грибов и <b><<bilberry>></b> кг ягод</font></b>'
-!долг за квартиру
-if house_debt > 0:pl'<b><font color = black>У вас задолженность за квартиру <<house_debt>> рублей.</font></b>'
-!---
-if frost > 0 and frost <= 5: pl '<b><font>Вам немного холодно.</font></b>'
-if frost > 5 and frost < 11: pl '<b><font color = red>Вы замёрзли.</font></b>'
-if frost >= 11: pl '<b><font color = red>Вы очень замёрзли.</font></b>'
-if sick = 1: pl'<b><font color = red>Вам что-то нехорошо, першит в горле и немного течёт из носа.</font></b>'
-if sick > 1 and sick < 24: pl'<b><font color = red>Вас знобит. У вас течёт из носа и саднит горло, вы покашливаете и чихаете - похоже, вы простыли.</font></b>'
-if sick >= 24 and sick < 48: pl'<b><font color = red>У вас поднялась температура. У вас забит нос, вам больно глотать - горло побаливает. Вы постоянно кашляете и чихаете - похоже, вы простудились.</font></b>'
-if sick >= 48 and sick < 72: pl'<b><font color = red>У вас сильный жар. У вас заложен нос, болят голова и горло, вы сильно кашляете - похоже, вы сильно простудились. Может быть, это грипп.</font></b>'
-if sick >= 72: pl'<b><font color = red>Вы мечетесь в жару. У вас заложен нос, болит голова и ломит все кости. Ваше горло воспалено и очень болит. Вы тяжело с надрывом кашляете - похоже, вы серьезно больны. Может быть, это ангина.</font></b>'
-if hour < meethour and svidanieA = 1: pl'<<$boyA>> будет вас ждать около вашего дома в <<meethour>> часов'
-if hour = meethour and svidanieA = 1: pl'<b><font color = red><<$boyA>> уже ждёт вас около дома.</font></b>'
-if meetday < daystart and svidanieA = 1:bfA -= 10 & svidanieA = 0
-if StrongNarkota > 20:pl'<b><font color = red>Вы под кайфом.</font></b>'
-if alko > 0:
-	if alko < 3: pl'<b><font color = red>Вы немного выпивши.</font></b>'
-	if alko >= 3 and alko < 6: pl'<b><font color = red>Вы пьяны.</font></b>'
-	if alko >= 6: pl'<b><font color = red>Вы в стельку пьяны.</font></b>'
-end
-if crazy >= 4 and crazy < 7: pl '<b><font color = red>Вы подавлены. Надо что-то в жизни менять.</font></b>'
-if crazy >= 7 and crazy <= 10: pl '<b><font color = red>У вас депрессия. До добра это не доведёт, надо к врачу.</font></b>'
-if crazy > 10: pl '<b><font color = red>Ваша депрессия затянулась, еще немного - и суицид неизбежен!</font></b>'
-if day = 29 and month = 12 and age <= 17 and school['certificate'] = 0 and school['block'] < 3:
-	if hour >= 5 and hour <= 14: pl '<font color = red>В 14 часов пройдёт школьная новогодняя вечеринка.</font>'
-end
-if sisboyday + 1 = daystart and hour < 19 and ($npc['38,qwSisterBoy'] = 3 or $npc['38,qwSisterBoy'] = 5 or $npc['38,qwSisterBoy'] = 7 or ($npc['38,qwSisterBoy'] = 9 and $npc['38,qwSisterTrio'] ! 1)): pl'' & pl'Вы обещали сестре не заходить в вашу комнату в 18 часов'
-if sisboyday + 1 = daystart and hour < 19 and $npc['38,qwSisterTrio'] = 1:pl'' & pl'Вы обещали сестре прийти в вашу комнату в 18 часов'
+!if Gerpes >= 3: pl'<b><font color = red>На ваших губах язвочки. Все признаки генитального герпеса.</font></b>'
+!if Gerpes < 10 and Gerpes >= 5: pl'<b><font color = red>Ваша киска покраснела и сильно зудит. Это генитальный герпес.</font></b>'
+!if Gerpes >= 10: pl'<b><font color = red>На вашей киске появились язвочки. Это генитальный герпес.</font></b>'
+!if Gerpes >= 20: pl'<b><font color = red>Вашу жопу покрывают язвочки генитального герпеса.</font></b>'
+!if Sifilis >= 21 and Sifilis < 50: pl'<b><font color = red>У вас вскочила большая, твердая болячка на губе.</font></b>'
+!if Sifilis >= 50: pl'<b><font color = red>Сифилитическая сыпь покрывает все ваше тело.</font></b>'
+!if Triper > 2: pl'<b><font color = red>Из влагалища выходят белые выделения и сильная резь при мочеиспускании. Так же из влагалища сильно и противно пахнет.</font></b>'
+!if Kandidoz > 30: pl'<b><font color = red>У вас молочница.</font></b>'
+if meetday < daystart and svidanieA = 1: bfA -= 10 & svidanieA = 0
 if nerdism > 100: nerdism = 100
-if nerdism > 0:
-	j = nerdism / 20 + 1
-	if j >= 5: pl '<font color = green>Вы погружены в свои фантазии после прочтения книги.</font>'
-	if j = 4: pl '<font color = black>Вам немного скучно и хочется опять погрузится в книги.</font>'
-	if j = 3: pl '<font color = red>Вам очень хочется что-нибудь почитать.</font>'
-	if j <= 2: pl '<font color = red><b>Вы жутко хотите хоть что-нибудь почитать!!!</b></font>'
-end
-! preview_window
-! nothing
-if preview_win = 0: view
-! face
-if preview_win = 1: dynamic $objface
-! body
-if preview_win = 2: dynamic $objbody
-! clothing
-if preview_win = 3: dynamic $objclothes
 !обнуление проверок на замужество
 proverka1 = 0
 proverka2 = 0
 proverka3 = 0
 proverka4 = 0
 proverka5 = 0
+! проверка открытия достижений
+gs 'zz_achievements','check_ach'
+! ---
+! вывод статусов в накладку
+gs 'zz_funcs','set_statuses'

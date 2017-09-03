@@ -10,11 +10,12 @@ gs 'zz_family', 'mother_sheduler'
 if father['in_garage'] = 0: gs 'zz_family', 'father_sheduler'
 gs 'zz_family', 'brother_sheduler'
 if month = 1 and day >= 1 and day <= 6 and hour >= 21 and hour < 23 and brother_newyear_qw = 0 and family_trip = 0: gt 'brother_events','happy_ny',1
-if $npc['38,qwKolka'] = 1 and week <=6  and hour = 6 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event2'
-if $npc['38,qwKolka'] = 2 and week <=5  and hour = 16 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event3'
-if $npc['38,qwKolka'] >= 3 and week <=5  and hour = 16 and rand(1,5) = 1 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event3_sub'
+if $npc['38,qwKolka'] = 1 and week <=6 and hour = 6 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event2'
+if $npc['38,qwKolka'] = 2 and week <=5 and hour = 16 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event3'
+if $npc['38,qwKolka'] >= 3 and week <=5 and hour = 16 and rand(1,5) = 1 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event3_sub'
 if $npc['38,qwKolka'] = 6 and week >=2 and week <=5 and hour = 16 and minut >= 30 and anus >= 13 and vagina >= 13: gt 'sisterQW','incest_event7'
-if $npc['38,qwKolka'] = 7 and family_trip = 0 and week = 7 and hour >=9 and hour <= 11 and  lubri > 0 and $npc['38,qwotchim'] = 1: gt 'sisterQW','incest_event8'
+if $npc['38,qwKolka'] = 7 and family_trip = 0 and week = 7 and hour >=9 and hour <= 11 and lubri > 0 and $npc['38,qwotchim'] = 1: gt 'sisterQW','incest_event8'
+if $npc['38,qwKolka'] >= 8 and week = 6 and hour = 10 and family_trip = 0 and lubri > 0 and horny > 60: gt 'sisterQW','incest_event8sub'
 ! если гг голой или бухой в стельку завалилась в зал
 if current_clothing <= 2 or alko >= 6:
 	if $mother['location'] = $curloc: *clr & gs 'mother' & exit

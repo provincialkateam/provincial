@@ -81,13 +81,13 @@ if shulga_lern_count > 0 and school['certificate'] = 0 and school['vacation'] = 
 	act 'Делать уроки': dynamic $shulga_lern
 end
 !ГГ хочет секса:
-if week >= 6 and $npc['11,relation']>=70 and (hour >= 10 and hour < 17 or hour >= 0 and hour < 3) or week < 6 and hour >= 0 and hour < 3 and GorSlut >=3 and alko >= 1:
+if week >= 6 and $npc['11,relation']>=70 and (hour >= 10 and hour < 17 or hour >= 0 and hour < 3) or week < 6 and hour >= 0 and hour < 3 and func('zz_reputation','get') >=3 and alko >= 1:
 	act 'Потрахаться': dynamic $gopsex_select
 end
 !ивент в комнате если репа (GorSlut >=3), рандом 5%
 !Светку ловят
 roomsex_gang = RAND(0,100)
-if roomsex_gang <= 2 and GorSlut >=3 and gangsexroom_count > 0 and week < 6 and hour >= 0 and hour <= 2:
+if roomsex_gang <= 2 and func('zz_reputation','get') >=3 and gangsexroom_count > 0 and week < 6 and hour >= 0 and hour <= 2:
 	dynamic $gang_sex_room_ev1
 end
 !Соньку трахают пацаны
@@ -104,7 +104,7 @@ if roomsex_sonya <= 5 and $npc['25,qwSoniaSlut'] >=1 and sexev_sonya_count > 0 a
 end
 !Если пришли в одежде проститутки
 i = func('zz_clothing', 'get_group')
-if i = 12 and sh_hooker_count > 0 and week < 6 and hour >= 0 and hour <= 2 and GorSlut >=3:
+if i = 12 and sh_hooker_count > 0 and week < 6 and hour >= 0 and hour <= 2 and func('zz_reputation','get') >=3:
 	dynamic $sh_hooker
 end
 if i = 12 and sh_hooker_count > 0 and week >= 6 and hour >= 0 and hour <= 2:
@@ -137,8 +137,8 @@ $sh_hooker = {
 			dynamic $shgopsex
 		end
 	end
-	act iif(GorSlut >=3,'Уйти, сделав вид что обиделись','Обидеться'):
-		if GorSlut < 3:dom += 1
+	act iif(func('zz_reputation','get') >= 3,'Уйти, сделав вид что обиделись','Обидеться'):
+		if func('zz_reputation','get') < 3: dom += 1
 		gt'shulgahome'
 	end
 }
@@ -521,8 +521,8 @@ $drunken_sex = {
 			if $npc['9,sex'] = 0: $npc['9,sex'] = 1 & guy += 1
 			gs 'stat'
 			gs 'zz_render', '', 'images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/sex/cum'+rand(1,9)+'.jpg', func('shulga_room_strings', 'local_str49')
-				if GorSlut <3:
-					GorSlut = 3
+				if func('zz_reputation','get') < 3:
+					gs 'zz_reputation','set',3
 					gs 'zz_render', '', '', func('shulga_room_strings', 'local_str50')
 				end
 				act 'Далее': dynamic $drunken_sleep
@@ -562,7 +562,7 @@ $shulga_beer = {
 		minut += 5
 		gs 'stat'
 		gs 'zz_render', '', 'images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/Pjanaja'+rand(1,8)+'.jpg', func('shulga_room_strings', 'local_str54')
-		if 	GorSlut < 3:
+		if 	func('zz_reputation','get') < 3:
 			act 'Сопротивляться': dynamic $drunken_sex_no
 			act 'Не сопротивляться': dynamic $drunken_sex_yes
 		else
@@ -594,7 +594,7 @@ $view_pornotv_evgr = {
 	horny += 15
 	gs'stat'
 	gs 'zz_render', '', 'images/zsoft/pod_ezd/shulgahome/tv/tvporn'+rand(1,5)+'.gif"></center>', func('shulga_room_strings', 'local_str56')
-		if GorSlut < 3: act 'Уйти': gt'shulga_room'
+		if func('zz_reputation','get') < 3: act 'Уйти': gt'shulga_room'
 		act 'Сосать':
 			*clr & cla
 			minut += 10
@@ -605,7 +605,7 @@ $view_pornotv_evgr = {
 			if $npc['9,sex'] = 0: $npc['9,sex'] = 1 & guy += 1
 			gs 'stat'
 			gs 'zz_render', '', 'images/zsoft/pod_ezd/shulgahome/bigroom/tv_ev/sex_group/bj'+rand(1,13)+'.jpg', func('shulga_room_strings', 'local_str57')
-				if GorSlut >= 3 and horny < 30 or GorSlut < 3:
+				if func('zz_reputation','get') >= 3 and horny < 30 or func('zz_reputation','get') < 3:
 				act 'Далее':
 					*clr & cla
 					minut += 10
@@ -616,7 +616,7 @@ $view_pornotv_evgr = {
 					act 'Закончить': gt'shulga_room'
 					end
 				end
-				if GorSlut >= 3 and horny >= 30:
+				if func('zz_reputation','get') >= 3 and horny >= 30:
 				gs 'zz_render', '', '', func('shulga_room_strings', 'local_str59')
 					act 'Ебаться':
 						*clr & cla
@@ -675,7 +675,7 @@ $view_pornotv_vasya = {
 		'<center><img src="images/zsoft/pod_ezd/shulgahome/tv/tvporn'+rand(1,5)+'.gif" width="748" height="540"></center>'
 		gs 'zz_render', '', '','Вы переключили на порно канал.'+iif($npc['11,relation'] <20,'<<$shulga_name_rnd>> возбудился просматривая порно. Вы заметили у него выпуклость в области паха.',iif($npc['11,relation'] <50,'<<$shulga_name_rnd>> возбудился просматривая порно, достал свой хуй и начал при вас дрочить, через пару минут попросил вас подрочить ему.',iif($npc['11,relation'] <70,'<<$shulga_name_rnd>> возбудился просматривая порно, достал свой хуй и начал надрачивать его, попросив вас ему отсосать.','<<$shulga_name_rnd>> сильно возбудился просматривая порно и без церемоний подошел к вам и насодил вашу голову на свой член. Вы даже не успели ничего понять.')))
 		if $npc['11,relation'] < 70: act 'Уйти': gt'shulga_room'
-		if $npc['11,relation'] >=70 and GorSlut < 3:
+		if $npc['11,relation'] >=70 and func('zz_reputation','get') < 3:
 			act 'Сосать':
 				*clr & cla
 				minut += 10
@@ -705,7 +705,7 @@ $view_pornotv_vasya = {
 				act 'Уйти': gt'shulga_room'
 			end
 		end
-		if GorSlut >= 3 and $npc['11,relation'] >=70:
+		if func('zz_reputation','get') >= 3 and $npc['11,relation'] >=70:
 			act 'Сосать':
 				*clr & cla
 				minut += 5
@@ -845,12 +845,12 @@ $shulga_bazar_night = {
 		if vasyan_textb = 12 and $npc['11,relation'] >=100:$vasyan_textb_gorslut = '<<$shulga_name_rnd>> Спрашивает: -"Чо, как - вебкой пользовалась, вертела уже жопой в онлайн-чате?"<br>-"Да, было дело" - не смущаясь, отвечаете вы.<br><<$shulga_name_rnd>> продолжает разговор: - "Ты, если что, по выходным можешь меня звать - вместе шоу будем делать: задроты больше денег заплатят, если увидят как тебя шпилят в онлайне."<br>- Идея неплохая, я подумаю... - говорите вы.'
 		dynamic $vasya_shulgin_rep
 		if bazar_count <= 0:gs 'zz_render', '', '','<<$shulga_name_rnd>> отмахивается: - "<<$sveta_rnd_name>>, ты утомила своими разговорами, отстань."'
-		if GorSlut < 3 and bazar_count > 0:gs 'zz_render', '', '', '<<$vasyan_textb>>'
-		if GorSlut >=3 and bazar_count > 0:gs 'zz_render', '', '', '<<$vasyan_textb_gorslut>>'
+		if func('zz_reputation','get') < 3 and bazar_count > 0:gs 'zz_render', '', '', '<<$vasyan_textb>>'
+		if func('zz_reputation','get') >=3 and bazar_count > 0:gs 'zz_render', '', '', '<<$vasyan_textb_gorslut>>'
 		act 'Далее': dynamic $shulga_bazar_night
 	end
 	act 'Пить пиво': dynamic $shulga_beer
-	if $npc['11,relation']>=70 and alko >= 1 or $npc['11,relation']>=70 and horny > 50 or GorSlut >=3 and alko >= 1:
+	if $npc['11,relation']>=70 and alko >= 1 or $npc['11,relation']>=70 and horny > 50 or func('zz_reputation','get') >=3 and alko >= 1:
 		act 'Потрахаться':
 		if shgopsex_vasya_count = 0:
 			cla
@@ -913,12 +913,12 @@ den_textb_gorslut = RAND(0,7)
 			if den_textb_gorslut = 6:$den_textb_gorslut = 'Рассказывает анекдот:<br>Мужик "снял" девушку в ресторане, шикарный стол, шампанское, икра и т. д.<br>Потом говорит: — Поехали ко мне! Едут (ночь, зима), он сворачивает в парк, останавливается, достаёт пистолет — Раздевайся догола, вылезай и лепи снеговика. - Она вся в слезах, разделась, вылезла, слепила.<br>— Залезай в машину. Одевайся. Приехали на "хату", офигенный стол, потом такой же ceкc, потом он отвозит ее куда она просит.<br>Она: — Зачем?! Зачем?! Я бы и без снеговика дала...<br>Он: — Понимаешь... шампанское... икра, ceкc — все это ты скоро забудешь, а вот "снеговика" — вряд ли...'
 			if den_textb_gorslut = 7:$den_textb_gorslut = 'Рассказывает анекдот:<br>Приходит учительница на урок, надела на шею на цепочку, новый золотой кулончик в виде самолётика. Вовочка весь урок не сводит с него глаз. В конце урока учительница спрашивает:<br>"Что, Вовочка, тебе так самолётик понравился?"<br>- "Нет, аэродромик."'
 if bazar_count_den <= 0:gs 'zz_render', '', '','Дэн ворчит: - <<$sveta_rnd_name>>, надоела своими разговорами, отстань.'
-if GorSlut < 3 and bazar_count_den > 0:gs 'zz_render', '', '', '<<$den_textb>>'
-if GorSlut >=3 and bazar_count_den > 0:gs 'zz_render', '', '', '<<$den_textb_gorslut>>'
+if func('zz_reputation','get') < 3 and bazar_count_den > 0:gs 'zz_render', '', '', '<<$den_textb>>'
+if func('zz_reputation','get') >=3 and bazar_count_den > 0:gs 'zz_render', '', '', '<<$den_textb_gorslut>>'
 		act 'Далее': dynamic $den_bazar
 	end
 	act 'Пить пиво': dynamic $shulga_beer
-	if GorSlut >=3 and alko >= 1:
+	if func('zz_reputation','get') >=3 and alko >= 1:
 		act 'Потрахаться с Дэном':
 		if shgopsex_den_count = 0:
 			cla
@@ -987,12 +987,12 @@ vitek_textb_gorslut = RAND(0,7)
 			if vitek_textb_gorslut = 6:$vitek_textb_gorslut = '<<$rnd_vitek_name>> говорит: - Пьяная девушка своей пизде не хозяйка.<br>Вы парируете: - Даааа. Как будто пьяный мужик своему хую великий командир".<br>Друзья ржут.'
 			if vitek_textb_gorslut = 7:$vitek_textb_gorslut = 'Рассказывает анекдот:<br>Мужик заходит в аптеку и громко заявляет:<br>- Мне пачку презервативов, пожалуйста!<br>Молоденькая продавщица покраснела и шепчет:<br>- Такое надо на ухо...<br>Мужик:<br>- А зачем мне на ухо?! Мне на хуй нужно!!!'
 if bazar_count_vitek <= 0:gs 'zz_render', '', '','Витёк бурчит: - <<$sveta_rnd_name>>, надоела своими разговорами, отстань.'
-if GorSlut < 3 and bazar_count_vitek > 0:gs 'zz_render', '', '', '<<$vitek_textb>>'
-if GorSlut >=3 and bazar_count_vitek > 0:gs 'zz_render', '', '', '<<$vitek_textb_gorslut>>'
+if func('zz_reputation','get') < 3 and bazar_count_vitek > 0:gs 'zz_render', '', '', '<<$vitek_textb>>'
+if func('zz_reputation','get') >=3 and bazar_count_vitek > 0:gs 'zz_render', '', '', '<<$vitek_textb_gorslut>>'
 		act 'Далее': dynamic $vitek_bazar
 	end
 	act 'Пить пиво': dynamic $shulga_beer
-	if GorSlut >=3 and alko >= 1:
+	if func('zz_reputation','get') >=3 and alko >= 1:
 		act 'Потрахаться':
 		if shgopsex_vitya_count = 0:
 			cla
@@ -1119,7 +1119,7 @@ $shulga_lern = {
 	else
 		gs 'stat'
 		gs 'zz_render', '', 'images/zsoft/pod_ezd/shulgahome/bigroom/lern/ev<<lern_imgset>>_1.jpg', func('shulga_room_strings', 'local_str83')
-		if GorSlut >=3:
+		if func('zz_reputation','get') >=3:
 			if vagina >=1:
 				act 'Согласиться': dynamic $shulga_lern_sex_yes
 			end

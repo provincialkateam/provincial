@@ -1,6 +1,6 @@
 ﻿if $args[0] = '': $args[0] = 'arturQW_1'
 if $ARGS[0] = 'arturQW_1':
-	if $npc['40,sex'] >= 5 and GorSlut = 0 and vnesh >= 60:
+	if $npc['40,sex'] >= 5 and func('zz_reputation','get') = 0 and vnesh >= 60:
 		*clr & cla
 		minut += 2
 		gs 'stat'

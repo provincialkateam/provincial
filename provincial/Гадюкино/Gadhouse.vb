@@ -2,13 +2,13 @@
 $loc = $CURLOC
 frost = 0
 lost_girl = 0
-gs 'zz_render', 'Изба', 'qwest/gadukino/izba.jpg', 'Простая деревенская изба.**В маленькой комнате стоит <a href="exec:GT ''loker'',''start''">шкаф</a> и <a href="exec:GT ''bed'',''start''">кровать</a> на которой вы можете спать.**В большой комнате, посередине, стоит <a href="exec:GT ''table''">стол</a>. Возле окна стоит <a href="exec: gs ''zz_common'',''watch_tv_on_sofa''">телевизор</a>, а рядом с ним древний <a href="exec:GT ''mirror'',''start''">трельяж</a> и <a href="exec: gt ''zz_books'',''custom_shelf'',0,9">книжный шкаф</a>.'
+gs 'zz_render', 'Изба', 'qwest/gadukino/izba.jpg', 'Простая деревенская изба.**В маленькой комнате стоит <a href="exec:GT ''loker'',''start''">шкаф</a> и <a href="exec:GT ''bed'',''start''">кровать</a> на которой вы можете спать.**В большой комнате, посередине, стоит стол. Возле окна стоит <a href="exec: gs ''zz_common'',''watch_tv_on_sofa''">телевизор</a>, а рядом с ним древний <a href="exec:GT ''mirror'',''start''">трельяж</a> и <a href="exec: gt ''zz_books'',''custom_shelf'',0,9">книжный шкаф</a>.'
 if rand(0,5) = 0: gs 'zz_render', '', '','На столе у окна возле батареи лениво валяется кот <a href="exec: gt ''grandparents_events'',''villagecat''">Бонифаций</a>.'
 if hour < 6 or hour > 21:
 	gs 'zz_render', '', '','В отдельных кроватях спят ваши дедушка с бабушкой.'
 elseif hour = 6:
 	gs 'zz_render', '', '','У печи крутится, готовя завтрак, ваша '+iif(grandma_notalk = 0,'<a href="exec: gt ''grandma'' ">бабушка</a>','сердитая бабушка')+'.'
-	gs 'zz_render', '', '','По комнате  ходит ваш '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+'.'
+	gs 'zz_render', '', '','По комнате ходит ваш '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+'.'
 elseif hour = 7 or hour = 13 or hour = 18:
 	gs 'zz_render', '', '','За столом, у окна, кушают '+iif(grandma_notalk = 0,'<a href="exec: gt ''grandma'' ">бабушка</a>','бабушка')+' и '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+'.'
 elseif hour > 13 and hour < 18 and week = 7 and (month >= 5 or month <= 9):

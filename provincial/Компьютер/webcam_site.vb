@@ -7,7 +7,6 @@ $webcam_rega = {
 *clr & cla
 minut += 5
 gs 'stat'
-*nl
 'Регистрация в онлайн чате, придумайте себе псевдоним...'
 !$web_gg_name = '<<$name[2]>>'
 $webcam_name = input ('Ваш псевдоним...')
@@ -86,7 +85,7 @@ $webcam_index = {
 			if week < 6 and hour >= 7 and hour < 19: 'Еще рано устраивать шоу, большинство зрителей на работе.'
 			if week >= 6 and hour >= 7 and hour < 15: 'Еще рано устраивать шоу, большинство зрителей все еще отсыпаются после трудовой недели.'
 			if hour >= 0 and hour < 7: 'Уже так поздно. Вы не хотите распугать всех своих зрителей сонным видом.'
-			if GorSlut < 1: 'Я стесняюсь вытворять... всякое. Пусть и всего лишь перед камерой.'
+			if func('zz_reputation','get') < 1: 'Я стесняюсь вытворять... всякое. Пусть и всего лишь перед камерой.'
 		else
 			my_show_show = 0
 			my_show_tits = 0
@@ -128,7 +127,6 @@ act 'Выход': gt 'Komp', 'start'
 		webcam_show_time += 60
 		webcam_show_counter += 1
 		internetM -= 60
-		elektro += 3
 		internet -= 1
 		minut += 60
 		cla

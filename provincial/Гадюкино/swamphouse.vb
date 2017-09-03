@@ -3,9 +3,7 @@ $loc = $CURLOC
 $metka = $ARGS[0]
 $loc = $CURLOC
 frost = 0
-bonusZ = 0
-clr
-gs'stat'
+gs 'stat'
 gs 'zz_funcs', 'colorize_day'
 hantslutsexrand = rand(1,3)
 temp = rand(1,5)
@@ -173,7 +171,7 @@ if hantersAndreiLove > 0 and horny <= 60 and hantersAndreiQw >= 10 and temp = 3 
 	hantersAndreisex += rand(6,24)
 	gs 'stat'
 	'<center><img src="images/qwest/gadukino/Swamp/hanterlove1.4.jpg"></center>'
-	'Зайдя в избушку вы увидели Андрея. Неожиданно  он впился в ваши губы страстным поцелуем и ни слова не говоря потянул вас за собой.'
+	'Зайдя в избушку вы увидели Андрея. Неожиданно он впился в ваши губы страстным поцелуем и ни слова не говоря потянул вас за собой.'
 	act 'Идти с Андреем':
 		*clr & cla
 		minut += 5
@@ -229,7 +227,7 @@ if hanters > 0 and doublehanterlove = 1 and hour >= 8 and hour < 20 and (hanters
 		hantersSergeiQw -= 1
 		gs 'stat'
 		'<center><img src="images/qwest/alter/Ev/otel4.jpg"></center>'
-		' - Нет, ребята, что-то я не хочу, - сказали вы, и не глядя на них  ушли.'
+		' - Нет, ребята, что-то я не хочу, - сказали вы, и не глядя на них ушли.'
 		act 'Идти':gt $loc, $metka
 	end
 end
@@ -406,7 +404,6 @@ $washstand = {
 			mop = 1
 			cumlip = 0
 			cumface = 0
-			face_write = 0
 			sweat -= 1
 			bucket -= 1
 			gs 'stat'
@@ -488,7 +485,7 @@ $stackmagazines = {
 		manna += 10
 		minut += 60
 		gs 'stat'
-        dynamic $clothes_read_magazines
+		dynamic $clothes_read_magazines
 		gs 'zz_render', '', '','Вы решили полистать научный журнал, пытаясь понять всякие умные фразочки и разобраться в предмете описания.'
 		if blizoruk = 200 and glassqw = 0: glassqw = 1 & gs 'zz_render', '', '', '<font color=red>Текст расплывается по странице, похоже вы испортили зрение. Нужно будет сходить к окулисту.</font>'
 		act 'Далее':dynamic $stackmagazines
@@ -508,7 +505,7 @@ $stackmagazines = {
 			school['progress'] +=1
 		end
 		gs 'stat'
-        dynamic $clothes_read_magazines
+		dynamic $clothes_read_magazines
 		gs 'zz_render', '', '', 'Вы решили полистать литературный журнал...тягомотина редкая.'
 		if blizoruk = 200 and glassqw = 0: glassqw = 1 & gs 'zz_render', '', '', '<font color=red>Текст расплывается по странице, похоже вы испортили зрение. Нужно будет сходить к окулисту.</font>'
 		act 'Далее':dynamic $stackmagazines
@@ -524,7 +521,7 @@ $stackmagazines = {
 		manna = 100
 		minut += 60
 		gs 'stat'
-        dynamic $clothes_read_magazines
+		dynamic $clothes_read_magazines
 		gs 'zz_render', '', '', 'Вы листаете развлекательный журнал, погружаясь в мир моды и шоу-бизнеса.'
 		if blizoruk = 200 and glassqw = 0: glassqw = 1 & gs 'zz_render', '', '', '<font color=red>Текст расплывается по странице, похоже вы испортили зрение. Нужно будет сходить к окулисту.</font>'
 		act 'Далее':dynamic $stackmagazines
@@ -544,7 +541,7 @@ $stackmagazines = {
 		if blizoruk = 200 and glassqw = 0: glassqw = 1 & gs 'zz_render', '', '', '<font color=red>Текст расплывается по странице, похоже вы испортили зрение. Нужно будет сходить к окулисту.</font>'
 		act 'Далее':dynamic $stackmagazines
 	end
-    act'Отойти':gt $loc, $metka
+	act'Отойти':gt $loc, $metka
 }
 $basin = {
 	cla
@@ -553,7 +550,7 @@ $basin = {
 	gs 'stat'
 	'<center><img src="images/qwest/gadukino/Swamp/basin.jpg"></center>'
 	'Старый таз. При наличии горячей воды можно помыться или постирать одежду.'
-	if hotwater = 1  and current_clothing < 3:
+	if hotwater = 1 and current_clothing < 3:
 		act 'Помыться':
 			cla
 			*clr
@@ -563,8 +560,6 @@ $basin = {
 			cumlip = 0
 			cumface = 0
 			cumanus = 0
-			face_write = 0
-			body_write = 0
 			lubonus = 0
 			sweat = 0
 			manna += 5
@@ -576,7 +571,7 @@ $basin = {
 			act 'Далее':gt $loc, $metka
 		end
 	end
-	if hotwater = 1  and dirtyclothes = 1 and current_clothing < 3:
+	if hotwater = 1 and dirtyclothes = 1 and current_clothing < 3:
 		act 'Стирать одежду':
 			cla
 			*clr
@@ -648,7 +643,7 @@ $hanterstableBJ = {
 			temp = rand(1,2)
 			gs 'stat'
 			'<center><img src="images/qwest/gadukino/Swamp/hanterstableBJ1.'+rand(1,5)+'.jpg"></center>'
-			'Вы устроились поудобнее под столом  и приблизили свое лицо к его члену....'
+			'Вы устроились поудобнее под столом и приблизили свое лицо к его члену....'
 			gs 'zz_dynamic_sex', 'bj'
 			'Вскоре член Андрея напрягся и вы поняли что он сейчас кончит...'
 			if temp = 1:
@@ -660,7 +655,7 @@ $hanterstableBJ = {
 					if current_clothing > 0:cumfrot += rand(0,1)
 					gs 'stat'
 					'<center><img src="images/qwest/gadukino/Swamp/hanterstableCum1.'+rand(1,5)+'.jpg"></center>'
-					'Андрей вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не  прекратил кончать.'
+					'Андрей вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не прекратил кончать.'
 					act 'Далее':dynamic $hanterstableBJ
 				end
 			else
@@ -690,7 +685,7 @@ $hanterstableBJ = {
 			temp = rand(1,2)
 			gs 'stat'
 			'<center><img src="images/qwest/gadukino/Swamp/hanterstableBJ1.'+rand(1,5)+'.jpg"></center>'
-			'Вы устроились поудобнее под столом  и приблизили свое лицо к его члену....'
+			'Вы устроились поудобнее под столом и приблизили свое лицо к его члену....'
 			gs 'zz_dynamic_sex', 'bj'
 			'Вскоре член Сергея напрягся и вы поняли что он сейчас кончит...'
 			if temp = 1:
@@ -702,7 +697,7 @@ $hanterstableBJ = {
 					if current_clothing > 0:cumfrot += rand(0,1)
 					gs 'stat'
 					'<center><img src="images/qwest/gadukino/Swamp/hanterstableCum1.'+rand(1,5)+'.jpg"></center>'
-					'Сергей вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не  прекратил кончать.'
+					'Сергей вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не прекратил кончать.'
 					act 'Далее':dynamic $hanterstableBJ
 				end
 			else
@@ -732,7 +727,7 @@ $hanterstableBJ = {
 			temp = rand(1,5)
 			gs 'stat'
 			'<center><img src="images/qwest/gadukino/Swamp/hanterstableBJ1.'+rand(1,5)+'.jpg"></center>'
-			'Вы устроились поудобнее под столом  и приблизили свое лицо к его члену....'
+			'Вы устроились поудобнее под столом и приблизили свое лицо к его члену....'
 			gs 'zz_dynamic_sex', 'bj'
 			'Вскоре член Игорь напрягся и вы поняли что он сейчас кончит...'
 			if temp = 1:
@@ -744,7 +739,7 @@ $hanterstableBJ = {
 					if current_clothing > 0:cumfrot += rand(0,1)
 					gs 'stat'
 					'<center><img src="images/qwest/gadukino/Swamp/hanterstableCum1.'+rand(1,5)+'.jpg"></center>'
-					'Игорь вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не  прекратил кончать.'
+					'Игорь вынул член из вашего рта и тут же вам в лицо ударила струя горячей спермы, потом еще и еще пока наконец он не прекратил кончать.'
 					act 'Далее':dynamic $hanterstableBJ
 				end
 			else
@@ -779,7 +774,7 @@ $hanterstable = {
 		dirty_swamphouse += rand(1,3)
 		'На самодельном столе стоят бутылки с водкой и пивом, разложена закусь. Андрей с Сергеем и Игорем выпивают и весело разговаривают.'
 	else
-		dirty_swamp_yard  += rand(0,2)
+		dirty_swamp_yard += rand(0,2)
 		'За самодельным столом едят и неспешно беседуют охотники.'
 	end
 	if hantersdrink = 1 and hour >= 20:
@@ -789,21 +784,21 @@ $hanterstable = {
 			gs 'stat'
 			'<center><img src="images/zsoft/pod_ezd/shulgahome/kuh/vodka2.jpg"></center>'
 			'Вы выпили рюмку водки'
-	        act 'Закусить':
-		        *clr & cla
-		        minut += 10
-	            health += 10
-		        gs 'stat'
-		        '<center><img src="images/qwest/gadukino/Swamp/snack1.'+rand(1,2)+'.jpg"></center>'
-                if energy >= 24:
-		            'Вы больше не можете есть.'
-	            elseif energy >= 18 and energy < 24:
-		            'Вы через силу затолкали в себя еду.'
-	            else
-		            'Вы с удовольствием съели приготовленную еду.'
-	            end
-	            act 'Далее':dynamic $hanterstable
-	        end
+			act 'Закусить':
+				*clr & cla
+				minut += 10
+				health += 10
+				gs 'stat'
+				'<center><img src="images/qwest/gadukino/Swamp/snack1.'+rand(1,2)+'.jpg"></center>'
+				if energy >= 24:
+					'Вы больше не можете есть.'
+				elseif energy >= 18 and energy < 24:
+					'Вы через силу затолкали в себя еду.'
+				else
+					'Вы с удовольствием съели приготовленную еду.'
+				end
+				act 'Далее':dynamic $hanterstable
+			end
 		end
 		act 'Выпить пива':
 			*clr & cla
@@ -880,7 +875,7 @@ $hanterstable = {
 							' - Как ты знаешь <<$name[2]>>, я уже давно в разводе, - начал Андрей. - Но я же нормальный мужчина, мне нужно изредка снимать напряжение, ну ты понимаешь о чем я...'
 							'Вы с изумлением посмотрели на него.'
 							' - Так вот <<$name[2]>>, если бы ты мне хоть изредка помогала его снимать, я был бы тебе очень благодарен, - продолжил Андрей.'
-							'Вы с недоверием  смотрели на него, не шутит ли он. Но Андрей говорил вполне серьёзно.'
+							'Вы с недоверием смотрели на него, не шутит ли он. Но Андрей говорил вполне серьёзно.'
 							' - Об этом естественно никто не узнает, не волнуйся , - быстро добавил он. - Ну так как, <<$name[2]>>, ты согласна?'
 							act 'Согласиться':
 								*clr & cla
@@ -894,7 +889,7 @@ $hanterstable = {
 								'<center><img src="images/qwest/gadukino/Swamp/thinks'+rand(1,2)+'.jpg"></center>'
 								'Услышав такое вы надолго задумались. Помочь другу это конечно хорошо, но вот сам способ вызывал у вас сомнения.'
 								' - Хорошо Андрей, я согласна, - наконец решились вы ответить. - А каким именно способом тебе помогать и где?'
-								' - Блин, <<$name[2]>>, я знал, что будешь не против, - ответил  он. - Ну а на счет способа не волнуйся, поработай ротиком, мне и этого хватит.'
+								' - Блин, <<$name[2]>>, я знал, что будешь не против, - ответил он. - Ну а на счет способа не волнуйся, поработай ротиком, мне и этого хватит.'
 								' - Пошли за избушку, чтобы никто не увидел , - добавил он вставая с лавки.'
 								act 'Идти':dynamic $hantersmokBJ
 							end
@@ -1121,11 +1116,11 @@ $hanterstable = {
 												'<center><img src="images/qwest/gadukino/Swamp/dance3.jpg"></center>'
 												'Под одобрительные крики парней вы раздеваетесь дальше, оставшись только в нижнем белье...'
 												act 'Вырубиться':
-												   *clr & cla
-												   minut += 1
-												   gs 'stat'
-												   '<center><img src="images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/sleep10.jpg"></center>'
-												   'Вы явно переоценили свои силы и возможности организма. Поэтому немного потанцевав, неожиданно для парней, вырубились прямо на полу, там где танцевали....'
+													*clr & cla
+													minut += 1
+													gs 'stat'
+													'<center><img src="images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/sleep10.jpg"></center>'
+													'Вы явно переоценили свои силы и возможности организма. Поэтому немного потанцевав, неожиданно для парней, вырубились прямо на полу, там где танцевали....'
 													act 'Проснуться':
 														*clr & cla
 														minut += 240
@@ -1174,8 +1169,8 @@ $hanterstable = {
 											health -= 15
 											manna -= 25
 											gs 'stat'
-										   '<center><img src="images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/pohmel2.jpg"></center>'
-										   'Вы проспали некоторое время, проснувшись растрепанная еле встали с кровати. Голова болела и вы смутно помнили, что вчера происходило.'
+											'<center><img src="images/zsoft/pod_ezd/shulgahome/bigroom/drunk_ev/pohmel2.jpg"></center>'
+											'Вы проспали некоторое время, проснувшись растрепанная еле встали с кровати. Голова болела и вы смутно помнили, что вчера происходило.'
 											act 'Далее': gt $loc, $metka
 										end
 									end
@@ -1418,7 +1413,7 @@ $hanterstable = {
 			gs 'zz_kitchen_acts','drink','tea'
 			gs 'stat'
 			act 'Далее':gt $loc, $metka
-	  	end
+	 	end
 		act 'Поболтать':
 			*clr & cla
 			minut += 60

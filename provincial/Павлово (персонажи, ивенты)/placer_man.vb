@@ -12,7 +12,7 @@
 	if kol_man = 6: $kol_man_text = 'шесть парней' & $kol_man_text_a = 'парней' & $kol_man_prefiks = 'и' & $kol_man_prefiks_he = 'Они'
 	$text_znak = ''
 	!знаковые моменты
-	if GorSlut > 0:
+	if func('zz_reputation','get') > 0:
 		if know_status = 0:
 		end
 		if know_status = 1:

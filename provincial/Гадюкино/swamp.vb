@@ -17,16 +17,16 @@ if hour >= func('zz_weather','sunrise') and hour < func('zz_weather','sunset'):
 		else
 			gt 'gadforest_event', 'gadforest_lost_start'
 		end
-    end
+	end
 end
 if hour >= func('zz_weather','sunrise') and hour <= func('zz_weather','sunset'):
 	act 'Вернуться на окраину леса':swamp_cloth = 0 & hanters = 0 & minut += 150 & gt 'gadforest','1'
 else
-    act 'Вернуться на окраину леса':swamp_cloth = 0 & hanters = 0 & gt 'gadforest_event', 'forest_road'
+	act 'Вернуться на окраину леса':swamp_cloth = 0 & hanters = 0 & gt 'gadforest_event', 'forest_road'
 end
 if hour >= func('zz_weather','sunrise') and hour < func('zz_weather','sunset') and month >= 6 and month <= 9 and boletus + bilberry < 10 and swamp_day ! daystart:
-   	act 'Искать ягоды':
-   	    *clr & cla
+	act 'Искать ягоды':
+		*clr & cla
 		minut += 30
 		temp = RAND(1,2)
 		swamp_day = daystart

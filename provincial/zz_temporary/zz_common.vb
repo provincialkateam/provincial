@@ -78,6 +78,8 @@ end
 if $args[0] = 'shop_back':
 	if $loc = 'cafe_parco':
 		gt 'cafe_parco','inner'
+	elseif $loc = 'uni_campus':
+		gt 'uni_campus','caffe'
 	elseif $loc = 'burger':
 		gt 'burger','start'
 	elseif $loc = 'skk':
@@ -117,32 +119,6 @@ if $args[0] = 'read_porn':
 		act 'Выйти':gt $curloc
 	end
 end
-if $args[0] = 'cumeater_prepeare':
-	if cumbelly > 0:
-		$zz_str = ' перемазан в сперме.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/belly.jpg''">Ваш живот</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''belly''">'+$zz_str+'</a>')+'</font></b>'
-	end
-	if cumpussy > 0:
-		$zz_str = ' медленно вытекает сперма.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/pussy.jpg''">Из вашей киски</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''pussy''">'+$zz_str+'</a>')+'</font></b>'
-	end
-	if cumass > 0:
-		$zz_str = ' перемазана в сперме.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/ass.jpg''">Ваша попа</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''ass''">'+$zz_str+'</a>')+'</font></b>'
-	end
-	if cumface > 0:
-		$zz_str = ' и волосы измазаны в сперме.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/face.jpg''">Ваше лицо</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''face''">'+$zz_str+'</a>')+'</font></b>'
-	end
-	if cumfrot > 0:
-		$zz_str = ' пятно спермы.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/frot.jpg''">У вас на одежде</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''frot''">'+$zz_str+'</a>')+'</font></b>'
-	end
-	if cumanus > 0:
-		$zz_str = ' медленно вытекает сперма.'
-		pl '<b><font color=red><a href="exec:view''images/picb/cumeater/anal.jpg''">Из вашей попки</a>'+iif(swallow<10,$zz_str,'<a href="exec: gs''zz_common'',''cumeater'',''anus''">'+$zz_str+'</a>')+'</font></b>'
-	end
-end
 if $args[0] = 'cumeater':
 	gs 'zz_funcs', 'cum', 'lip'
 	vaf += 1
@@ -154,6 +130,23 @@ if $args[0] = 'cumeater':
 	if $args[0] = 'anus': cumanus = 0 & $_str = 'из ануса'
 	$result = 'Вы собрали пальцами сперму ' + $_str + ' и облизали их, почувствовав терпкий вкус спермы.'
 	killvar '$_str'
+	gs 'stat'
+end
+! args[1] - пробежка (0) или тренировка (1)
+if $args[0] = 'crossing':
+	_training = iif(args[1]=0,1,2)
+	running_day = day
+	body['day_weight'] -= 1
+	beg += RAND(2,5) * _training
+	speed += RAND(1,2) * _training
+	minut += 60 * _training
+	gs 'zz_funcs','sport', _training
+	if _training = 1:
+		gs 'zz_render','',func('zz_funcs','mk_image','common/sport/cross/cross_park'),'Вы в течение часа бегаете по парку, не давая себе заплыть жирком.'
+	else
+		gs 'zz_render','',func('zz_funcs','mk_image','common/sport/cross/cross'),'Вы в течение двух часов бегаете стадиону, развивая скорость и навыки бега.'
+	end
+	killvar '_training'
 	gs 'stat'
 end
 ! --- start workout ---!
@@ -199,9 +192,7 @@ if $args[0] = 'sitrpushd':
 	pushday = day
 	if stren < 40: stren += 1
 	gs 'zz_funcs', 'sport'
-	pushnum = RAND(stren/10,stren/5)
-	gs 'zz_render','','common/body/gym/push.jpg','Вы отжимаетесь от пола в течение пятнадцати минут, развивая силу.<br>Вам удалось чисто отжаться <<pushnum>> раз. Ваш рекорд до этого отжаться <<pushrecord>> раз.'
-	if pushrecord < pushnum: pushrecord = pushnum
+	gs 'zz_render','','common/body/gym/push.jpg','Вы отжимаетесь от пола в течение пятнадцати минут, развивая силу.<br>Вам удалось чисто отжаться <<RAND(stren/10,stren/5)>> раз.'
 	act 'Выйти': gt $curloc, $metka
 end
 ! --- end workout ---!
@@ -302,7 +293,7 @@ if $args[0] = 'run_competition':
 		! 2 - 7 место
 		:loop_begresult
 		if begresult >= zz_base + zz_step * zz_i and begresult < zz_base + zz_step * (zz_i + 1):
-			*pl $zz_result[zz_i]
+			gs 'zz_render','','', $zz_result[zz_i]
 			if $args[1] = 'school' or $args[1] = 'city':
 				gs 'zz_render','','', $zz_wins[0]
 			else
@@ -428,15 +419,148 @@ if $args[0] = 'check_inhome':
 		result = 0
 	end
 end
-! лицо ГГ
-if $args[0] = 'get_hero_face':
-	if cheatHapri_mod = 1:
+! использование салфеток - очистка от следов спермы
+! args[1] - автоприменение - 0/1
+if $args[0] = 'wet_wipes':
+	if salfetka = 0: exit
+	! сперва очищаем видимые следы - лицо и одежда, каждый раз по салфетке, если такие есть
+	! при очистке лица также убираем макияж
+	if cumface > 0 and salfetka > 0: cumface = 0 & mop = 1 & salfetka -= 1
+	if cumfrot > 0 and salfetka > 0: cumfrot = 0 & salfetka -= 1
+	! очистка других частей тела
+	if cumbelly > 0 and salfetka > 0: cumbelly = 0 & salfetka -= 1
+	if cumass > 0 and salfetka > 0: cumass = 0 & salfetka -= 1
+	if cumpussy > 0 and salfetka > 0: cumpussy = 0 & salfetka -= 1
+	if cumanus > 0 and salfetka > 0: cumanus = 0 & salfetka -= 1
+	if args[1] = 0:
+		minut += rand(5,10)
+		gs 'stat'
+		gs 'zz_render','','','С помощью влажных салфеток вы быстро подчистили себя и одежду от неприятных следов.'
+	end
+	exit
+end
+!------------------
+! Описания ГГ
+!------------------
+!---
+! рисунки
+!---
+! лицо
+if $args[0] = 'get_face':
+	if $settings['hapri_mod'] = 1:
 		if mop > 0:
 			$result = 'images/common/body/face/'+hapri+'/' + str(hcol) + str iif(glass > 2 ,2,glass) + str(shorthair) + iif(hapri = 0,'',str(iif(curly > 0,1,0)) + str(mop)) + '.jpg'
 		else
 			$result = 'images/common/body/face/2/' + str(hcol) + str(iif(curly > 0,1,0)) + '.jpg'
 		end
 	else
-		$result = 'images/common/body/face/' + str(hcol) + str(glass) + str(shorthair) + str(iif(curly > 0,1,0)) + '.jpg'
+		$result = 'images/common/body/face/' + str(hcol) + str(glass) + str(iif(shorthair <= 1,0,1)) + str(iif(curly > 0,1,0)) + '.jpg'
+	end
+end
+! тело
+if $args[0] = 'get_body':
+	if body['group'] = 0:
+		if (stren + vital) >= 50:
+			$result = 'images/picb/body/fit/0.jpg'
+		else
+			$result = 'images/picb/body/normal/3.jpg'
+		end
+	elseif body['group'] = 1:
+		if (stren + vital) < 50:
+			$result = 'images/picb/body/normal/5.jpg'
+		elseif (stren + vital) >= 50 and (stren + vital) < 100:
+			$result = 'images/picb/body/fit/3.jpg'
+		else
+			$result = 'images/picb/body/fit/4.jpg'
+		end
+	elseif body['group'] = 2:
+		if (stren + vital) >= 50:
+			$result = 'images/picb/body/fit/5.jpg'
+		else
+			$result = 'images/picb/body/normal/9.jpg'
+		end
+	elseif body['group'] = 3:
+		if (stren + vital) >= 50:
+			$result = 'images/picb/body/fit/6.jpg'
+		else
+			$result = 'images/picb/body/normal/11.jpg'
+		end
+	elseif body['group'] = 4:
+		if (stren + vital) >= 50:
+			$result = 'images/picb/body/fit/7.jpg'
+		else
+			$result = 'images/picb/body/normal/12.jpg'
+		end
+	end
+end
+! лобок
+if $args[0] = 'get_pubic':
+	if lobok <= 0:
+		$result = 'images/picb/pussy/shaved.jpg'
+	elseif lobok > 0 and lobok <= 2:
+		$result = 'images/picb/pussy/trim.jpg'
+	else
+		$result = 'images/picb/pussy/hairy.jpg'
+	end
+end
+! одежда
+if $args[0] = 'get_clothing':
+	if current_clothing = 0 and tanga = 0:
+		$result = 'images/clothing/0.jpg'
+	elseif current_clothing = 0 and tanga = 1:
+		$result = 'images/clothing/tanga.jpg'
+	elseif current_clothing = 1:
+		$result = 'images/clothing/1.jpg'
+	elseif current_clothing = 2:
+		$result = 'images/nigma/gor/lake/lake.walk.bikini0,3.jpg'
+	else
+		$result = func('zz_clothing','get_image_path')
+	end
+end
+! киска
+if $args[0] = 'get_pussy':
+	if vagina = 0:
+		tmp_pussy = 0
+	elseif vagina > 0 and vagina <= 15:
+		tmp_pussy = (vagina - 1)/5 + 1
+	else
+		tmp_pussy = (vagina - 16)/10 + 4
+	end
+	$result = 'images/picb/pussy/<<tmp_pussy>>.jpg'
+	killvar 'tmp_pussy'
+end
+! попа
+if $args[0] = 'get_anus':
+	if analplugIN = 0:
+		if anus = 0:
+			$tmp_anus = 0
+		elseif anus > 0 and anus <= 15:
+			$tmp_anus = (anus - 1)/5 + 1
+		else
+			$tmp_anus = (anus - 16)/10 + 4
+		end
+	else
+		if tanga = 1:
+			$tmp_anus = 'analplug'
+		else
+			if pirsG = 0:
+				$tmp_anus = iif(pirsGL = 0,'analplugnotanga','analplugpirsclit')
+			else
+				$tmp_anus = iif(pirsGL = 0,'analplugpirsring','analplugpirscligub')
+			end
+		end
+	end
+	$result = 'images/picb/ass/<<$tmp_anus>>.jpg'
+	killvar '$tmp_anus'
+end
+!---
+!текст
+!---
+if $args[0] = 'error':
+	*clr & cla
+	gs 'zz_render','','','<center><b>ВАМИ ТОЛЬКО ЧТО БЫЛ ИСПОЛЬЗОВАН АВАРИЙНЫЙ ВЫХОД ИЗ БАГА ПУСТОГО ЭКРАНА!**НЕ ИСПОЛЬЗУЙТЕ ЭТУ ВОЗМОЖНОСТЬ БЕЗ ВЕСКОЙ ПРИЧИНЫ: ЭТИМ ВЫ МОЖЕТЕ ВЫЗВАТЬ СБОЙ, КОТОРЫЙ РАЗРУШИТ ВАШИ СОХРАНЕНИЯ</b></center>'
+	act 'Далее >>':
+		if current_clothing < 3: gs 'zz_clothing', 'fix_emergency'
+		gt iif($control_point = '','gorodok',$control_point)
 	end
 end

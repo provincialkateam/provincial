@@ -6,12 +6,12 @@ gs 'zz_render', 'Поляна', 'qwest/gadukino/meadow.jpg','Тихое забр
 if meadow = 3 and mirainmeadow = 0:
 	temp = RAND(0,9)
 	if Mira_no = 0 and mirainmeadow = 0 and temper >= 20 and sunWeather >= 0:
-	    $_str = ''
+		$_str = ''
 		if mirasextimes < 15 and temp = 0: $_str = 'Миру'
 		if miragopQW >= 2 and temp = 1: $_str = 'Миру с Митькой'
 		if miragopQW >= 8 and temp = 2: $_str = 'Миру с Митькой'
-		if miragopQW >= 11 and temp  = 3: $_str = 'Миру с Колямбой'
-		if miragopQW >= 11 and temp  = 4: $_str = 'Миру с Васяном'
+		if miragopQW >= 11 and temp = 3: $_str = 'Миру с Колямбой'
+		if miragopQW >= 11 and temp = 4: $_str = 'Миру с Васяном'
 		if miragopQW >= 11 and temp = 5: $_str = 'Миру с Васяном'
 		if miragopQW >= 11 and temp = 6: $_str = 'Миру с Митькой, Васяном и Колямбой'
 		if miragopQW >= 20 and temp = 7: $_str = 'Миру с Васяном и Колямбой'

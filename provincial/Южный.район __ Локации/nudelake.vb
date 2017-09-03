@@ -1,6 +1,6 @@
 ﻿$metka = $ARGS[0]
 $loc = $CURLOC
-$control_point = $curloc
+!$control_point = $curloc
 *clr & cla
 gs 'stat'
 gs 'time'

@@ -1,8 +1,7 @@
 ﻿minut += 60
 manna += 10
-gs'stat'
-'<center><b>Парк</b></center>'
-gs 'zz_render', '', 'images/img/parksvid/0.jpg', func('parksvid_strings', 'local_str1')
+gs 'stat'
+gs 'zz_render', 'Парк', 'images/img/parksvid/0.jpg', func('parksvid_strings', 'local_str1')
 act 'Идти гулять':
 	if $telsob = 'Алла':
 		alla += 1

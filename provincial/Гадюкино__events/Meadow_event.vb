@@ -302,7 +302,7 @@ if $ARGS[0] = 'mirameadow':
 				end
 			end
 		end
-	elseif meadow = 3 and mirainmeadow = 0 and mirasextimes < 15 and temper >= 25  and temper < 30 and sunWeather >= 0 and temp = 0:
+	elseif meadow = 3 and mirainmeadow = 0 and mirasextimes < 15 and temper >= 25 and temper < 30 and sunWeather >= 0 and temp = 0:
 		*clr & cla
 		minut += 2
 		horny += 10

@@ -5,9 +5,9 @@ $loc = $curloc
 gs 'zz_phone','boyfriend_call_init'
 gs 'stat'
 gs 'zz_funcs', 'colorize_day'
-gs 'zz_render', 'Поликлиника', 'pavlovo/clinic/poli.jpg'
+gs 'zz_render', 'Больница', 'pavlovo/clinic/poli.jpg'
 act 'Выйти': gt 'gorodok'
-if hour >= 6 and hour <= 21:
+if hour >= 8 and hour <= 17:
 	if gpoliuborka = 0:
 		act 'Прочитать объявление':
 			*clr & cla
@@ -16,7 +16,7 @@ if hour >= 6 and hour <= 21:
 			gs 'zz_render', '', '', func('gpoli_strings', 'local_str1')
 			act 'Отойти': gt'gpoli'
 		end
-	elseif gpoliuborka = 1 and hour >= 8 and hour <= 21:
+	elseif gpoliuborka = 1 and hour >= 8 and hour <= 17:
 		act 'Спросить у главврача про работу уборщицей':
 			*clr & cla
 			gpoliuborka = 2
@@ -25,7 +25,7 @@ if hour >= 6 and hour <= 21:
 			gs 'zz_render', '', 'pavlovo/clinic/head_physician.jpg', func('gpoli_strings', 'local_str2')
 			act 'Уйти':gt'gpoli'
 		end
-	elseif gpoliuborka > 1 and hour >= 16 and hour <= 21 and gpolicleanday ! day:
+	elseif gpoliuborka > 1 and hour >= 15 and hour <= 17 and gpolicleanday ! day:
 		act 'Работать уборщицей':
 			*clr & cla
 			gpolicleanday = day
@@ -98,7 +98,7 @@ if hour >= 6 and hour <= 21:
 			act 'Выйти':gt $curloc
 		end
 	end
-	if Gorslut = 6:
+	if func('zz_reputation','get') = 4:
 		act 'Провериться у гинеколога':
 			*clr & cla
 				minut += 5
@@ -116,7 +116,7 @@ if hour >= 6 and hour <= 21:
 						gs 'stat'
 						gs 'zz_render', '', 'pavlovo/clinic/gynecologist/4.jpg', func('gpoli_strings', 'local_str14')
 						$gpoli_sick = ''
-						if preg > 0: $gpoli_sick = 'беременна'
+						if pregnancy > 0: $gpoli_sick = 'беременна'
 						if venera > 0:
 							if $gpoli_sick ! '':$gpoli_sick = $gpoli_sick + ', имеешь венерическое заболевание'
 							if $gpoli_sick = '':$gpoli_sick = 'имеешь венерическое заболевание'
@@ -398,7 +398,7 @@ if hour >= 6 and hour <= 21:
 							gs 'stat'
 							gs 'zz_render', '', 'pavlovo/clinic/gynecologist/4.jpg', func('gpoli_strings', 'local_str56')
 							$gpoli_sick = ''
-							if preg > 0: $gpoli_sick = 'беременна'
+							if pregnancy > 0: $gpoli_sick = 'беременна'
 							if venera > 0:
 								if $gpoli_sick ! '':$gpoli_sick = $gpoli_sick + ', имеешь венерическое заболевание'
 								if $gpoli_sick = '':$gpoli_sick = 'имеешь венерическое заболевание'

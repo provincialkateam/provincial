@@ -77,8 +77,7 @@ $pirssos = {
 	money -= 5000
 	if pirsF = 0:
 		pirsF = 1
-		nippain = 2
-		nippainday = daystart
+		nippain = 10
 		gs 'zz_render', '', '', func('pirsingsalon_strings', 'local_str11')
 	else
 		pirsF = 0
@@ -93,8 +92,7 @@ $pirsvla = {
 	money -= 7000
 	if pirsG = 0:
 		pirsG = 1
-		painpub = 2
-		painpubday = daystart
+		painpub = 10
 		gs 'zz_render', '', '', func('pirsingsalon_strings', 'local_str13')
 	else
 		pirsG = 0
@@ -123,8 +121,7 @@ $pirsclit = {
 	money -= 7000
 	if pirsGL = 0:
 		pirsGL = 1
-		painpub = 2
-		painpubday = daystart
+		painpub = 10
 		gs 'zz_render', '', '', func('pirsingsalon_strings', 'local_str17')
 	else
 		pirsGL = 0

@@ -135,7 +135,7 @@ $party_toilet_event = {
 	elseif i = 7:
 		i = rand(1,3)
 		if i = 2:
-			gs 'zz_render', '',  'pavlovo/family/sister/sisterQW/ReksHome/reksParty_party_toilet_8_<<i>>.gif'
+			gs 'zz_render', '', 'pavlovo/family/sister/sisterQW/ReksHome/reksParty_party_toilet_8_<<i>>.gif'
 		else
 			gs 'zz_render', '', 'pavlovo/family/sister/sisterQW/ReksHome/reksParty_party_toilet_8_<<i>>.jpg'
 		end
@@ -289,7 +289,7 @@ gs 'zz_render', '', 'pavlovo/family/sister/sisterQW/ReksHome/reksParty_party_gos
 				if Rex_save =1 and Rex_Love =0:gs 'zz_render', '', '', 'Выходя из квартиры, вы нежно целуете Рекса в щечку, поблагодарив за вечер.'
 				if Rex_Love =1:gs 'zz_render', '', '', 'Выходя из квартиры, вы страстно целуете Рекса в губы, благодаря за прекрасный вечер.'
 				if party_boys_in >=1:gs 'zz_render', '', '', 'Выходя из квартиры, пьяные парни с вами оживленно прощаются, и немного вас этим смущают'
-				if hour < 22 and  hour > 18:
+				if hour < 22 and hour > 18:
 				hour = 22
 				minut = 0
 				act 'Идти домой':gt 'bedrPar'

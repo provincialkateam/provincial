@@ -17,7 +17,7 @@ if $args[0] = 'kotov_suspicion':
 	if dom >= 20:
 		act 'Убеждать, что все это сплетни':
 			*clr & cla
-			GorSlut = 0
+			gs 'zz_reputation','set',0
 			gs 'stat'
 			gs 'zz_render','','',func('kotovtalker_strings',2)
 			act 'Отойти': gt $loc, $metka

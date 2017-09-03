@@ -3,6 +3,7 @@
 	$loc = $CURLOC
 	gs 'stat'
 	gs 'zz_funcs', 'colorize_day'
+	if $npc['38,wedding'] = 1 and hour >= 20 and hour <= 22 and rand(1,10) = 1: gs 'zz_render','','pavlovo/family/incest/mini/17.jpg','На дискотеке вы замечаете Аню и Мишку. Они не обращают внимания ни на что вокруг и поглощены только друг другом.'
 	if hour >= 20 and hour < 23:
 		gs 'zz_render','Дискотека','pavlovo/dk/disco/disco',func('gdkin_strings',0)+'<table><tr><td width=250 valign=top>На танцполе танцуют:<br>'+func('npc_editor','make_npc_group',3,1)+'</td><td width=250 valign=top>В углу стоят:<br>'+func('npc_editor','make_npc_group',4,1)+'</td></tr></table>'
 		if hour >= 21 and week = 5: gs 'zz_render','','',func('gdkin_strings',1)
@@ -11,7 +12,7 @@
 		! после 22 часов Котов приводит Соню
 		if $npc['25,qwSonya'] >= 1 and $npc['25,qwSonya'] < 5 and hour = 22: gt 'sonya','falling_finish'
 		! подкаты однокласников
-		if GorSlut < 2:
+		if func('zz_reputation','get') < 2:
 			numnpc = 9 + rand(0,2)
 			if $npc['<<numnpc>>,relation'] >= 40 and rand(0,150) <= vnesh and $npc['<<numnpc>>,drink'] ! day: gt 'gdkin','gop_drink'
 			if $npc['9,relation'] >= 80 and (vnesh >= 60 or $npc['9,qwKotovLove'] > 5) and rand(50,100) <= vnesh and $npc['9,dance'] ! day: gt 'gdkin','kotov_dance'
@@ -27,7 +28,7 @@
 		gs 'zz_render','Дискотека','pavlovo/dk/disco/disco_end',func('gdkin_strings',2)
 	end
 	act 'Выйти наружу': gt 'gdk'
-	if DansOralSlut = 1 and GorSlut = 0 and dentoilet ! daystart and hour < 23 and rand (0,3) = 1 :
+	if DansOralSlut = 1 and func('zz_reputation','get') = 0 and dentoilet ! daystart and hour < 23 and rand (0,3) = 1 :
 		act 'Туалет': gt 'gdkin_toilet'
 	else
 		act 'Туалет': gt 'zz_toilet'
@@ -82,7 +83,7 @@ end
 ! проверка присутствия спермы на лице или одежде
 if $args[0] = 'check_cum':
 	cla
-	if GorSlut < 2: GorSlut = 2
+	if func('zz_reputation','get') < 2: gs 'zz_reputation','set',2
 	manna = manna/2
 	gs 'zz_render','','',func('gdkin_strings',10)
 	act 'Уйти': gt 'gdk'

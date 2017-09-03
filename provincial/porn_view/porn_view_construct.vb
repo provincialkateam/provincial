@@ -69,7 +69,7 @@ if $args[0] = 'random':
 	killvar '$_var_arr'
 end
 if $args[0] = 'dp':
-	gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/9.gif', func('porn_view_strings', 'view_36_dp0')+func('porn_view_strings', 'view_36_dp1')
+	gs 'zz_render', '', 'images/pavlovo/family/brother/porn_view/after_2/9.webm', func('porn_view_strings', 'view_36_dp0')+func('porn_view_strings', 'view_36_dp1')
 	if tabletki = 0 and prezik = 0: gs 'zz_render', '', '', func('porn_view_strings', 'view_cum_in_mind'+rand(0,2))
 	gs 'zz_render', '', '', func('porn_view_strings', 'view_36_fin')
 	anal += 2

@@ -67,9 +67,9 @@ end
 ! список мест
 if $args[0] = 'list':
 	$_str = ''
-	if $car['fuel'] < 10: $_str += '<font color=red>Вам '+ iif($car['fuel'] <= 5, 'срочно','') +' надо заправить автомобиль!</font><br/>'
+	if $car['fuel'] < 10: $_str += '<red>Вам '+ iif($car['fuel'] <= 5, 'срочно','') +' надо заправить автомобиль!</red><br/>'
 	if money < (40-$car['fuel']+1)*30:
-		$_str += '<font color=red>Вот только в карманах пустота...</font><br/>'
+		$_str += '<red>Вот только в карманах пустота...</red><br/>'
 	else
 		if $car['location'] ! 'zaprF': $_str += '<a href="exec:gs ''car'',''drive'',''zaprF''">Ехать на заправку</a><br/>'
 	end

@@ -13,7 +13,7 @@
 		cumlip = 0
 		horny += 10
 		gs'stat'
-		gs 'zz_render', '', 'images/city/south/south_market/market_work/sex_start'+iif(args[1] = 1,3,iif(horny < 70,4,5))+'.jpg',iif(args[1] = 0,'Рустам накрыл','Кавказцы, громко гомоня и смеясь, накрыли')+' стол, поставив бутылку коньяка c  нехитрой закусью, и '+iif(palevorin < 2,'пригласил','пригласили')+' вас сесть на стул.<br>Вы быстро захмелели, выпивая вместе с '+iif(palevorin = 0,'хозяином','ними')+', и он'+iif(palevorin = 0,'','и')+' приступил'+iif(palevorin = 0,'','и ')+'к более активным действиям. '+iif(palevorin = 0,'Он начал вас вас обнимать, целуя ваши губы, и лаская ваши груди через одежду.'+iif(horny >= 70,' Расслабившись, вы начали отвечать на его поцелуи, поглаживая рукой в районе ширинки',''),'Они начали похотливо вас обнимать и лапать ваше тело, стягивая одежду')+'.'
+		gs 'zz_render', '', 'images/city/south/south_market/market_work/sex_start'+iif(args[1] = 1,3,iif(horny < 70,4,5))+'.jpg',iif(args[1] = 0,'Рустам накрыл','Кавказцы, громко гомоня и смеясь, накрыли')+' стол, поставив бутылку коньяка c нехитрой закусью, и '+iif(palevorin < 2,'пригласил','пригласили')+' вас сесть на стул.<br>Вы быстро захмелели, выпивая вместе с '+iif(palevorin = 0,'хозяином','ними')+', и он'+iif(palevorin = 0,'','и')+' приступил'+iif(palevorin = 0,'','и ')+'к более активным действиям. '+iif(palevorin = 0,'Он начал вас вас обнимать, целуя ваши губы, и лаская ваши груди через одежду.'+iif(horny >= 70,' Расслабившись, вы начали отвечать на его поцелуи, поглаживая рукой в районе ширинки',''),'Они начали похотливо вас обнимать и лапать ваше тело, стягивая одежду')+'.'
 		if args[1] = 0:
 			act 'Сосать': gt'market_sex','oral'
 			if horny < 70 and market_sex < 20:act 'Сопротивляться':gt'market_sex','refuse'
@@ -117,16 +117,9 @@ if $ARGS[0] = 'vaginal':
 		gs 'zz_render', '', '',iif(args[1] = 1,'Хасан тут же достал свой член и стал хлопать им по вашему лицу, пока вы не взяли у него в рот','Абдула в это время обошел вас спереди и поднёс свой член к вашим губам')+'.'
 		gs 'zz_dynamic_sex', 'bj'
 	end
-	''
 	if args[1] = 0:
-		if market_sex < 20:
-			act 'Взять в рот':gt'market_sex','swallow'
-			act 'Стоять раком':gt'market_sex','sexcum'
-		else
-			temp = rand(1,2)
-			if temp = 1:act 'Взять в рот':gt'market_sex','swallow'
-			if temp = 2:act 'Стоять раком':gt'market_sex','sexcum'
-		end
+		act 'Взять в рот': gt'market_sex','swallow'
+		act 'Стоять раком': gt'market_sex','sexcum'
 	elseif args[1] = 1:
 		act 'Дать Хасану':gt'market_sex','vaginal',2
 	else
@@ -140,7 +133,6 @@ if $ARGS[0] = 'sexcum':
 	gs'stat'
 	gs 'zz_render', '', 'images/city/south/south_market/market_work/sexcum'+iif(args[1] = 0,1,2)+'.jpg',iif(args[1] = 0,'','Так вас жарили два парня, а хозяин сидел рядом, и смотрел на происходящее.')
 	gs 'zz_dynamic_sex', 'sex_cum'
-	''
 	if args[1] = 0:
 		if temp < 95 and palevorin = 0 or temp < 70 and palevorin >= 1:
 			money += 1000

@@ -20,21 +20,21 @@ if hanters > 0 and hantersKnow > 0 and hour >= 8 and hour < 20:gs 'zz_render', '
 act 'Идти в избу':minut += 5 & gt'swamphouse'
 if dirty_swamp_yard > 10:act 'Убираться во дворе':hanterslut -= 1 & dynamic $dirty_swamp_yard
 act '<b>Идти на болото</b>':
-    if hanters = 1:
-        if hour >= func('zz_weather','sunrise') and hour < func('zz_weather','sunset'):
-            minut += 5
-            gt 'swamp'
-        else
-            *clr & cla
-            gs'stat'
-            gs 'zz_render', 'Игорь', 'qwest/gadukino/Swamp/IgorHanter.jpg','Вы собрались идти в лес, когда вас окликнул Игорь.**\\\- <<$name[1]>>, это не самое лучшее время чтобы ходить по лесу, переночуй лучше тут.///'
-            act 'Остаться':gt 'swamp_yard'
-            act 'Да ладно, дойду как-нибудь':minut += 5 & gt 'swamp'
-        end
-    else
-        minut += 5
-        gt 'swamp'
-    end
+	if hanters = 1:
+		if hour >= func('zz_weather','sunrise') and hour < func('zz_weather','sunset'):
+			minut += 5
+			gt 'swamp'
+		else
+			*clr & cla
+			gs'stat'
+			gs 'zz_render', 'Игорь', 'qwest/gadukino/Swamp/IgorHanter.jpg','Вы собрались идти в лес, когда вас окликнул Игорь.**\\\- <<$name[1]>>, это не самое лучшее время чтобы ходить по лесу, переночуй лучше тут.///'
+			act 'Остаться':gt 'swamp_yard'
+			act 'Да ладно, дойду как-нибудь':minut += 5 & gt 'swamp'
+		end
+	else
+		minut += 5
+		gt 'swamp'
+	end
 end
 ! Охотники спасли ГГ из болота
 if hanterhelp = 1:
@@ -305,7 +305,7 @@ if current_clothing = 0 and hanterhelp = 0 and hanters = 1 and hour >= 8 and hou
 			act'Одеться':
 				*clr & cla
 				minut+=5
-		   		swamp_cloth = 1
+				swamp_cloth = 1
 				gs 'zz_clothing', 'redress', 1
 				'<center><img src="images/qwest/gadukino/Swamp/tkan_cloth.jpg"></center>'
 				'И быстро кинулись в избушку и прикрылись куском мешковины... Ну хоть что-то.'
@@ -524,7 +524,7 @@ if hanters > 0 and hantersAndreiLove > 0 and hantersAndreiQw >= 10 and temp = 8 
 	hantersAndreisex += rand(6,24)
 	gs 'stat'
 	'<center><img src="images/qwest/gadukino/Swamp/hanterlove1.4.jpg"></center>'
-	'Появившись на поляне вы увидели Андрея. Неожиданно он  впился в ваши губы страстным поцелуем и ни слова не говоря потянул вас за собой.'
+	'Появившись на поляне вы увидели Андрея. Неожиданно он впился в ваши губы страстным поцелуем и ни слова не говоря потянул вас за собой.'
 	act 'Идти с Андреем':
 		*clr & cla
 		minut += 5
@@ -786,7 +786,7 @@ if hanters > 0 and doublehanterlove = 1 and hour >= 8 and hour < 20 and (hanters
 		hantersSergeiQw -= 1
 		gs 'stat'
 		'<center><img src="images/qwest/alter/Ev/otel4.jpg"></center>'
-		' - Нет, ребята, что-то я не хочу, - сказали вы, и не глядя на них  ушли.'
+		' - Нет, ребята, что-то я не хочу, - сказали вы, и не глядя на них ушли.'
 		act 'Идти':gt $loc, $metka
 	end
 end
@@ -854,6 +854,6 @@ $dirty_swamp_yard = {
 	if hantersSergeiQw < 15:hantersSergeiQw += 1
 	gs'stat'
 	'<center><img src="images/qwest/gadukino/Swamp/dirty_swamp_yard.jpg"></center>'
-	'Выйдя в очередной раз на поляну перед избушкой, вы заметили, сколько там накопилось разного мусора и грязи. " - С этим нужно что-то делать", - подумали вы и  принялись за уборку двора. Через некоторое врямя двор сиял первозданной чистотой.'
+	'Выйдя в очередной раз на поляну перед избушкой, вы заметили, сколько там накопилось разного мусора и грязи. " - С этим нужно что-то делать", - подумали вы и принялись за уборку двора. Через некоторое врямя двор сиял первозданной чистотой.'
 	act 'Далее':dirty_swamp_yard = 0 & gt'swamp_yard'
 }

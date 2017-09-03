@@ -7,7 +7,7 @@ end
 if $args[0] = 'rent':
 	if housr = 1:
 		if haday = 0:
-			rent_money = iif(BuyHous ! 1, 2500,iif(ArendHouseSL = 0,2500,5000)) + house_debt
+			rent_money = iif(BuyHous ! 1, 3000,iif(ArendHouseSL = 0,3000,6000)) + house_debt
 			haday = 1
 			if money >= rent_money:
 				money -= rent_money
@@ -26,25 +26,6 @@ if $args[0] = 'rent':
 			end
 			rent_money = 0
 		end
-		if electroday = 0:
-			electroday = 1
-			if money >= elektro:
-				money -= elektro
-				'<b><font color = red>Вы оплатили <<elektro>> рублей за электричество.</font></b>'
-			elseif money < elektro and	karta >= elektro:
-				karta -= elektro
-				'<b><font color = red>С банковской карты сняли <<elektro>> рублей за электричество.</font></b>'
-			elseif money < elektro and karta < elektro and ArendHouseSL > 0:
-				ArendHouseSL -= elektro/333
-				if ArendHouseSL < 0:ArendHouseSL= 0
-				'<b><font color = red>Срок вашей аренды уменьшен, в счет погашения оплаты за электричество.</font></b>'
-			else
-				!долг за квартиру
-				house_debt += elektro
-				'<b><font color = red>У вас нет денег для оплаты за электричество. Задолженность <<house_debt>> рублей.</font></b>'
-			end
-			elektro = 0
-		end
 		if kabel > 0 and kabelday = 0:
 			kabelday = 1
 			if money >= 500:
@@ -62,7 +43,6 @@ end
 if $ARGS[0] = 'iron_clothes':
 	*clr & cla
 	minut += drybelo*5
-	elektro += drybelo
 	clrbelo += drybelo
 	drybelo = 0
 	manna -= 10
@@ -130,7 +110,6 @@ if $ARGS[0] = 'husband_drin_end':
 			husbandMark = 0
 			husband = 0
 			divorced += 1
-			fingal += 1
 			minut += 120
 			gs 'zz_render', '', '','Следующее, что вы почувствовали - это мощный удар в лицо. Когда вы пришли в себя, то поняли, что ни мужа, ни его вещей, нет. Он подал на развод...'
 		elseif harakHusb = 1:
@@ -149,7 +128,6 @@ if $ARGS[0] = 'husband_drin_end':
 					husbandMark = 0
 					husband = 0
 					divorced += 1
-					fingal += 1
 					minut += 120
 					gs 'zz_render', '', '','Следующее что вы почувствовали - это мощный удар в лицо. Когда вы пришли в себя, то поняли, что ни мужа, ни его вещей, нет. Он подал на развод...'
 				end
@@ -274,7 +252,7 @@ if $ARGS[0] = 'selfplay_dildo':
 						gs 'zz_dynamic_sex','sex_start', 1
 					end
 					gs 'zz_dynamic_sex', iif($loc = 'kuhr','anal','vaginal'), 'dildo'
-					gs 'zz_render', '', '','<<$husName>> внимательно наблюдает как дилдо исчезает в '+iif($loc = 'kuhr','вашем анусе','вашей вагине')+', а затем снова появляется. Вы видите как его штаны набухают.<br>- Дорогой, ты что-нибудь еще хочешь?, -  улыбаясь спрашиваете вы его.<br>- Можно мне присоединиться?, - немного смущенно спрашивает <<$husName>>.'
+					gs 'zz_render', '', '','<<$husName>> внимательно наблюдает как дилдо исчезает в '+iif($loc = 'kuhr','вашем анусе','вашей вагине')+', а затем снова появляется. Вы видите как его штаны набухают.<br>- Дорогой, ты что-нибудь еще хочешь?, - улыбаясь спрашиваете вы его.<br>- Можно мне присоединиться?, - немного смущенно спрашивает <<$husName>>.'
 					act 'Разрешить':
 						*clr & cla
 						if $loc = 'kuhr':
@@ -489,7 +467,7 @@ if $ARGS[0] = 'plumber_husband':
 							guy += 1
 							minut += 5
 							gs 'stat'
-							gs 'zz_render', '', 'images/city/south/apartment/plumber/18.jpg','Вы попытались выплюнуть член из рта, но муж схватил вас за голову и начал сам трахать вас в рот, одновременно разговаривая с сантехником.<br>- Мы тут немного заняты, подожди немного, - сказал он ему. -  Сейчас женушку накормлю. Кстати сколько я тебе должен?<br>- Полторы тысячи, - ответил сантехник.<br>- Ну у вас и цены,- протянул ваш муж. - Может договоримся?<br>Сантехник непонимающе уставился на него.<br>- Что если ты её тоже покормишь и разойдемся?, - предложил ваш муж ему.<br>- Ну не знаю, минет это если только на скидку потянет, - ответил сантехник. -  Вот если её всю опробовать, тогда да.<br>- А ты умеешь торговаться, - ответил муж. - Ладно договорились.<br>Зная характер своего мужа вы решили что возражать будет себе дороже.'
+							gs 'zz_render', '', 'images/city/south/apartment/plumber/18.jpg','Вы попытались выплюнуть член из рта, но муж схватил вас за голову и начал сам трахать вас в рот, одновременно разговаривая с сантехником.<br>- Мы тут немного заняты, подожди немного, - сказал он ему. - Сейчас женушку накормлю. Кстати сколько я тебе должен?<br>- Полторы тысячи, - ответил сантехник.<br>- Ну у вас и цены,- протянул ваш муж. - Может договоримся?<br>Сантехник непонимающе уставился на него.<br>- Что если ты её тоже покормишь и разойдемся?, - предложил ваш муж ему.<br>- Ну не знаю, минет это если только на скидку потянет, - ответил сантехник. - Вот если её всю опробовать, тогда да.<br>- А ты умеешь торговаться, - ответил муж. - Ладно договорились.<br>Зная характер своего мужа вы решили что возражать будет себе дороже.'
 							act 'Обслужить обоих':picrand = 43 & gt'sexdvoe','var'
 						end
 					end
@@ -575,16 +553,8 @@ if $ARGS[0] = 'plumber_end':
 			gt 'kuhr'
 		end
 	else
-		'У вас не хватает денег'
-		if money+stolmoney >= 1500:
-			gs 'zz_render', '', '','Но вы вспоминаете, что в столе есть заначка и её вам хватит.'
-			act 'Заплатить':
-				if money < 1500: money += stolmoney & stolmoney = 0
-				money -= 1500
-				gt 'kuhr'
-			end
-		end
-		if money+stolmoney < 1500:
+		gs 'zz_render', '', '','<red>У вас не хватает денег.</red>'
+		if money < 1500:
 			act 'У меня не хватает денег':
 				cla
 				gs 'zz_render', '', '','Вы смутились и сказали '+iif(Grisha = 0,'сантехнику','Грише')+', что у вас не хватает денег. Он заметно разозлился:<br>- Что же вы '+iif(Grisha = 0,'девушка','<<$name>>')+' вызываете сантехника не имея даже денег? И что мне прикажете теперь делать?'
@@ -692,7 +662,7 @@ if $ARGS[0] = 'dirtarm':
 		cltarelka += dirttarelka
 		dirttarelka = 0
 		manna -= 5
-		gs  'stat'
+		gs 'stat'
 		gs 'zz_render', 'Кухня', 'images/city/south/apartment/event/dirt.jpg','Используя моющее средство, вы помыли посуду.'
 		act 'Вытереть руки':gt $loc, $metka
 	else
@@ -771,12 +741,11 @@ end
 if $ARGS[0] = 'Podstava_2':
 	*clr & cla
 	$npc['0,qwIvanPodstava'] = 4
-	money = moneySUM - 650000
+	money = money + karta - 650000
 	karta = 0
-	stolmoney = 0
 	minut += 120
-	gs 'zz_render', '', 'images/city/south/apartment/event/police5.jpg','За вами приехал наряд милиции и отвез вас на суд. '+iif(DolgRS <= moneySUM,'Вы сумели выплатить свой долг и вас отпустили по примирению сторон.','За вами приехал наряд милиции и отвез вас на суд. На суде вам дали пять лет общего режима, обязав выплатить долг.<br>Но до конца срока вы не дожили...')
-	if DolgRS <= moneySUM:
+	gs 'zz_render', '', 'images/city/south/apartment/event/police5.jpg','За вами приехал наряд милиции и отвез вас на суд. '+iif(DolgRS <= money + karta,'Вы сумели выплатить свой долг и вас отпустили по примирению сторон.','За вами приехал наряд милиции и отвез вас на суд. На суде вам дали пять лет общего режима, обязав выплатить долг.<br>Но до конца срока вы не дожили...')
+	if DolgRS <= money + karta:
 		act 'Выйти из здания суда':gt'down'
 	else
 		gt'gameover',7

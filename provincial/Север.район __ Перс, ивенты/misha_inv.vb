@@ -81,10 +81,8 @@ if $args[0] = 'vika':
 		$zz_str[4] = 'Вы болтаете с Викой, обсуждая последние тенденции в моде.'
 		$zz_str[5] = 'Вы болтаете с Викой и немного обсудили Михаила.'
 		$zz_str[6] = 'Вы болтаете с Викой, она рассказала вам про Михаила что он хороший и щедрый человек.'
-		! output
-		'<center><img src="images/qwest/nord/clinic/vika/1.jpg" ></center>'
 		! print random string
-		*pl $zz_str[rand(0,6)]
+		gs 'zz_render','','qwest/nord/clinic/vika/1.jpg', $zz_str[rand(0,6)]
 		! kill tmp variable
 		killvar '$zz_str'
 		! add action
@@ -114,10 +112,8 @@ if $args[0] = 'misha':
 		$zz_str[4] = 'Вы разговариваете с Михаилом, он рассказал вам про "железное легкое", что этот аппарат позволяет ему дышать, но он может обходиться без него несколько часов используя протативный респиратор и это зависит от того как он себя чувствует.'
 		$zz_str[5] = 'Вы разговариваете с Михаилом, он рассказал вам что он ни то чтобы парализован, просто у него не работают мышцы.'
 		$zz_str[6] = '- Вы верующая? - спросил он вас. - Да не особо, как то. - ответили вы. - А я все еще верю, — сказал он. — Нужно же мне хоть кого то обвинять во всем, что со мной происходит. - с улыбкой сказал он.'
-		! output
-		'<center><img src="images/qwest/nord/clinic/misha/misha.jpg" ></center>'
 		! print random string
-		*pl $zz_str[rand(0,6)]
+		gs 'zz_render','','images/qwest/nord/clinic/misha/misha.jpg', $zz_str[rand(0,6)]
 		! kill tmp variable
 		killvar '$zz_str'
 	end
@@ -142,7 +138,7 @@ if $ARGS[0] = 'event1':
 	minut += 20
 	gs 'stat'
 	gs 'zz_render', '', 'images/qwest/nord/clinic/vika/3.jpg', func('misha_inv_strings', 'local_str11')
-	'- Вы из клиники милосердия?'
+	gs 'zz_render','','','- Вы из клиники милосердия?'
 	gs 'zz_render', '', '', func('misha_inv_strings', 'local_str12')
 	act 'Войти':
 		*clr & cla
@@ -169,7 +165,7 @@ if $args[0] = 'entrance':
 	buklinikDay = day
 	minut += 20
 	gs 'stat'
-	'<center><img src="images/qwest/nord/clinic/vika/'+iif(args[1]=0,5,3)+'.jpg"></center>'
+	gs 'zz_render','','images/qwest/nord/clinic/vika/'+iif(args[1]=0,5,3)
 	if args[1] = 0:
 		gs 'zz_render', '', '', func('misha_inv_strings', 'local_str17')
 	end

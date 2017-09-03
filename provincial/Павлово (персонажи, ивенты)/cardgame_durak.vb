@@ -83,17 +83,17 @@ $card_game_durak_play = {
 			'<b>Игра закончена, на вас не осталось одежды, вы проиграли</b>'
 			'Победил: <b><<$rnd_cgd_win_npc>></b>'
 			'Вам выполнять его желание'
-			if GorSlut < 3:
+			if func('zz_reputation','get') < 3:
 				act 'Далее': dynamic $card_game_nosex
 			end
-			if GorSlut >=3 and cg_clother_cum < 5:
+			if func('zz_reputation','get') >=3 and cg_clother_cum < 5:
 				if RAND(0,100) <= 90:
 					act 'Далее': dynamic iif(rand(0,100) <= 40, $card_game_gsex, $card_game_rough_sex)
 				else
 					act 'Далее': dynamic $card_game_nosex
 				end
 			end
-			if GorSlut >=3 and cg_clother_cum >= 5:
+			if func('zz_reputation','get') >=3 and cg_clother_cum >= 5:
 				rnd_cgd_win_select = RAND(0,100)
 				if rnd_cgd_win_select <= 70:
 					act 'Далее': dynamic iif(rand(0,100) <= 40, $card_game_gsex, $card_game_rough_sex)
@@ -127,10 +127,10 @@ $card_game_durak_play = {
 			''
 			'<b>Игра закончена, остался голым <<$cgd_name_igrok>></b>.'
 			rnd_cgd_win_select = RAND(0,100)
-			if GorSlut < 3:
+			if func('zz_reputation','get') < 3:
 				act 'Далее': dynamic iif(rnd_cgd_win_select <= 70, $card_game_ggwin_clother, $card_game_ggwin_penis)
 			end
-			if GorSlut >=3:
+			if func('zz_reputation','get') >=3:
 			rnd_ggwin_select = RAND(0,100)
 				if rnd_cgd_win_select <= 70:
 					if rnd_ggwin_select <=50:

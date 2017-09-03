@@ -140,7 +140,6 @@ if $args[0] = 'course_work':
 		gs 'zz_render', '', 'city/center/university/work/library0.jpg', '<b>Текст расплывается по странице, похоже вы испортили зрение. Нужно обратиться к окулисту.</b>'
 		act 'Отложить книгу':gt $loc, $metka
 	end
-	if housr = 1 and args[1] = 1: elektro += 3
 	university['work_memory'] = university['course_work']
 	university['course_work'] = iif(alko >= 3,0,(university['progress'] + (intel/2) - alko*50)/50)
 	if alko = 0:
@@ -180,7 +179,6 @@ if $args[0] = 'graduate_work':
 		gs 'zz_render', '', 'city/center/university/work/library0.jpg', '<b>Текст расплывается по странице, похоже вы испортили зрение. Нужно обратиться к окулисту.</b>'
 		act 'Отложить книгу':gt $loc, $metka
 	end
-	if housr = 1 and args[1] = 1: elektro += 3
 	university['work_memory'] = university['graduate_work']
 	university['graduate_work'] = iif(alko >= 3,0,(university['progress'] + (intel/2) - alko*50)/75)
 	if alko = 0:
@@ -368,7 +366,7 @@ if $args[0] = 'university_status':
 			university['semester'] = 0
 			'<font color=red><b>Вас отчислили из университета, так как вы не оплатили учёбу.</b></font>'
 		end
-		if month = 2 and university['semester'] = 1 or month = 7  and university['semester'] = 2:
+		if month = 2 and university['semester'] = 1 or month = 7 and university['semester'] = 2:
 			university['student'] = 0
 			university['exam'] = 0
 			university['course_work'] = 0

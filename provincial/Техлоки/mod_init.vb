@@ -9,7 +9,7 @@
 ! формируем табличку модов
 if $args[0] = 'mod_list':
 	! шапка
-	$_mod_table = '<tr bgcolor=#bbee77><th width=100>#</th><th width=200>Статус</th><th width=300>Стартовая локация</th><th width=200>...</th>'
+	$_mod_table = '<tr bgcolor=#bbee77><th width=100>#</th><th width=200>Статус</th><th width=300>Стартовая локация</th><th>...</th>'
 	_mod_id = 0
 	! строки модов
 	if arrsize('$mods') > 0:
@@ -22,7 +22,7 @@ if $args[0] = 'mod_list':
 		$_mod_table += '</tr>'
 		_mod_id += 1
 		if _mod_id < arrsize('$mods')/4: jump 'loop_make_list'
-		gs 'zz_render','','','<center><table cellpadding=0 cellspacing=1 border=0 align=center>'+$_mod_table+'</table></center>'
+		gs 'zz_render','','','<center><table cellpadding=0 cellspacing=1 border=0 align=center width=800>'+$_mod_table+'</table></center>'
 	end
 	killvar '_mod_id'
 	act 'Добавить мод': gs 'mod_init','add_mod'
@@ -37,7 +37,7 @@ if $args[0] = 'set_mod':
 		if len(trim($_loc_name)) > 0:
 			$mods['<<_mod_id>>,name'] = trim($_loc_name)
 			$mods['<<_mod_id>>,init'] = 1
-			ADDQST 'mod<<_mod_id+1>>.qsp'
+			INCLIB 'mods/mod<<_mod_id+1>>.qsp'
 			_check_mod_id = 0
 			gs 'mod_init','check_mod'
 		else
@@ -48,20 +48,20 @@ if $args[0] = 'set_mod':
 		! очистка мода при выключении - если прописана переменная утилизации
 		if $mods['<<_mod_id>>,dispose'] ! '': gs $mods['<<_mod_id>>,dispose']
 		!---
-		KILLQST
+		FREELIB
 		gs 'mod_init','reopen'
 	end
 	killvar '_mod_id'
 	killvar '_mod_status'
 	killvar '$_loc_name'
-	gt 'zz_render_settings','tabs',_selected_page
+	gt 'zz_settings','tabs',_selected_page
 end
 ! перезагрузка модов
 if $args[0] = 'reopen':
 	_mod_id = 0
 	:loop_reopen
 	if _mod_id < arrsize('$mods')/4:
-		if $mods['<<_mod_id>>,init'] = 1: ADDQST 'mod<<_mod_id+1>>.qsp'
+		if $mods['<<_mod_id>>,init'] = 1: INCLIB 'mods/mod<<_mod_id+1>>.qsp'
 		_mod_id += 1
 		jump 'loop_reopen'
 	end

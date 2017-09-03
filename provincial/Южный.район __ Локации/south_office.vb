@@ -67,7 +67,7 @@
 			sweat += 3
 			gs 'zz_render', '', 'images/city/south/south_office/cleaning.jpg', 'Вы вымыли пол в туалете и надраили все унитазы и писсуары до блеска. После окончания работы Борис Иванович выдал вам сто рублей.'
 			if jouryQW > 7 and hour >= 9 and hour <= 16 and jourySex > 0 and jouryResult = 0: gt'south_office_events','youry_talk2'
-			if StasikValera > 0 and svQW = 0  and clenerT > 5 and hour >= 8 and hour <= 16: gt'south_office_events','stasik_work'
+			if StasikValera > 0 and svQW = 0 and clenerT > 5 and hour >= 8 and hour <= 16: gt'south_office_events','stasik_work'
 			act 'Выйти':gt'south_office','start'
 		end
 	end

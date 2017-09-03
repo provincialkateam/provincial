@@ -30,7 +30,6 @@ if $args[0] = '' or $args[0] = 'main':
 	if hour < 9: school['lesson_count'] = 0
 	if hour < 18:
 		if hour < 17: gs 'zz_funcs','waiting'
-		act func('zz_funcs','splitter'): exit
 		! большая перемена
 		if (hour = 11 and minut > 45) or (hour = 12 and minut < 15):
 			! ---
@@ -53,9 +52,11 @@ if $args[0] = '' or $args[0] = 'main':
 			if $npc['25,qwSonya'] >= 60 and $npc['25,qwSonya'] < 255 and $npc['25,qwSonya_day'] ! day: gs 'sonya','check_payment'
 			! ---
 			! секс с Царевым на большой перемене - начало до 12 часов и не в среду
-			if $npc['26,qwMain'] >= 30 and $npc['26,qwMain'] < 40 and hour = 11 and week ! 3 and $npc['26,qwMain_day'] ! day: act 'Идти к Анатолию Евгеньевичу':  gt 'tsarev_events','goto_tsarev_office'
+			if $npc['26,qwMain'] >= 30 and $npc['26,qwMain'] < 40 and hour = 11 and week ! 3 and $npc['26,qwMain_day'] ! day: act 'Идти к Анатолию Евгеньевичу': gt 'tsarev_events','goto_tsarev_office'
 			! класс доступен только на большой перемене
-			gs 'zz_school','mini_break_cor'
+			if school_minikcor_day ! day:
+				gt 'zz_school','minik_corr'
+			end
 			gs 'zz_render','','',func('zz_school_str',1)
 			act 'В класс': minut += 1 & gt 'zz_school','classroom'
 		end
@@ -66,6 +67,13 @@ if $args[0] = '' or $args[0] = 'main':
 		end
 		gs 'zz_school', 'gt_lesson'
 	end
+end
+!проверка миника в корридоре
+if $args[0] = 'minik_corr':
+	*clr & cla
+	gs 'zz_school','mini_break_cor'
+	school_minikcor_day = day
+	act '...': gt 'zz_school'
 end
 ! класс во время большой перемены
 if $args[0] = 'classroom':
@@ -88,7 +96,6 @@ end
 if $args[0] = 'gt_lesson':
 	! уроки
 	if hour >= 8 and hour < 15:
-		act func('zz_funcs','splitter'): exit
 		! можно ходить на каждый по отдельности
 		if (hour > 8 and hour < 12 and minut <= 5) or (hour >= 12 and minut <= 20):
 			act 'Идти на урок': gt 'zz_school', 'lessons', hour - 8
@@ -118,7 +125,7 @@ if $args[0] = 'make_shedule':
 	$_str += func('zz_funcs','make_table_row',$_shedule[i],iif(i=0,'#bbee77',iif(hour=8+i,'#eef5c7',iif(i mod 2 = 0,'#f3f4ee','#ffffff'))),iif(i=0,1,0),week,iif(i>0,iif(hour=8+i,'#d7e587','#eef5c7'),''))
 	i += 1
 	if i <= 6: jump 'loop_lessons'
-	$_str += '</table></font></center><br><br>'
+	$_str += '</table></font></center>'
 	$result = $_str
 	killvar '$_str'
 	killvar '$_shedule'
@@ -212,20 +219,21 @@ end
 ! каникулы
 if $args[0] = 'vacation_status':
 	school['vacation'] = 0
+	$holiday = ''
 	if school['certificate'] = 0 and school['block'] < 10:
 		school['vacation'] = 0
 		if month = 8 and day > 31:
 			exit
 		elseif (month = 10 and day >= 27) or (month = 11 and day <= 4):
-			$holiday = '<b>Осенние каникулы (27.10-04.11)</b>' & school['vacation'] = 1
+			$holiday = 'Осенние каникулы (27.10-04.11)' & school['vacation'] = 1
 		elseif (month = 12 and day >= 29) or (month = 1 and day <= 13):
-			$holiday = '<b>Зимние каникулы (29.12-13.01)</b>' & school['vacation'] = 2
+			$holiday = 'Зимние каникулы (29.12-13.01)' & school['vacation'] = 2
 		elseif month = 3 and day >= 25 and day <= 31:
-			$holiday = '<b>Весенние каникулы (25.03-31.03)</b>' & school['vacation'] = 3
+			$holiday = 'Весенние каникулы (25.03-31.03)' & school['vacation'] = 3
 		elseif (month = 5 and day >= 25) or month = 6 or month = 7 or month = 8:
-			$holiday = '<b>Летние каникулы (25.05-31.08)</b>' & school['vacation'] = 4
+			$holiday = 'Летние каникулы (25.05-31.08)' & school['vacation'] = 4
 		elseif month = 1 and day = 1:
-			$holiday = '<b>Новый год!</b>' & school['vacation'] = 5
+			$holiday = 'Новый год!' & school['vacation'] = 5
 		end
 	end
 end
@@ -281,7 +289,7 @@ if $args[0] = 'gossip':
 		gs 'zz_render','','',func('zz_school_str',rand(13,15))
 	else
 		if rand(0,3) = 1:
-			gs 'zz_render','','',func('zz_school_str',iif(GorSlut > 0,18+GorSlut,rand(16,18)))
+			gs 'zz_render','','',func('zz_school_str',iif(func('zz_reputation','get') > 0,18+func('zz_reputation','get'),rand(16,18)))
 		else
 			gs 'zz_render','','',func('zz_school_str',25)
 		end
@@ -304,7 +312,7 @@ if $args[0] = 'mini_lessons':
 	$_mini[11] = 'Вы сидите и разглядываете красивенькие колготки одной из ваших одноклассниц, думая, что надо и себе такие прикупить.'
 	$_mini[12] = 'Звенит звонок, и Полька Себаготуллина пускается в пляс: "наконец-то кончилась эта тягомотина!".'
 	$_mini[13] = 'От скуки ваши одноклассники впадают в детство. Мальчик написал на бумажке УЙ, и держит так, чтобы перекрещивающиеся лямки на платье сидящей впереди Вики Мейнольд изобразили недостающую букву.'
-	$_mini[14] = 'В школу пришли ОМОН-овцы,  рассказать, до чего их служба и опасна и трудна. Называется это “Урок мужества”. Вам скучно, но мальчишки с удовольствием примеряют снаряжение.'
+	$_mini[14] = 'В школу пришли ОМОН-овцы, рассказать, до чего их служба и опасна и трудна. Называется это “Урок мужества”. Вам скучно, но мальчишки с удовольствием примеряют снаряжение.'
 	$_mini[15] = 'Стоя у доски, одноклассник приспускает штаны, показывая всем, кроме отвернувшейся училки, краешек задницы.'
 	$_mini[16] = 'Лерка Царева отжигает у доски: уровень знаний такой же, как длина юбочки.'
 	$_mini[17] = 'На уроке вы задремали, и вам снится, что все ваши одноклассницы пришли в школу голышом. Проснувшись, вы какое-то время раздумываете, не сагитировать ли подруг провернуть что-то такое в реальной жизни? Но, поразмыслив, отбрасываете эту идею - так и из школы вылететь недолго.'
@@ -340,7 +348,7 @@ if $args[0] = 'mini_break_class':
 	$_mini[2] = 'Ничто человеческое учителям не чуждо. Даже селфи делают, в их-то возрасте!'
 	$_mini[3] = 'Ваши одноклассницы что-то рассматривают, перегнувшись через парту. Три пухлых попки, обтянутых тканью, заставляют парней замирать.'
 	$_mini[4] = 'Полина Себаготуллина на спор демонстрирует задницу. Оказывается, трусов она не носит, и парни шушукаются и тычут пальцами.'
-	$_mini[5] = 'Ваши одноклассники- парни, хоть и выросли в некоторых местах, но остались  мальчишками. Вот и Клюев в своем репертуаре: задрал девушке юбку. Зачем - непонятно, но все ржут.'
+	$_mini[5] = 'Ваши одноклассники- парни, хоть и выросли в некоторых местах, но остались мальчишками. Вот и Клюев в своем репертуаре: задрал девушке юбку. Зачем - непонятно, но все ржут.'
 	$_mini[6] = 'Многие ваши одноклассницы весьма развиты местами. Школу еще не закончили, а сиськи такие, что мужчины на улице спотыкаются.'
 	$_mini[7] = 'У Соньки Иванько порвались колготки, но ей, похоже, до фонаря.'
 	i = rand(0,arrsize('$_mini')-1)

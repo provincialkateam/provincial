@@ -12,10 +12,8 @@ if $args[0] = '' or $args[0] = 'main':
 	act 'В спорткомплекс': gt 'skk','sport'
 	act 'На второй этаж': gt 'skk','second_floor'
 	act 'К лифтам': gt 'skk','elevator',1
-	act func('zz_funcs','splitter'): exit
 	act 'Кофейня': gt 'zz_common','coffee'
 	act 'Моржо': gt 'zz_common','icecream'
-	act func('zz_funcs','splitter'): exit
 	act 'Уборная': gt 'zz_toilet'
 end
 ! торговые площади
@@ -49,8 +47,7 @@ if $args[0] = 'second_floor':
 	act 'На первый этаж': gt 'skk'
 	act 'На третий этаж': gt 'skk','third_floor'
 	act 'К лифтам': gt 'skk','elevator',2
-	act func('zz_funcs','splitter'): exit
-	if hour >= 10 and hour <= 18: act 'Кинотеатр "ГЭС"': gt 'cinema'
+	if hour >= 10 and hour <= 18: act 'Кинотеатр "ГЭС"': gt 'cinema','',1
 end
 ! третий этаж
 if $args[0] = 'third_floor':

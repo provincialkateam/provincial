@@ -1,5 +1,4 @@
-﻿*nl
-! Разные вариации секса -------------!
+﻿! Разные вариации секса -------------!
 !-----Настройки-----!
 !кол-во раз может быть секс в сутки (по дефолту 2, после этого значения партнер говорит что устал)
 !Вася:
@@ -274,12 +273,12 @@ $accview_ggsex = {
 	if rnd_mom_txt1 = 2:$rnd_mom_txt1 = '— <<$rnd_namemom_text>>, ещё один выебет и приду.'
 	!---->
 	rnd_caught_mom = rand(1,6)
-	if rnd_caught_mom = 1 and GorSlut < 6:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_mom = 1 and GorSlut >= 6:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_mom = 1 and func('zz_reputation','get') < 4:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_mom = 1 and func('zz_reputation','get') = 4:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
 	if rnd_caught_mom = 2 and momslut >= 1:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Закончишь ребят обслуживать, не забудь <<$rnd_domdela_text>>'
 	if rnd_caught_mom = 2 and momslut < 1:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Опять ты чудишь <<$gop_name_gg>>, я же тебе просила не ебатьца на каждом углу, со всем от рук отбилась шалава!'
-	if rnd_caught_mom = 3 and GorSlut < 6:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ну ты и место нашла, чтобы ноги раздвинуть: антисанитария сплошная. — А я виновата, что им здесь приспичило? Сейчас доебут, зайду домой, подмоюсь", сказали вы сидя на корточках, вытирая свои разъёбанные дырки салфеткой'
-	if rnd_caught_mom = 3 and GorSlut >= 6:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ну ты и место нашла, где клиентов принимать.'
+	if rnd_caught_mom = 3 and func('zz_reputation','get') < 4:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ну ты и место нашла, чтобы ноги раздвинуть: антисанитария сплошная. — А я виновата, что им здесь приспичило? Сейчас доебут, зайду домой, подмоюсь", сказали вы сидя на корточках, вытирая свои разъёбанные дырки салфеткой'
+	if rnd_caught_mom = 3 and func('zz_reputation','get') >= 4:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ну ты и место нашла, где клиентов принимать.'
 	if rnd_caught_mom = 4:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, вместо того, чтобы со всем городом ебаться, лучше бы шла уроки делать.<br> — "Да сделала я!"'
 	if rnd_caught_mom = 5 and vagina >= 30:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Доча, ты бы от ебли хоть немного отдохнула — у тебя пизда уже как ведро, не закрывается даже.'
 	if rnd_caught_mom = 5 and vagina < 30:$rnd_caught_mom = '<<$rnd_rodnya_text>> ваша <<$rnd_namemom_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Доча, ты бы от ебли хоть немного отдохнула.'
@@ -287,53 +286,53 @@ $accview_ggsex = {
 	!------
 	!Сестра:
 	rnd_caught_sister = rand(1,4)
-	if rnd_caught_sister = 1 and GorSlut < 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_namemom_text>> просила тебе передать, что бы ты как закончишь, не забыла <<$rnd_domdela_text>>'
-	if rnd_caught_sister = 1 and GorSlut >= 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Какая же ты шлюха <<$gop_name_gg>>'
-	if rnd_caught_sister = 2 and GorSlut < 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_sister = 2 and GorSlut >= 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_sister = 1 and func('zz_reputation','get') < 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_namemom_text>> просила тебе передать, что бы ты как закончишь, не забыла <<$rnd_domdela_text>>'
+	if rnd_caught_sister = 1 and func('zz_reputation','get') = 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Какая же ты шлюха <<$gop_name_gg>>'
+	if rnd_caught_sister = 2 and func('zz_reputation','get') < 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_sister = 2 and func('zz_reputation','get') = 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
 	if rnd_caught_sister = 3:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — Я, блин, бегаю, ищу её везде... А её, оказывается, тут ебут! Колокольчик что ли на шею повесь, чтобы в следующий раз легче найти тебя было. <br>Ключи давай, дырка подзаборная, а то я свои дома забыла... Ладно, не дёргайся, сама возьму. В сумочке? Да вынь ты хуй изо рта, когда тебя старшие спрашивают! В кармане? Всё, нашла уже... Пойдёшь в ванную - вычисти после себя всё с порошком. Не хватало мне ещё после тебя от Святого Духа аборты делать.'
-	if rnd_caught_sister = 4 and GorSlut < 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, мама тебя обыскалась, а она тут ебётся! Ты долго ещё?<br>— Ох, сестрёнка, сладко очень… Ещё минут 10 поебут и приду.'
-	if rnd_caught_sister = 4 and GorSlut >= 6:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ты с клиентами? Долго ещё? Тебе завтра вставать рано.<br>Сеструха обращается к стоящим рядом парням:<br>— Вы ебли уже её?<br>— Неа, первый только начал'
+	if rnd_caught_sister = 4 and func('zz_reputation','get') < 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, мама тебя обыскалась, а она тут ебётся! Ты долго ещё?<br>— Ох, сестрёнка, сладко очень… Ещё минут 10 поебут и приду.'
+	if rnd_caught_sister = 4 and func('zz_reputation','get') = 4:$rnd_caught_sister = '<<$rnd_rodnya_text>> ваша <<$rnd_namesis_text>>, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ты с клиентами? Долго ещё? Тебе завтра вставать рано.<br>Сеструха обращается к стоящим рядом парням:<br>— Вы ебли уже её?<br>— Неа, первый только начал'
 	!----
 	!Брат:
 	rnd_caught_brother = rand(1,3)
 	if rnd_caught_brother = 1 and momslut >= 1:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_namemom_text>> просила тебе передать, что бы ты как закончишь, не забыла <<$rnd_domdela_text>>'
 	if rnd_caught_brother = 1 and momslut < 1:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — Какая же ты шлюха <<$gop_name_gg>>'
-	if rnd_caught_brother = 2 and GorSlut < 6:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_brother = 2 and GorSlut >= 6:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_brother = 2 and func('zz_reputation','get') < 4:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_brother = 2 and func('zz_reputation','get') = 4:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
 	if rnd_caught_brother = 3 and $npc['39,qwPornoFootball'] < 16:$rnd_caught_brother = '<<$rnd_rodnya_text2>> ваш Брат, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$gop_name_gg>>, моим корешам только сосёшь, значит, а чёрт знает кому в пизду даёшь?<br>— Так они и не просили. Попросят — дам хоть в пизду, хоть в жопу."'
 	!-----
 	!Отчим:
 	rnd_caught_stepfather = rand(1,2)
 	if rnd_caught_stepfather = 1 and momslut >= 1:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_namemom_text>> просила тебе передать, что бы ты как закончишь, не забыла <<$rnd_domdela_text>>'
 	if rnd_caught_stepfather = 1 and momslut < 1:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — Какая же ты шлюха <<$gop_name_gg>>'
-	if rnd_caught_stepfather = 2 and GorSlut < 6:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_stepfather = 2 and GorSlut >= 6:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_stepfather = 2 and func('zz_reputation','get') < 4:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_stepfather = 2 and func('zz_reputation','get') = 4:$rnd_caught_stepfather = '<<$rnd_rodnya_text2>> ваш Отчим, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
 	!----------
 	!Разные нпс:
 	rnd_caught_othernpc = rand(1,13)
-	if rnd_caught_othernpc = 1 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_othernpc = 1 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
-	if rnd_caught_othernpc = 2 and GorSlut < 6:$rnd_caught_othernpc = '<<$shulga_name_rnd>> проходя мимо увидил как вас <<$gop_sextext3>>, показал большой палец пацанам, сказав: — "<<$rnd_telogg_text>>" и пошел дальше по своим делам'
-	if rnd_caught_othernpc = 2 and GorSlut >= 6:$rnd_caught_othernpc = '<<$shulga_name_rnd>> проходя мимо увидил как вас <<$gop_sextext3>>, показал большой палец пацанам и не скрывая улыбки сказал вам: — "<<$rnd_telogg2_text>>" и пошел дальше по своим делам'
-	if rnd_caught_othernpc = 3 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_othernpc = 3 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: -"<<$rnd_telogg2_text>>"'
-	if rnd_caught_othernpc = 4 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Наташа Белова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_othernpc = 4 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Наташа Белова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
-	if rnd_caught_othernpc = 5 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Юля Милова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
-	if rnd_caught_othernpc = 5 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Юля Милова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_othernpc = 1 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_othernpc = 1 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_othernpc = 2 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$shulga_name_rnd>> проходя мимо увидил как вас <<$gop_sextext3>>, показал большой палец пацанам, сказав: — "<<$rnd_telogg_text>>" и пошел дальше по своим делам'
+	if rnd_caught_othernpc = 2 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$shulga_name_rnd>> проходя мимо увидил как вас <<$gop_sextext3>>, показал большой палец пацанам и не скрывая улыбки сказал вам: — "<<$rnd_telogg2_text>>" и пошел дальше по своим делам'
+	if rnd_caught_othernpc = 3 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_othernpc = 3 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: -"<<$rnd_telogg2_text>>"'
+	if rnd_caught_othernpc = 4 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Наташа Белова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_othernpc = 4 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Наташа Белова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
+	if rnd_caught_othernpc = 5 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Юля Милова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg_text>>'
+	if rnd_caught_othernpc = 5 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Юля Милова, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$rnd_telogg2_text>>'
 	if rnd_caught_othernpc = 6:$rnd_caught_othernpc = 'Вас заметили мелкие пацаны, подкалывая друг друга они щёлкали происходящее на телефон, вы краем ухо услышали их разговор: — "Глянь! Глянь! Да не туда. Во-он там! Бля-аа!!! Снимай, снимай скорее! Охуеть! Никогда раньше вживую не видел, как баб <<$gop_sextext3>>!", "Ни-ху-я ж себе!", "Вот это пелотка!", "А что, разве в жопу тоже можно?", "Дебил, туда даже руку по локоть суют. Тёлки от этого прутся. Я у Киряна фотку видел", "Гонишь!", "На что спорим?"..."'
 	if rnd_caught_othernpc = 7:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — "Ба! Какие лю-юди! Яблочко от яблоньки, гляжу, не далеко укатилось. Прям, один-в-один: сиськи врозь, пизда нараспашку. И глазки такие хитрющие-хитрющие... Зайди потом ко мне: поговорить надо."'
 	if rnd_caught_othernpc = 7 and $npc['39,qwPornoFootball'] < 16:$rnd_caught_othernpc = 'Вас заметили мимо проходящие друзья брата, остановились и активно начали вас обсуждать: — Ебать-копать! Мы-то с ней как с принцессой: только в ротик, спасибо-пожалуйста-досвиданья. А она, оказывается, проблядь та ещё. Да вааще пиздец! Знали б раньше, <<$gop_sextext3>> бы сразу эту пиздорванку втроём в одну калитку, как всегда и хотели. А то всё - Све-еточка... Тебе ж не тру-удно нам помочь, да?.. Всё-таки ж сестра Коляна. Старшая, к тому же. Рыцари, бля... Теперь - всё!... Блядей ведь, не спрашивают, в них же сразу хуями тычут? Правда ж, <<$gop_name_gg>>? Гы-ы!!! Кивает! Ах, ты ж наша пре-елесть! Охуеть, подфартило: теперь свой спермоприёмник есть! До скорого, пиздопроёбина. Готовь дупло! Пойдём, Коляна обрадуем. Он с детства на неё обдрочился... Чур я в жопу первый! А в рот три сразу войдут? Давно надо было попробовать. Стеснялись, бля, предложить, джентельмены ебучие...'
 	if rnd_caught_othernpc = 8:$rnd_caught_othernpc = 'К вам подошла уборщица в подъезде: — Так, мальчики! Отлепитесь-ка на секунду от своей игрушки. Будете уходить - бутылки не выбрасывайте, на подоконник поставьте. Я их сама потом уберу. И нацюцюрники не разбрасывайте тут повсюду. Каждый день за вами по пол-ведра собираю! Лучше - вообще их не доставайте: без них же и вам и вашей коханке приятней будет. Или в сумочку их ей аккуратно складывайте: пусть как кончит, с собой забирает свои трофеи. Эй! Эй!!! Многостаночница!!! Глотай, а не на пол сплёвывай!!! Поняла? Вот же ж сучилища облямудованная! За каждой блядью подтирать - никакого здоровья не хватит! И из пизды мне тут на пол не сифонь! А то саму языком вылизывать заставлю!'
 	if rnd_caught_othernpc = 9:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> Тётя Люда: — "Привет, <<$gop_name_gg>>! Как жизнь половая? Подумать только, вроде только недавно, такая вся из себя девочка-припевочка в бантиках, краснея и заикаясь, впервые у меня в аптеке прокладки покупала. А теперь тут на всю округу своей лоханкой хлюпает, аж с улицы слышно. Совсем уже большая стала. И рачком здесь лучше не стой, дурочка. Знаешь, как шлюх от порядочных девочек отличают? По содранным коленкам. Приходи за зелёнкой, в полцены продам, горе луковое"'
 	if rnd_caught_othernpc = 10:$rnd_caught_othernpc = 'Вас заметили: Мамашка, гуляющая с дочкой, хватая ту на руки — Отвернись, не смотри. Эта девочка просто маму не слушала, поэтому её и наказывают. Слышишь, как теперь маму зовёт? Слушайся маму, и никогда не станешь такой, как она. <br>Обращаясь к вам: — До дома дотерпеть не могла, шалашовка?! Обязательно надо именно здесь своей мандищей трясти?! Тут, между прочим, дети гуляют!'
-	if rnd_caught_othernpc = 11 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> <<$shulga_name_rnd>>, остановился и спросил у вас: — <<$gop_name_gg>>, ты нахрена этим дрищам даёшь?<br>— Вообще-то я всем даю.'
-	if rnd_caught_othernpc = 11 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> <<$shulga_name_rnd>>, остановился и спросил у вас: — <<$gop_name_gg>>, у тебя сегодня сеанс благотворительности что ли?<br>— С какого перепуга. Я незнакомым бесплатно не даю.'
-	if rnd_caught_othernpc = 12 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$gop_name_gg>>, тебя разогрели уже, может уважишь старика?<br>— дядь Миш, я как тут закончу к вам заскочу!'
-	if rnd_caught_othernpc = 12 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$gop_name_gg>>, тебя разогрели уже, может уважишь старика?<br>— Дядь Миш я ближе к вечеру к вам заскочу, но за бесплатно только отсосать могу, а в пизду или в попку за денежку.<br>— Хорошо я обжумаю твое предложение и буду ждать тебя вечером!'
-	if rnd_caught_othernpc = 13 and GorSlut < 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, опять своих ёбарей притащила! Тебя на весь подъезд слышно!<br>— Тёть Люб, я тихо не умею.'
-	if rnd_caught_othernpc = 13 and GorSlut >= 6:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ты мне завтра опять план сделаешь!'
+	if rnd_caught_othernpc = 11 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> <<$shulga_name_rnd>>, остановился и спросил у вас: — <<$gop_name_gg>>, ты нахрена этим дрищам даёшь?<br>— Вообще-то я всем даю.'
+	if rnd_caught_othernpc = 11 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> <<$shulga_name_rnd>>, остановился и спросил у вас: — <<$gop_name_gg>>, у тебя сегодня сеанс благотворительности что ли?<br>— С какого перепуга. Я незнакомым бесплатно не даю.'
+	if rnd_caught_othernpc = 12 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$gop_name_gg>>, тебя разогрели уже, может уважишь старика?<br>— дядь Миш, я как тут закончу к вам заскочу!'
+	if rnd_caught_othernpc = 12 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text2>> дядя Миша, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text2>>: — <<$gop_name_gg>>, тебя разогрели уже, может уважишь старика?<br>— Дядь Миш я ближе к вечеру к вам заскочу, но за бесплатно только отсосать могу, а в пизду или в попку за денежку.<br>— Хорошо я обжумаю твое предложение и буду ждать тебя вечером!'
+	if rnd_caught_othernpc = 13 and func('zz_reputation','get') < 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, опять своих ёбарей притащила! Тебя на весь подъезд слышно!<br>— Тёть Люб, я тихо не умею.'
+	if rnd_caught_othernpc = 13 and func('zz_reputation','get') = 4:$rnd_caught_othernpc = '<<$rnd_rodnya_text>> тетя Люда, <<$rnd_viewgg_text>> <<$rnd_talkgg2_text>> <<$rnd_talkgg_text>>: — <<$gop_name_gg>>, ты мне завтра опять план сделаешь!'
 	!выбираем нпс которое запалит гг
 	rnd_caughtgg_npc = rand(1,5)
 		!мама
@@ -828,7 +827,7 @@ $gopsex_select = {
 				dynamic $shgopsex
 			end
 		end
-		if alko >= 3 and GorSlut >= 3 and shgopsex_gr_count > 0 or horny >= 50 and GorSlut >= 3 and shgopsex_gr_count > 0:
+		if alko >= 3 and func('zz_reputation','get') >= 3 and shgopsex_gr_count > 0 or horny >= 50 and func('zz_reputation','get') >= 3 and shgopsex_gr_count > 0:
 			act 'Участвовать в групповушке':
 				shgopsex_gr_day = daystart
 				shgopsex_gr_count -= 1
@@ -900,7 +899,7 @@ $shgopsex_lick= {
 	gs'stat'
 	!Вася (нпс 1)
 	if $gopsex_n_npc = 1:
-		if gorslut >=4:
+		if func('zz_reputation','get') >= 3:
 			'<<$gop_name_gg>> ты же у нас <<$gnikname>>, мне западло такой бабе пизду лизать, хуй знает сколько там за сегодня хуев побывало. Так что давай, подставляй свои блядские дырки, ебать буду!'
 		else
 			horny += 10
@@ -912,7 +911,7 @@ $shgopsex_lick= {
 	end
 	!Витя (нпс 2)
 	if $gopsex_n_npc = 2:
-		if gorslut >=4:
+		if func('zz_reputation','get') >= 3:
 			'<<$gop_name_gg>> ты же у нас <<$gnikname>>, мне западло такой бабе пизду лизать, хуй знает сколько там за сегодня хуев побывало. Так что давай, лучше подставляй свои блядские дырки!'
 		else
 			horny += 10
@@ -939,7 +938,7 @@ $shgopsex_69= {
 	minut += 1
 	gs'stat'
 	if $gopsex_n_npc >= 1:
-		if gorslut >=4:
+		if func('zz_reputation','get') >= 3:
 			'<<$gop_name_gg>> ты же у нас <<$gnikname>>, мне западло такой бабе пизду лизать, хуй знает сколько там за сегодня хуев побывало. Так что давай, лучше подставляй свои блядские дырки!'
 			act 'Выбор секса': dynamic $shgopsex
 		else

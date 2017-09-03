@@ -115,7 +115,7 @@ if mey_loc_id = 0:
 	! корпоратив только в конце месяца по выходным, проверяем
 	if day <= 25 and ($npc['45,qwTamara'] = 30 or $npc['45,qwTamara'] = 40): $npc['45,qwTamara'] = 10
 	! приглашаем на корпоратив
-	if week = 7 and hour >= 8 and hour <= 12 and day > 25 and ($npc['45,qwTamara'] = 7 or $npc['45,qwTamara'] = 10) and GorSlut < 3:
+	if week = 7 and hour >= 8 and hour <= 12 and day > 25 and ($npc['45,qwTamara'] = 7 or $npc['45,qwTamara'] = 10) and func('zz_reputation','get') < 3:
 		gt 'mey_tamara_events', 'party0'
 	end
 	! проверка внешности перед поездкой на корпоратив
@@ -196,7 +196,6 @@ if mey_loc_id = 3:
 	act 'Спать': gs 'bed', 'start'
 	act 'Шкаф': gt 'loker', 'start'
 	act 'Зеркало': gt 'mirror','start'
-	act 'Письменный стол': gt 'table'
 	act '<b>Выйти</b>':
 		if current_clothing < 3:
 			*clr
@@ -223,7 +222,7 @@ if mey_loc_id = 4:
 		end
 		gs 'zz_render','','','В зале на диванчике сидит Тамара Михайловна.'
 	end
-	if week >= 6 and (hour >= 8 and minut >= 30) and hour <= 10:  gs 'zz_render', '', '', 'В зале смотрит телевизор все семейство Мейнольдов.'
+	if week >= 6 and (hour >= 8 and minut >= 30) and hour <= 10: gs 'zz_render', '', '', 'В зале смотрит телевизор все семейство Мейнольдов.'
 	act '<b>Выйти</b>': gt 'mey_home', 0
 	gs 'zz_funcs', 'waiting', 1
 	act 'Разжечь камин': gs 'mey_home_events','fireplace'
@@ -284,7 +283,7 @@ if mey_loc_id = 8:
 	$metka = str(mey_loc_id)
 	cla
 	act '<b>Зайти в дом</b>': gt 'mey_home', 4
-	if week >= 6 and hour >= 10 and hour <= 15 and month >= 3 and month <= 10 and (sunWeather < 0 or (temper >= 5 and temper < 20)):  gs 'zz_render', '', '', 'На веранде, попивая чай, весело болтают Вика, Катя и тетя Тамара.'
+	if week >= 6 and hour >= 10 and hour <= 15 and month >= 3 and month <= 10 and (sunWeather < 0 or (temper >= 5 and temper < 20)): gs 'zz_render', '', '', 'На веранде, попивая чай, весело болтают Вика, Катя и тетя Тамара.'
 	exit
 end
 ! courtyard
@@ -295,7 +294,7 @@ if mey_loc_id = 9:
 		gt $curloc, 0
 	end
 	if hour = 7 and minut >= 30 and week < 6: gs 'zz_render', '', '', 'Во дворе возле машины разговаривает по телефону <a href="exec:gs''mey_tamara_events'',''tamara''">тётя Тамара.</a>'
-	if week >= 6 and hour >= 10 and hour <= 15 and month >= 5 and month <= 9 and sunWeather >= 0 and temper >= 20:  gs 'zz_render', '', '', 'В дворике нежится на солнце вся семейка Мейнольдов.'
+	if week >= 6 and hour >= 10 and hour <= 15 and month >= 5 and month <= 9 and sunWeather >= 0 and temper >= 20: gs 'zz_render', '', '', 'В дворике нежится на солнце вся семейка Мейнольдов.'
 	if hour >= 9 and hour <= 18 and month >= 3 and month <= 11:
 		gs 'mey_home_events','redress'
 		if current_clothing <= 2:

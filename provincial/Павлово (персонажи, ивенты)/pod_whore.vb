@@ -242,7 +242,7 @@ if rnd_client_text_bj_vag = 4:$rnd_client_text_bj_vag = 'В рот и в пиз�
 if rnd_client_text_bj_vag = 5:$rnd_client_text_bj_vag = 'Трахну твой рот и пизду'
 if rnd_client_text_bj_vag = 6:$rnd_client_text_bj_vag = '<<$gop_sextext1>> буду в рот и пизду'
 if rnd_client_text_bj_vag = 7:$rnd_client_text_bj_vag = 'В пизду и рот <<$gop_sextext1>> буду'
-if rnd_client_text_bj_vag = 8:$rnd_client_text_bj_vag = 'Сегодня хочу твой рот и  пизду'
+if rnd_client_text_bj_vag = 8:$rnd_client_text_bj_vag = 'Сегодня хочу твой рот и пизду'
 if rnd_client_text_bj_vag = 9:$rnd_client_text_bj_vag = 'Я думаю меня устроит твоя пизда и рот'
 if rnd_client_text_bj_vag = 10:$rnd_client_text_bj_vag = 'Поебу в рот, а потом в пизду'
 rnd_client_text_bj_anal = rand(1,10)
@@ -332,7 +332,7 @@ rnd_client_money2 = $rnd_client_money2
 $rnd_client_money3 = rand(300,445)
 rnd_client_money3 = $rnd_client_money3
 rnd_clint_torg = RAND(1,5)
-	if rnd_clint_torg = 1:$rnd_clint_torg = 'Клиент отвечает:  — <<$rnd_client_text>>!'
+	if rnd_clint_torg = 1:$rnd_clint_torg = 'Клиент отвечает: — <<$rnd_client_text>>!'
 	if rnd_clint_torg = 2:
 		if total_money >= 250:
 			$rnd_clint_torg = ''
@@ -377,7 +377,7 @@ rnd_clint_torg = RAND(1,5)
 			gs 'zz_render', '', '', func('pod_whore_strings', '34')
 		end
 	end
-	if rnd_clint_torg = 5:$rnd_clint_torg = 'Клиент отвечает:  — <<$rnd_client_text>>!'
+	if rnd_clint_torg = 5:$rnd_clint_torg = 'Клиент отвечает: — <<$rnd_client_text>>!'
 	gs 'zz_render', '', '', func('pod_whore_strings', '35')
 	act 'Обслужить': slutty += 1 & dynamic $rnd_client_event
 	if rnd_clint_torg >= 2 and rnd_clint_torg <= 4:

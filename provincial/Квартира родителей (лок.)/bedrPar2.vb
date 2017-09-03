@@ -79,8 +79,7 @@ if $args = 'wardrobe_search':
 		killvar '$failwords'
 	else
 		$findmomtoy[0]='Копаясь в шкафу, вы неожиданно нашли небольшой <a href="exec: gt ''bedrPar2'',''momtoy_play''">дилдо</a>'
-		$findmomtoy[1]='В ящике с нижним бельём матери находится вдруг упрятанный под лифчиками и трусами маленький <a href="exec: gt ''bedrPar2'',''momtoy_play''">дилдо</a>'
-		'"Однако! - думаете вы про себя. - запомним!"'
+		$findmomtoy[1]='В ящике с нижним бельём матери находится вдруг упрятанный под лифчиками и трусами маленький <a href="exec: gt ''bedrPar2'',''momtoy_play''">дилдо</a>**"Однако!" - думаете вы про себя. - "Запомним!"'
 		$findmomtoy[2]='Вы нашли мамину <a href="exec: gt ''bedrPar2'',''momtoy_play''">игрушку</a>'
 		gs 'zz_render','','pavlovo/family/parents/wardrobetoy.jpg', $findmomtoy[rand(0,2)]
 		killvar '$findmomtoy'
@@ -113,7 +112,7 @@ if $args[0] = 'mom_selfplay':
 		! уже видела
 		$_str += '. "Папочка из дому - мама в рукопашную" - иронически усмехаетесь вы про себя, наблюдая, как мама яростно яростно самозабвенно вгоняет в себя силиконовый "заменитель мужика", охая и тяжело дыша.'
 	end
-	gs 'zz_render','','pavlovo/family/mother/selfplay'+rand(0,4)+'.gif',$_str
+	gs 'zz_render','','pavlovo/family/mother/selfplay'+rand(0,4)+'.webm',$_str
 	killvar '$_str'
 	mom_selfplay = 1
 	parentsexday = day

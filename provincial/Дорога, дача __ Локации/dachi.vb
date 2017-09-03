@@ -1,5 +1,4 @@
-﻿if $args[0] = '': $args[0] = 'main'
-if $args[0] = 'main':
+﻿if $args[0] = '' or $args[0] = 'main':
 	$metka = $ARGS[0]
 	$loc = $CURLOC
 	$control_point = $curloc

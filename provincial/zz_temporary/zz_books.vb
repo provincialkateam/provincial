@@ -25,7 +25,7 @@ if $args[0] = 'main':
 	i += 1
 	if i < arrsize('$books')/2: jump 'loop_shelf'
 	$_str += '</table></center>'
-	gs 'zz_render','Книжная полка','',$_str
+	gs 'zz_render','','',$_str
 	killvar '$_str'
 	exit
 end
@@ -273,7 +273,7 @@ if $args[0] = 'shop':
 	books_size = iif($zz_ero = 'ero',40,30)
 	if i < books_size: jump 'loop_shop'
 	$_str += '</table></center>'
-	gs 'zz_render','Книги','',$_str
+	gs 'zz_render','','',$_str
 	killvar '$_str'
 	killvar 'books_size'
 	killvar '$zz_ero'
@@ -288,7 +288,7 @@ if $args[0] = 'get_price':
 end
 if $args[0] = 'buy':
 	*clr
-	pl '<font color=green>Вы купили книгу "' + func('zz_books','get_name',args[1]) + '"</font>'
+	gs 'zz_funcs','message','', '<font color=green>Вы купили книгу "' + func('zz_books','get_name',args[1]) + '"</font>'
 	$books['<<args[1]>>,exists'] = 1
 	money -= args[2]
 	gs 'stat'
@@ -415,16 +415,4 @@ if $args[0] = 'custom_shelf':
 	killvar '_min_book'
 	killvar '_max_book'
 	exit
-end
-! ---
-if $args[0] = 'books_arr':
-	_i = 0
-	$_str = '<font size=-4 cellpadding=0 cellspacing=0><table border=1>'
-	:loop_arr_books
-	$_str += '<tr><td><<_i+1>></td><td>'+func('zz_books','get_name',_i)+'</td><td>'+$books['<<_i>>,page']+'</td><td>'+$books['<<_i>>,exists']+'</td></tr>'
-	_i += 1
-	if _i < arrsize('$books')/2: jump 'loop_arr_books'
-	pl 'reading[''sister_book'']:' + reading['sister_book']
-	pl 'arrsize(''$books''): ' + arrsize('$books')/2
-	pl $_str +'</table></font>'
 end

@@ -5,7 +5,7 @@
 	$boy = $bname
 	!--
 	gs 'zz_render','','pavlovo/dk/dk_night', 'Вы вышли с парнем из клуба он повел вас за клуб.'
-	if GorSlut = 0:
+	if func('zz_reputation','get') = 0:
 		gs 'zz_render','','','Парень достал из пакета полторашку пива, чипсы и пару стаканчиков. Вы нашли местечко в зарослях и устроились на поваленном дереве.'
 		if alko < 3 or alko >= 6:
 			act 'Отказаться от пива':
@@ -47,9 +47,9 @@
 			end
 			gs 'stat'
 		end
-	elseif GorSlut = 1 or GorSlut = 2:
+	elseif func('zz_reputation','get') <= 2:
 		if rand(0,10) = 0:
-			gs 'zz_render', '', '', '<<$bname>> сказал:**\\\- <<$name[2]>> '+iif(GorSlut = 1,'я слышал, что ты всем даешь','я слышал, что ты в рот берешь')+'...///**Парень достал член из штанов.'
+			gs 'zz_render', '', '', '<<$bname>> сказал:**\\\- <<$name[2]>> '+iif(func('zz_reputation','get') = 1,'я слышал, что ты всем даешь','я слышал, что ты в рот берешь')+'...///**Парень достал член из штанов.'
 			act 'Сесть на корточки': gt 'EvBoyBuh','boy_bj'
 			gs 'EvBoyBuh','boy_decline'
 		else
@@ -60,36 +60,36 @@
 			gs 'EvBoyBuh','kiss_with_npc'
 			exit
 		end
-	elseif GorSlut >= 3 or GorSlut <= 5:
+	elseif func('zz_reputation','get') = 3:
 		gs 'zz_render', '', '', '<<$bname>> сказал:**\\\- <<$name[2]>> ты же <<$gnikname>>. Я хочу поразвлечься!///**Парень достал член из штанов.'
 		act 'Сесть на корточки': gt 'EvBoyBuh','boy_bj'
 		gs 'EvBoyBuh','boy_decline'
-	elseif GorSlut = 6:
+	elseif func('zz_reputation','get') = 4:
 		gs 'zz_render', '', '', '<<$bname>> сказал6**\\\- <<$name[2]>> ты же <<$gnikname>>. Обсужи меня, вот тебе 300 рублей...///**После этого парень достал член из штанов.'
 		act 'Сесть на корточки': money += 300 & gt 'EvBoyBuh','boy_bj'
 		act 'Уйти': gt 'gdkin'
 	end
-	if GorSlut >= 1:
+	if func('zz_reputation','get') >= 1:
 		if dom >= 10:
 			act 'Обругать парня':
 				*clr & cla
-				dom -= 5
+				dom += 2
 				minut += 3
-				dynamic $rep_clear
+				if func('zz_reputation','get') > 0 and rand(0,1) = 0: gs 'zz_reputation','decrease',3
 				gs 'stat'
 				gs 'zz_render', '', '', 'Вы отказали пацану:**\\- Ты совсем охерел? Жене своей будешь такие предложения делать!!! Урод...//**Парень смутился:**\\\- Ну пацаны же говорят...///**Вы его перебили:\\- Говорят в Москве кур доят, да только как доят, не говорят! Ты больше уши развешивай, придурок!//'
 				act 'Уйти': gt 'gdkin'
 			end
 		end
-		if GorSlut < 6 and dom > 0:
+		if func('zz_reputation','get') = 4 and dom > 0:
 			act 'А у тебя деньги то есть?':
 				*clr & cla
 				dom -= 1
 				minut += 3
-				GorSlut = 6
+				gs 'zz_reputation','set',4
 				money += 300
 				gs 'stat'
-				gs 'zz_render', '', '', 'Вы сказали пацану:\\- А у тебя деньги то есть?//**Пацан достал из кармана 300 рублей. Вы взяли деньги и положили их себе в сумочку.'
+				gs 'zz_render','','','\\- А у тебя деньги то есть?//**Пацан достал из кармана 300 рублей. Вы взяли деньги и положили их себе в сумочку.'
 				act 'Сесть на корточки': gt 'EvBoyBuh','boy_bj'
 			end
 		end
@@ -101,7 +101,7 @@ if $args[0] = 'talk_with_npc':
 	minut += rand(5,10)
 	gs 'stat'
 	if vnesh >= RAND(0,200):
-		gs 'zz_render','','pavlovo/dk/dk_night','<<$bname>> сказал:**\\\- Ты классная девчонка. Может мы еще встретимся?///'
+		gs 'zz_render','','pavlovo/dk/dk_night','\\\- Ты классная девчонка. Может мы еще встретимся?///'
 		act 'Отказать ему и уйти': gt 'gdkin'
 		act 'Сказать ему свой телефон':
 			*clr & cla
@@ -174,7 +174,7 @@ if $args[0] = 'kiss_with_npc':
 										gs 'zz_funcs','cum','lip'
 										gs 'zz_funcs','cum','face'
 										cumfrot += 1
-										if GorSlut < 2 and RAND(0,100) >= 80: GorSlut = 2
+										if func('zz_reputation','get') < 2 and RAND(0,100) >= 80: gs 'zz_reputation','set',2
 										gs 'stat'
 										gs 'zz_render','','common/sex/bj_cum/'+rand(0,4)+'.gif', 'Внезапно вам в рот ударила теплая струя спермы, вы едва не захлебнулись но продолжили сосать. Семя стекало по вашим губам на член и капало вам на одежду, наконец член стал опадать в вашем рту и парень его вынул, и убрал в штаны.'
 										act 'Посмотреть на парня':
@@ -230,7 +230,7 @@ if $args[0] = 'boy_sex':
 	minut += 5
 	horny += rand(5,10)
 	guy += 1
-	if GorSlut = 0 and RAND(0,100) >= 80: GorSlut = 1
+	if func('zz_reputation','get') = 0 and RAND(0,100) >= 80: gs 'zz_reputation','set',1
 	pose = 1
 	dynamic $venerasiak
 	gs 'stat'
@@ -252,7 +252,7 @@ if $args[0] = 'boy_bj':
 		*clr & cla
 		minut += 5
 		horny += 10
-		if GorSlut < 2 and RAND(0,100) >= 80: GorSlut = 2
+		if func('zz_reputation','get') < 2 and RAND(0,100) >= 80: gs 'zz_reputation','set',2
 		gs 'stat'
 		gs 'zz_render','','common/sex/bj/'+rand(0,4)+'.gif'
 		gs 'zz_dynamic_sex', 'bj'

@@ -12,31 +12,124 @@
 		act '<<$name[1]>>':
 			*clr & cla
 			gs'stat'
-			gs 'zz_render', 'Подъезд', 'images/city/south/front_door/entryway.jpg','Вы сказали парню что вас зовут <<$name_b[1]>>. Он кивнул головой и достав ключи начал открывать дверь 68-ой квартиры:**\\\- Очень приятно. Я как видите в соседней квартире живу, 68-й. А  видите '+iif(BuyHous ! 1,'70','69')+'-ю квартиру? Она '+iif(BuyHous ! 1,'продаётся','сдаётся')+'. Ну это так, для информации, вдруг понадобится.///**Парень открыл дверь и на пороге показалась любопытное лицо пожилой женщины. Она направила на вас свой острый нос и стала с любопытством осматривать.**\\\- Мам, ну хватит уже торчать перед дверью!, -/// сказал Тимофей, входя в квартиру и закрывая за собой дверь.'
+			gs 'zz_render', 'Подъезд', 'images/city/south/front_door/entryway.jpg','Вы сказали парню что вас зовут <<$name_b[1]>>. Он кивнул головой и достав ключи начал открывать дверь 68-ой квартиры:**\\\- Очень приятно. Я как видите в соседней квартире живу, 68-й. А видите '+iif(BuyHous ! 1,'70','69')+'-ю квартиру? Она '+iif(BuyHous ! 1,'продаётся','сдаётся')+'. Ну это так, для информации, вдруг понадобится.///**Парень открыл дверь и на пороге показалась любопытное лицо пожилой женщины. Она направила на вас свой острый нос и стала с любопытством осматривать.**\\\- Мам, ну хватит уже торчать перед дверью!, -/// сказал Тимофей, входя в квартиру и закрывая за собой дверь.'
 			act '...': gt 'front_door','start'
 		end
 	end
 end
-if $ARGS[0] = 'attic_boys':
+!Стартовые условия: зайти на чердак, подойти к группе гогочущей молодежи.
+if $args[0] = 'cherdak_ev1':
 	*clr & cla
-	minut += 5
+	_stage = args[1]
+	minut += 3
+	if _stage >= 4 and _stage <= 9: horny += 15
 	gs 'stat'
-	gs 'zz_render', '', 'images/city/south/front_door/attic_boys','По доносившимся голосам, вы вышли прямо к группе подростков, которые собрались здесь, чтобы покурить, поболтать, попить пивка. Их было 7 человек разного возраста, от 18 до 20 лет. Они с интересом смотрели на вас, появившуюся неизвестно от куда и ждали, что вы скажете.<br>Вы явно не ожидали, что их окажется так много, стушевались и вместо того, чтобы строго их отчитать за то, что могут устроить пожар, проблеяли, чтобы они больше сюда не приходили и, чтоб они немедленно от сюда ушли. Подростки сначала переглянулись, а потом дружно рассмеялись.<br>Вы стали пятиться назад, но не тут - то было. Вас окружили со всех сторон и стали разглядывать сальными взглядами. Вам стало не по себе. Подростки стали говорить пошлости в ваш адрес, трогать одежду, и один из них, стоящий сзади, дернул вверх вашу блузку. Блузка взмыла вверх, показывая вашу грудь в бюстгальтере. Смех усилился и оскорбления посыпались со всех сторон.<br>Вы пытались поправить одежду, но, окружившие вас подростки. Постоянно толкали и тянули вас в разные стороны. Вы стали умолять отпустить, говорить, что больше сюда никогда не придёте и всё такое прочее. Но подростки только смеялись и уже откровенно лапали вас. Вы вдруг почувствовала, что сзади чьи-то руки взялись за трусы и резко с силой стянули их вместе с одеждой. А другой негодяй сдернул лифчик и остатки блузки.<br>Теперь вы уже стояли перед ними полностью голая. Вас стали толкать куда-то в глубь чердака, и только теперь вы увидели огромный с обломленными ножками старый диван. Подойдя к дивану вы остановилась и вновь попытались разжалобить подростков, но они даже не обращали на это внимание. Вас резко толкнули и вы плюхнулись на диван. Подростки начали расстегивать свои джинсы. Первый к вам подошёл крепкого сложения парень, грубо толкнул за плечи и вы упали на спину, он бесцеремонно, также грубо раздвинул вам ноги, лёг сверху и, направив свой член в нужную дырочку, и резко вошёл в неё.'
-	act 'Далее':
-		*clr & cla
-		gs 'zz_render', '', 'images/city/south/front_door/cherdak1.jpg','Он трахал вас в быстром и интенсивном темпе. После того, как он кончил его место занял второй здоровяк и всё повторилось как с первым. После него вас трахнули все по очереди. А потом и одновременно те, кому нехватило одного раза.'
-		act 'Далее':
-			*clr & cla
-			minut += 120
-			horny += 50
-			gang += 1
-			gs 'zz_funcs', 'cum', 'ass'
-			gs 'zz_funcs', 'cum', 'lip'
+	gs 'zz_render', '', 'city/south/front_door/cherdak/event1/'+iif(_stage <= 1,1,_stage),func('front_door_event_str',_stage)
+	act iif(_stage < 14,'...','Уйти'):
+		if _stage < 14:
+			if _stage = 10:
+				orgasm += 1
+				DPorgasm += 1
+				horny = 0
+			end
+			gt 'front_door_event','cherdak_ev1',_stage+1
+		else
+			dom -= 1
 			vagina += 1
-			gs 'stat'
-			gs 'zz_render', '', 'images/city/south/front_door/cherdak0.jpg','После того как последний кончил в рот, подростки застегнули свои ширинки и ушли, громко смеясь и обсуждая только что произошедшее. А вы, подняв с пола одежду, одели её, и медленно направились в свою квартиру.'
-			gs 'zz_funcs', 'hornyrand'
-			act 'Далее': gt'front_door','attic'
+			city['cherdak'] += 1
+			city['cherdak_day'] = day
+			gs 'zz_funcs', 'cum', 'pussy'
+			gs 'zz_funcs', 'cum', 'face'
+			gs 'zz_funcs', 'cum', 'lip'
+			killvar '_stage'
+			gt 'front_door'
+		end
+	end
+end
+!---
+if $args[0] = 'front_ev1_init':
+	*clr & cla
+	gs 'zz_render','','city/south/front_door/cherdak/event2/1',func('front_door_event_str',15)
+	act 'Отвалите!':
+		*clr & cla
+		gs 'zz_render','','city/south/front_door/cherdak/event2/2',func('front_door_event_str',16)
+		act 'Попробовать сбежать':
+			*clr & cla
+			gs 'zz_render','','city/south/front_door/cherdak/event2/4',func('front_door_event_str',31)
+			if speed > 50:
+				gs 'zz_render','','',func('front_door_event_str',32)
+				act '...': gt 'front_door'
+			else
+				gs 'zz_render','','',func('front_door_event_str',33)
+				act '...':
+					*clr & cla
+					gs 'zz_render','','city/south/front_door/cherdak/event2/3.gif',func('front_door_event_str',17)
+					act '...': gt 'front_door_event','front_ev1'
+				end
+			end
+		end
+		act 'Идти с парнями':
+			*clr & cla
+			gs 'zz_render','','city/south/front_door/cherdak/event2/5',func('front_door_event_str',30)
+			act '...': gt 'front_door_event','front_ev1'
+		end
+	end
+end
+!---
+if $args[0] = 'front_ev1':
+	*clr & cla
+	_stage = args[1]
+	if _stage < 8: horny += 15
+	minut += 3
+	gs 'stat'
+	gs 'zz_render','','city/south/front_door/cherdak/event2/'+(6+_stage)+iif(_stage=0 or _stage=2 or _stage=10,'.webm','.jpg'),func('front_door_event_str',18+_stage)
+	act iif(_stage <= 10,'...','Уйти'):
+		if _stage <= 10:
+			if _stage = 8:
+				orgasm += 1
+				DPorgasm += 1
+				horny = 0
+			end
+			gt 'front_door_event','front_ev1',_stage+1
+		else
+			dom -= 3
+			vagina += 1
+			city['cherdak'] += 1
+			city['cherdak_day'] = day
+			gs 'zz_funcs', 'cum', 'face'
+			gs 'zz_funcs', 'cum', 'lip'
+			killvar '_stage'
+			gt 'front_door'
+		end
+	end
+end
+!---
+if $args[0] = 'front_ev2':
+	*clr & cla
+	_stage = args[1]
+	if _stage >= 1 and _stage <= 4: horny += 20
+	minut += 3
+	gs 'stat'
+	gs 'zz_render','','city/south/front_door/cherdak/event3/<<_stage+1>>.webm',func('front_door_event_str',34+_stage)
+	if _stage = 0:
+		city['cherdak_day'] = day
+		act 'Сбежать квартиру': gt 'apartment_south_event'
+		act 'Улыбнуться': gt 'front_door_event','front_ev2',1
+	else
+		act iif(_stage <= 8,'...','Уйти'):
+			if _stage <= 8:
+				if _stage = 6:
+					orgasm += 1
+					vaginalorgasm += 1
+					horny = 0
+				end
+				gt 'front_door_event','front_ev2',_stage+1
+			else
+				city['cherdak'] += 1
+				gs 'zz_funcs', 'cum', 'lip'
+				killvar '_stage'
+				gt 'front_door'
+			end
 		end
 	end
 end

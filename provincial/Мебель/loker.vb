@@ -5,7 +5,7 @@
 		if current_clothing > 2 or current_clothing = 0 and shameless['flag'] >= 2 and ($loc = 'bedrPar' or $loc = 'bedr' or $loc = 'korr'):
 			gt 'loker', 'fin'
 		else
-			'<b><font color = red>Вы стесняетесь в таком виде появиться в комнате.</font></b>'
+			gs 'zz_render','','','<red>Вы стесняетесь в таком виде появиться в комнате.</red>'
 		end
 	end
 	if current_clothing ! 0 and $loc ! 'gschool':
@@ -36,10 +36,7 @@
 			end
 		end
 	end
-	gs 'zz_render','','','На верхней полке лежит купальник.
-У вас есть еще <<clrbelo>> ед. трусиков.
-Внизу шкафа стоит <a href="exec:gt''zz_clothing'',''trashbag''">корзина со старой одеждой</a>
-<font size=-1><a href="exec:gt''zz_clothing'',''wardrobe_settings''">Настройки шкафчика</a></font>'
+	gs 'zz_render','','','<p style="text-align:center">На верхней полке лежит купальник.**У вас есть еще <<clrbelo>> ед. трусиков.**Внизу шкафа стоит <a href="exec:gt''zz_clothing'',''trashbag''">корзина со старой одеждой</a></p>'
 	gs 'zz_clothing', 'wardrobe', iif($loc = 'bordel',13,args[1])
 end
 if $ARGS[0] = 'fin':

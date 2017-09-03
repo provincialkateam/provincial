@@ -27,13 +27,13 @@ if grandma_ingadsarai = 1:gs 'zz_render', '', '','В сарае ковыряет
 if grandpa_ingadsarai = 1:gs 'zz_render', '', '','В сарае что-то делает ваш '+iif(grandpa_notalk = 0,'<a href="exec: gt ''grandpa'' ">дедушка</a>','дедушка')+'.'
 act 'Выйти во двор': minut += 5 & gt'Gaddvor'
 if card = 0 or findvel = 0:
-    act 'Ковыряться в сарае':
-	    *clr & cla
-	    minut += 15
-	    gs'stat'
-	    if findvel=0:
+	act 'Ковыряться в сарае':
+		*clr & cla
+		minut += 15
+		gs'stat'
+		if findvel=0:
 			findvel=1
-            gs 'zz_render', '', 'qwest/gadukino/new/findvel.jpg', 'В дальнем углу сарая вам удаётся найти старый велосипед. На удивление, он в хорошем состоянии'
+			gs 'zz_render', '', 'qwest/gadukino/new/findvel.jpg', 'В дальнем углу сарая вам удаётся найти старый велосипед. На удивление, он в хорошем состоянии'
 		elseif card = 0:
 			card = 1
 			gs 'zz_render', '', 'pic/Cor.jpg', 'В шкафчике старые журналы "Здоровье", "Техника молодежи" и пыльные пожелтевшие книги.**\\"Хмм, а это что такое?"// подумали вы, когда нашли колоду карт.'

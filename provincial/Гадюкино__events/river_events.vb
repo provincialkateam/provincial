@@ -1,34 +1,34 @@
 ﻿if $ARGS[0] = 'mira_in_river':
 	i = rand(1,10)
-    if mira_go_blok = 0 and mirainriver = 1 and (i = 5 or hour = 20):
-	    *clr & cla
-        mirainriver = 2
-        minut += 5
-        mira_go_blok = 2
-        mira_no_home = 0
-        gs 'stat'
-	    gs 'zz_render', $_str, 'gadukino/river/events/mira_go_home'+iif(current_clothing = 0,'_nude','')+'.jpg', ' - <<$name[2]>>, мне пора домой, - сказала вам Мира и стала собираться.'
-        act 'Далее': gt 'gadbeach'
+	if mira_go_blok = 0 and mirainriver = 1 and (i = 5 or hour = 20):
+		*clr & cla
+		mirainriver = 2
+		minut += 5
+		mira_go_blok = 2
+		mira_no_home = 0
+		gs 'stat'
+		gs 'zz_render', $_str, 'gadukino/river/events/mira_go_home'+iif(current_clothing = 0,'_nude','')+'.jpg', ' - <<$name[2]>>, мне пора домой, - сказала вам Мира и стала собираться.'
+		act 'Далее': gt 'gadbeach'
 	end
-    if miraQW > 0 and inriver = 1 and Mira_no = 0 and mirainriver = 0 and i > 7 and hour > 8 and hour < 20 and sunWeather >= 0 and temper >= 20:
-	    *clr & cla
-        mirainriver = 1
-        mira_go_river = 1
-        minut += 5
-        mira_go_blok = 2
-        gs 'stat'
-	    gs 'zz_render', $_str, 'gadukino/river/events/mira_go_river'+iif(current_clothing = 0,'_nude','')+'.jpg', 'Вы загорали, когда на речке появилась Мира.'+iif(current_clothing = 0 and miratalkforest < 3 and shameless['flag'] = 0,' Покраснев, вы быстренько натянули свой купальник, и улеглись загорать дальше.','')+' Улыбнувшись вам, она разделась и принялась растилать свое покрывало рядом с вашим.'
-	    if current_clothing = 0 and miratalkforest < 3 and shameless['flag'] = 0: gs 'zz_clothing', 'redress', 2
-        act 'Далее': gt 'gadbeach'
+	if miraQW > 0 and inriver = 1 and Mira_no = 0 and mirainriver = 0 and i > 7 and hour > 8 and hour < 20 and sunWeather >= 0 and temper >= 20:
+		*clr & cla
+		mirainriver = 1
+		mira_go_river = 1
+		minut += 5
+		mira_go_blok = 2
+		gs 'stat'
+		gs 'zz_render', $_str, 'gadukino/river/events/mira_go_river'+iif(current_clothing = 0,'_nude','')+'.jpg', 'Вы загорали, когда на речке появилась Мира.'+iif(current_clothing = 0 and miratalkforest < 3 and shameless['flag'] = 0,' Покраснев, вы быстренько натянули свой купальник, и улеглись загорать дальше.','')+' Улыбнувшись вам, она разделась и принялась растилать свое покрывало рядом с вашим.'
+		if current_clothing = 0 and miratalkforest < 3 and shameless['flag'] = 0: gs 'zz_clothing', 'redress', 2
+		act 'Далее': gt 'gadbeach'
 	end
-    if miraQW > 0 and inriver = 0 and Mira_no = 0 and mirainriver = 0 and i < 3 and hour > 8 and hour < 20 and sunWeather >= 0 and temper >= 20:
-	    *clr & cla
-        mirainriver = 1
-        minut += 5
-        mira_go_blok = 2
-        gs 'stat'
-	    gs 'zz_render', $_str, 'gadukino/river/events/mira_in_river.jpg', 'Придя на пляж, вы увидели загорающую на покрывале Мирославу.'
-        act 'Далее': gt 'gadbeach'
+	if miraQW > 0 and inriver = 0 and Mira_no = 0 and mirainriver = 0 and i < 3 and hour > 8 and hour < 20 and sunWeather >= 0 and temper >= 20:
+		*clr & cla
+		mirainriver = 1
+		minut += 5
+		mira_go_blok = 2
+		gs 'stat'
+		gs 'zz_render', $_str, 'gadukino/river/events/mira_in_river.jpg', 'Придя на пляж, вы увидели загорающую на покрывале Мирославу.'
+		act 'Далее': gt 'gadbeach'
 	end
 end
 if $ARGS[0] = 'mira_punish':
@@ -467,49 +467,49 @@ if $ARGS[0] = 'horse_river':
 	inriver = 1
 	gs 'stat'
 	gs 'zz_render', $_str, 'images/gadukino/horse/river.jpg', 'Дедушкин помощник - конь Буян.'
-    if horse_river = 2:
-	    act 'Вымыть коня':
-	        *clr & cla
-		    minut += 30
+	if horse_river = 2:
+		act 'Вымыть коня':
+			*clr & cla
+			minut += 30
 			gs 'zz_bathroom', 'clean_me'
-	        manna += 5
-		    horse_river = 3
-		    gs 'stat'
-		    horny += RAND(5,15)
-		    if current_clothing = 2:
-		        gs 'zz_render', $_str, 'images/gadukino/horse/wash_swim'+iif(mirainriver = 1,'_mira','')+'.jpg', 'Вы в течение часа мыли и отскребали с Мирой коня Буяна.'
-            elseif current_clothing = 0:
-		        gs 'zz_render', $_str, 'images/gadukino/horse/wash_nude'+iif(mirainriver = 1,'_mira','')+'.jpg', 'Вы в течение часа мыли и отскребали с Мирой коня Буяна. И были при этом совершенно голенькие.'
-            else
-		        gs 'zz_render', $_str, 'images/gadukino/horse/wash.jpg', 'Вы в течение часа мыли и отскребали коня Буяна прямо в одежде.'
-                gs 'zz_clothing', 'decrease_condition', 1
-            end
-            act 'Закончить':gt 'gadbeach'
-        end
+			manna += 5
+			horse_river = 3
+			gs 'stat'
+			horny += RAND(5,15)
+			if current_clothing = 2:
+				gs 'zz_render', $_str, 'images/gadukino/horse/wash_swim'+iif(mirainriver = 1,'_mira','')+'.jpg', 'Вы в течение часа мыли и отскребали с Мирой коня Буяна.'
+			elseif current_clothing = 0:
+				gs 'zz_render', $_str, 'images/gadukino/horse/wash_nude'+iif(mirainriver = 1,'_mira','')+'.jpg', 'Вы в течение часа мыли и отскребали с Мирой коня Буяна. И были при этом совершенно голенькие.'
+			else
+				gs 'zz_render', $_str, 'images/gadukino/horse/wash.jpg', 'Вы в течение часа мыли и отскребали коня Буяна прямо в одежде.'
+				gs 'zz_clothing', 'decrease_condition', 1
+			end
+			act 'Закончить':gt 'gadbeach'
+		end
 	end
-    if horse_river = 3:
-	    act 'Отвести коня домой':
-		    if current_clothing > 2 or (current_clothing >= 0 and exhibi > 0):
-		       *clr & cla
-			    minut += 30
-			    horse_river = 0
-			    mirainriver = 0
-			    grandmahelp += 1
-			    grandpaQW += 1
-			    inriver = 0
-			    gs 'stat'
-			    gs 'zz_render', $_str, 'images/gadukino/horse/lead'+iif(current_clothing = 0,'_nude',iif(current_clothing = 2,'_swim',''))+'.jpg', 'Вы взяли коня под уздцы и отправились с ним домой.'
-		        act 'Далее':
+	if horse_river = 3:
+		act 'Отвести коня домой':
+			if current_clothing > 2 or (current_clothing >= 0 and exhibi > 0):
+				*clr & cla
+				minut += 30
+				horse_river = 0
+				mirainriver = 0
+				grandmahelp += 1
+				grandpaQW += 1
+				inriver = 0
+				gs 'stat'
+				gs 'zz_render', $_str, 'images/gadukino/horse/lead'+iif(current_clothing = 0,'_nude',iif(current_clothing = 2,'_swim',''))+'.jpg', 'Вы взяли коня под уздцы и отправились с ним домой.'
+				act 'Далее':
 					killvar '$_str'
 					gt'Gadsarai'
 				end
-	        else
-	            *clr & cla
-		        gs 'stat'
-		        gs 'zz_render', $_str, 'images/gadukino/horse/lead_'+iif(current_clothing = 0,'nude','swim')+'.jpg', '<b>Вы не можете появиться в таком виде в деревне.</b>'
-		        act 'Далее': gt'river_events','horse_river'
-	        end
-	    end
+			else
+				*clr & cla
+				gs 'stat'
+				gs 'zz_render', $_str, 'images/gadukino/horse/lead_'+iif(current_clothing = 0,'nude','swim')+'.jpg', '<b>Вы не можете появиться в таком виде в деревне.</b>'
+				act 'Далее': gt'river_events','horse_river'
+			end
+		end
 	end
 	act 'Уйти': gt 'gadbeach'
 end

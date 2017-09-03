@@ -1,8 +1,8 @@
 ﻿! PaulRihard edition
 act 'Уйти': gt 'korrPar'
-if GorSlut = 0: i = rand(0,16)
-if GorSlut > 0 and GorSlut < 4: i = rand(17,33)
-if GorSlut >= 4: i = rand(34,50)
+if func('zz_reputation','get') = 0: i = rand(0,16)
+if func('zz_reputation','get') > 0 and func('zz_reputation','get') < 3: i = rand(17,33)
+if func('zz_reputation','get') >= 3: i = rand(34,50)
 father['horny'] = 0
 minut += 5
 voyeurism += 1
@@ -66,5 +66,5 @@ if voyeur_parents_count = 3 or voyeur_parents_count = 4:
 elseif voyeur_parents_count >= 5:
 	$_str += 'Прикрывая дверь, вы успели заметить, как отчим уже обычно подмигнул вам.'
 end
-gs 'zz_render', '', 'pavlovo/family/parents/sex/' + (i - (i/17)*17) + '.gif', $_str
+gs 'zz_render', '', 'pavlovo/family/parents/sex/' + (i - (i/17)*17) + '.webm', $_str
 killvar '$_str'

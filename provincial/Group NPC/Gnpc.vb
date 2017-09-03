@@ -5,7 +5,7 @@
 	boyvstre[numnpc] += 1
 	gs 'stat'
 	gs 'zz_render', $nameBoyfrend[numnpc], 'common/npc/<<numnpc>>.jpg', '<<$nameBoyfrend[numnpc]>> - ваш парень. ' + func('zz_funcs','relations',otnBoyFrend[numnpc])
-	if preg = 1 and pregtime <= 80 and pregTalk[numnpc] = 0 and gnpcSex[numnpc] = 1:
+	if pregnancy <= 80 and pregTalk[numnpc] = 0 and gnpcSex[numnpc] = 1:
 		$pregLie = iif($father ! $nameBoyfrend[numnpc], '(Попытаться обмануть)', '')
 		act 'Сказать парню, что вы залетели от него <<$pregLie>>':
 			*clr & cla

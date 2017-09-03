@@ -23,35 +23,35 @@ if current_clothing > 2 and clothesbackwater = 0 and temper >= 20:
 			act'Назад':gt'backwater'
 		end
 	end
-    if  current_clothing > 0 and (cumpussy > 0 or cumbelly > 0 or cumass > 0 or cumanus > 0):
-	    act 'Подмыться':
-		    *clr & cla
-		    cumpussy = 0
-		    cumbelly = 0
-		    cumass = 0
-		    cumlip = 0
-		    cumface = 0
-		    cumanus = 0
-		    cumfrot = 0
-		    lubonus = 0
-		    sweat -= 1
-		    minut += 10
-		    if hantersRape = 1: hantersRape = 2
-		    gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterswim1.jpg','Вы тщательно смыли сперму в затоне.'
-		    act 'Далее':gt 'backwater'
-	    end
-    end
-    if cumfrot > 0 and current_clothing > 0:
-	    act 'Оттирать сперму с одежды':
-		    *clr & cla
-		    cumfrot = 0
-		    minut += 5
-		    if hantersRape = 1: hantersRape = 2
-		    gs'stat'
-		    gs 'zz_render', 'Затон', 'pic/frotsp.jpg','Вы замыли пятна спермы на своей одежде.'
-		    act 'Закончить':gt 'backwater'
-	    end
-    end
+	if current_clothing > 0 and (cumpussy > 0 or cumbelly > 0 or cumass > 0 or cumanus > 0):
+		act 'Подмыться':
+			*clr & cla
+			cumpussy = 0
+			cumbelly = 0
+			cumass = 0
+			cumlip = 0
+			cumface = 0
+			cumanus = 0
+			cumfrot = 0
+			lubonus = 0
+			sweat -= 1
+			minut += 10
+			if hantersRape = 1: hantersRape = 2
+			gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterswim1.jpg','Вы тщательно смыли сперму в затоне.'
+			act 'Далее':gt 'backwater'
+		end
+	end
+	if cumfrot > 0 and current_clothing > 0:
+		act 'Оттирать сперму с одежды':
+			*clr & cla
+			cumfrot = 0
+			minut += 5
+			if hantersRape = 1: hantersRape = 2
+			gs'stat'
+			gs 'zz_render', 'Затон', 'pic/frotsp.jpg','Вы замыли пятна спермы на своей одежде.'
+			act 'Закончить':gt 'backwater'
+		end
+	end
 end
 if temper >= 10 and current_clothing > 0:
 	act 'Умыться':
@@ -59,7 +59,6 @@ if temper >= 10 and current_clothing > 0:
 		mop = 1
 		cumlip = 0
 		cumface = 0
-		face_write = 0
 		sweat -= 1
 		minut += 5
 		if hantersRape = 1: hantersRape = 2
@@ -68,42 +67,42 @@ if temper >= 10 and current_clothing > 0:
 	end
 end
 if dirtyclothes = 1 and current_clothing < 3:
-    act 'Стирать одежду':
-	    *clr & cla
+	act 'Стирать одежду':
+		*clr & cla
 		if hantersRape = 1: hantersRape = 2
-	    minut += 60
-	    dirtyclothes = 0
-	    if clrbelo > 0: clrbelo -= 1 & dirtbelo += 1
+		minut += 60
+		dirtyclothes = 0
+		if clrbelo > 0: clrbelo -= 1 & dirtbelo += 1
 		cumfrot = 0
-        $wardrobe[current_clothing+"_"+'condition'] += iif(val(args[1]) >= 0, val(args[1]), 5)
-	    gs 'stat'
-	    gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterwash.jpg','Вы разделись и постирали свою грязную одежду. К сожалению в холодной воде она до конца не отстиралась, но хоть так.'
-	    act 'Развесить на поляне':
-	        *clr & cla
-	        minut += 10
-	        clearclothes = 3
-	        clearclothesH = 0
-	        gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/basinwash2.jpg','Вы развесили одежду сушиться на поляне.'
-	        act 'Далее':gt'swamp_yard'
-        end
+		$wardrobe[current_clothing+"_"+'condition'] += iif(val(args[1]) >= 0, val(args[1]), 5)
+		gs 'stat'
+		gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterwash.jpg','Вы разделись и постирали свою грязную одежду. К сожалению в холодной воде она до конца не отстиралась, но хоть так.'
+		act 'Развесить на поляне':
+			*clr & cla
+			minut += 10
+			clearclothes = 3
+			clearclothesH = 0
+			gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/basinwash2.jpg','Вы развесили одежду сушиться на поляне.'
+			act 'Далее':gt'swamp_yard'
+		end
 	end
 end
 if dirtyclothes = 1 and current_clothing > 2 and temper >= 10:
-    act 'Чистить одежду от грязи':
-	    *clr & cla
+	act 'Чистить одежду от грязи':
+		*clr & cla
 		if hantersRape = 1: hantersRape = 2
-	    minut += 30
-	    dirtyclothes = 0
-	    if clrbelo > 1: clrbelo -= 1 & dirtbelo += 1
+		minut += 30
+		dirtyclothes = 0
+		if clrbelo > 1: clrbelo -= 1 & dirtbelo += 1
 		cumfrot = 0
-        $wardrobe[current_clothing+"_"+'condition'] += iif(val(args[1]) >= 0, val(args[1]), 1)
-	    gs 'stat'
-	    gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterwash2.jpg','Вы не раздеваясь залезли в воду и как могли стали чистить свою одежду от грязи. К сожалению в холодной воде и не раздеваясь она очень плохо отчистилась, но хоть так.'
-	    act 'Далее':gt'swamp_yard'
+		$wardrobe[current_clothing+"_"+'condition'] += iif(val(args[1]) >= 0, val(args[1]), 1)
+		gs 'stat'
+		gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterwash2.jpg','Вы не раздеваясь залезли в воду и как могли стали чистить свою одежду от грязи. К сожалению в холодной воде и не раздеваясь она очень плохо отчистилась, но хоть так.'
+		act 'Далее':gt'swamp_yard'
 	end
 end
 if current_clothing < 3 or swamp_clothes = 1:
-    act 'Помыться':
+	act 'Помыться':
 		*clr & cla
 		cumpussy = 0
 		cumbelly = 0
@@ -111,15 +110,13 @@ if current_clothing < 3 or swamp_clothes = 1:
 		cumlip = 0
 		cumface = 0
 		cumanus = 0
-		face_write = 0
-		body_write = 0
 		minut += 30
 		sweat = 0
 		manna += 10
 		if hantersRape = 1: hantersRape = 2
 		gs 'zz_render', 'Затон', 'qwest/gadukino/Swamp/backwaterswim'+iif(tanga = 0,2,3)+'.jpg','Вы помылись в затоне.'
 		act 'Далее':gt 'backwater'
-    end
+	end
 end
 act 'Уйти':minut += 5 & gt'swamp_yard'
 if hantersRape = 2: gt 'swamp_events', 'backwater_ralax'

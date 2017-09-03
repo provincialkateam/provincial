@@ -40,19 +40,13 @@ if $ARGS[0] = 'start':
 	if tattoo['vag'] > 0: stripKoef3 = RAND(1,3)
 	if tattoo['waist'] > 0: stripKoef4 = RAND(3,6)
 	if tattoo['leg'] > 0: stripKoef5 = RAND(1,3)
-	!publichot = vnesh - 10 + stripKoef + stripKoef2 + stripKoef3 + stripKoef4 + stripKoef5
 	publichot = vnesh/2 + stripKoef + stripKoef2 + stripKoef3 + stripKoef4 + stripKoef5
-	pl publichot
 	publichotstart = publichot
 	if hour >= 15 or hour <= 2:
 		if mop >= 4:
 			if sweat <= 0:
 				if leghair <= 0 and lobok <= 0:
-					if fingal <= 0:
-						act 'Идти на сцену': stpredmet = 3 & gt 'stwork2'
-					else
-						gs 'zz_render', '', '', func('stwork_strings', 'local_str4')
-					end
+					act 'Идти на сцену': stpredmet = 3 & gt 'stwork2'
 				else
 					gs 'zz_render', '', '', func('stwork_strings', 'local_str5')
 				end

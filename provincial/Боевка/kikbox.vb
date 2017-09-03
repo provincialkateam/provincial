@@ -9,7 +9,11 @@
 		xgt'enderKik','win'
 		exit
 	end
-	gs'befKik'
+	if round > 0:
+		if minround < 5: minround +=  1
+	else
+		round = 1
+	end
 	'<b>= = = = = = = = = = = = = (РАУНД <<round>>) = = = = = = = = = = = = =</b>'
 	if minround = 1:'<b>время боя 0:30</b>'
 	if minround = 2:'<b>время боя 1:00</b>'

@@ -15,7 +15,7 @@
 		end
 		if volleysostav = 0:
 			volleysostav = 1
-			$npc['28,relation']  = 20
+			$npc['28,relation'] = 20
 			gs 'zz_render', '', '', func('Voltrener_strings', 'local_str3')
 		end
 		if tipTrsex = 0:act 'Уйти':tipTrsex = 0 & gt'gdksport'
@@ -169,26 +169,24 @@ act 'Поговорить с тренером':
 			gs 'zz_render', '', '', func('Voltrener_strings', 'local_str34')
 			act 'Проситься в профи':
 				*clr & cla
-				!if GorSlut = 0:
-					if volleyboll < 100:
-						gs 'zz_render', '', '', func('Voltrener_strings', 'local_str35')
-					elseif volleyboll >= 100:
-						gs 'zz_render', '', '', func('Voltrener_strings', 'local_str36')
-						act 'Убеждать':
-							*clr & cla
-							dom -= 1
-							gs'stat'
-							if dom >= 10:
-								!if volleysostav > 0:gs 'npc_editor','change_rep','-', 28
-								volleysostav = 1
-								$npc['28,relation'] = 20
-								gs 'zz_render', '', '', func('Voltrener_strings', 'local_str37')
-							else
-								gs 'zz_render', '', '', func('Voltrener_strings', 'local_str38')
-							end
-							act 'Уйти':gt'gdksport'
+				if volleyboll < 100:
+					gs 'zz_render', '', '', func('Voltrener_strings', 'local_str35')
+				else
+					gs 'zz_render', '', '', func('Voltrener_strings', 'local_str36')
+					act 'Убеждать':
+						*clr & cla
+						dom -= 1
+						gs'stat'
+						if dom >= 10:
+							volleysostav = 1
+							$npc['28,relation'] = 20
+							gs 'zz_render', '', '', func('Voltrener_strings', 'local_str37')
+						else
+							gs 'zz_render', '', '', func('Voltrener_strings', 'local_str38')
 						end
+						act 'Уйти':gt'gdksport'
 					end
+				end
 				act 'Уйти':gt'gdksport'
 			end
 		end

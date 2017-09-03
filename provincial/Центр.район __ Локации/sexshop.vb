@@ -9,7 +9,7 @@
 	$loc = $CURLOC
 	gs 'stat'
 	gs 'zz_funcs', 'colorize_day'
-	if len($_buy_item) > 0: pl $_buy_item & killvar '$_buy_item'
+	if len($_buy_item) > 0: gs 'zz_funcs','message','', $_buy_item & killvar '$_buy_item'
 	gs 'zz_render', 'Сексшоп', 'images/pic/sexshop.jpg', func('sexshop_strings', 'local_str1')
 	act 'Выйти':
 		cla

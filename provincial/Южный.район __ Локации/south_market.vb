@@ -6,7 +6,6 @@ if $ARGS[0] = 'start':
 	gs 'time'
 	gs 'zz_render', 'Рынок', 'images/city/south/south_market/market'+iif(month >= 4 and month <= 10,'','_winter')+'.jpg', iif(hour >= 8 and hour <= 14,'Большой и шумный рынок.<br>При входе на рынок можно купить <a href="exec: gt ''south_market'',''book''">книги</a>.<br>На самом рынке есть продуктовые ряды <a href="exec: gt ''south_market'',''food''">продуктовые ряды</a>.<br>Пройдя немного дальше можно купить <a href="exec: gt ''south_market'',''cosm''">бельё и косметику</a>.<br>Там же находятся и <a href="exec: gt ''south_market'',''hos''">хозяйственные</a> ряды.<br>В самом конце есть <a href="exec: gt ''south_market'',''clo''">вещевой рынок</a>.'+iif(BuyHous = 1 and (remkorr = 0 or remvanr = 0 or remkuhr = 0 or remsitr = 0 or rembedr = 0),'<br> На самой окраине расположилась стихийная <a href="exec: gt ''south_market'',''flea_market''">барахолка</a>.',''),'Рынок закрыт закрыт.')
 	if work = 0 and workrin = 0 and bad_trade <= 10 and workrin_hooky < 4:
-		nl
 		gs 'zz_render', '', '','На одной из палаток висит объявление:<b>"Нужен женщин продавщиц. Зарплат большой."</b>'
 		act 'Подойти к хозяину палатки с объявлением':
 			*clr & cla
@@ -135,7 +134,7 @@ if $ARGS[0] = 'book':
 			cla
 			minut += 1
 			gs 'stat'
-			gs 'zz_render', '', '','<dh>- Нет, знаете, меня это не интересует, -<dh>  ответили вы.**<do>- Ну, сейчас может и не интересует, -</do> улыбнулась вам продавщица.<do> - А потом может заинтересовать. В любом случае, вы знаете где искать. Просто подойдите и спросите.</do>'
+			gs 'zz_render', '', '','<dh>- Нет, знаете, меня это не интересует, -<dh> ответили вы.**<do>- Ну, сейчас может и не интересует, -</do> улыбнулась вам продавщица.<do> - А потом может заинтересовать. В любом случае, вы знаете где искать. Просто подойдите и спросите.</do>'
 			act 'Назад': gt 'south_market', 'book'
 		end
 	end
@@ -229,7 +228,7 @@ if $args[0] = 'make_table':
 		jump 'loop_shop_table'
 	end
 	$zz_str += '</table><br>'
-	*pl $zz_str
+	gs 'zz_render','','', $zz_str
 	killvar '$zz_str'
 	killvar '$zz_color'
 end
@@ -237,7 +236,7 @@ if $args[0] = 'buy':
 	zz_id = args[1]
 	zz_price = args[2]
 	if (remkorr = 1 and zz_id = 11) or (remvanr = 1 and zz_id = 12) or (remkuhr = 1 and zz_id = 13) or (remsitr = 1 and zz_id = 14) or (rembedr = 1 and zz_id = 15):
-		'<font color=red>У вас уже есть ' + $zz_arr0[zz_id] + '</font>'
+		gs 'zz_funcs','message','','<font color=red>У вас уже есть ' + $zz_arr0[zz_id] + '</font>'
 		gs 'south_market','buy_finalize'
 		exit
 	end
@@ -268,12 +267,12 @@ if $args[0] = 'buy':
 			if zz_id = 14: remsitr = 1
 			if zz_id = 15: rembedr = 1
 			gs 'stat'
-			*pl '<font color=green>' + $zz_arr0[zz_id] + ':</font><font color=green> +' + zz_count + '</font>'
+			gs 'zz_funcs','message','','<font color=green>' + $zz_arr0[zz_id] + ':</font><font color=green> +' + zz_count + '</font>'
 		else
-			'<font color=red>У вас недостаточно денег.</font>'
+			gs 'zz_funcs','message','','<font color=red>У вас недостаточно денег.</font>'
 		end
 	elseif zz_count > 10:
-		'<font color=red>Вы столько не унесете!</font>'
+		gs 'zz_funcs','message','','<font color=red>Вы столько не унесете!</font>'
 	end
 	gs 'south_market','buy_finalize'
 end

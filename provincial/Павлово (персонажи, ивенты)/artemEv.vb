@@ -75,7 +75,7 @@ $din_artom_lern = {
 		if $npc['2,relation'] >= 90:
 			gs 'zz_render', '', '', func('artemEv_strings', '4')
 		end
-		if GorSlut >= 2 and artemblag = 0:
+		if func('zz_reputation','get') >= 2 and artemblag = 0:
 			if artomBJQW = 0 and $npc['2,qwSex'] = 0:
 				cla
 				gs 'zz_render', '', '', func('artemEv_strings', '5')
@@ -390,7 +390,7 @@ $din_artom_lern = {
 				end
 			end
 		end
-		if ($npc['2,qwartem'] = 3 or $npc['2,qwartem'] = 20) and artomkissday ! daystart and (GorSlut < 2 or artemblag = 1):
+		if ($npc['2,qwartem'] = 3 or $npc['2,qwartem'] = 20) and artomkissday ! daystart and (func('zz_reputation','get') < 2 or artemblag = 1):
 			gs 'zz_render', '', '', func('artemEv_strings', '45')
 			dynamic $artomKiss
 		end
@@ -402,7 +402,7 @@ $artomKiss = {
 		horny += 10
 		minut += 5
 		artomkissday = daystart
-		if GorSlut >= 2 and artemblag = 0:
+		if func('zz_reputation','get') >= 2 and artemblag = 0:
 			cla
 			gs 'zz_render', '', '', func('artemEv_strings', '46')
 			dynamic $din_artom_bj
@@ -676,7 +676,7 @@ $artomGopSkver = {
 						eggs += 3
 						gs 'zz_funcs', 'cum', 'face'
 						dom -= 5
-						if GorSlut < 3: GorSlut = 3
+						if func('zz_reputation','get') < 3: gs'zz_reputation','set',3
 						gs 'stat'
 						gs 'zz_render', '', 'images/qwest/alter/artom/walk/walkgop_bj.jpg', func('artemEv_strings', '77')
 						act 'Идти':
@@ -717,7 +717,7 @@ $artomGopSkver = {
 							dom -= 3
 							gs 'zz_funcs', 'cum', 'lip'
 							$npc['2,qwartem'] = 21
-							if GorSlut < 5: GorSlut = 5
+							if func('zz_reputation','get') < 4: gs 'zz_reputation','get',4
 							gs 'stat'
 							gs 'zz_render', '', 'images/qwest/alter/artom/walk/walkgop_rape.jpg', func('artemEv_strings', '80')
 							act 'Уйти': minut += 15 & artemblag = 1 & gt'pod_ezd','etaj_1'

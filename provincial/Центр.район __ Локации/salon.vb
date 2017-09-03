@@ -19,8 +19,8 @@
 	$_salon['0,price'] = 1500
 	$_salon['1,name'] = 'Покрасить волосы'
 	$_salon['1,price'] = 1500
-	$_salon['2,name'] = iif(cheatHapri_mod = 0,'Короткая прическа','')
-	$_salon['2,price'] = iif(cheatHapri_mod = 0,1500,'')
+	$_salon['2,name'] = iif($settings['hapri_mod'] = 0,'Короткая прическа','')
+	$_salon['2,price'] = iif($settings['hapri_mod'] = 0,1500,'')
 	$_salon['3,name'] = 'Солярий'
 	$_salon['3,price'] = 1000
 	$_salon['4,name'] = 'Удлинение ресниц'
@@ -47,7 +47,7 @@
 	$_salon['14,price'] = 150000
 	$_salon['15,name'] = 'Процедуры омоложения'
 	$_salon['15,price'] = 250000
-	if cheatHapri_mod = 1:
+	if $settings['hapri_mod'] = 1:
 		if shorthair <= 1:
 			$_salon['16,name'] = 'Средняя прическа'
 			$_salon['16,price'] = 1500
@@ -74,7 +74,7 @@ end
 if $args[0] = 'select':
 	*clr & cla
 	! exceptions
-	if (args[1] = 0 and shorthair = 3) or (args[1] = 3 and tan_day = day) or (args[1] = 4 and resnic = 2) or (args[1] = 5 and lobok = -20) or (args[1] = 7 and browper = 1) or (args[1] = 9 and skin = 4) or (args[1] = 10 and lip = 0) or (args[1] = 11 and lip = 4) or (args[1] = 12 and glaraz = 3) or (args[1] = 14 and body['weight'] <= body['base_weight']):
+	if (args[1] = 0 and shorthair = 3) or (args[1] = 3 and tan_day = day) or (args[1] = 4 and resnic = 2) or (args[1] = 5 and lobok = -20) or (args[1] = 7 and brow = -1) or (args[1] = 9 and skin = 4) or (args[1] = 10 and lip = 0) or (args[1] = 11 and lip = 4) or (args[1] = 12 and glaraz = 3) or (args[1] = 14 and body['weight'] <= body['base_weight']):
 		gs	'zz_render','Салон красоты','images/img/centr/salon.jpg',func('salon_strings', 'local_str34')
 		act 'Назад': gt 'salon','start'
 		exit
@@ -111,7 +111,7 @@ if $args[0] = 'select':
 			end
 		end
 	end
-	if args[1] = 7: browper = 1
+	if args[1] = 7: brow = -1
 	if args[1] = 9: skin += 1
 	if args[1] = 10: lip -= 1
 	if args[1] = 11: lip += 1

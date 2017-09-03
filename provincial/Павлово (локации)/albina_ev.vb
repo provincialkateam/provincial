@@ -287,7 +287,7 @@ end
 ! --- Ивенты Звездушек --- !
 if $args[0] = 'stars_init':
 	*clr
-	gs 'zz_render','','pavlovo/albina/zvezdy/dance0.gif',func('albina_ev_strings','str42')
+	gs 'zz_render','','pavlovo/albina/zvezdy/dance0.webm',func('albina_ev_strings','str42')
 	act 'Поздороваться с Альбиной':
 		*clr & cla
 		gs 'npc_editor','get_npc_profile',23
@@ -302,13 +302,13 @@ if $args[0] = 'stars_init':
 		end
 		act 'Я умею танцевать':
 			*clr & cla
-			gs 'zz_render','','pavlovo/albina/zvezdy/dance1.gif',func('albina_ev_strings','str45')
+			gs 'zz_render','','pavlovo/albina/zvezdy/dance1.webm',func('albina_ev_strings','str45')
 			act 'Уйти': gt 'gdksport'
 			act 'Смотреть':
 				*clr & cla
 				minut += 15
 				gs 'stat'
-				gs 'zz_render', '', 'pavlovo/albina/zvezdy/dance2.gif',func('albina_ev_strings','str46')
+				gs 'zz_render', '', 'pavlovo/albina/zvezdy/dance2.webm',func('albina_ev_strings','str46')
 				act 'Уйти': gt 'gdksport'
 				act 'Попроситься к ним в коллектив':
 					*clr & cla
@@ -318,7 +318,7 @@ if $args[0] = 'stars_init':
 						*clr & cla
 						minut += 5
 						gs 'stat'
-						gs 'zz_render', '', 'pavlovo/albina/zvezdy/dance3.gif',func('albina_ev_strings','str48')
+						gs 'zz_render', '', 'pavlovo/albina/zvezdy/dance3.webm',func('albina_ev_strings','str48')
 						act 'Ну как возьмете меня в свой коллектив?':
 							*clr & cla
 							$npc['23,qwMain'] = 1
@@ -342,7 +342,7 @@ if $args[0] = 'stars_dancing':
 		dancePRO += RAND(1,3)
 		if dancePRO >= 100: dancePRO = 99
 		gs 'stat'
-		gs 'zz_render','','pavlovo/albina/zvezdy/dance'+rand(4,7)+'.gif',func('albina_ev_strings','str'+(50+dancePRO/20))
+		gs 'zz_render','','pavlovo/albina/zvezdy/dance'+rand(4,7)+'.webm',func('albina_ev_strings','str'+(50+dancePRO/20))
 		if dancePRO < 80:
 			if dancePRO < 40: dom -= 1
 		else

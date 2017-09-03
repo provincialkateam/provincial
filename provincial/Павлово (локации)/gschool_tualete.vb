@@ -12,7 +12,7 @@ if $args[0] = 'boys':
 	*clr & cla
 	minut += 1
 	$metka = $args[0]
-	if ((hour = 11 and minut >= 45) or (hour = 12 and minut <= 15)) and $npc['25,qwSonya'] >= 5 and $npc['25,qwSonya'] < 50 and $npc['25,qwSonya_day'] ! day and rand(0,5) = 1:
+	if ((hour = 11 and minut >= 45) or (hour = 12 and minut <= 15)) and $npc['25,qwSonya'] >= 5 and $npc['25,qwSonya'] < 50 and $npc['25,qwSonya_day'] ! day and rand(0,2) = 1:
 		act 'Выйти': gt 'gschool_tualete'
 		! большая перемена, Соня работает в туалете
 		if $npc['25,qwSonya'] < 15: $npc['25,qwSonya'] += 1
@@ -30,6 +30,8 @@ if $args[0] = 'boys':
 		i = rand(0,7)
 		gs 'zz_render','','pavlovo/sonya/school/toilet/<<i>>',$_str[i]
 		killvar '$_str'
+		!---
+		if $npc['25,qwSonya'] = 35 and func('zz_reputation','get') <= 1 and i!1: gs 'sonya','talk_in_toilet'
 		!---
 	else
 		gs 'stat'

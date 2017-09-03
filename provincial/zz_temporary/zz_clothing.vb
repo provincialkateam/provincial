@@ -151,11 +151,12 @@ end
 if $args[0] = 'buy':
 	if money >= val($clothing[args[1]+"_"+'price']):
 		money -= val($clothing[args[1]+"_"+'price'])
+		achiev['cloth,'+val($clothing[args[1]+"_"+'group'])] += 1
 		gs 'stat'
 		gs 'zz_clothing', 'add_to_wardrobe', val($clothing[args[1]+"_"+'id'])
-		pl '<b><font color=green>Вы купили ' + $clothing[args[1]+"_"+'name'] + '</font></b>'
+		gs 'zz_funcs','message','','<green>Вы купили ' + $clothing[args[1]+"_"+'name'] + '</green>'
 	else
-		pl '<b><font color=red>У вас недостаточно денег для покупки!</font></b>'
+		gs 'zz_funcs','message','','<red>У вас недостаточно денег для покупки!</red>'
 	end
 end
 ! add item to wardrobe
@@ -224,7 +225,8 @@ if $args[0] = 'get_group_name':
 	if args[1] = 0:
 		$result = ''
 	else
-		$result = $result[args[1]-1]
+		$result = $zz_funcs_result[args[1]-1]
+		killvar '$zz_funcs_result'
 	end
 end
 ! make wardrobe
@@ -259,9 +261,9 @@ if $args[0] = 'wardrobe':
 			$zz_str_act[zz_action_id] += '<tr bgcolor=#f3f4ee>'
 			! thumbnail cell
 			if val($settings['wardrobe_show_thumbnail']) = 1:
-				$zz_str_act[zz_action_id] += '<td><img width=' + $settings['wardrobe_thumbnail_size'] + ' src="' + $zz_image + '"></td>'
+				$zz_str_act[zz_action_id] += '<td><img width=' + ($settings['wardrobe_thumbnail_size']*10+50) + ' src="' + $zz_image + '"></td>'
 			end
-			$zz_str_act[zz_action_id] += '<td align=left><a href="exec:view ''' + $zz_image + '''">' + $wardrobe[i+"_"+'name'] + ' (' + zz_id + ')</a></td>'
+			$zz_str_act[zz_action_id] += '<td align=left><a href="exec:view ''' + $zz_image + '''">' + $wardrobe[i+"_"+'name'] + '</a></td>'
 			$zz_str_act[zz_action_id] += '<td>' + iif($wardrobe[i+"_"+'size'] > 0, $wardrobe[i+"_"+'size'], '') + '</td>'
 			$zz_str_act[zz_action_id] += '<td>' + func('zz_clothing','get_status',val($wardrobe[i+"_"+'condition']),val($wardrobe[i+"_"+'base_condition'])) + '</td>'
 			$zz_str_act[zz_action_id] += '<td>' + func('zz_clothing','get_action_string',zz_action_id,zz_id,i) + '</td>'
@@ -322,7 +324,7 @@ if $args[0] = 'trashbag':
 			$zz_image = func('zz_clothing','get_image_path',val($wardrobe[i+"_"+'group']),val($wardrobe[i+"_"+'clothing_id']))
 			! thumbnail cell
 			if val($settings['wardrobe_show_thumbnail']) = 1:
-				$zz_str += '<td><img width=' + $settings['wardrobe_thumbnail_size'] + ' src="' + $zz_image + '"></td>'
+				$zz_str += '<td><img width=' + ($settings['wardrobe_thumbnail_size']*10+50)+ ' src="' + $zz_image + '"></td>'
 			end
 			$zz_str += '<td align=left><a href="exec:view ''' + $zz_image + '''">' + $wardrobe[i+"_"+'name'] + '</a></td>'
 			$zz_str += '<td>' + iif($wardrobe[i+"_"+'size'] > 0, $wardrobe[i+"_"+'size'], '') + '</td>'
@@ -366,37 +368,6 @@ if $args[0] = 'get_image_path':
 		zz_clothing_id = iif(zz_clothing_id < 1, args[2], zz_clothing_id)
 	end
 	$result = 'images/clothing/'+ $zz_group_name + zz_clothing_id + '.jpg'
-end
-!---
-!wardrobe settings page
-if $args[0] = 'wardrobe_settings':
-	*clr & cla
-	act 'Назад': gt 'loker', 'start'
-	! set wardrobe_thumbnail_size if needed
-	if val($settings['wardrobe_thumbnail_size']) < 50: $settings['wardrobe_thumbnail_size'] = 50
-	$zz_str = '<center><table border=1 width=600>'
-	$zz_str += '<tr><th>Параметр</th><th>Значение</th></tr>'
-	$zz_str += '<tr>'
-	$zz_str += '<td>Показывать миниатюру одежды</td>'
-	$zz_str += '<td align=center><a href="exec: $settings[''wardrobe_show_thumbnail''] = iif($settings[''wardrobe_show_thumbnail'']=0,1,0) &  gt''zz_clothing'',''wardrobe_settings''">' + iif($settings['wardrobe_show_thumbnail']=0,'Нет','Да') + '</a></td>'
-	$zz_str += '</tr>'
-	$zz_str += '<tr>'
-	$zz_str += '<td>Ширина миниатюры одежды</td>'
-	$zz_str += '<td align=center><a href="exec: gt''zz_clothing'',''set_thumbnail_size''">' + $settings['wardrobe_thumbnail_size'] + '</a></td>'
-	$zz_str += '</tr>'
-	$zz_str += '</table></center>'
-	! output
-	gs 'zz_render','Настройки гардероба','',$zz_str
-	killvar '$zz_str'
-end
-! wardrobe settings page - set wardrobe_thumbnail_size
-if $args[0] = 'set_thumbnail_size':
-	zz_thumb_size = val(input('Ширина миниатюры одежды, px - (50-120):'))
-	! check size & set property
-	$settings['wardrobe_thumbnail_size'] = iif(zz_thumb_size < 50 or zz_thumb_size > 120, 50, zz_thumb_size)
-	killvar 'zz_thumb_size'
-	! update wardrobe settings page
-	gt 'zz_clothing', 'wardrobe_settings'
 end
 !---
 ! args[1] - condition
@@ -445,7 +416,7 @@ if $args[0] = 'get_action_string':
 			$result = ''
 		end
 	end
-	if args[1] = 2: $result = '<a href="exec: gs ''zz_clothing'', ''remove_at'', ' + args[2] + ' &  gt ''loker'',''start''">Выбросить</a>'
+	if args[1] = 2: $result = '<a href="exec: gs ''zz_clothing'', ''remove_at'', ' + args[2] + ' & gt ''loker'',''start''">Выбросить</a>'
 	if args[1] = 3: $result = ''
 end
 ! decrease current clothing condition
@@ -499,7 +470,7 @@ if $args[0] = 'alter_clothing':
 	minut += 15
 	$wardrobe[args[1]+"_"+'size'] = body['hips']
 	gs 'stat'
-	'В течение пятнадцати минут вы перешивали одежду, делая ее подходящей вам по размеру.'
+	gs 'zz_render','','','В течение пятнадцати минут вы перешивали одежду, делая ее подходящей вам по размеру.'
 	act 'Положить в шкаф': gt 'loker', 'start'
 end
 ! args[0] - wardrobe_id
@@ -593,10 +564,10 @@ if $args[0] = 'fit_clothing':
 	counter_id = args[1]
 	zz_size = func('zz_clothing', 'get_size', counter_id)
 	if zz_size > 0 and zz_size >= body['hips']:
-		'Я не могу ушить данное изделие, оно не сходится на вас.'
+		gs 'zz_render','','pavlovo/market/tailor','<do>- Я не могу ушить данное изделие, оно не сходится на вас.</do>'
 	else
 		$wardrobe[counter_id+"_"+'size'] = body['hips']
-		'Вы разделись за ширмочкой и подали одежду ' + iif(args[2]>0,'портному','Якову Соломоновичу') + ', он за пятнадцать минут ушил вашу одежду и вернул вам.'
+		gs 'zz_render','','pavlovo/market/tailor','Вы разделись за ширмочкой и подали одежду ' + iif(args[2]>0,'портному','Якову Соломоновичу') + ', он за пятнадцать минут ушил вашу одежду и вернул вам.'
 	end
 	killvar 'zz_size'
 	killvar 'counter_id'
@@ -614,7 +585,7 @@ if $args[0] = 'fit_all_clothing':
 		i += 1
 		jump 'loop_fit_clothing'
 	end
-	'Портной перешил вашу одежду.'
+	gs 'zz_render','','pavlovo/market/tailor','Портной перешил вашу одежду.'
 	killvar 'zz_size'
 end
 ! resizer

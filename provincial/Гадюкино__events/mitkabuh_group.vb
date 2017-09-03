@@ -68,57 +68,57 @@ if miraingop = 1 and miragopQW > 0:
 						gs 'zz_dynamic_sex', 'anal_cum'
 					end
 					act 'Отдаться Колямбе':
-					    *clr & cla
-					    minut += 15
-					    $boy = 'Колямба'
-					    silavag = 0
-					    dick = 15
-					    pose = 1
-					    dom -= 1
-					    gs'stat'
-					    '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhgroup1.'+rand(1,5)+'.jpg"></center>'
-					    if mesec = 0:
+						*clr & cla
+						minut += 15
+						$boy = 'Колямба'
+						silavag = 0
+						dick = 15
+						pose = 1
+						dom -= 1
+						gs'stat'
+						'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhgroup1.'+rand(1,5)+'.jpg"></center>'
+						if mesec = 0:
 							gs 'zz_dynamic_sex', 'sex_start'
 							gs 'zz_dynamic_sex', 'vaginal', 'dick'
 							gs 'zz_dynamic_sex', 'sex_cum'
-					    else
+						else
 							gs 'zz_dynamic_sex', 'anal_start', 'dick'
 							gs 'zz_dynamic_sex', 'anal', 'dick'
 							gs 'zz_dynamic_sex', 'anal_cum'
-					    end
-					    act 'Отдаться Васяну':
-					        *clr & cla
-					        minut += 15
-					        $boy = 'Васян'
-					        silavag = 0
-					        dick = 14
-					        pose = 1
-					        dom -= 1
-					        gs'stat'
-					        '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhgroup1.'+rand(1,5)+'.jpg"></center>'
-					        if mesec = 0:
+						end
+						act 'Отдаться Васяну':
+							*clr & cla
+							minut += 15
+							$boy = 'Васян'
+							silavag = 0
+							dick = 14
+							pose = 1
+							dom -= 1
+							gs'stat'
+							'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhgroup1.'+rand(1,5)+'.jpg"></center>'
+							if mesec = 0:
 								gs 'zz_dynamic_sex', 'sex_start'
 								gs 'zz_dynamic_sex', 'vaginal', 'dick'
 								gs 'zz_dynamic_sex', 'sex_cum'
-					        else
+							else
 								gs 'zz_dynamic_sex', 'anal_start', 'dick'
 								gs 'zz_dynamic_sex', 'anal', 'dick'
 								gs 'zz_dynamic_sex', 'anal_cum'
-					        end
-					        act 'Глотать':
-						        *clr & cla
-						        minut += 10
-						        horny += 10
-						        swallow += 3
-						        gs 'zz_funcs', 'cum', 'lip'
-						        dom -= 1
-						        gs'stat'
-						        '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhOralCum0.'+rand(1,5)+'.jpg"></center>'
-						        'Под конец они поставили вас с Миркой на колени и начали кончать вам на лица'
-						        act 'Уйти':gt'gadukino'
-						    end
-                        end
-                    end
+							end
+							act 'Глотать':
+								*clr & cla
+								minut += 10
+								horny += 10
+								swallow += 3
+								gs 'zz_funcs', 'cum', 'lip'
+								dom -= 1
+								gs'stat'
+								'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhOralCum0.'+rand(1,5)+'.jpg"></center>'
+								'Под конец они поставили вас с Миркой на колени и начали кончать вам на лица'
+								act 'Уйти':gt'gadukino'
+							end
+						end
+					end
 				end
 			elseif temp = 2:
 				act 'Сосать':
@@ -380,69 +380,69 @@ if miraingop = 1 and miragopQW > 0:
 					'<center><img src="images/qwest/gadukino/mitkabuh_group/drunk1.jpg"></center>'
 					'Как только она выпила, подвыпивший Васян, словно в шутку, спрашивает у вас обоих, как вы смотрите на то, чтобы прямо здесь и сейчас отсосать.'
 					'Мирослава, уже изрядно подвыпившая, только хихикает в ответ, а вы, пожав плечами, согласно киваете головой. Колямба сразу же встал и обнял кокетничающую Мирославу, а Васян подошел к вам. Мира, пьяно хихикая встает перед Колямбой на колени, вы следуете её примеру и смотрите, как Васян неспеша расстегивает ширинку и приспускает штаны...'
-				    act 'Сосать':
-					    *clr & cla
-					    $boy = 'Васян'
-					    minut += 10
-					    horny += 10
-					    bj += 1
-					    dick = 14
-					    gs'stat'
-					    '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
-					    'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать...'
-					    gs 'zz_dynamic_sex', 'bj'
-					    act 'Глотать':
-						    *clr & cla
-						    minut += 10
-						    swallow += 1
-						    horny += 10
-						    gs 'zz_funcs', 'cum', 'lip'
-						    dom -= 1
-						    gs'stat'
-						    '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
-						    'Вы покрепче сжимаете член Васяна рукой и не вынимая его изо рта, начинаете яростно надрачивать его, пока, наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
-				            act 'Сосать':
-					            *clr & cla
-					            $boy = 'Колямба'
-					            minut += 10
-					            horny += 10
-					            bj += 1
-					            dick = 15
-					            gs'stat'
-					            '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(3,5)+'.jpg"></center>'
-					            '- Ну а теперь моя очередь, - говорит Колямба и подходит к вам.'
-					            gs 'zz_dynamic_sex', 'bj'
-					            act 'Глотать':
-						            *clr & cla
-						            minut += 10
-						            swallow += 1
-						            horny += 10
-						            gs 'zz_funcs', 'cum', 'lip'
-						            dom -= 1
-						            gs'stat'
-						            '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
-						            'Вы с энтузиазмом отсасываете и ему, после чего <<$boy>> кончает.'
-						            act 'Нагнуться':
-					                    *clr & cla
-					                    minut += 15
-					                    $boy = 'Митька'
-					                    silavag = 0
-					                    dick = 16
-					                    pose = 1
-					                    dom -= 1
-					                    gs'stat'
-					                    '<center><img src="images/qwest/gadukino/mitkabuh_group/MitkaSexPublic0.'+rand(1,2)+'.jpg"></center>'
-					                    'Митька, уже успевший добавиться парой стаканов, молча подходит к вам и без предисловий говорит, чтобы вы стали в позу. Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу и приспустив свои штаны, начинает грубо вас трахать.'
-					                    if mesec = 0:
-						                    gs 'zz_dynamic_sex', 'sex_start'
-						                    gs 'zz_dynamic_sex', 'vaginal', 'dick'
-						                    gs 'zz_dynamic_sex', 'sex_cum'
-					                    else
+					act 'Сосать':
+						*clr & cla
+						$boy = 'Васян'
+						minut += 10
+						horny += 10
+						bj += 1
+						dick = 14
+						gs'stat'
+						'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
+						'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать...'
+						gs 'zz_dynamic_sex', 'bj'
+						act 'Глотать':
+							*clr & cla
+							minut += 10
+							swallow += 1
+							horny += 10
+							gs 'zz_funcs', 'cum', 'lip'
+							dom -= 1
+							gs'stat'
+							'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
+							'Вы покрепче сжимаете член Васяна рукой и не вынимая его изо рта, начинаете яростно надрачивать его, пока, наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
+							act 'Сосать':
+								*clr & cla
+								$boy = 'Колямба'
+								minut += 10
+								horny += 10
+								bj += 1
+								dick = 15
+								gs'stat'
+								'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(3,5)+'.jpg"></center>'
+								'- Ну а теперь моя очередь, - говорит Колямба и подходит к вам.'
+								gs 'zz_dynamic_sex', 'bj'
+								act 'Глотать':
+									*clr & cla
+									minut += 10
+									swallow += 1
+									horny += 10
+									gs 'zz_funcs', 'cum', 'lip'
+									dom -= 1
+									gs'stat'
+									'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
+									'Вы с энтузиазмом отсасываете и ему, после чего <<$boy>> кончает.'
+									act 'Нагнуться':
+										*clr & cla
+										minut += 15
+										$boy = 'Митька'
+										silavag = 0
+										dick = 16
+										pose = 1
+										dom -= 1
+										gs'stat'
+										'<center><img src="images/qwest/gadukino/mitkabuh_group/MitkaSexPublic0.'+rand(1,2)+'.jpg"></center>'
+										'Митька, уже успевший добавиться парой стаканов, молча подходит к вам и без предисловий говорит, чтобы вы стали в позу. Вы, едва удерживаясь на ногах, подходите к валяющемуся поблизости бревну и облегченно упираетесь в него руками, чувствуя, как сзади подходит Митька и начинает оголять вашу задницу и приспустив свои штаны, начинает грубо вас трахать.'
+										if mesec = 0:
+											gs 'zz_dynamic_sex', 'sex_start'
+											gs 'zz_dynamic_sex', 'vaginal', 'dick'
+											gs 'zz_dynamic_sex', 'sex_cum'
+										else
 											gs 'zz_dynamic_sex', 'anal_start', 'dick'
-						                    gs 'zz_dynamic_sex', 'anal', 'dick'
-						                    gs 'zz_dynamic_sex', 'anal_cum'
-					                    end
-					                    act 'Уйти':gt'gadukino'
+											gs 'zz_dynamic_sex', 'anal', 'dick'
+											gs 'zz_dynamic_sex', 'anal_cum'
+										end
+										act 'Уйти':gt'gadukino'
 									end
 								end
 							end
@@ -456,64 +456,64 @@ if miraingop = 1 and miragopQW > 0:
 						'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhshow1.jpg"></center>'
 						' - Ну чо, девки, готовы поработать своими дырками? - раздается среди компашки пьяный требовательный голос.'
 						'Мирка что-то пьяно хихикает в ответ, после вы вдвоем с готовностью разворачиваетесь к компании спиной, подставляя гопоте свои голые задницы.'
-				        act 'Сесть на лавку':
-					        *clr & cla
-					        horny += 20
-					        minut += 5
-					        gs'stat'
-					        '<center><img src="images/qwest/gadukino/MitkaGroup.jpg"></center>'
-					        'Вы плюхаетесь на лавочку и пацаны тут же начинают лапать вас и пихать пальцы во все щели.'
-					        act 'Дать пацанам':
-						        *clr & cla
-						        dom -= 2
-						        horny += 30
-						        silavag = 0
-						        pose = 0
-						        gang += 1
-						        minut += 10
-						        gs'stat'
-						        '<center><img src="images/qwest/gadukino/MitkaGroupCum.jpg"></center>'
-						        'Вы раздеваетесь и ложитесь на деревянную лавочку...'
-						        act 'Стонать':
-							        *clr & cla
-							        $boy = 'Колямба'
-							        horny += 10
-							        minut += 10
-							        gs 'zz_funcs', 'cum', 'anus'
-							        dick = 15
-							        gs'stat'
-							        '<center><img src="images/qwest/gadukino/MitkaGroupCum.jpg"></center>'
-							        gs 'zz_dynamic_sex', 'anal_start', 'dick'
-							        gs 'zz_dynamic_sex', 'anal', 'dick'
-							        gs 'zz_dynamic_sex', 'anal_cum'
-							        act 'Стонать':
-								        *clr & cla
-								        $boy = 'Митька'
-								        horny += 40
-								        minut += 10
-								        dick = 16
-								        gs'stat'
-								       '<center><img src="images/qwest/gadukino/MitkaGroupCum1.jpg"></center>'
-								       gs 'zz_dynamic_sex', 'sex_start'
-								       gs 'zz_dynamic_sex', 'vaginal', 'dick'
-								       gs 'zz_dynamic_sex', 'sex_cum'
-								        act 'Сосать':
-									        *clr & cla
-									        $boy = 'Васян'
-									        horny += 15
-									        minut += 5
-									        dick = 14
-									        gs 'zz_funcs', 'cum', 'lip'
-									        bj += 1
-									        gs'stat'
-									        '<center><img src="images/qwest/gadukino/MitkaGroupCum2.jpg"></center>'
-									        gs 'zz_dynamic_sex', 'bj'
-									        'Обессиленные, вы слышите, как начинает натужно сопеть Васян и не мешкая, тут же покрепче сжимаете его член и направляете его себе в рот, через секунду ощущая в нем терпкий вкус спермы...'
-									        act 'Уйти':gt'gadukino'
-									    end
-                                    end
-                                end
-                            end
+						act 'Сесть на лавку':
+							*clr & cla
+							horny += 20
+							minut += 5
+							gs'stat'
+							'<center><img src="images/qwest/gadukino/MitkaGroup.jpg"></center>'
+							'Вы плюхаетесь на лавочку и пацаны тут же начинают лапать вас и пихать пальцы во все щели.'
+							act 'Дать пацанам':
+								*clr & cla
+								dom -= 2
+								horny += 30
+								silavag = 0
+								pose = 0
+								gang += 1
+								minut += 10
+								gs'stat'
+								'<center><img src="images/qwest/gadukino/MitkaGroupCum.jpg"></center>'
+								'Вы раздеваетесь и ложитесь на деревянную лавочку...'
+								act 'Стонать':
+									*clr & cla
+									$boy = 'Колямба'
+									horny += 10
+									minut += 10
+									gs 'zz_funcs', 'cum', 'anus'
+									dick = 15
+									gs'stat'
+									'<center><img src="images/qwest/gadukino/MitkaGroupCum.jpg"></center>'
+									gs 'zz_dynamic_sex', 'anal_start', 'dick'
+									gs 'zz_dynamic_sex', 'anal', 'dick'
+									gs 'zz_dynamic_sex', 'anal_cum'
+									act 'Стонать':
+										*clr & cla
+										$boy = 'Митька'
+										horny += 40
+										minut += 10
+										dick = 16
+										gs'stat'
+										'<center><img src="images/qwest/gadukino/MitkaGroupCum1.jpg"></center>'
+										gs 'zz_dynamic_sex', 'sex_start'
+										gs 'zz_dynamic_sex', 'vaginal', 'dick'
+										gs 'zz_dynamic_sex', 'sex_cum'
+										act 'Сосать':
+											*clr & cla
+											$boy = 'Васян'
+											horny += 15
+											minut += 5
+											dick = 14
+											gs 'zz_funcs', 'cum', 'lip'
+											bj += 1
+											gs'stat'
+											'<center><img src="images/qwest/gadukino/MitkaGroupCum2.jpg"></center>'
+											gs 'zz_dynamic_sex', 'bj'
+											'Обессиленные, вы слышите, как начинает натужно сопеть Васян и не мешкая, тут же покрепче сжимаете его член и направляете его себе в рот, через секунду ощущая в нем терпкий вкус спермы...'
+											act 'Уйти':gt'gadukino'
+										end
+									end
+								end
+							end
 						end
 					else
 						minut += 5
@@ -523,74 +523,74 @@ if miraingop = 1 and miragopQW > 0:
 						' - Ну чо, девки, соснете у пацанов? - раздается среди компашки пьяный требовательный голос.'
 						'Вы киваете головой и покорно присаживаетесь прямо там, где и стояли, рядом присаживается Мирослава.'
 						act 'Сосать':
-					        *clr & cla
-					        $boy = 'Васян'
-					        minut += 10
-					        horny += 10
-					        bj += 1
-					        dick = 14
-					        gs'stat'
-					        '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
-					        'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать...'
-					        gs 'zz_dynamic_sex', 'bj'
-					        act 'Глотать':
-						        *clr & cla
-						        minut += 10
-						        swallow += 1
-						        horny += 10
-						        gs 'zz_funcs', 'cum', 'lip'
-						        dom -= 1
-						        dick = 15
-						        gs'stat'
-						        '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
-						        'Вы покрепче сжимаете член Васяна рукой и не вынимая его изо рта, начинаете яростно надрачивать его, пока, наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
-						        act 'Сосать':
-					                *clr & cla
-					                $boy = 'Колямба'
-					                minut += 10
-					                horny += 10
-					                bj += 1
-					                gs'stat'
-					                '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
-					                'Вы причмокивая послушно сосете, изредко косясь на Мирославу.'
-					                gs 'zz_dynamic_sex', 'bj'
-					                act 'Глотать':
-						                *clr & cla
-						                minut += 10
-						                swallow += 1
-						                horny += 10
-						                gs 'zz_funcs', 'cum', 'lip'
-						                dom -= 1
-						                gs'stat'
-						                '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
-						                'Вы быстрее начинаете двигать своей головой, пока наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
-						                act 'Сосать':
-					                        *clr & cla
-					                        $boy = 'Митька'
-					                        minut += 10
-					                        horny += 10
-					                        bj += 1
-					                        dick = 16
-					                        gs'stat'
-					                       '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
-					                       'Вы устали, но послушно начинаете отсасывать...'
-					                        gs 'zz_dynamic_sex', 'bj'
-					                        act 'Глотать':
-						                        *clr & cla
-						                        minut += 10
-						                        swallow += 1
-						                        horny += 10
-						                        gs 'zz_funcs', 'cum', 'lip'
-						                        dom -= 1
-						                        gs'stat'
-						                        '<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
-						                        'Вы покрепче сжимаете член Митьки губами и наращиваете темп, пока наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
-						                        act 'Уйти':gt'gadukino'
-						                    end
-                                        end
-                                    end
-	                            end
-	                        end
+							*clr & cla
+							$boy = 'Васян'
+							minut += 10
+							horny += 10
+							bj += 1
+							dick = 14
+							gs'stat'
+							'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
+							'Вы, пьяно чавкая и причмокивая, послушно начинаете отсасывать...'
+							gs 'zz_dynamic_sex', 'bj'
+							act 'Глотать':
+								*clr & cla
+								minut += 10
+								swallow += 1
+								horny += 10
+								gs 'zz_funcs', 'cum', 'lip'
+								dom -= 1
+								dick = 15
+								gs'stat'
+								'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
+								'Вы покрепче сжимаете член Васяна рукой и не вынимая его изо рта, начинаете яростно надрачивать его, пока, наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
+								act 'Сосать':
+									*clr & cla
+									$boy = 'Колямба'
+									minut += 10
+									horny += 10
+									bj += 1
+									gs'stat'
+									'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
+									'Вы причмокивая послушно сосете, изредко косясь на Мирославу.'
+									gs 'zz_dynamic_sex', 'bj'
+									act 'Глотать':
+										*clr & cla
+										minut += 10
+										swallow += 1
+										horny += 10
+										gs 'zz_funcs', 'cum', 'lip'
+										dom -= 1
+										gs'stat'
+										'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
+										'Вы быстрее начинаете двигать своей головой, пока наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
+										act 'Сосать':
+											*clr & cla
+											$boy = 'Митька'
+											minut += 10
+											horny += 10
+											bj += 1
+											dick = 16
+											gs'stat'
+											'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuh0.'+rand(1,5)+'.jpg"></center>'
+											'Вы устали, но послушно начинаете отсасывать...'
+											gs 'zz_dynamic_sex', 'bj'
+											act 'Глотать':
+												*clr & cla
+												minut += 10
+												swallow += 1
+												horny += 10
+												gs 'zz_funcs', 'cum', 'lip'
+												dom -= 1
+												gs'stat'
+												'<center><img src="images/qwest/gadukino/mitkabuh_group/mitkabuhCum0.'+rand(1,5)+'.jpg"></center>'
+												'Вы покрепче сжимаете член Митьки губами и наращиваете темп, пока наконец, не чувствуете, как вам в рот начинает извергаться его теплая липкая сперма...'
+												act 'Уйти':gt'gadukino'
+											end
+										end
+									end
+								end
+							end
 						end
 					end
 				elseif miragopQW >= 15 and mirapiss = 6:

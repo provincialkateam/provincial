@@ -1,0 +1,102 @@
+﻿if $args[0] = '' or $args[0] = 'main':
+	!---
+	$_str = '<div class="stat_header" onclick="javascript:toggleView(\"stat_school\");">Учёба</div>'
+	$_str += '<div id="stat_school" class="stat_category">'
+	if school['certificate'] = 1:
+		$_str += 'Вы закончили школу.<br>'
+	else
+		$_str += 'Вы учитесь в школе.<br>'
+	end
+	if diplom = 1: $_str += 'Вы закончили университет.'
+	$_str += '</div>'
+	!---
+	$_str += '<div class="stat_header" onclick="javascript:toggleView(\"stat_house\");">Проживание</div>'
+	$_str += '<div id="stat_house" class="stat_category">'
+	if (BuyHous = 2 and ArendHouseSL > 0) or BuyHous = 1:
+		$_str += 'Квартира в Южном районе арендована на <<ArendHouseSL>> дней.'
+	else
+		$_str += 'Вы живёте в квартире родителей в Павлово.'
+	end
+	$_str += '</div>'
+	!---
+	$_str += '<div class="stat_header" onclick="javascript:toggleView(\"stat_sport\");">Спорт</div>'
+	$_str += '<div id="stat_sport" class="stat_category">'
+	if KikWinPro > 0 or KikLossPro > 0 or KikDrawPro > 0: $_str += 'Профессиональный рекорд. Победы-Поражения-Ничьи (Победы нокаутом)<br>'
+	if KikWinPro > 0 or KikLossPro > 0 or KikDrawPro > 0: $_str += '<<KikWinPro>> - <<KikLossPro>> - <<KikDrawPro>> (<<KikKOPro>> КО)<br>'
+	$_str += 'Побед в драках <<Win>>, поражений в драках <<Loss>><br>'
+	$_str += 'У вас '+func('menu_statistics','razrad',razradKik)+' по кикбоксингу<br>'
+	$_str += 'Побед в кикбоксинге среди любителей - <<KikWinAm>><br>'
+	$_str += 'Поражений в кикбоксинге среди любителей - <<KikLossAm>><br>'
+	$_str += 'Ничьих в кикбоксинге среди любителей - <<KikDrawAm>><br>'
+	$_str += 'У вас '+func('menu_statistics','razrad',razradbeg)+' по бегу<br>'
+	$_str += '<<kolsorev>> раз принимали участие в соревнованиях по бегу<br>'
+	$_str += '<<bronzebeg>> - бронзовых медалей по бегу<br>'
+	$_str += '<<silverbeg>> - серебряных медалей по бегу<br>'
+	$_str += '<<goldbeg>> - золотых медалей по бегу<br>'
+	if razradbegEB > 0: $_str += '<<razradbegEB>> кратный бронзовый призёр чемпионата Европы<br>'
+	if razradbegES > 0: $_str += '<<razradbegES>> кратная вице-чемпионка Европы<br>'
+	if razradbegEG > 0: $_str += '<<razradbegEG>> кратная чемпионка Европы.'
+	$_str += '</div>'
+	!---
+	$_str += '<div class="stat_header" onclick="javascript:toggleView(\"stat_naughty\");">Развращённость</div>'
+	$_str += '<div id="stat_naughty" class="stat_category">'
+	$_str += 'Опыт эксгибиционизма <<exhibi>>'
+	$_str += '<br>Вы <<voyeurism>> раз подглядывали за людьми.'
+	$_str += '<br>Вы писали в людных местах <<piss>> раз.'
+	$_str += '<br>Вы снимались обнаженной <<modelfoto>> раз'
+	if film > 0: $_str += '<br>В порно индустрии вас знают под именем <<$pfname>>. Вы снимались в порно <<film>> раз.'
+	$_str += '<br><<stripdancesum>> раз танцевали стриптиз в клубе'
+	$_str += '<br>Вы <<profiDanceTime>> раз профессионально танцевали.'
+	$_str += '</div>'
+	!---
+	$_str += '<div class="stat_header" onclick="javascript:toggleView(\"stat_sex\");">Секс</div>'
+	$_str += '<div id="stat_sex" class="stat_category">'
+	$_str += 'Мастурбировали <<mastr>> раз'
+	$_str += '<br>Групповой секс <<gang>> раз'
+	$_str += '<br>Вагинальный секс <<sex>> раз, из них <<sexa>> раз со своим парнем'
+	$_str += '<br>Минетов сделано <<bj>> раз, из них <<gloryhole>> раз отсосали у незнакомцев через дыру в стене.'
+	$_str += '<br>Яиц обсосали <<eggs>> раз, из них <<bja>> раз своему парню'
+	$_str += '<br>Дрочили парням <<hj>> раз, из них <<hja>> раз дрочили своему парню'
+	$_str += '<br>Об вас дрочили член <<hump>> раз'
+	$_str += '<br>Вас изнасиловали <<rape>> раз'
+	$_str += '<br>Анальный секс <<anal>> раз, из них <<anala>> раз со своим парнем'
+	$_str += '<br>Вам сделали кунилингус <<kuni>> раз'
+	$_str += '<br>Пеггинг <<pegging>> раз'
+	$_str += '<br>Вам напороли задницу <<spank>> раз'
+	$_str += '<br>Выполняли супружеский долг с мужем <<suprdolg>> раз'
+	$_str += '<br>Продавали свою любовь <<slutty>> раз, из них в борделе <<bordelslutty>> раз.'
+	$_str += '<br>Испытали оргазм <<orgasm>> раз:'
+	$_str += '<br>&nbsp;&nbsp;&nbsp;&nbsp;<<vaginalOrgasm>> вагинальных оргазмов во время секса.'
+	$_str += '<br>&nbsp;&nbsp;&nbsp;&nbsp;<<analorgasm>> анальных оргазмов'
+	$_str += '<br>&nbsp;&nbsp;&nbsp;&nbsp;<<DPorgasm>> оргазмов от двойного проникновения'
+	$_str += '<br>Спермы проглочено <<swallow>> раз'
+	$_str += '<br>Кончили на лицо <<facial>> раз'
+	$_str += '<br>Кончили на вас в транспорте <<frot>> раз'
+	$_str += '<br>Вафлизм <<VAF>>'
+	$_str += '<br>Вас обоссали <<pee>> раз.'
+	$_str += '<br>Вы занимались леcбийским сексом <<lesbian>> раз.'
+	$_str += '<br>Вы <<sexfuta>> раз занимались сексом с членодевкой.'
+	$_str += '</div>'
+	!---
+	$_str += '<div class="stat_header" onclick="javascript:toggleView(\"stat_partners\");">Партнёры</div>'
+	$_str += '<div id="stat_partners" class="stat_category">'
+	$_str += 'У вас было <<girl>> девушек.<br>'
+	$_str += 'У вас было <<guy>> парней.<br>'
+	$_str += 'У вас было <<divorced>> мужей.'
+	$_str += '</div>'
+	!---
+	gs 'zz_render','','','<div id="statistics">' + $_str + '</div>'
+	killvar '$_str'
+end
+if $args[0] = 'razrad':
+	if args[1] > 6: args[1] = 6
+	$s_str[0] = 'нет разряда'
+	$s_str[1] = 'III любительский разряд'
+	$s_str[2] = 'II любительский разряд'
+	$s_str[3] = 'I любительский разряд'
+	$s_str[4] = 'звание Кандидата в Мастера Спорта'
+	$s_str[5] = 'звание Мастера Спорта'
+	$s_str[6] = 'звание Мастера Спорта Международного класса'
+	$result = $s_str[args[1]]
+	killvar '$s_str'
+end

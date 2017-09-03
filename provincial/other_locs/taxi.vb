@@ -1,16 +1,16 @@
-﻿if $args[0] = '': $args[0] = 'init'
-if $args[0] = 'init':
+﻿if $args[0] = '' or $args[0] = 'init':
 	*clr & cla
 	minut += 5
 	gs 'zz_render','',func('zz_funcs','mk_image','common/transport/taxi/taxi')
-	$result[0] = ' ,Спальный район,Центр,Северный район,Дачный кооператив,Гадюкино,Павлово'
-	$result[1] = 'Спальный район,-,250,250,500,750,1000'
-	$result[2] = 'Центр,250,-,250,500,750,1000'
-	$result[3] = 'Северный район,250,250,-,500,750,1000'
-	$result[4] = 'Дачный кооператив,500,500,500,-,500,750'
-	$result[5] = 'Гадюкино,750,750,750,500,-,500'
-	$result[6] = 'Павлово,1000,1000,1000,750,500,-'
-	gs 'zz_funcs','make_table',$result,700
+	killvar '$zz_funcs_result'
+	$zz_funcs_result[0] = ' ,Спальный район,Центр,Северный район,Дачный кооператив,Гадюкино,Павлово'
+	$zz_funcs_result[1] = 'Спальный район,-,250,250,500,750,1000'
+	$zz_funcs_result[2] = 'Центр,250,-,250,500,750,1000'
+	$zz_funcs_result[3] = 'Северный район,250,250,-,500,750,1000'
+	$zz_funcs_result[4] = 'Дачный кооператив,500,500,500,-,500,750'
+	$zz_funcs_result[5] = 'Гадюкино,750,750,750,500,-,500'
+	$zz_funcs_result[6] = 'Павлово,1000,1000,1000,750,500,-'
+	gs 'zz_funcs','make_table',$zz_funcs_result,700
 	if $loc ! 'street': act 'Ехать в Спальный район': gt 'taxi', 'move', 'street'
 	if $loc ! 'down': act 'Ехать в Центр': gt 'taxi', 'move', 'down'
 	if $loc ! 'nord': act 'Ехать в Северный район': gt 'taxi', 'move', 'nord'

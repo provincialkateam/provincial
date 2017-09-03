@@ -1,15 +1,12 @@
-﻿if mesec = 0 and preg = 0 and tabletki = 0:
+﻿if mesec = 0 and pregnancy = 0 and tabletki = 0:
 	!нет месячных
-	pregrand = RAND(0,100)
-	if pregrand >= 93:
+	if rand(0,100) >= 93:
 		$father = $boy
-		preg = 1
+		pregnancy = 1
 	end
-	if tabletki > 0:
-		pregrand = RAND(0,200)
-		if pregrand = 0:
-			$father = $boy
-			preg = 1
-		end
+elseif tabletki > 0:
+	if RAND(0,200) = 0:
+		$father = $boy
+		pregnancy = 1
 	end
 end

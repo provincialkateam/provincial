@@ -3,14 +3,13 @@ $loc = $CURLOC
 *clr & cla
 minut += 1
 housrA = 1
-elektro += 1
 gs 'stat'
 gs 'zz_funcs', 'colorize_day'
 gs 'zz_render', 'Кухня','images/city/south/apartment/kuhr'+iif(my_house = 1,'',iif(remkuhr = 0,0,iif(remkuhr = 1,1,iif(remkuhr = 2,2,3))))+'.jpg',''
 if rand(1,iif(remkuhr < 2 or my_house = 1,50,iif(remkuhr = 2,75,100))) = 1 and santehnikDolg = 0:kransloman = 1
 if kransloman = 1:
 	manna -= 20
-	gs 'zz_render', '', '','<b><font color = red>У вас сломался кран, надо вызвать сантехника.</font></b>'
+	gs 'zz_render', '', '','<red>У вас сломался кран, надо вызвать сантехника.</red>'
 	if Grisha = 0: act '<b>Вызвать сантехника</b>': gt 'apartment_south_event','plumber_start'
 	if Grisha > 0: act '<b>Вызвать сантехника Гришу</b>': gt 'apartment_south_event','plumber_Grisha'
 end
@@ -19,7 +18,6 @@ if posudomashina > 0 and my_house = 2 and remkuhr >= 2 and kransloman = 0 and di
 		cltarelka += dirttarelka
 		fairy -= dirttarelka
 		dirttarelka = 0
-		elektro += 5
 		gs 'zz_render', '', '','Посудомоечная машина вымыла грязную посуду.'
 	else
 		gs 'zz_render', '', '','Посудомоечной машине не хватает моющего средства для работы.'

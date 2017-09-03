@@ -590,7 +590,7 @@ $din_hanters_sex_cumface7 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -662,7 +662,7 @@ $din_hanters_sex_cumface6 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -732,7 +732,7 @@ $din_hanters_sex_cumface5 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -802,7 +802,7 @@ $din_hanters_sex_cumface4 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -873,7 +873,7 @@ $din_hanters_sex_cumface3 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -914,7 +914,7 @@ $din_hanters_sex_cumface2 ={
 		'<center><img src="pavlovo/family/sister/sisterQW/ReksHome/reksParty_party_kuh_4_'+rand(13,14)+'.gif"></center>'
 		''
 		'С большим удовольствием проглотили все до единой капельки.'
-		if harakBoyH = 2: '-Бля  <<$name[2]>>, ты та еще вафлитска, рот не забудь помыть, я тебе еще иногда целовать хочу.'
+		if harakBoyH = 2: '-Бля <<$name[2]>>, ты та еще вафлитска, рот не забудь помыть, я тебе еще иногда целовать хочу.'
 		if silavag = 0 and dikos = 0:'Всё <<$name[2]>> харэ. Я больше не могу.'
 		if silavag = 1 and dikos = 1:'Всё <<$name[2]>>. Я больше не могу.'
 		if silavag = 2 and dikos = 2:'Всё <<$name[2]>>, хватит. Я больше не могу.'
@@ -933,14 +933,14 @@ $din_hanters_sex_cumface2 ={
 				'На что <<$boy>> ответил - "Пипец ты <<$name[2]>> ненасытная, я фигею".'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
-				   i = rand(1,5)
-				   if i = 1: act 'Запрыгнуть сверху':dynamic $din_hanters_sex_cow
-				   if i = 2: act 'Раздвинуть ноги':dynamic $din_hanters_sex_misionary
-				   if i = 3: act 'Опуститься на колени':dynamic $din_hanters_bj200
-				   if i = 4 and hanters_kuni = 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
-				   if i = 4 and hanters_kuni = 1: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
-				   if i = 5: act 'Нагнуться':dynamic $din_hanters_sex_dog
-			   end
+					i = rand(1,5)
+					if i = 1: act 'Запрыгнуть сверху':dynamic $din_hanters_sex_cow
+					if i = 2: act 'Раздвинуть ноги':dynamic $din_hanters_sex_misionary
+					if i = 3: act 'Опуститься на колени':dynamic $din_hanters_bj200
+					if i = 4 and hanters_kuni = 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
+					if i = 4 and hanters_kuni = 1: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
+					if i = 5: act 'Нагнуться':dynamic $din_hanters_sex_dog
+				end
 			end
 		end
 		if silavag = 2 and dikos < 2 and horny >= 60 and vagina > 0:
@@ -954,7 +954,7 @@ $din_hanters_sex_cumface2 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -983,7 +983,7 @@ $din_hanters_sex_cumface2 ={
 		if silavag = 2 and dikos = 2:'Всё <<$name[2]>>, хватит. Я больше не могу.'
 		''
 		if silavag = 1 and dikos < 1 and horny >= 60 and vagina > 0:
-		   act '<<$boy>>, ещё хочу.':
+			act '<<$boy>>, ещё хочу.':
 				*clr & cla
 				dikos += 1
 				minut += 5
@@ -996,14 +996,14 @@ $din_hanters_sex_cumface2 ={
 				'На что <<$boy>> ответил - "Пипец ты <<$name[2]>> ненасытная, я фигею".'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
-				   i = rand(1,5)
-				   if i = 1: act 'Запрыгнуть сверху':dynamic $din_hanters_sex_cow
-				   if i = 2: act 'Раздвинуть ноги':dynamic $din_hanters_sex_misionary
-				   if i = 3: act 'Опуститься на колени':dynamic $din_hanters_bj200
-				   if i = 4 and hanters_kuni = 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
-				   if i = 4 and hanters_kuni = 1: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
-				   if i = 5: act 'Нагнуться':dynamic $din_hanters_sex_dog
-			   end
+					i = rand(1,5)
+					if i = 1: act 'Запрыгнуть сверху':dynamic $din_hanters_sex_cow
+					if i = 2: act 'Раздвинуть ноги':dynamic $din_hanters_sex_misionary
+					if i = 3: act 'Опуститься на колени':dynamic $din_hanters_bj200
+					if i = 4 and hanters_kuni = 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
+					if i = 4 and hanters_kuni = 1: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
+					if i = 5: act 'Нагнуться':dynamic $din_hanters_sex_dog
+				end
 			end
 		end
 		if silavag = 2 and dikos < 2 and horny >= 60 and vagina > 0:
@@ -1017,7 +1017,7 @@ $din_hanters_sex_cumface2 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1088,7 +1088,7 @@ $din_hanters_sex_cumface1 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -1155,7 +1155,7 @@ $din_hanters_sex_cum11 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1213,7 +1213,7 @@ $din_hanters_sex_cum11 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1282,7 +1282,7 @@ $din_hanters_sex_cum10 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -1351,7 +1351,7 @@ $din_hanters_sex_cum9 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1411,7 +1411,7 @@ $din_hanters_sex_cum9 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1481,7 +1481,7 @@ $din_hanters_sex_cum81 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1541,7 +1541,7 @@ $din_hanters_sex_cum81 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1610,7 +1610,7 @@ $din_hanters_sex_cum8 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1670,7 +1670,7 @@ $din_hanters_sex_cum8 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1739,7 +1739,7 @@ $din_hanters_sex_cum7 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1799,7 +1799,7 @@ $din_hanters_sex_cum7 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1868,7 +1868,7 @@ $din_hanters_sex_cum6 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1928,7 +1928,7 @@ $din_hanters_sex_cum6 ={
 				'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 				''
 				'Вы сказали парню, что ещё хотите.'
-				'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+				'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 				if vagina = 0:dynamic $din_hanters_bj
 				if vagina > 0:
 					i = rand(1,5)
@@ -1998,7 +1998,7 @@ $din_hanters_sex_cum5 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -2066,7 +2066,7 @@ $din_hanters_sex_cum41 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -2134,7 +2134,7 @@ $din_hanters_sex_cum4 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -2204,7 +2204,7 @@ $din_hanters_sex_cum3 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -2273,7 +2273,7 @@ $din_hanters_sex_cum2 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -2303,7 +2303,7 @@ $din_hanters_sex_cum1 ={
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/cum1.gif"></center>'
 	''
 	'<<$boy>> застонал и вы почувствовали как вашу попу наполняет тепло.
-	  -О да, крошка, ты просто супер. <<$boy>> чмокнул вас в лоб.'
+	 -О да, крошка, ты просто супер. <<$boy>> чмокнул вас в лоб.'
 	if silavag = 0 and dikos = 0:'Всё <<$name[2]>> харэ. Я больше не могу.'
 	if silavag = 1 and dikos = 1:'Всё <<$name[2]>>. Я больше не могу.'
 	if silavag = 2 and dikos = 2:'Всё <<$name[2]>>, хватит. Я больше не могу.'
@@ -2342,7 +2342,7 @@ $din_hanters_sex_cum1 ={
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovecho.gif"></center>'
 			''
 			'Вы сказали парню, что ещё хотите.'
-			'- Ну ты <<$name[2]>>  и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
+			'- Ну ты <<$name[2]>> и ненасытная, - улыбнулся в ответ вам <<$boy>>.'
 			if vagina = 0:dynamic $din_hanters_bj
 			if vagina > 0:
 				i = rand(1,5)
@@ -3098,7 +3098,7 @@ $din_hanters_sex_kuni_bonus ={
 	if horny >= 90:
 		horny = 0
 		manna += 15
-		orgasm +=  1
+		orgasm += 1
 		'От умелых действий парня вас охватил оргазм.'
 	else
 		'Действия парня хоть и были возбуждающие, но они начали вас утомлять.'
@@ -3159,7 +3159,7 @@ $din_hanters_sex_kuni = {
 					'Действия парня хоть и были возбуждающие, но они начали вас утомлять.'
 				end
 				''
-				if dom >= 75: 'Уложить парня на спину и  <a href="exec:dynamic $din_hanters_sex_kuni_bonus">сесть</a> на его лицо своей киской.'
+				if dom >= 75: 'Уложить парня на спину и <a href="exec:dynamic $din_hanters_sex_kuni_bonus">сесть</a> на его лицо своей киской.'
 				''
 				i = rand(1,5)
 				if i = 1: act 'Продолжить': dynamic $din_hanters_sex_misionary
@@ -3183,7 +3183,7 @@ $din_hanters_sex_kuni = {
 		else
 			'Действия парня хоть и были возбуждающие, но они начали вас утомлять.'
 		end
-		if dom >= 75:'Уложить парня на спину и  <a href="exec:dynamic $din_hanters_sex_kuni_bonus">сесть</a> на его лицо своей киской.'
+		if dom >= 75:'Уложить парня на спину и <a href="exec:dynamic $din_hanters_sex_kuni_bonus">сесть</a> на его лицо своей киской.'
 		''
 		i = rand(1,5)
 		if i = 1: act 'Продолжить': dynamic $din_hanters_sex_misionary
@@ -3462,7 +3462,7 @@ $din_hanters_bj11 ={
 $din_hanters_bj10 ={
 	*clr & cla
 	minut += 5
-	dick > throat: throat += 1
+	if dick > throat: throat += 1
 	hanters_bj_times += 1
 	bj_temp += 1
 	gs 'stat'
@@ -3511,7 +3511,7 @@ $din_hanters_bj10 ={
 $din_hanters_bj9 ={
 	*clr & cla
 	minut += 5
-	dick > throat: throat += 1
+	if dick > throat: throat += 1
 	hanters_bj_times += 1
 	bj_temp += 1
 	gs 'stat'
@@ -3583,7 +3583,7 @@ $din_hanters_bj8 ={
 	'Вы спустились еще ниже, проведя языком ниже яичек, достигли ануса парня и начали ритмично дразнить кончиком языка.'
 	'-Ой бля,<<$name[2]>>, что ты делаешь? Хотя охуенно, но только пацанам про это не рассказывай.'
 	''
-	if hanters_bj_times < 3 and dom > 0:'Попробовать пойти ещё дальше и  <a href="exec:dynamic $din_hanters_bj_bonus8">засунуть</a> язык в дырку.'
+	if hanters_bj_times < 3 and dom > 0:'Попробовать пойти ещё дальше и <a href="exec:dynamic $din_hanters_bj_bonus8">засунуть</a> язык в дырку.'
 	''
 	if h < 3 and hanters_bj_times = 3:'Вдоволь насладившись вашими оральными ласками, парень просит вас...'
 	''
@@ -4157,7 +4157,7 @@ if hantersIgorLove > 0 and hantersIgorQw <= 50:
 				if hantersIgorQw <= 45:'Вы, покраснев, прошептали парню, что вы еще девочка. <<$boy>> растерянно почесал подбородок "Вот блин, да еще и школу не окончила. Ну тогда может в рот или попу?."'
 				if hantersIgorQw <= 45 and klismaday ! day:
 					' - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...'
-					' - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
+					' - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
 				end
 				if hantersIgorQw > 45:
 					'-<<$name[2]>>, я хочу быть первым твоим мужчиной, я не сделаю тебе больно, только если чуть-чуть.'
@@ -4192,7 +4192,7 @@ if hantersIgorLove > 0 and hantersIgorQw <= 50:
 				*clr & cla
 				minut += 5
 				gs 'stat'
-			   'Вы сказали парню, что вы еще девочка. <<$boy>> улыбнулся "<<$name[1]>> ты  же школу закончила, взрослая уже теперь. Не ну конечно можешь взять в рот или  дать в попу."'
+				'Вы сказали парню, что вы еще девочка. <<$boy>> улыбнулся "<<$name[1]>> ты же школу закончила, взрослая уже теперь. Не ну конечно можешь взять в рот или дать в попу."'
 				dynamic $din_hanters_bj
 				act 'Лишиться невинности':dynamic $din_hanters_first_sex
 			end
@@ -4204,12 +4204,12 @@ if hantersIgorLove > 0 and hantersIgorQw <= 50:
 			gs 'stat'
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre1'+rand(0,6)+'.gif"></center>'
 			'Вы быстро скинули с себя одежду и <<$boy>> тоже разделся.'
-			if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+			if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-			if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+			if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 			if mesec <= 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
 			if mesec > 0:dynamic $din_hanters_bj
@@ -4233,12 +4233,12 @@ elseif hantersIgorLove > 0 and hantersIgorQw > 50:
 		'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre'+rand(0,4)+'.gif"></center>'
 		'<<$boy>> начал вас обнимать и целовать. Вас дико заводят эти ласки, и вы вместе возбуждаетесь еще сильнее'
 	end
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	act 'Запрыгнуть на него':
 		*clr & cla
@@ -4271,12 +4271,12 @@ elseif horny < 60 and i = 1:
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre30.gif"></center>'
 	'<<$boy>> закинул вас на кровать и набросился сверху'
 	'Вы долго целуетесь, <<$boy>> успел сорвать с вас одежду и еще сильнее возбудиться'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	''
 	if mesec <= 0: act 'Раздвинуть ножки':dynamic $din_hanters_sex_misionary
@@ -4285,12 +4285,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 1:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre50.gif"></center>'
 	'<<$boy>> бросил вас на кровать и жадно прильнул губами между ваших ножек'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	''
 	if mesec <= 0: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
@@ -4301,12 +4301,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 0:
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre60.gif"></center>'
 	'Вы целуетесь с парнем, раздевая друг друга, он ласкает ваши сиськи, вы дотронулись до его члена и начали нежно его массировать.
 <<$boy>> немного давит на ваши плечи и вы все прекрасно понимаете...'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	''
 	if mesec <= 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
@@ -4316,12 +4316,12 @@ elseif horny < 60 and i = 3:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre4'+rand(0,2)+'.gif"></center>'
 	'Ворвавшись в комнату, <<$boy>> поставил вас раком, и раздевая ласкает вашу попу'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попку или в ротик, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	''
 	if mesec <= 0: act 'Нагнуться':dynamic $din_hanters_sex_dog
@@ -4383,12 +4383,12 @@ elseif hantersAndreiLove > 0 and vagina > 0:
 		'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre'+rand(0,4)+'.gif"></center>'
 		'<<$boy>> начал вас обнимать и целовать.
 Вас дико заводят эти ласки, и вы вместе возбуждаетесь еще сильнее'
-		if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, можно  же в зад или в рот, - ответил он.
+		if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, можно же в зад или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. -  Ладно, в следующий раз незабудь почистить.'
-		if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, <<$name[1]>>, можно  же в зад или в рот, - ответил он.
+ - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. - Ладно, в следующий раз незабудь почистить.'
+		if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, <<$name[1]>>, можно же в зад или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 		act 'Запрыгнуть на него':
 			*clr & cla
@@ -4421,12 +4421,12 @@ elseif horny < 60 and i = 1:
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre30.gif"></center>'
 	'<<$boy>> закинул вас на кровать и набросился сверху'
 	'Вы долго целуетесь, <<$boy>> успел сорвать с вас одежду и еще сильнее возбудиться'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, можно  же в зад или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, можно же в зад или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. -  Ладно, в следующий раз незабудь почистить.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, <<$name[1]>>, можно  же в зад или в рот, - ответил он.
+ - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. - Ладно, в следующий раз незабудь почистить.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, <<$name[1]>>, можно же в зад или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Раздвинуть ножки':dynamic $din_hanters_sex_misionary
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4434,12 +4434,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 1:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre50.gif"></center>'
 	'<<$boy>> бросил вас на кровать и жадно прильнул губами между ваших ножек'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, можно  же в зад или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, можно же в зад или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. -  Ладно, в следующий раз незабудь почистить.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, <<$name[1]>>, можно  же в зад или в рот, - ответил он.
+ - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. - Ладно, в следующий раз незабудь почистить.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, <<$name[1]>>, можно же в зад или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4449,12 +4449,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 0:
 	''
 	'Вы целуетесь с парнем, раздевая друг друга, он ласкает ваши сиськи, вы дотронулись до его члена и начали нежно его массировать.
 <<$boy>> немного давит на ваши плечи и вы все прекрасно понимаете...'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, можно  же в зад или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, можно же в зад или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. -  Ладно, в следующий раз незабудь почистить.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, <<$name[1]>>, можно  же в зад или в рот, - ответил он.
+ - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. - Ладно, в следующий раз незабудь почистить.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, <<$name[1]>>, можно же в зад или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4462,12 +4462,12 @@ elseif horny < 60 and i = 3:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre4'+rand(0,2)+'.gif"></center>'
 	'Ворвавшись в комнату, <<$boy>> поставил вас раком, и раздевая ласкает вашу попу'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, можно  же в попку или в ротик, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, можно же в попку или в ротик, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. -  Ладно, в следующий раз незабудь почистить.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Да хрен с ним, <<$name[1]>>, можно  же в попку или в ротик, - ответил он.
+ - Да бля, <<$name[1]>>, скажи что у тебя еще голова болит - сказал <<$boy>>. - Ладно, в следующий раз незабудь почистить.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Да хрен с ним, <<$name[1]>>, можно же в попку или в ротик, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Нагнуться':dynamic $din_hanters_sex_dog
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4497,7 +4497,7 @@ if hantersSergeiLove > 0 and hantersIgorQw <= 40:
 				if hantersIgorQw <= 35:'Вы, покраснев, прошептали парню, что вы еще девочка. <<$boy>> растерянно почесал подбородок "Вот блин, да еще и школу не окончила. Ну тогда может в рот или попу?."'
 				if hantersIgorQw <= 35 and klismaday ! day:
 					' - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...'
-					'- Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попой.'
+					'- Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попой.'
 				end
 				if hantersIgorQw > 35:
 					'-<<$name[2]>>, я хочу быть первым твоим мужчиной, я не сделаю тебе больно.'
@@ -4530,7 +4530,7 @@ if hantersSergeiLove > 0 and hantersIgorQw <= 40:
 				*clr & cla
 				minut += 5
 				gs 'stat'
-				'Вы сказали парню, что вы еще девочка. <<$boy>> улыбнулся "<<$name[1]>> ты  же школу закончила, взрослая уже теперь. Не ну конечно можешь взять в рот или  дать в попу."'
+				'Вы сказали парню, что вы еще девочка. <<$boy>> улыбнулся "<<$name[1]>> ты же школу закончила, взрослая уже теперь. Не ну конечно можешь взять в рот или дать в попу."'
 				dynamic $din_hanters_bj
 				act 'Лишиться невинности':dynamic $din_hanters_first_sex
 			end
@@ -4543,14 +4543,14 @@ if hantersSergeiLove > 0 and hantersIgorQw <= 40:
 			'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre1'+rand(0,6)+'.gif"></center>'
 			'Вы быстро скинули с себя одежду и <<$boy>> тоже разделся.'
 			if mesec > 0 and klismaday ! day:
-				' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.'
-				' - Ничего страшного, <<$name[1]>>, можно  же в попку или в ротик, - ответил он.'
+				' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.'
+				' - Ничего страшного, <<$name[1]>>, можно же в попку или в ротик, - ответил он.'
 				' - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...'
-				' - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
+				' - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
 			end
 			if mesec > 0 and klismaday = day:
-				' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.'
-				' - Ничего страшного, <<$name[1]>>, можно  же в попку или в ротик, - ответил он.'
+				' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.'
+				' - Ничего страшного, <<$name[1]>>, можно же в попку или в ротик, - ответил он.'
 				' - Ну ладно... - пробормотали вы.'
 			end
 			if mesec <= 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
@@ -4574,12 +4574,12 @@ elseif hantersSergeiLove > 0 and hantersSergeiQw > 45:
 		'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre'+rand(0,4)+'.gif"></center>'
 		'<<$boy>> начал вас обнимать и целовать. Вас дико заводят эти ласки, и вы вместе возбуждаетесь еще сильнее'
 	end
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	act 'Запрыгнуть на него':
 		*clr & cla
@@ -4611,12 +4611,12 @@ elseif horny < 60 and i = 1:
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre30.gif"></center>'
 	'<<$boy>> закинул вас на кровать и набросился сверху'
 	'Вы долго целуетесь, <<$boy>> успел сорвать с вас одежду и еще сильнее возбудиться'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Раздвинуть ножки':dynamic $din_hanters_sex_misionary
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4624,12 +4624,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 1:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre50.gif"></center>'
 	'<<$boy>> бросил вас на кровать и жадно прильнул губами между ваших ножек'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Наслаждаться':dynamic $din_hanters_sex_kuni
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4639,12 +4639,12 @@ elseif horny < 60 and i = 2 and hanters_kuni = 0:
 	''
 	'Вы целуетесь с парнем, раздевая друг друга, он ласкает ваши сиськи, вы дотронулись до его члена и начали нежно его массировать.
 <<$boy>> немного давит на ваши плечи и вы все прекрасно понимаете...'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Опуститься на колени':dynamic $din_hanters_bj200
 	if mesec > 0:dynamic $din_hanters_bj
@@ -4652,12 +4652,12 @@ elseif horny < 60 and i = 3:
 	'<center><H4>Изба</H4></center>'
 	'<center><img src="images/qwest/alter/ev/Kotovsexsyst/kotovpre4'+rand(0,2)+'.gif"></center>'
 	'Ворвавшись в комнату, <<$boy>> поставил вас раком, и раздевая ласкает вашу попу'
-	if mesec > 0  and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+	if mesec > 0 and klismaday ! day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ой, а в попу не получится <<$boy>>, я не совсем готова. Ну если ты понимаешь, о чем я...
- - Понял я, - сказал <<$boy>>. -  Ладно, в следующий раз приходи с чистой попкой.'
-	if mesec > 0  and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, -  растерянно сказали вы.
- - Ничего страшного, <<$name[2]>>, можно  же в попу или в рот, - ответил он.
+ - Понял я, - сказал <<$boy>>. - Ладно, в следующий раз приходи с чистой попкой.'
+	if mesec > 0 and klismaday = day: ' - <<$boy>>, блин, у меня эти самые дни, - растерянно сказали вы.
+ - Ничего страшного, <<$name[2]>>, можно же в попу или в рот, - ответил он.
  - Ну ладно... - пробормотали вы.'
 	if mesec <= 0: act 'Нагнуться':dynamic $din_hanters_sex_dog
 	if mesec > 0:dynamic $din_hanters_bj

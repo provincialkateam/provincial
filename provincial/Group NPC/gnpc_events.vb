@@ -2,7 +2,7 @@
 	if $npc['<<numnpc>>,group'] = 0:
 		act 'Издеваться':
 			*clr & cla
-			if GorSlut < 2:
+			if func('zz_reputation','get') < 2:
 				$npc['<<numnpc>>,relation'] -= 5
 				dom += 1
 				gs 'zz_render','','',func('gnpc_events_strings', 'local_str16')
@@ -17,7 +17,7 @@ end
 if $args[0] = 'cumreaction':
 	if cumface + cumfrot + cumlip > 0:
 		$npc['<<numnpc>>,relation'] -= 10
-		if GorSlut < 2: GorSlut += 1
+		if func('zz_reputation','get') < 2: gs 'zz_reputation','set',2
 		gs 'zz_render','','',func('gnpc_events_strings', 'local_str18')
 		act 'Отойти': gt $loc, $metka
 		exit
@@ -38,7 +38,7 @@ if $args[0] = 'krutishi_dance':
 		gs 'stat'
 		if $npc['4,qwIgorLove'] > 0:
 			gs 'zz_render', '', '', func('krutishi_strings', 'local_str'+iif(IgorDominaQW = 0,3,4))
-			act 'Идти к Игорю': minut += 20 & gt 'igorHome', 'igorkom'
+			act 'Идти к Игорю': minut += 20 & gt 'igorHome'
 			if alko < 6: act 'Отказаться': gt $loc, $metka
 		else
 			gs 'zz_render', '', '', func('krutishi_strings', 'local_str5')
@@ -262,7 +262,7 @@ if $args[0] = 'igor_disco':
 			!end
 			gs 'gnpc_events','igor_disco_kiss'
 		end
-		act 'Отказаться':$npc['<<numnpc>>,relation'] -= 10 &  gt 'gdk'
+		act 'Отказаться':$npc['<<numnpc>>,relation'] -= 10 & gt 'gdk'
 	end
 	if alko < 6: act 'Отказаться': gt $loc, $metka
 end

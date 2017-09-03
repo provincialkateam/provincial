@@ -8,28 +8,28 @@ $din_trener_discoSex={
 		*clr & cla
 		Joke = 0
 		if horny > 80:
-			gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco1.gif', func('VolleyTrenerSpeak_strings', 'local_str2')
+			gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco1.webm', func('VolleyTrenerSpeak_strings', 'local_str2')
 			act 'Задрать подол':
 				*clr & cla
 				gs 'npc_editor','change_rep','+', 28
 				horny += 10
-				if tanga = 1: gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco2.gif', func('VolleyTrenerSpeak_strings', 'local_str30')
+				if tanga = 1: gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco2.webm', func('VolleyTrenerSpeak_strings', 'local_str30')
 				if tanga = 0: gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco3.jpg', func('VolleyTrenerSpeak_strings', 'local_str31')
 				act 'Выставить попку':
 					*clr & cla
 					horny += 10
 					minut += 20
 					gs 'stat'
-					gs 'zz_render','','images/pavlovo/dk/volley/voitrensexdisco4.gif', func('VolleyTrenerSpeak_strings', 'local_str3')
+					gs 'zz_render','','images/pavlovo/dk/volley/voitrensexdisco4.webm', func('VolleyTrenerSpeak_strings', 'local_str3')
 					act'Подмахивать':
 						*clr & cla
-						gs 'zz_render','','images/pavlovo/dk/volley/voitrensexdisco5.gif'
+						gs 'zz_render','','images/pavlovo/dk/volley/voitrensexdisco5.webm'
 						gs 'zz_dynamic_sex', 'anal_start', 'dick'
 						gs 'zz_dynamic_sex', 'anal', 'dick'
 						act 'Далее':
 							*clr & cla
 							gs 'zz_funcs', 'cum', 'ass'
-							gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco6.gif', func('VolleyTrenerSpeak_strings', 'local_str4')
+							gs 'zz_render', '', 'images/pavlovo/dk/volley/voitrensexdisco6.webm', func('VolleyTrenerSpeak_strings', 'local_str4')
 							act'Пойти с тренером':
 								*clr & cla
 								Discoclose = 1 &!закрытие диско на этот день не забыть про stat
@@ -61,21 +61,21 @@ $din_trener_Speak={
 		if $npc['28,relation'] => 40 and trener_Speak=0:
 			trener_Speak+=1 & ! счетчик болтания с тренером
 			gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str8')
-			if horny > 80 or GorSlut > 0:
+			if horny > 80 or func('zz_reputation','get') > 0:
 				gs 'npc_editor','change_rep','+', 28
 				gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str32')
 			elseif $npc['28,relation'] > 10 and trener_Speak=1:
 				trener_Speak += 1
 				gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str9')
 			end
-			if horny > 80 or GorSlut > 0:
+			if horny > 80 or func('zz_reputation','get') > 0:
 				gs 'npc_editor','change_rep','+', 28
 				gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str33')
 			elseif $npc['28,relation'] > 20 and trener_Speak=2:
 				trener_Speak+=1
 				gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str10')
 			end
-			if horny > 80 or GorSlut > 0:
+			if horny > 80 or func('zz_reputation','get') > 0:
 				gs 'npc_editor','change_rep','+', 28
 				gs 'zz_render', '', '', func('VolleyTrenerSpeak_strings', 'local_str34')
 			end

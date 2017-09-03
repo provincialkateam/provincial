@@ -17,7 +17,7 @@
 			elseif daya >= 3:
 				bfA -= 2
 				gs 'zz_render', '', '', func('sexm_strings', 'local_str3')
-				*pl iif(boyonceA = 0,'"Ладно, пока, динама."','"А что ты сегодня то секса не хочешь?"')
+				gs 'zz_render','','', iif(boyonceA = 0,'"Ладно, пока, динама."','"А что ты сегодня то секса не хочешь?"')
 			end
 		elseif harakBoyA = 1:
 			if daya < 10:
@@ -26,7 +26,7 @@
 			elseif daya >= 10:
 				bfA -= 2
 				gs 'zz_render', '', '', func('sexm_strings', 'local_str5')
-				*pl iif(boyonceA = 0,'"Долго мы будем как пионеры за ручки держаться?"','"Ладно, проживу денек и без секса."')
+				gs 'zz_render','','', iif(boyonceA = 0,'"Долго мы будем как пионеры за ручки держаться?"','"Ладно, проживу денек и без секса."')
 			end
 		elseif harakBoyA = 0:
 			if daya < 20:
@@ -370,7 +370,7 @@ if $ARGS[0] = 'anal':
 			lubonus = 2
 			gs 'zz_render', '', '', func('sexm_strings', 'local_str57')
 		else
-			lubri -=  1
+			lubri -= 1
 			lubonus = 10
 			gs 'zz_render', '', '', func('sexm_strings', 'local_str58')
 		end
@@ -735,7 +735,6 @@ if $ARGS[0] = 'popala':
 			end
 		end
 	elseif harakHusb = 2:
-		fingal += 1
 		gs 'zz_render', '', '', func('sexm_strings', 'local_str115')
 		if izvratH = 0:
 			husbizvradd = 0
@@ -746,7 +745,6 @@ if $ARGS[0] = 'popala':
 			bfA = 0
 			mop = 0
 			minut += 120
-			stolmoney = 0
 			money = 0
 			komp = 0
 			gs 'zz_render', '', '', func('sexm_strings', 'local_str116')

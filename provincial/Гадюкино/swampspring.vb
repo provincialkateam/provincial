@@ -15,17 +15,17 @@ act 'Попить воды':
 		dirtylip = 0
 		gs 'zz_render', 'Родник', 'qwest/gadukino/Swamp/hands.jpg','Вы с удовольствием напились родниковой воды.'
 	end
-    gs 'stat'
+	gs 'stat'
 	act 'Закончить':gt 'swampspring'
 end
 if bucket < 10:
-    act 'Набрать воды в ведро':
-	    *clr & cla
-	    minut += 10
-	    bucket += 10
-	    gs 'stat'
-	    gs 'zz_render', 'Родник', 'qwest/gadukino/Swamp/vedro.jpg','Вы набрали воды в ведро.'
-        act 'Закончить':gt 'swampspring'
-    end
+	act 'Набрать воды в ведро':
+		*clr & cla
+		minut += 10
+		bucket += 10
+		gs 'stat'
+		gs 'zz_render', 'Родник', 'qwest/gadukino/Swamp/vedro.jpg','Вы набрали воды в ведро.'
+		act 'Закончить':gt 'swampspring'
+	end
 end
 act 'Уйти':minut += 5 & gt'swamp_yard'

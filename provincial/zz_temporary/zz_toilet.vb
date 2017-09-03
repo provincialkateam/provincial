@@ -31,7 +31,7 @@ if $args[0] = 'actions':
 			gt 'zz_toilet', 'finish', _act_i
 		end
 	end
-	if tampon > 0 and mesec > 0 and isprok = 0 and cheatTampon = 0:
+	if tampon > 0 and mesec > 0 and isprok = 0 and $settings['autotampon'] = 0:
 		act 'Поменять тампон':
 			*clr & cla
 			tampon -= 1
@@ -78,22 +78,12 @@ if $args[0] = 'actions':
 			act 'Закончить': gt 'zz_toilet', 'finish',_act_i
 		end
 	end
-	if body_write > 0 or face_write > 0:
-		act 'Стереть надписи на теле':
-			*clr & cla
-			body_write = 0
-			face_write = 0
-			minut += 5
-			!'тут нужна картинка'
-			gs 'zz_render','','','Вы стёрли непристойные надписи.'
-			act 'Закончить': gt 'zz_toilet', 'finish', _act_i
-		end
-	end
 	if pregtest > 0:
 		act 'Сделать тест на беременность':
 			cla
 			pregtest -= 1
-			if preg = 1:
+			if pregnancy > 0:
+				pregnancyKnow = 1
 				gs 'zz_render','','','Тест показал две полоски. Вы беременны. Вы думаете, что отец <<$father>>.'
 			else
 				gs 'zz_render','','','Тест показал одну полоску.'

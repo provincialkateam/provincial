@@ -64,7 +64,7 @@ if $ARGS[0] = 'sell_dacha':
 	act '<B>Выйти</B>': gt'agentned', 'start'
 end
 if $ARGS[0] = 'rent_event_1':
-  if ArendHouseSL = 0:
-    gt 'rent_flat_oleg', 'rent_event_1', 0
-  end
+ if ArendHouseSL = 0:
+	gt 'rent_flat_oleg', 'rent_event_1', 0
+ end
 end

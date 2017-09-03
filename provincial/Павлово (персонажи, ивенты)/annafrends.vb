@@ -1,7 +1,7 @@
 ﻿if rexPark = 1 and rexParkDay < daystart and $npc['38,qwRexSisTalk'] = 2 or rexCar = 1 and rexCarDay < daystart and $npc['38,qwRexSisTalk'] = 3:
 	*clr & cla
 	minut += 5
-	$npc['27,relation']  = 50
+	$npc['27,relation'] = 50
 	rexPark = 0
 	gs 'reks'
 	gs 'stat'
@@ -13,7 +13,7 @@ end
 if rexCar = 1 and rexCarDay < daystart and $npc['38,qwRexSisTalk'] = 4:
 	*clr & cla
 	minut += 5
-	$npc['27,relation']  = 50
+	$npc['27,relation'] = 50
 	rexCar = 0
 	gs 'reks'
 	gs 'stat'

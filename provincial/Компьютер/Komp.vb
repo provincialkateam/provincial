@@ -1,6 +1,5 @@
 ﻿if $ARGS[0] = 'start':
 	*clr & cla
-	elektro += 5
 	gorodokKomp = iif($control_point = 'gorodok',1,0)
 	gs'stat'
 	'<center><b>Ноутбук</b></center>'
@@ -60,7 +59,6 @@ if $ARGS[0] = 'sale':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	gs'stat'
 	gs 'zz_render', '<b>Сайт объявлений</b>', 'images/pics/komp/sale.jpg','Вы вошли на сайт бесплатных объявлений.'
@@ -92,7 +90,6 @@ if $ARGS[0] = 'remont':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	if housr = 1:elektro -= 3
 	internet -= 1
 	gs'stat'
 	gs 'zz_render', '<b>Сайт квартирного ремонта</b>', 'images/pics/komp/remont.jpg','Вы вошли на сайт квартирного ремонта.'
@@ -107,7 +104,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 4
 					repairs_bedr = 2
 					karta -= 70000
-					gs 'zz_render', '', '','Вы оплатили  косметический ремонт спальни.'
+					gs 'zz_render', '', '','Вы оплатили косметический ремонт спальни.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -122,7 +119,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 4
 					repairs_sitr = 2
 					karta -= 120000
-					gs 'zz_render', '', '','Вы оплатили  косметический ремонт зала.'
+					gs 'zz_render', '', '','Вы оплатили косметический ремонт зала.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -137,7 +134,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 4
 					repairs_korr = 2
 					karta -= 35000
-					gs 'zz_render', '', '','Вы оплатили  косметический ремонт коридора.'
+					gs 'zz_render', '', '','Вы оплатили косметический ремонт коридора.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -152,7 +149,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 4
 					repairs_vanr = 2
 					karta -= 80000
-					gs 'zz_render', '', '','Вы оплатили  косметический ремонт ванной.'
+					gs 'zz_render', '', '','Вы оплатили косметический ремонт ванной.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -167,7 +164,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 4
 					repairs_kuhr = 2
 					karta -= 140000
-					gs 'zz_render', '', '','Вы оплатили  косметический ремонт кухни.'
+					gs 'zz_render', '', '','Вы оплатили косметический ремонт кухни.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -182,7 +179,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 6
 					repairs_bedr = 3
 					karta -= 165000
-					gs 'zz_render', '', '','Вы оплатили  дизайнерский ремонт ремонт спальни.'
+					gs 'zz_render', '', '','Вы оплатили дизайнерский ремонт ремонт спальни.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -198,7 +195,7 @@ if $ARGS[0] = 'remont':
 					repairs_sitr = 3
 					TV = 2
 					karta -= iif(TV <= 2,260000,225000)
-					gs 'zz_render', '', '','Вы оплатили  дизайнерский ремонт ремонт зала.'
+					gs 'zz_render', '', '','Вы оплатили дизайнерский ремонт ремонт зала.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -213,7 +210,7 @@ if $ARGS[0] = 'remont':
 					repairs_time += 6
 					repairs_korr = 3
 					karta -= 80000
-					gs 'zz_render', '', '','Вы оплатили  дизайнерский ремонт ремонт прихожей.'
+					gs 'zz_render', '', '','Вы оплатили дизайнерский ремонт ремонт прихожей.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -229,7 +226,7 @@ if $ARGS[0] = 'remont':
 					repairs_vanr = 3
 					stiralka = 1
 					karta -= iif(stiralka = 0,200000,180000)
-					gs 'zz_render', '', '','Вы оплатили  дизайнерский ремонт ремонт ванной комнаты.'
+					gs 'zz_render', '', '','Вы оплатили дизайнерский ремонт ремонт ванной комнаты.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -245,7 +242,7 @@ if $ARGS[0] = 'remont':
 					repairs_kuhr = 3
 					posudomashina = 1
 					karta -= iif(posudomashina = 0,300000,270000)
-					gs 'zz_render', '', '','Вы оплатили  дизайнерский ремонт ремонт кухни.'
+					gs 'zz_render', '', '','Вы оплатили дизайнерский ремонт ремонт кухни.'
 				else
 					cla
 					gs 'zz_render', '', '', $no_money
@@ -261,7 +258,6 @@ if $ARGS[0] = 'porno':
 	minut += 60
 	internetM -= 60
 	manna += 5
-	elektro += 3
 	manna += RAND(10,50)
 	horny += 30
 	internet -= 1
@@ -298,7 +294,6 @@ if $ARGS[0] = 'pasians':
 	*clr & cla
 	minut += 20
 	manna += 5
-	elektro += 3
 	manna += RAND(10,50)
 	gs'stat'
 	'<center><b>Пасьянс</b></center>'
@@ -312,7 +307,6 @@ if $ARGS[0] = 'znak':
 	minut += 60
 	internetM -= 60
 	manna += 5
-	elektro += 3
 	internet -= 1
 	gs'stat'
 	'<center><b>Сайт знакомств</b></center>'
@@ -361,7 +355,6 @@ if $ARGS[0] = 'kabtv':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	gs'stat'
 	'<center><b>Сайт кабельного ТВ</b></center>'
@@ -397,7 +390,6 @@ if $ARGS[0] = 'foto':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	gs'stat'
 	'<center><b>Социальная сеть</b></center>'
@@ -453,7 +445,6 @@ if $ARGS[0] = 'rabota':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	komprabota = RAND(0,15)
 	gs'stat'
@@ -533,7 +524,6 @@ if $ARGS[0] = 'study':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	intel += 1
 	'<center><b>Институт педагогических измерений</b></center>'
@@ -545,7 +535,6 @@ if $ARGS[0] = 'agent':
 	*clr & cla
 	minut += 60
 	internetM -= 60
-	elektro += 3
 	internet -= 1
 	gs'stat'
 	'<center><b>Cайт агенства недвижимости</b></center>'

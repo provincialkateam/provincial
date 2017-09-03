@@ -34,77 +34,77 @@
 	end
 end
 if $ARGS[0] = '2':
-    *clr & cla
+	*clr & cla
 	hapri = 0
 	if mop > 1: mop = 0 & vidageday -= 1
 	!одежда изнашивается
-    if dirtyclothes = 0 and current_clothing > 2: dirtyclothes = 1 & gs 'zz_clothing', 'decrease_condition', 10
-    gs'stat'
-    gs'time'
+	if dirtyclothes = 0 and current_clothing > 2: dirtyclothes = 1 & gs 'zz_clothing', 'decrease_condition', 10
+	gs'stat'
+	gs'time'
 	gs 'zz_render', $_str, 'qwest/gadukino/Swamp/panicswamp.jpg', 'Вы застряли посреди болота."Во попала!", - в панике думаете вы - "Что же делать?". '
-    act 'Позвать на помощь':
-   	    *clr & cla
-        minut += 10
-	    if sweat < 10: sweat += 1
-	    gs 'stat'
-	    gs 'zz_render', $_str, 'qwest/gadukino/Swamp/gadforestlosthelp.jpg', 'Вы совершенно выбились из сил и стали кричать и звать на помощь, вдруг в домике есть люди...'
-        act 'Ждать':
+	act 'Позвать на помощь':
+		*clr & cla
+		minut += 10
+		if sweat < 10: sweat += 1
+		gs 'stat'
+		gs 'zz_render', $_str, 'qwest/gadukino/Swamp/gadforestlosthelp.jpg', 'Вы совершенно выбились из сил и стали кричать и звать на помощь, вдруг в домике есть люди...'
+		act 'Ждать':
 			*clr & cla
 			minut += 10
-            if  rand(1,iif(week > 5,3,5)) = 1:
-                hanters = 1
-                hanterhelp = 1
-                gs 'stat'
-	            gs 'zz_render', $_str, 'qwest/gadukino/Swamp/handshelp.jpg', 'Вы услышали мужские голоса и стали кричать громче. Голоса раздавались все ближе и вот наконец чьи-то сильные руки схватили вас и потащили в сторону берега.'
-	            killvar '$_str'
-	            act 'Далее':gt 'swamp_yard'
-            else
-                gs 'zz_render', $_str, 'qwest/gadukino/Swamp/panicswamp.jpg', 'Никто не откликается на ваш зов, похоже тут вы совершенно одни.'
-                act 'Далее':gt 'gadforestswamp','2'
-            end
-        end
-   	end
-    act 'Пробовать вернуться к лесу':
-   	    *clr & cla
-	    minut += 10
-	    stren += 1
-	    agil += 1
-	    if sweat < 10:sweat += 3
-	    i = RAND(1,100)
-	    gs 'stat'
-        gs 'gadforestswamp','swampclothes'
+			if rand(1,iif(week > 5,3,5)) = 1:
+				hanters = 1
+				hanterhelp = 1
+				gs 'stat'
+				gs 'zz_render', $_str, 'qwest/gadukino/Swamp/handshelp.jpg', 'Вы услышали мужские голоса и стали кричать громче. Голоса раздавались все ближе и вот наконец чьи-то сильные руки схватили вас и потащили в сторону берега.'
+				killvar '$_str'
+				act 'Далее':gt 'swamp_yard'
+			else
+				gs 'zz_render', $_str, 'qwest/gadukino/Swamp/panicswamp.jpg', 'Никто не откликается на ваш зов, похоже тут вы совершенно одни.'
+				act 'Далее':gt 'gadforestswamp','2'
+			end
+		end
+	end
+	act 'Пробовать вернуться к лесу':
+		*clr & cla
+		minut += 10
+		stren += 1
+		agil += 1
+		if sweat < 10:sweat += 3
+		i = RAND(1,100)
+		gs 'stat'
+		gs 'gadforestswamp','swampclothes'
 		gs 'zz_render', '', '', 'Вы решили не испытывать больше судьбу и повернуть назад...'
 		act 'Идти':
-		    if stren + agil > i:
+			if stren + agil > i:
 				gt 'gadforestswamp','1'
-		    elseif stren + agil < i and i <= 20:
+			elseif stren + agil < i and i <= 20:
 				gt'gameover',10
-            else
+			else
 				gt 'gadforestswamp','2'
 			end
-        end
-   	end
-    act 'Пробовать идти дальше к домику':
-   	    *clr & cla
-	    minut += 10
-	    stren += 1
-	    agil += 1
-	    if sweat < 10:sweat += 3
-	    i = RAND(1,100)
-	    gs 'stat'
-        gs 'gadforestswamp','swampclothes'
+		end
+	end
+	act 'Пробовать идти дальше к домику':
+		*clr & cla
+		minut += 10
+		stren += 1
+		agil += 1
+		if sweat < 10:sweat += 3
+		i = RAND(1,100)
+		gs 'stat'
+		gs 'gadforestswamp','swampclothes'
 		gs 'zz_render', '', '', 'Вы посчитали, что к домику все же добраться предпочтительнее и стали продвигаться дальше...'
-        act 'Идти':
-		    if stren + agil > i:
+		act 'Идти':
+			if stren + agil > i:
 				killvar '$_str'
 				gt 'swamp_yard'
-		    elseif stren + agil < i and i <= 30:
+			elseif stren + agil < i and i <= 30:
 				gt'gameover',10
-            else
+			else
 				gt 'gadforestswamp','2'
 			end
-        end
-  	end
+		end
+ 	end
 end
 if $ARGS[0] = 'swampclothes':
 	if current_clothing > 2:
