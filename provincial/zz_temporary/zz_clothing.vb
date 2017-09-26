@@ -136,7 +136,7 @@ if $args[0] = 'make_shop':
 			$zz_str += '<td width=60%><a href="exec:view ''images/clothing/'+ $zz_group +'/' + $clothing[i+"_"+'id'] + '.jpg''">' + $clothing[i+"_"+'name'] + '</a></td>'
 			$zz_str += '<td width=10%>' + iif(func('zz_clothing','is_exists', i) >= 0,'Есть','') + '</td>'
 			$zz_str += '<td width=15%>'+ iif(val($clothing[i+"_"+'price']) >= 0, + $clothing[i+"_"+'price'] +' р.', '') + '</td>'
-			$zz_str += '<td width=15%>'+ iif(val($clothing[i+"_"+'price']) <= money, '<a href="exec: gs ''zz_clothing'',''buy'',' + $clothing[i+"_"+'id'] + '">Купить</a>', '') + '</td>'
+			$zz_str += '<td width=15%>'+ iif(val($clothing[i+"_"+'price']) <= money  or $clothing[i+"_"+'price']) <= karta, '<a href="exec: gs ''zz_clothing'',''buy'',' + $clothing[i+"_"+'id'] + '">Купить</a>', '') + '</td>'
 			$zz_str += '</tr>'
 		end
 		i += 1
@@ -157,6 +157,14 @@ if $args[0] = 'buy':
 		gs 'zz_funcs','message','','<green>Вы купили ' + $clothing[args[1]+"_"+'name'] + '</green>'
 	else
 		gs 'zz_funcs','message','','<red>У вас недостаточно денег для покупки!</red>'
+	end
+	if karta >= val($clothing[args[1]+"_"+'price']):
+		karta -= val($clothing[args[1]+"_"+'price'])
+		gs 'stat'
+		gs 'zz_clothing', 'add_to_wardrobe', val($clothing[args[1]+"_"+'id'])
+		pl '<b><font color=green>Вы купили ' + $clothing[args[1]+"_"+'name'] + '</font></b>'
+	else
+		pl '<b><font color=red>У вас недостаточно денег для покупки!</font></b>'
 	end
 end
 ! add item to wardrobe
