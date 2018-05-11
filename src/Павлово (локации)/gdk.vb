@@ -1,0 +1,42 @@
+﻿$metka = $ARGS[0]
+$loc = $CURLOC
+gs 'zz_phone','boyfriend_call_init'
+gs 'stat'
+gs 'time'
+act '<b>Выйти</b>': gt 'gorodok'
+gs 'zz_funcs','waiting'
+gs 'zz_render','Дом культуры',func('zz_funcs','mk_image','pavlovo/dk/dk')
+gs 'pavlovo_events','black_sabbath'
+killvar '$zz_funcs_result'
+$zz_funcs_result[0] = ' ,Рабочее время,Примечание'
+$zz_funcs_result[1] = 'Библиотека,09.00-18.00, '
+$zz_funcs_result[2] = 'Кружок кройки и шитья,15.00-20.00,3000 руб'
+$zz_funcs_result[3] = 'Cпортивные секции,15.00-20.00,1500-3000 руб'
+$zz_funcs_result[4] = 'Дискотека,20.00-23.00,50 руб'
+gs 'zz_funcs','make_table',$zz_funcs_result,600
+gs 'zz_family', 'sister_sheduler'
+if func('zz_drugs','block') = 0:
+	if hour >= 9 and hour <= 18: act 'Идти в библиотеку': gt 'gdkbibl'
+	if hour >= 15 and hour < 20:
+		act 'Идти на кружки': gt 'gdkkru'
+		act 'Идти в секцию': gt 'gdksport'
+	end
+end
+if hour >= 20 and hour <= 22:
+	gs 'zz_render','','','У входа в ДК полно молодёжи: парни просто стоят и курят, болтают промеж собой почище девчонок, украдкой попивают пиво, и приглядываются к девчонкам. Девочки тусят маленькими группками по двое-трое и шушукаются, скорее всего либо сплетничая, либо обсуждая парней. Кто-то просто втихаря бухает в кустах. Полиция сюда порой заходит, но смотрит в основном сквозь пальцы - лишь бы драк не было.'
+	act 'Войти в клуб':
+		if dk_disco_day ! day:
+			if money >= 50:
+				dk_disco_day = day
+				money -= 50
+				minut += 5
+				gt 'gdkin'
+			else
+				gs 'zz_render','','','<red>У вас недостаточно денег - вход 50 рублей.</red>'
+			end
+		else
+			minut += 5
+			gt 'gdkin'
+		end
+	end
+end

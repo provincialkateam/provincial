@@ -1,0 +1,7 @@
+﻿*.log
+/assets/standalone_content/images/*
+/assets/standalone_content/mods/*
+/assets/standalone_content/sounds/*
+qsp/*
+provincialka-saves/*
+/assets/standalone_content/ProvinceQN.txt

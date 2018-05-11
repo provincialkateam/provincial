@@ -1,0 +1,1534 @@
+/* 
+Определяем, что высота HTML и BODY равняется высоте видимой области (viewport).
+Это избавляет нас от многих проблем при вёрстке. */ 
+html, body { height: 100%; margin: 0px; padding: 0px; }
+
+/* Запрещаем выделять текст и перетаскивать картинки */
+div,p,span {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+    /* Без этого флага на iOS текст масштабируется при повороте экрана */
+    -webkit-text-size-adjust: none;
+}
+
+div {
+	/* Отключаем "сглаживание" для бэкграундных картинок, чтобы не было артефактов,
+	   когда при использовании border-image или repeat-x браузер делает интерполяцию по внешним краям */
+	image-rendering: optimizeSpeed;             /* FUCK SMOOTHING, GIVE ME SPEED  */
+ 	image-rendering: -moz-crisp-edges;          /* Firefox                        */
+ 	image-rendering: -o-crisp-edges;            /* Opera                          */
+ 	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+ 	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+ 	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */	
+}
+
+img { -webkit-user-drag: none; }
+
+a, .qsp-button, .qsp-action, .qsp-save-slot-enabled { -webkit-tap-highlight-color: rgba(0,0,0,0); cursor:pointer; }
+
+/* Отключаем рамку у картинок в ссылках */
+.qsp-button img{ border:none; }
+
+body { 
+	margin:0;
+	padding:0;
+}
+
+/* Все диалоги находятся поверх любых элементов оформления. */
+#qsp-dialog-msg,
+#qsp-dialog-input,
+#qsp-dialog-system-menu,
+#qsp-dialog-save-slots,
+#qsp-dialog-view,
+#qsp-dialog-error {
+	z-index:500;
+	position:fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+}
+
+.qsp-overlay { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: #5c5c5c; opacity: .70;filter:Alpha(Opacity=70); -webkit-tap-highlight-color: rgba(0,0,0,0); z-index:-2; }
+
+.skin-action-overlay { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+/* VIEW */
+/* VIEW_ALWAYS_SHOW = 0, диалог */
+#qsp-dialog-view-image-container {
+    position: fixed;
+}
+#qsp-dialog-view-image-container img {
+    max-width:100%;
+    max-height:100%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+/* VIEW_ALWAYS_SHOW = 1, окно "встроено" в описание */
+#qsp-view {
+	text-align:center;
+}
+#qsp-view img {
+    max-width:100%;
+}
+
+/* MAIN DESC AND VARS DESC */
+#qsp-main, #qsp-vars { text-align:justify; }
+
+a.disabled {
+	cursor: default;
+}
+
+/* Главные колонки */
+body:not(.objs-visible) #skin-right-column { display: none; }
+body.objs-visible #skin-left-column {
+	width: 100%;
+}
+body.objs-visible #skin-right-column {
+	width: 300px;
+	height: 100%;
+	position: fixed;
+	right:0;
+	top:0;
+	border-left: 1px dotted #eee;
+}
+#skin-left-column {
+	top: 0;
+}
+
+/* VIEW */
+/* VIEW_ALWAYS_SHOW = 0, диалог */
+#qsp-dialog-view-image-container {
+    top:9px;
+    bottom:9px;
+    left:9px;
+    right:9px;
+}
+#qsp-dialog-view-image-container img {
+	border: 1px solid #616161;
+}
+/* VIEW_ALWAYS_SHOW = 1, окно "встроено" в описание */
+#qsp-view img {
+	margin-bottom: 10px;
+}
+
+/* Десктопный режим */
+@media screen and (min-width: 481px){
+	/* VIEW (встроенное в текст)*/
+	#qsp-view {
+		padding: 0 19px 0 13px;
+	}
+	/* MAIN DESC AND VARS DESC */
+	#qsp-main{ 
+		padding: 0;
+	}
+	#qsp-vars { 
+		padding: 5px;
+	}
+	/* ACTS */
+	#qsp-acts { 
+		padding: 5px;
+	}
+}
+
+/* Кнопки в панели */
+#skin-user-system {
+	float: right;
+	height: 40px;
+	width: 40px;
+}
+/* Кнопка системного меню */
+
+body #skin-user-system {
+	background-image:url("gfx/button_sys-40x40.png");
+}
+#skin-user2 { 
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 40px;
+	width: 34px;
+	z-index: 99;
+}
+#skin-user2 .qsp-button:not(:last-child) {
+	margin-left: 6px;
+}
+
+/* Цвет фона */
+body 
+{
+	background-color: #efefef; 
+}
+
+/* **************************** */
+/* Размер шрифта */
+
+/* Основной текст */
+body,
+#qsp-acts,
+#qsp-main,
+#qsp-vars,
+#qsp-inv,
+#skin-inv-caption,
+#qsp-dialog-user-menu,
+#qsp-dialog-input,
+#qsp-dialog-msg,
+#qsp-dialog-error
+{
+	font-size: 16px;
+}
+
+/* "Кнопки" основных диалогов */
+#qsp-dialog-save-slots-container,
+#skin-system-menu-container
+{
+	font-size: 1.2em;
+}
+
+/* Заголовки */
+h1 { font-size: 1.3em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.1em; }
+
+h1,h2,h3 {margin:0}
+
+/* Название игры на обложке */
+.skin-game-title
+{
+	font-size: 1.8em;
+}
+
+/* Цвет шрифта */
+/* Основной текст */
+body 
+{ 
+	color: #464646; 
+}
+
+/* Ссылки */
+a, a:visited
+{
+	color: #1874A4;
+	text-decoration: none;
+}
+
+/* Неактивный слот сохранения */
+.qsp-save-slot-disabled,
+/* Неактивный пункт системного меню */
+a.disabled
+{ 
+	color: #A3A3A3; 
+}
+
+/* Нажатое действие */
+.pressed.qsp-action,
+/* Нажатый слот сохранения */
+.pressed.qsp-save-slot-enabled div
+ {
+	color:#BB0000; 
+}
+
+/* Название игры на обложке */
+.skin-game-title
+{
+	color: #F30D0D;
+}
+
+/* Основной шрифт */
+body
+{
+	font-family: 'Calibri', 'Verdana', 'Tahoma', 'Arial';
+}
+
+/* Разметка действий */
+.skin-action {
+	padding: 10px 0 10px 0;
+}
+.skin-action-text {
+	text-decoration: none;
+}
+
+/* Для выравнивания картинки и текста предмета по вертикали,
+составляем таблицу. */
+.skin-object-outer {
+	display: table;
+}
+.skin-object-inner {
+	display: table-row;
+}
+.skin-object-image,
+.skin-object-text {
+	display: table-cell;
+	vertical-align: middle;
+	/*height: 30px;*/
+}
+.skin-object-image {
+	line-height: 1px; /* убираем лишнее пустое место над и под картинкой */
+	padding: 3px 6px 3px 0;
+}
+/* Ссылка на предмет "чёрного" цвета (как основной текст), 
+выбранный предмет подчёркивается. */
+.qsp-object a {
+	color: inherit;
+}
+.qsp-object .selected .skin-object-text{
+	text-decoration: underline;
+}
+/* Цвет текста в заголовке инвентаря */
+#skin-user1-inner a {
+	color: #858585;
+}
+/* Для выравнивания по вертикали картинки и текста пункта контекстного меню,
+составляем таблицу. */
+.skin-menu-item-outer {
+	display: table;
+}
+.skin-menu-item-inner {
+	display: table-row;
+}
+.skin-menu-item-image,
+.skin-menu-item-text {
+	display: table-cell;
+	vertical-align: middle;
+	height: 40px;
+}
+.skin-menu-item-image {
+	line-height: 1px; /* убираем лишнее пустое место над и под картинкой */
+	padding: 3px 0 3px 12px;
+}
+.skin-menu-item-text {
+	padding: 3px 12px 3px 12px;
+	text-decoration: underline;
+}
+.qsp-user-menu-divider {
+	padding: 0 12px;
+}
+#qsp-dialog-user-menu-container {
+	margin: 2px 1px;
+}
+
+.skin-dialog {
+	text-align: center;
+	font-size:0;
+}
+.skin-dialog:before {
+	content: '';
+	display: inline-block;
+	height: 100%; 
+	vertical-align: middle;
+}
+.skin-dialog-centering {
+	font-size:initial;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: initial;
+	background-color: #eee;
+	border: 3px solid #ccc;
+	border-radius: 7px;
+}
+
+/* Общие фоны для диалогов. */
+#skin-system-menu-container,
+#skin-save-slots-wrapper {
+	position: relative;
+}
+
+/* Общие правила для диалога системного меню и слотов сохранения. */
+/* SYSTEM MENU */
+/* SAVE SLOTS */
+#skin-system-menu-table {
+	padding: 30px;
+	display: table;
+	width: 170px;
+}
+
+#qsp-dialog-save-slots-container {
+	display: table;
+	width: 312px;
+	padding: 10px 30px;
+}
+
+#qsp-dialog-save-slots-name {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 0 0 0;
+}
+.qsp-dialog-save-slots-empty {
+	font-size: 0.7em;
+}
+.qsp-dialog-save-slots-warning {
+	padding: 0px 30px 10px 30px;
+	font-size: 0.8em;
+	color: red;
+	text-align: center;
+	text-decoration: italic;
+}
+
+.qsp-save-slot-enabled, .qsp-save-slot-disabled, .skin-system-menu-cell  { 
+	display: table-row;
+	width: 120px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	background: #ccc;
+	margin: 2px;
+	float: left;
+	text-align: center;
+	font-size: 0.9em;
+	color: #1874A4;
+	padding: 3px 0;
+	cursor: pointer;
+}
+
+.qsp-save-slot-enabled:hover, .skin-system-menu-cell:hover {
+	background: #aaa;
+}
+
+/* SAVE SLOTS */
+.qsp-save-slot-disabled {
+	cursor: default;
+	color: #aaa;
+}
+
+/* MSG */
+#qsp-dialog-msg-content {
+	text-align: left; 
+	padding: 0 16px; /* отступ для скролла */
+}
+#skin-dialog-msg-container {
+	position: relative;
+	display: table;
+}
+#skin-dialog-msg-top-block,
+#skin-dialog-msg-bottom-block {
+	display: table-row;
+}
+#skin-dialog-msg-top-container,
+#skin-dialog-msg-bottom-wrapper {
+	display: table-cell;
+}
+#skin-dialog-msg-top-container {
+	vertical-align: middle;
+}
+#skin-dialog-msg-bottom-wrapper {
+	vertical-align: top;
+}
+#qsp-wrapper-msg {
+	position: relative;
+	width: 340px;
+	max-height: 160px;
+}
+#skin-dialog-msg-top-container {
+	padding: 20px 6px 27px 6px;
+}
+#skin-dialog-msg-bottom-wrapper {
+	height: 50px;
+	overflow: hidden;
+	text-align: center;
+}
+
+/* Кнопка для диалогов MSG, INPUT, ERROR */
+.skin-button-ok {
+	display: inline-block;
+	min-width: 92px;
+	padding: 2px 10px;
+	text-align: center;
+	border:1px solid #ccc;
+	border-radius: 7px;
+}
+.skin-button-ok:hover {
+	background: #ddd;
+}
+
+/* ERROR */
+#skin-dialog-error-container {
+	position: relative;
+	width: 240px;
+	display: table;
+}
+#skin-dialog-error-top-row, 
+#skin-dialog-error-bottom-row {
+	display: table-row;
+}
+#qsp-dialog-error-content,
+#skin-dialog-error-bottom-wrapper { 
+	display: table-cell;
+}
+#qsp-dialog-error-content {
+	padding: 20px 22px 27px 22px;
+}
+#skin-dialog-error-bottom-wrapper {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+/* INPUT DIALOG */
+#skin-dialog-input-container {
+	position: relative;
+	width: 240px;
+	display: table;
+}
+#skin-dialog-input-top-row, 
+#skin-dialog-input-middle-row, 
+#skin-dialog-input-bottom-row {
+	display: table-row;
+}
+#skin-dialog-input-top-wrapper,
+#skin-dialog-input-middle-wrapper,
+#skin-dialog-input-bottom-wrapper { 
+	display: table-cell;
+	text-align: center;
+}
+#skin-dialog-input-top-wrapper,
+#skin-dialog-input-middle-wrapper {
+	padding: 20px 22px 0 22px;
+}
+#skin-dialog-input-bottom-wrapper {
+	padding: 20px 22px;
+}
+#qsp-dialog-input-content,
+#qsp-dialog-input-text,
+#skin-dialog-input-button-ok {
+	display: inline-block;
+}
+
+#qsp-dialog-input-text {
+	width: 140px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+/* Обложка */
+#skin-cover-wrapper { 
+	text-align: center;
+	padding-top: 2px;
+}
+
+#qsp-main img, #qsp-vars img { 
+	max-width: 100%;
+}
+
+/* ----------------------------------------------------------- */
+
+#system-menu-alternative {
+	display: none;
+	position: absolute;
+	width: 40px;
+	height: 80px;
+	top: 0;
+	right: 0;
+	border: 1px solid #eee;
+	border-radius: 3px;
+}
+
+#altLoadGame {
+	background: url("gfx/load.png");
+	background-color: #fff;
+	height: 40px;
+	cursor: pointer;
+}
+
+#altSaveGame {
+	background: url("gfx/save.png");
+	background-color: #fff;
+	height: 40px;
+	cursor: pointer;
+}
+
+#altLoadGame:hover, #altSaveGame:hover {
+	background-color: #eee;
+}
+
+.gradient {
+	background: #eee;
+	background: -webkit-linear-gradient(left,rgba(238,238,238,1),rgba(238,238,238,0));
+	background: -o-linear-gradient(right,rgba(238,238,238,1),rgba(238,238,238,0));
+	background: -moz-linear-gradient(right,rgba(238,238,238,1),rgba(238,238,238,0));
+	background: linear-gradient(to right,rgba(238,238,238,1),rgba(238,238,238,0));
+}
+
+.gradient:hover {
+	background-color: #ddd;
+}
+
+#qsp-acts {
+	margin: 0;
+	overflow-y: auto;
+}
+
+#qsp-acts div {
+	border-radius: 5px;
+	padding: 0 3px 1px 3px;
+	margin: 1px 0;
+	font-size: 1.1em;
+}
+/* render DIVs */
+#content_header {
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	font-size: 1.4em;
+	z-index:10;
+	margin:0 auto;
+	padding:0;
+}
+
+#content_header span {
+	box-shadow: 0px 0px 20px 10px #000;
+	opacity: 0.2;
+	padding: 0 7px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	background: #000;
+}
+
+#content_image {
+	max-height: 600px;
+	vertical-align:top;
+	text-align:center;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background:url("gfx/background.png") top left;
+}
+
+#content_image img {
+	height: 600px;
+}
+
+#content_image .vplayer {
+	width: 100%;
+	max-width: 960px;
+	max-height: 540px;
+}
+
+.content_text {
+	text-align: justify;
+	margin:0;
+	padding:0 5px;
+	font-size:1.1em;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.cheat {
+	color: inherit;
+}
+
+.cheat:hover {
+	color: maroon;
+}
+
+.npc_dialogue, .hero_dialogue {
+	text-decoration: italic;
+	text-indent: 5%;
+}
+
+.red_color {
+	color: red;
+	font-weight: bold;
+}
+
+.green_color {
+	color: green;
+	font-weight: bold;
+}
+
+/* UI: scales */
+.scale_placer {
+	width: 100%;
+	padding:0;
+	margin:0;
+	vertical-align:middle;
+}
+
+.scale_placer a {
+	color: inherit;
+}
+
+.scale_empty_row {
+	width: 120px;
+	height: 14px;
+	background-color: #e8e8e8;
+	border: 0;
+	border-radius:3px;
+	float: left;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+	box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+}
+.scale_filled_row {
+	border: 0;
+	border-radius:3px;
+	height: 14px;
+}
+
+/* UI: time */
+.time_box {
+	text-align:center;
+	margin-bottom:3px;
+	border-bottom: 1px solid #ddd;
+}
+
+.ui_time {
+	text-align: center;
+	font-size: 1.8em;
+	font-weight: bold;
+}
+
+/* UI: menu buttons */
+#zz_user_menu {
+	text-align:center;
+	height: 48px;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	padding: 3px 0;
+	margin: 0 auto;
+}
+
+#zz_user_menu img {
+	border: 0;
+	height: 48px;
+	max-width: 48px;
+	background:transparent;
+}
+
+#zz_user_menu div {
+	width: 48px;
+	height: 48px;
+	float: left;
+	border-radius: 7px;
+}
+
+#zz_user_menu div:hover {
+	background:#eee;
+}
+
+/* Start game boxes */
+.box {
+	background: #eeeeee;
+	border-radius: 10px;
+	padding: 10px 5px;
+	text-align: center;
+	width: 200px;
+	margin: 0px 5px;
+	font-size: 1.1em;
+	height: 300px;
+	max-height: 300px;
+}
+.box a {
+	font-size: 1.7em;
+}
+
+/* Phone */
+.phone_box {
+	width: 360px;
+	text-align: left;
+}
+
+.phone_box_content {
+	position: relative;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: #eeeeee;
+	width: 280px;
+	min-height:75px;
+	margin: 3px 0;
+}
+
+.phone_box_image {
+	width: 60px;
+	padding: 0 5px 0 0;
+	float: left;
+}
+
+.phone_box_name {
+	font-weight: bold;
+	width: 100%;
+}
+
+.phone_box_text {
+	width: 100%;
+	height: 100% auto;
+	vertical-align: middle;
+}
+
+/*----*/
+table {
+	text-align: center;
+}
+
+/* Всплывающая подсказка для меню */
+#tooltip {
+	position: absolute;
+	display: none;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background: #fff;
+	max-width: 300px;
+	padding: 3px 7px;
+	opacity:0.9;
+	z-index:999;
+}
+
+/* Вкладки */
+
+.tab_page {
+	width: 100%;
+	height: 25px;
+	margin: 5px 0 0 5px;
+	padding: 3px 1px;
+}
+
+.tab_header, .tab_header_selected {
+	font-weight: bold;
+	font-size: 0.9em;
+	text-align: center;
+	background: #e6f4be;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	margin-right: 1px;
+	float: left;
+}
+
+.tab_header_selected {
+	background: #f3f4ee;
+}
+
+.tab_header_small, .tab_header_small_selected {
+	font-size: 0.9em;
+	text-align: center;
+	background: #e6f4be;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-right: 1px;
+	float: left;
+}
+
+.tab_header_small_selected {
+	background: #f3f4ee;
+}
+
+.tab_header_small_selected a {
+	color: #000;
+}
+
+/* Описание персонажа */
+#hero_description {
+	width: 800px;
+	margin-top: 10px;
+}
+
+#hero_photo_container {
+	width: 450px;
+	text-align:center;
+	float: left;
+	margin-right: 10px;
+	border-radius: 5px;
+	background:url("gfx/background.png") top left;
+}
+
+#hero_photo_tabber {
+	height: 19px;
+}
+
+#hero_photo {
+	max-height: 600px;
+}
+
+#hero_photo img {
+	max-height: 600px;
+}
+
+#hero_description_text {
+	text-align: left;
+}
+
+/* Классы для уведомлений */
+#message_box div {
+	position: fixed;
+	top: 20px;
+	left: -302px;
+	height: 30px;
+	width: 300px;
+	display: table;
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border: 1px solid #ccc;
+	background: #eee;
+	z-index: 100;
+}
+#message_box p {
+	display: table-cell;
+	margin: 0;
+	padding: 3px;
+	vertical-align: middle;
+	text-align: right;
+}
+
+/* NPC */
+.npc_info {
+	color: #000;
+	width: 260px;
+	background: #eee;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.profile_photo {
+	text-align:center;
+}
+
+.profile_photo img {
+	text-align:center;
+	background: #eee;
+	padding: 10px;
+	border-radius: 6px;
+	width: 150px;
+}
+
+.profile_name {
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 1px;
+}
+
+.profile_icons {
+	border-radius: 5px;
+	margin-bottom: 1px;
+	padding: 1px 0 0 1px;
+}
+
+.profile_icons img {
+	height: 16px;
+}
+
+.profile_text {
+	text-align: left;
+}
+
+.profile_item_box {
+	width: 150px;
+	height: 220px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.profile_item_photo img {
+	width: 120px;
+}
+
+/* relation list */
+.relation_list_cheat {
+	text-align: center;
+	vertical-align: middle;
+	width: 32px;
+}
+
+.relation_list_photo {
+	text-align: center;
+	vertical-align: middle;
+	height: 42px;
+	width: 50px;
+}
+
+.relation_list_photo img {
+	height: 100%;
+}
+
+.relation_list_item {
+	text-align: left;
+	vertical-align: middle;
+}
+
+.relation_list_scale {
+	text-align: left;
+	vertical-align: top;
+	height: 20px;
+	font-size: 0.8em;
+}
+
+.relation_list_separator {
+	height: 1px;
+	background: #ddd;
+	margin-bottom:3px;
+}
+
+/* tattoo & piercing */
+#tattoo_container, #piercing_container {
+	width: 430px;
+	margin: 10px 4px 0 5px;
+	text-align: center;
+	border-radius: 10px 10px 5px 5px;
+	background:url("gfx/background.png") top left;
+	float: left;
+}
+
+#tattoo_tabber, #piercing_tabber {
+	height: 19px;
+}
+
+.tattoo_header, .piercing_header {
+	padding: 3px;
+	font-weight: bold;
+}
+
+#tattoo_photo img, #piercing_photo img {
+	width: 430px;
+}
+
+/* maps */
+#qsp-mapbox {
+	width: 40px;
+	height: 40px;
+	background: #eaeaea;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 99;
+	background-size: 100% 100%;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+#qsp-mapbox-full {
+	width: 900px;
+	height: 600px;
+	background: #eaeaea;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 99;
+	background-size: 100% 100%;
+}
+
+/* point of interest */
+.poi {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	background: #FF6E6E;
+	opacity: 0.7;
+	cursor: pointer;
+	border-radius: 12px;
+	display: none;
+	z-index: 100;
+}
+
+.poi:hover {
+	background: #f00;
+}
+
+/* STAT tab */
+#statistics {
+	padding: 10px 50px;
+}
+
+.stat_header {
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid #ddd;
+	background: #eee;
+	cursor: pointer;
+}
+
+.stat_header:hover {
+	background: #ddd;
+}
+
+.stat_category {
+	display: none;
+	border: 1px solid #ddd;
+	background: #eee;
+	padding: 10px;
+}
+
+/* CLOCK */
+.alarm_clock {
+	font-size: 120px;
+	font-weight: bold;
+	text-align: center;
+	padding: 100px 0;
+}
+
+/* left-side status block */
+
+#hero_status {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	width: 42px;
+	height: 450px;
+	z-index: 99;
+}
+
+#hero_status2 {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 42px;
+	height: 500px;
+	z-index: 99;
+}
+
+.hero_statuses {
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	margin-top: 1px;
+	text-align: center;
+	border-radius: 20px;
+	border: 1px solid #aaa;
+}
+
+.hero_statuses img {
+	width: 40px;
+	height: 40px;
+}
+
+#apteka td {
+	text-align: center;
+	vertical-align: top;
+	padding: 1px;
+}
+
+#achievements {
+	margin: 10px auto;
+	width: 820px;
+}
+
+.ach_category {
+	display: none;
+	border: 1px solid #ddd;
+	background: #eee;
+	padding: 8px;
+}
+
+.achievement, .achievement-disabled {
+	display: inline-block;
+	width: 260px;
+	height: 150px;
+	border: 1px solid #ddd;
+	margin: 2px;
+	border-radius: 3px;
+	text-align: center;
+	background: #fff;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+	box-shadow: 0px 2px 5px 0px rgba(204,204,204,1);
+}
+
+.achievement-disabled {
+	background: url("../images/common/achievements/unknown.png") 50% 50% no-repeat #fff;
+}
+
+.achievement div, .achievement-disabled div {
+	opacity: 0.6;
+	background: #fff;
+	padding: 0 5px;
+	margin: 0;
+	font-weight: bold;
+}
+
+.achievement-box {
+	max-height: 490px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* scrollbars */
+::-webkit-scrollbar {
+    /*width: 4px;*/
+	width: 0;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: rgba(212,212,212,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(212,212,212,0.4); 
+}
+/* end scrollbars */
+
+/* STORE BACKGROUND IMAGES*/
+/*
+.pharmacy {
+	background: url(../images/qwest/apteka/pharmacy_back.jpg);
+	background-size: cover;
+}
+
+
+#food-store {
+	background: url(images/common/shop/food.jpg);
+	background-size: cover;
+}
+
+#cosmetics-store {
+	background: url(../images/common/shop/cosm.jpg);
+	background-size: cover;
+}
+#common-store {
+	background: url(../images/common/shop/hos.jpg);
+	background-size: cover;
+}
+#clothing-store {
+	background: url(../images/common/shop/clo.jpg);
+	background-size: cover;
+}
+#tech-store {
+	background: url(../images/common/shop/teh.jpg);
+	background-size: cover;
+}
+#sport-store {
+	background-image:url(../images/common/shop/sport.jpg);
+	background-size: cover;
+}
+*/
+
+/* PRODUCTS */
+.products {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	/*min-width: 900px;*/
+  	min-height: 250px;
+}
+
+.product-wrapper {
+	display: block;
+	min-width: 25%;
+	/*min-width: 210px;*/
+	float: left;
+	transition: width .2s;
+}
+
+.product {
+	display: block;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	position: relative;
+	background: #eee;
+	margin: 10px;
+	text-decoration: none;
+	color: #474747;
+	z-index: 0;
+	height: 250px;
+}
+
+.product:hover {
+	z-index: 1;
+}
+
+
+/* NAME AND DESCRIPTION */
+
+.product-text {
+	padding: 10px 5px 5px 5px;
+}
+
+.product-name {
+	font-size: 1.2em;
+	color: #277e16;
+	text-align: center;
+}
+
+.product p {
+	position: relative;
+	margin: 0px;
+	font-size: 0.7em;
+	height: auto;
+	overflow: hidden;
+}
+
+/* PRODUCT DETAILS */
+
+.product-details-wrap {
+	padding: 0px 10px 0px;
+}
+
+.product-availability {
+	color: #277e16;
+	font-size: .9em;
+}
+
+/* PRODUCT PHOTO */
+
+.product-photo {
+	padding: 0px 10px 0px;
+}
+.product-photo img {
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
+	transition: transform .4s ease-out;
+}
+
+.product-cloth img {
+	position: absolute;
+	top: 30px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	max-height: 150px;
+	margin: auto;
+	transition: transform .4s ease-out;
+}
+
+/* PRODUCT FOOTER */
+
+.product-price {
+	text-align: center;
+	font-size: 1.3em;
+}
+.product-button {
+	position: absolute; 
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	display: inline-block;
+	width: 90%;
+	background: #00BFFF;
+	color: #fff;
+	text-align: center;
+	border: 0;
+	border-radius: 20px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
+	cursor: pointer;
+}
+.product-expensive {
+	position: absolute; 
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	display: inline-block;
+	width: 90%;
+}
+.pharmacy-seller {
+	width: 300px;
+	padding: 10px;
+}
+
+/* BAG ITEMS */
+
+.items-count h1{
+	font-size: 2em;
+	color: white;
+	-webkit-text-stroke: 1px black;
+	position: absolute; 
+	right: 40px;
+	bottom: 40px;
+	display: inline-block;
+}
+.items-button {
+	position: absolute; 
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	display: inline-block;
+	width: 90%;
+	background: #28A745;
+	color: #fff;
+	text-align: center;
+	font-size: 1.1em;
+	border: 0;
+	border-radius: .5em;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+	cursor: pointer;
+}
+.items-text p {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+/* pornstudio */
+.actress {
+	margin: 0px 2px;
+}
+
+.film-tag {
+	background: #F6EABF;
+	border-radius: 3px;
+	margin: 0 2px;
+	color: maroon;
+	padding: 0 3px;
+}
+
+.film-table {
+	font-size: 0.9em;
+}
+
+.film-table th,.film-table td {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 0 3px;
+}
+.film-table th {
+	background: #eee;
+}
+
+.film-table tr:hover {
+	background: #ccc;
+}
+
+.film-table .rating {
+	height: 16px;
+	width: 80px;
+}
+
+.film-info {
+	width: 700px;
+	margin: 10px auto;
+	border: 1px solid #efefef;
+	border-radius: 5px;
+	background: #F9F9F9;
+	padding: 5px;
+	text-align: center;
+}
+
+.film-select-container {
+	width: 600px;
+	margin: 10px auto;
+	border: 1px solid #efefef;
+	border-radius: 5px;
+	background: #F9F9F9;
+	padding: 5px;
+	text-align: center;
+	height: 300px;
+}
+
+.film-select {
+	border: 1px solid #efefef;
+	border-radius: 5px;
+	float: left;
+	padding: 5px;
+	width: 278px;
+	margin: 5px;
+	text-align: left;
+}
+.film-select p {
+	text-align: center;
+	font-weight: bold;
+	padding: 1px 5px;
+	margin: 0;
+}
+
+.film-select-link {
+	list-style-image: url(../images/common/icons/unchecked.png);
+}
+
+.film-select-link-checked {
+	list-style-image: url(../images/common/icons/checked.png);
+}
+
+.film-shooting, .film-casting {
+	text-align: center;
+	margin: 10px auto;
+}
+
+.film-shooting a, .film-casting a, .film-casting span {
+	font-size: 1.2em;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 5px;
+	width: 200px;
+}
+
+.film-shooting a:hover, .film-casting a:hover {
+	background: #eee;
+}
+
+.film-casting span {
+	color: maroon;
+}
+
+/*---*/
+
+.loc_description {
+	display: none;
+	text-align: left;
+}
+
+.loc_description div {
+	min-width:100px;
+	max-height: 150px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#wardrobe {
+	margin: 0 auto;
+}
+
+.wardrobe-item {
+	width: 200px;
+	height: 267px;
+	margin: 7px;
+	float: left;
+	background-size: cover;
+	border-radius: 5px;
+	border: 1px solid #eee;
+	box-shadow: 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.wardrobe-item:hover {
+	background-color: #eee;
+	border: 1px solid #ccc;
+}
+
+.wardrobe-item-photo img {
+	border-radius: 5px;
+}
+
+.wardrobe-item-status {
+	position: relative;
+	width: 100%;
+	top: -34px;
+	left: 0;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+	opacity: 0.7;
+	text-align: center;
+	border-radius: 0 0 5px 5px;
+}
+
+.wardrobe-item-status img {
+	padding: 1px;
+  	width: 24px;
+	height: 24px;
+}

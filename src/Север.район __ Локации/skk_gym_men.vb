@@ -1,0 +1,1 @@
+﻿act 'В коридор' : gt 'skk_gym_kor'

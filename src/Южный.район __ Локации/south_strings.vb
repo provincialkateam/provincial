@@ -1,0 +1,2 @@
+﻿if $args[0] = 'local_str27': $result = 'К вам подошел <<$boybody>> <<$boybod>> <<$boyface>>. Он <<$boyClo>>**Парень представился как <<$boy>> и попросил ваш телефончик.'
+if $args[0] = 'local_str28': $result = '<<$boyA>> записал ваш телефон и ушел.'

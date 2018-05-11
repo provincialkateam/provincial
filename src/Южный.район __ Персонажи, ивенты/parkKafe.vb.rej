@@ -1,0 +1,15 @@
+diff a/Южный.район __ Персонажи, ивенты/parkKafe.vb b/Южный.район __ Персонажи, ивенты/parkKafe.vb	(rejected hunks)
+@@ -9,11 +9,11 @@
+ 	gs 'zz_kitchen_acts', 'eat', 'lunch','',func('parc_kafe_strings', 'local_str5')
+ 	gs 'zz_kitchen_acts', 'drink', 'tea'
+ 	killvar '$zz_str'
+-	$zz_str[0] = 'компанию гуляющей <a href="exec:GT ''parkKafe'',''молодеж''">молодежи</a>'
++	$zz_str[0] = 'компанию гуляющей <a href="exec:GT ''parkKafe'',''молодёжь''">молодёжи</a>'
+ 	$zz_str[1] = 'одиноко сидящего молодого парня.'
+ 	$zz_str[2] = '<a href="exec:GT ''parkKafe'',''женщина''">женщину</a> властного вида'
+ 	$zz_str[3] = 'солидного <a href="exec:GT ''parkKafe'',''мужчина''">мужчину</a> в возрасте'
+-	$zz_str[4] = 'двух <a href="exec:GT ''parkKafe'',''армяне''">армян</a> сидящих за столом'
++	$zz_str[4] = 'двух <a href="exec:GT ''parkKafe'',''кавказцы''">кавказцев</a> сидящих за столом'
+ 	if $npc['47,day'] ! day:
+ 		if $npc['47,mainQW'] >= 5 and $npc['47,nigraQW'] = 0:
+ 			$zz_str[5] = '<a href="exec:GT ''npc_demarkus'',''park_group''">Демаркуса в компании друзей</a> из солнечной Африки.'

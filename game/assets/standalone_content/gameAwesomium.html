@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Province</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link type="text/css" href="skins/game.css" rel="stylesheet" />
+<script type="text/javascript" src="../qsplib/js/core.js"></script>
+<script type="text/javascript" src="../qsplib/js/coreAwesomium.js"></script>
+<script type="text/javascript" src="../qsplib/js/QspLibAwesomium.js"></script>
+<script type="text/javascript" src="../qsplib/js/api.js"></script>
+<script type="text/javascript" src="../standalone_content/skins/js/game.js"></script>
+<script type="text/javascript" src="../standalone_content/skins/js/zz_script.js"></script>
+</head>
+<body onresize="resizer();">
+<!-- Сплэшскрин. Свойства прописываем здесь, т.к. к моменту загрузки CSS будет уже поздно. -->
+<div id="skin-splashscreen-foreground" style="z-index:1; position:fixed; left:0px; top:0px; width:100%; height:100%; background:url(images/common/start/screens/1.jpg) 50% 100% no-repeat; background-size:cover;"></div>
+<!-- Обёртка всего интерфейса целиком, со всей разметкой, окнами, диалогами. Пока содержимое полностью не загрузится, интерфейс должен быть скрыт. -->
+<div id="skin-ui-wrapper" style="display:none">
+	<!-- Описание основное и дополнительное, действия, инвентарь -->
+	<div id="skin-page">
+		<div id="skin-top-menu-wrapper">
+			<div id="skin-user2">
+				<div id="skin-user-system" class="qsp-button" onclick="javascript:qspShowSystemMenu();" onmouseover="javascript:showAltMenu(event);"></div>
+					<!-- Альтернативный вывод системного меню -->
+				<div id="system-menu-alternative">
+					<div id="altLoadGame" onclick="javascript: qspLoadGame(); return false;"></div>
+					<div id="altSaveGame" onclick="javascript: qspSaveGame(); return false;"></div>
+				</div>
+			</div>
+		</div>
+		<div id="skin-left-column">
+			<div id="qsp-main"></div>
+			<div id="message_box"></div>
+		</div>
+		<div id="skin-right-column">
+			<div id="qsp-vars"></div>
+			<div id="qsp-acts"></div>
+		</div>
+	</div>
+	
+	<div id="tooltip"></div>
+	
+	<!-- Диалоги -->
+	<!-- Отрисовываются поверх всего, поэтому идут последними -->
+	<div id="qsp-dialog-msg" class="skin-dialog">
+		<div class="skin-dialog-centering">
+			<div id="skin-dialog-msg-container">
+				<div class="skin-dialog-background"></div>
+				<div id="skin-dialog-msg-top-block">
+					<div id="skin-dialog-msg-top-container">
+						<div id="qsp-wrapper-msg">
+							<div id="qsp-scroller-msg" >
+								<div id="qsp-dialog-msg-content">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="skin-dialog-msg-bottom-block">
+					<div id="skin-dialog-msg-bottom-wrapper">
+						<div class="qsp-button skin-button-ok" onclick="javascript:qspCloseMsg();">OK</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="qsp-overlay"></div>
+	</div>
+
+	<div id="qsp-dialog-input" class="skin-dialog">
+		<div class="skin-dialog-centering">
+			<div id="skin-dialog-input-container">
+				<div id="skin-dialog-input-top-row">
+					<div id="skin-dialog-input-top-wrapper">
+						<div id="qsp-dialog-input-content">
+							<p></p>
+						</div>
+					</div>
+				</div>
+				<div id="skin-dialog-input-middle-row">
+					<div id="skin-dialog-input-middle-wrapper">
+						<input type="text" name="qsp-dialog-input-text" id="qsp-dialog-input-text" />
+					</div>
+				</div>
+				<div id="skin-dialog-input-bottom-row">
+					<div id="skin-dialog-input-bottom-wrapper">
+						<div id="skin-dialog-input-button-ok" class="qsp-button skin-button-ok" onclick="javascript:qspCloseInput(true);">OK</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="qsp-overlay"></div>
+	</div>
+
+	<div id="qsp-dialog-system-menu" class="skin-dialog">
+		<div class="skin-dialog-centering">
+			<div id="skin-system-menu-container">
+				<div id="skin-system-menu-table">
+					<div class="skin-system-menu-row">
+						<div class="skin-system-menu-cell" onclick="javascript: qspLoadGame(); return false;">
+							Load
+						</div>
+					</div>
+					<div class="skin-system-menu-row">
+						<div class="skin-system-menu-cell" onclick="javascript:qspSaveGame(); return false;">
+							Save
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="qsp-overlay"></div>
+	</div>
+
+	<div id="qsp-dialog-save-slots" class="skin-dialog">
+		<div class="skin-dialog-centering">
+			<div id="skin-save-slots-wrapper">
+				<div class="skin-dialog-background"></div>
+				<div id="qsp-dialog-save-slots-name"></div>
+				<div id="qsp-dialog-save-slots-container"></div>
+				<div class="qsp-dialog-save-slots-warning">**Save 19 - Quicksave**<br>**Save 20 - Autosave**</div>
+			</div>
+		</div>
+		<div class="qsp-overlay"></div>
+	</div>
+
+	<div id="qsp-dialog-user-menu" class="contextMenu">
+		<div id="skin-user-menu-background"></div>
+		<div id="qsp-dialog-user-menu-container"></div>
+	</div>
+
+	<div id="qsp-dialog-view">
+		<div class="qsp-overlay"></div>
+		<div id="qsp-dialog-view-image-container"></div>
+	</div>
+
+	<div id="qsp-dialog-error" class="skin-dialog">
+		<div class="skin-dialog-centering">
+			<div id="skin-dialog-error-container">
+				<div class="skin-dialog-background"></div>
+				<div id="skin-dialog-error-top-row">
+					<div id="qsp-dialog-error-content">
+						<p></p>
+					</div>
+				</div>
+				<div id="skin-dialog-error-bottom-row">
+					<div id="skin-dialog-error-bottom-wrapper">
+						<div class="qsp-button skin-button-ok" onclick="javascript:qspCloseError();">OK</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="qsp-overlay"></div>
+	</div>
+</div>
+</body>
+</html>

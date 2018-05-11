@@ -1,0 +1,13 @@
+﻿$_vstr['act1'] = 'Leave the room'
+$_vstr['act2'] = 'Mainroom'
+$_vstr['act3'] = 'Meet the New Year with your family.'
+$_vstr['act4'] = 'Eating salads from the festive table'
+$_vstr['act5'] = 'Get up from the table'
+$_vstr['act6'] = 'Leave'
+$_vstr['1'] = 'There is a <a href="exec: gs ''brother_events'', ''watch_tv''">TV</a> by the window. Opposite the TV is a sofa, on which your brother sleeps at night. The wall has a cupboard with dishes and books.'
+$_vstr['2'] = 'Near the TV stands a Christmas tree, decorated with toys and garlands.'
+$_vstr['3'] = 'A conversation began at the table, the problems were forgotten, everyone was having fun and talking among themselves. You sat down at the festive table in front of the TV and began to watch the Old Year party in the family circle. There are constant "Blue Light" and "Irony of Fate, or With Easy Steam!" on TV. Then everyone drank champagne, knocking glass and congratulating each other on the new year. Mom gave you an envelope with a greeting card and five thousand rubles. For a while you continued to watch TV, ate salads and drank champagne. Soon it became apparent that the family members were tired and began to disperse on their beds.'
+$_vstr['4'] = 'You can^t eat any more.'
+$_vstr['5'] = 'You finished the salads left on the table after the holiday.'
+$result = $_vstr[$args[0]]
+killvar '$_vstr'
